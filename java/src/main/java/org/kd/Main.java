@@ -7,9 +7,10 @@ public class Main {
     public static void main(String[] arg) {
 
         var config = new LwjglApplicationConfiguration();
-        config.title = "My LibGDX Game";
-        config.width = 800;
-        config.height = 600;
+        config.title = "First Cats";
+        config.width = 640;
+        config.height = 480;
+        config.fullscreen = true;
 
         new LwjglApplication(new Animation(), config);
     }

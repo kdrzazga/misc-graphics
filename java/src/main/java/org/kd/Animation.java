@@ -30,6 +30,12 @@ public class Animation extends ApplicationAdapter {
     public void create() {
         counter = System.currentTimeMillis();
 
+        createSprites();
+        this.createFont();
+        this.createMusic();
+    }
+
+    private void createSprites() {
         this.sprites = new ArrayList<>(3);
         batch = new SpriteBatch(); //SpriteBatch is a renderer, used to effectively draw sprites
         var positions = Arrays.asList(50, 50, 250, 50, 250, 250);
@@ -43,9 +49,6 @@ public class Animation extends ApplicationAdapter {
             index.addAndGet(2);
             sprite.setScale(2.0f);
             sprites.add(sprite);
-
-            this.createFont();
-            this.createMusic();
         });
 
         var monster = sprites.get(1);
@@ -94,7 +97,7 @@ public class Animation extends ApplicationAdapter {
         float mainThemeVolume = 1f;
         long frame = Gdx.graphics.getFrameId();
         if (frame > 333 && frame < 333 + 7 * 50) {
-            mainThemeVolume = 0.1f;
+            mainThemeVolume = 0.3f;
             anotherVisitor.play();
         }
         music.setVolume(mainThemeVolume);
