@@ -1,4 +1,4 @@
-package org.kd;
+package org.kd.hellogdx;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
@@ -24,11 +24,9 @@ public class Animation extends ApplicationAdapter {
     private BitmapFont font2;
     private Music music;
     private Music anotherVisitor;
-    private long counter;
 
     @Override
     public void create() {
-        counter = System.currentTimeMillis();
 
         createSprites();
         this.createFont();
@@ -97,7 +95,7 @@ public class Animation extends ApplicationAdapter {
         float mainThemeVolume = 1f;
         long frame = Gdx.graphics.getFrameId();
         if (frame > 333 && frame < 333 + 7 * 50) {
-            mainThemeVolume = 0.3f;
+            mainThemeVolume = 0.4f;
             anotherVisitor.play();
         }
         music.setVolume(mainThemeVolume);
