@@ -22,7 +22,6 @@ public class SceneA extends Scene {
     private BitmapFont font;
     private BitmapFont font2;
     private Music music;
-    private Music anotherVisitor;
 
     @Override
     public void create() {
@@ -93,7 +92,7 @@ public class SceneA extends Scene {
     }
 
     private void createMusic() {
-        music = Gdx.audio.newMusic(Gdx.files.internal("modem.mp3"));
+        music = Gdx.audio.newMusic(Gdx.files.internal("agemixer-audioman.mp3"));
         music.setLooping(true);
         music.setVolume(1f);
         music.play();
@@ -102,8 +101,8 @@ public class SceneA extends Scene {
 
     private void writeCustomSCII() {
 
-        font.draw(batch, "MSX: MODEM BY WODNIK", 10, Gdx.graphics.getHeight() - 10);
-        font2.draw(batch, "HTTPS://DEEPSID.CHORDIAN.NET/?FILE=MUSICIANS/W/WODNIK/MODEM.SID", 10, Gdx.graphics.getHeight() - 2 * 20);
+        font.draw(batch, "MSX: AUDIOMAN BY AGEMIXER", 10, Gdx.graphics.getHeight() - 10);
+        font2.draw(batch, "KUDOZ TO PAN ARECZEK OF KAPLUS", 10, Gdx.graphics.getHeight() - 2 * 20);
         font.draw(batch, "0 1 2 3 4 5 6 7 8 9 ", 10, Gdx.graphics.getHeight() - 5 * 20);
         font.draw(batch, "a b d e f g h i j t u v w x y z ! * ( )", 10, Gdx.graphics.getHeight() - 6 * 20);
     }

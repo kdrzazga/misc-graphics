@@ -1,4 +1,4 @@
-package org.kd.hellogdx;
+package org.kd.c64;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
@@ -6,15 +6,9 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class SceneB extends Scene {
     SpriteBatch batch;
@@ -53,7 +47,7 @@ public class SceneB extends Scene {
         System.out.println("Disposing Scene B");
         shapeRenderer.dispose();
     }
-
+    
     private void createFont() {
         var generator = new FreeTypeFontGenerator(Gdx.files.internal("dulski.ttf"));
         var parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();

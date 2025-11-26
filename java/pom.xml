@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.kd</groupId>
-    <artifactId>Scrolls</artifactId>
+    <artifactId>misc-graphics</artifactId>
     <version>1.0</version>
 
     <properties>
