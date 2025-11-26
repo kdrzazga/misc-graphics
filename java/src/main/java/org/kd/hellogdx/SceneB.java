@@ -17,14 +17,14 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class SceneB extends Scene {
-    SpriteBatch batch;
-    Texture texture;
     ShapeRenderer shapeRenderer;
     private BitmapFont font;
     private Music anotherVisitor;
+    SpriteBatch batch;
 
     @Override
     public void create() {
+        batch = new SpriteBatch();
         shapeRenderer = new ShapeRenderer();
         this.createFont();
         this.createMusic();
@@ -55,12 +55,9 @@ public class SceneB extends Scene {
     }
 
     private void createFont() {
-        var generator = new FreeTypeFontGenerator(Gdx.files.internal("dulski.ttf"));
+        var generator = new FreeTypeFontGenerator(Gdx.files.internal("C64_Pro_Mono-STYLE.ttf"));
         var parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        var parameter2 = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        parameter.size = 22;
-        parameter2.size = 15;
-        parameter2.color = Color.ORANGE;
+        parameter.size = 9;
         font = generator.generateFont(parameter);
         generator.dispose();
     }
@@ -73,14 +70,16 @@ public class SceneB extends Scene {
 
 
     private void drawC64() {
-        Gdx.gl.glClearColor(1, 1, 1, 1); // Clear with white color
+        Gdx.gl.glClearColor(0, (136/255), 1, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         shapeRenderer.setColor(Color.BLUE);
         shapeRenderer.rect(50, 50, 200, 100); // x, y, width, height
         shapeRenderer.end();
-        //font.draw(batch, "MSX: MODEM BY WODNIK", 10, Gdx.graphics.getHeight() - 10);
+        batch.begin();
+        font.draw(batch, "* COMMODORE 64 65535 BYTES FREE *", 10, Gdx.graphics.getHeight() - 10);
+        batch.end();
    }
 
 }
