@@ -15,6 +15,10 @@ public class Scene1Tiles extends Scene {
     ShapeRenderer shapeRenderer;
     private Music anotherVisitor;
 
+    public Scene1Tiles(String id) {
+        super(id);
+    }
+
     @Override
     public void create() {
         shapeRenderer = new ShapeRenderer();

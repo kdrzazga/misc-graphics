@@ -10,12 +10,16 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
-public class SceneB extends Scene {
+public class Scene2 extends Scene {
     SpriteBatch batch;
     Texture texture;
     ShapeRenderer shapeRenderer;
     private BitmapFont font;
     private Music anotherVisitor;
+
+    public Scene2(String id) {
+        super(id);
+    }
 
     @Override
     public void create() {

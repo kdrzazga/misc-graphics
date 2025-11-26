@@ -6,6 +6,8 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import java.util.Arrays;
+
 public class Animation extends ApplicationAdapter {
     SpriteBatch batch;
     AnimationManager animationManager;
@@ -14,14 +16,15 @@ public class Animation extends ApplicationAdapter {
     public void create() {
         batch = new SpriteBatch();
         animationManager = new AnimationManager();
-        var scene1Tiles = new Scene1Tiles();
-        var sceneB = new SceneB();
-        scene1Tiles.create();
-        sceneB.create();
-        animationManager.addScene("scene1Tiles", scene1Tiles);
-        animationManager.addScene("sceneB", sceneB);
-        // add other scenes
-        animationManager.switchScene("scene1Tiles");
+        var scene1Tiles = new Scene1Tiles("scene1");
+        var scene2 = new Scene2("scene2");
+
+        Arrays.asList(scene1Tiles, scene2).forEach(s -> {
+            s.create();
+            animationManager.addScene(s.id, s);
+        });
+
+        animationManager.switchScene("scene1");
     }
 
     @Override
@@ -39,7 +42,7 @@ public class Animation extends ApplicationAdapter {
 
         // Optional: switch scenes based on input or timers
         if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
-            animationManager.switchScene("sceneB");
+            animationManager.switchScene("scene2");
         }
     }
 

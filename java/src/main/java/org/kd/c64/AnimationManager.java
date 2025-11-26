@@ -15,10 +15,8 @@ public class AnimationManager {
         if (currentScene != null) {
             currentScene.dispose();
         }
-        currentScene = scenes.get(name);
-        if (currentScene != null) {
+        currentScene = scenes.values().stream().filter( s -> s.id.equals(name)).findFirst().get();
             currentScene.create();
-        }
     }
 
     public void update(float delta) {
