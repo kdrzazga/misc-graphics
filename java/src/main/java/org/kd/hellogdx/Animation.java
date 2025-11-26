@@ -15,8 +15,11 @@ public class Animation extends ApplicationAdapter {
         batch = new SpriteBatch();
         animationManager = new AnimationManager();
         var sceneA = new SceneA();
+        var sceneB = new SceneB();
         sceneA.create();
+        sceneB.create();
         animationManager.addScene("sceneA", sceneA);
+        animationManager.addScene("sceneB", sceneB);
         // add other scenes
         animationManager.switchScene("sceneA");
     }

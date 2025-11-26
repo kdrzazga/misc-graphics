@@ -50,18 +50,11 @@ public class SceneA extends Scene {
         writeCustomSCII();
         batch.end();
 
-        float mainThemeVolume = 1f;
-        long frame = Gdx.graphics.getFrameId();
-        if (frame > 333 && frame < 333 + 7 * 50) {
-            mainThemeVolume = 0.4f;
-            anotherVisitor.play();
-        }
-        music.setVolume(mainThemeVolume);
     }
 
     @Override
     public void dispose() {
-        // dispose scene resources
+        System.out.println("Disposing Scene A");
     }
 
     private void createSprites() {
@@ -104,10 +97,6 @@ public class SceneA extends Scene {
         music.setLooping(true);
         music.setVolume(1f);
         music.play();
-
-        anotherVisitor = Gdx.audio.newMusic(Gdx.files.internal("anothervisitor.mp3"));
-        anotherVisitor.setLooping(false);
-        anotherVisitor.setVolume(1f);
     }
 
 

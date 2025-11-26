@@ -1,7 +1,5 @@
 package org.kd.hellogdx;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,7 +33,7 @@ public class AnimationManager {
         }
     }
 
-    public void disposeScenes(){
+    public void disposeScenes() {
         scenes.values().forEach(scene -> scene.dispose());
     }
 }
