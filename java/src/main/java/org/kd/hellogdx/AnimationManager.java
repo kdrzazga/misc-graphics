@@ -1,5 +1,7 @@
 package org.kd.hellogdx;
 
+import org.kd.common.Scene;
+
 import java.util.HashMap;
 import java.util.Map;
 

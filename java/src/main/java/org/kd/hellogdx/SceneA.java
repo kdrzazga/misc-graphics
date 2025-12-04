@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import org.kd.common.Scene;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,6 +23,10 @@ public class SceneA extends Scene {
     private BitmapFont font;
     private BitmapFont font2;
     private Music music;
+
+    public SceneA() {
+        super("sceneA");
+    }
 
     @Override
     public void create() {
