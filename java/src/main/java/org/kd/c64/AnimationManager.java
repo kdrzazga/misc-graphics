@@ -17,7 +17,7 @@ public class AnimationManager extends ApplicationAdapter {
     public void create() {
         batch = new SpriteBatch();
         sceneManager = new SceneManager();
-        var scene1Tiles = new Scene1Tiles("scene1");
+        var scene1Tiles = new Scene1C64("scene1");
         var scene2 = new Scene2("scene2");
 
         Arrays.asList(scene1Tiles, scene2).forEach(s -> {
