@@ -1,4 +1,4 @@
-package org.kd;
+package org.kd.common;
 
 public abstract class Scene {
 

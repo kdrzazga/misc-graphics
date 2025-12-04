@@ -1,4 +1,4 @@
-package org.kd;
+package org.kd.common;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,5 +1,7 @@
 package org.kd.c64;
 
-public class C64AnimationManager extends org.kd.AnimationManager {
+import org.kd.common.AnimationManager;
+
+public class C64AnimationManager extends AnimationManager {
 
 }

@@ -1,4 +1,4 @@
-package org.kd.c64.data;
+package org.kd.common;
 
 public enum C64Colors {
     BLACK(0, 0, 0),
