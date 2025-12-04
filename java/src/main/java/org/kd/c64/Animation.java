@@ -10,12 +10,12 @@ import java.util.Arrays;
 
 public class Animation extends ApplicationAdapter {
     SpriteBatch batch;
-    AnimationManager animationManager;
+    C64AnimationManager animationManager;
 
     @Override
     public void create() {
         batch = new SpriteBatch();
-        animationManager = new AnimationManager();
+        animationManager = new C64AnimationManager();
         var scene1Tiles = new Scene1Tiles("scene1");
         var scene2 = new Scene2("scene2");
 
