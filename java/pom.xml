@@ -61,7 +61,8 @@
                         <configuration>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>org.kd.hellogdx.Main</mainClass>
+                                    <!--<mainClass>org.kd.hellogdx.Main</mainClass>-->
+                                    <mainClass>org.kd.winter.WinterDemo</mainClass>
                                 </transformer>
                             </transformers>
                             <!--<resources>

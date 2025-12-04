@@ -1,18 +1,12 @@
 package org.kd.c64;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
-import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
+import org.kd.winter.WinterAnimationMgr;
 
-public class Demo {
-    public static void main(String[] arg) {
+public class Demo extends org.kd.common.Demo {
 
-        var config = new LwjglApplicationConfiguration();
-        config.title = "DemoSzit";
-        config.width = 640;
-        config.height = 480;
-        config.fullscreen = true;
-
-        new LwjglApplication(new Animation(), config);
+    public static void main(String[] args) {
+        var config = org.kd.common.Demo.createConfig("C64 Demo");
+        new LwjglApplication(new WinterAnimationMgr(), config);
     }
-
 }

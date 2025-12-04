@@ -4,23 +4,21 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
+import org.kd.common.Scene;
 
 public class SceneB extends Scene {
     ShapeRenderer shapeRenderer;
     private BitmapFont font;
     private Music anotherVisitor;
     SpriteBatch batch;
+
+    public SceneB() {
+        super("sceneB");
+    }
 
     @Override
     public void create() {
@@ -70,7 +68,7 @@ public class SceneB extends Scene {
 
 
     private void drawC64() {
-        Gdx.gl.glClearColor(0, (136/255), 1, 1);
+        Gdx.gl.glClearColor(0, (136 / 255), 1, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
@@ -80,6 +78,6 @@ public class SceneB extends Scene {
         batch.begin();
         font.draw(batch, "* COMMODORE 64 65535 BYTES FREE *", 10, Gdx.graphics.getHeight() - 10);
         batch.end();
-   }
+    }
 
 }
