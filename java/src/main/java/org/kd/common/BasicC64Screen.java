@@ -9,7 +9,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 public class BasicC64Screen extends Scene {
     SpriteBatch batch;
     ShapeRenderer shapeRenderer;
-    Texture backgroundTexture;
+    protected Texture backgroundTexture;
     protected C64Colors borderColor;
     protected String backgroundScreenPng;
 

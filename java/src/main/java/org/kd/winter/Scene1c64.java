@@ -18,7 +18,7 @@ import java.util.concurrent.atomic.AtomicReference;
 public class Scene1c64 extends BasicC64Screen {
     SpriteBatch batch2;
     ShapeRenderer shapeRenderer;
-    Texture backgroundTexture;
+    //Texture backgroundTexture;
     private Music kolendaRamosa;
     private List<Sprite> backgroundSprites;
     private List<Sprite> backgroundSprites2;
@@ -73,6 +73,17 @@ public class Scene1c64 extends BasicC64Screen {
         }
         else if (frame == 600){
             Globals.CURSOR_COLOR = C64Colors.WHITE;
+        }
+        else if (frame == 699){
+            this.backgroundScreenPng = "winter/white-ready.png";
+            this.backgroundTexture = new Texture(Gdx.files.internal(this.backgroundScreenPng));
+            Globals.cursorY = Math.round(0.753* Globals.SCREEN_HEIGHT) - 2;
+        }
+
+        else if (frame == 1100){
+            this.backgroundScreenPng = "winter/lblue-ready.png";
+            this.backgroundTexture = new Texture(Gdx.files.internal(this.backgroundScreenPng));
+            Globals.BKG_COLOR = C64Colors.LIGHT_BLUE;
         }
     }
 
