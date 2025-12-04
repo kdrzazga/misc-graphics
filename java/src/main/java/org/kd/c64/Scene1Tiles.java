@@ -4,11 +4,11 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import org.kd.common.BasicC64Screen;
 import org.kd.common.Scene;
 import org.kd.common.C64Colors;
 
-public class Scene1Tiles extends Scene {
-    ShapeRenderer shapeRenderer;
+public class Scene1Tiles extends BasicC64Screen {
     private Music anotherVisitor;
 
     public Scene1Tiles(String id) {
@@ -17,7 +17,7 @@ public class Scene1Tiles extends Scene {
 
     @Override
     public void create() {
-        shapeRenderer = new ShapeRenderer();
+        super.create();
         this.createMusic();
     }
 
@@ -28,10 +28,7 @@ public class Scene1Tiles extends Scene {
 
     @Override
     public void render() {
-        Gdx.gl.glClearColor(C64Colors.LIGHT_BLUE.getR(), C64Colors.LIGHT_BLUE.getG(), C64Colors.LIGHT_BLUE.getB(), 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-        drawC64();
+        super.render();
 
         long frame = Gdx.graphics.getFrameId();
         if (frame > 333 && frame < 333 + 7 * 50) {
@@ -45,20 +42,9 @@ public class Scene1Tiles extends Scene {
         anotherVisitor.setVolume(1f);
     }
 
-    private void drawC64() {
-        Gdx.gl.glClearColor(C64Colors.LIGHT_BLUE.getR(), C64Colors.LIGHT_BLUE.getG(), C64Colors.LIGHT_BLUE.getB(), 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        shapeRenderer.setColor(C64Colors.BLUE.getR(), C64Colors.BLUE.getG(), C64Colors.BLUE.getB(), 1);
-        shapeRenderer.rect(50, 50, 200, 100); // x, y, width, height
-        shapeRenderer.end();
-    }
-
     @Override
     public void dispose() {
-        System.out.println("Disposing Scene1Tiles");
-        shapeRenderer.dispose();
+        super.dispose();
         anotherVisitor.dispose();
     }
 }
