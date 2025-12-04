@@ -4,7 +4,7 @@ public enum C64Colors {
     BLACK(0, 0, 0),
     WHITE(1, 1, 1),
     RED(136/255,0,0),
-    BLUE(0,0, 170/255),
+    BLUE(0.239f,0.278f, 0.725f),
     LIGHT_BLUE(0.415f, 0.463f, 0.988f);
 
     private final float r;

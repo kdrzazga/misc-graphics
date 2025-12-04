@@ -5,11 +5,14 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import org.kd.common.C64Colors;
+import org.kd.common.C64Helper;
 import org.kd.common.Scene;
 
 public class Scene1c64 extends Scene {
     SpriteBatch batch;
+    ShapeRenderer shapeRenderer;
     Texture backgroundTexture;
     private Music kolendaRamosa;
 
@@ -20,6 +23,8 @@ public class Scene1c64 extends Scene {
     @Override
     public void create() {
         batch = new SpriteBatch();
+        shapeRenderer = new ShapeRenderer();
+        shapeRenderer.setAutoShapeType(true);
         backgroundTexture = new Texture(Gdx.files.internal("c64.png"));
         this.createMusic();
     }
@@ -31,12 +36,13 @@ public class Scene1c64 extends Scene {
 
     @Override
     public void render() {
-        Gdx.gl.glClearColor(C64Colors.LIGHT_BLUE.getR(), C64Colors.LIGHT_BLUE.getG(), C64Colors.LIGHT_BLUE.getB(), 1);
+        var lb = C64Colors.LIGHT_BLUE;
+        Gdx.gl.glClearColor(lb.getR(), lb.getG(), lb.getB(), 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        drawC64();
-
         long frame = Gdx.graphics.getFrameId();
+        drawC64(frame);
+
         if (frame > 333 && frame < 333 + 7 * 50) {
             kolendaRamosa.play();
         }
@@ -48,8 +54,8 @@ public class Scene1c64 extends Scene {
         kolendaRamosa.setVolume(1f);
     }
 
-    private void drawC64() {
-        float scale = 1f; // better don't scale, results are pathetic
+    private void drawC64(long frame) {
+        float scale = 2f; // be careful with  scaling, results can be pathetic
 
         float scaledWidth = backgroundTexture.getWidth() * scale;
         float scaledHeight = backgroundTexture.getHeight() * scale;
@@ -59,6 +65,7 @@ public class Scene1c64 extends Scene {
         batch.begin();
         batch.draw(backgroundTexture, x, y, scaledWidth, scaledHeight);
         batch.end();
+        C64Helper.blinkCursor(frame, shapeRenderer);
     }
 
     @Override
