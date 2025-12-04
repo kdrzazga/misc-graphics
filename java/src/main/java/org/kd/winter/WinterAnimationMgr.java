@@ -17,13 +17,9 @@ public class WinterAnimationMgr extends ApplicationAdapter {
     public void create() {
         batch = new SpriteBatch();
         sceneManager = new SceneManager();
-        var scene1Tiles = new Scene1c64("scene1");
-        var scene2 = new Scene1c64("scene2"); //TODO
-
-        Arrays.asList(scene1Tiles, scene2).forEach(s -> {
+        var s = new Scene1c64("scene1");
             s.create();
             sceneManager.addScene(s.id, s);
-        });
 
         sceneManager.switchScene("scene1");
     }
@@ -40,17 +36,11 @@ public class WinterAnimationMgr extends ApplicationAdapter {
         batch.begin();
         sceneManager.render();
         batch.end();
-
-        // Optional: switch scenes based on input or timers
-        if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
-            sceneManager.switchScene("scene2");
-        }
     }
 
     @Override
     public void dispose() {
         batch.dispose();
-
         sceneManager.disposeScenes();
     }
 }
