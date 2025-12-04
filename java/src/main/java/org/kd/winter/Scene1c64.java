@@ -22,6 +22,7 @@ public class Scene1c64 extends BasicC64Screen {
     private Music kolendaRamosa;
     private List<Sprite> backgroundSprites;
     private List<Sprite> backgroundSprites2;
+    private Sprite backgroundSprite3;
 
     public Scene1c64(String id) {
         super(id);
@@ -30,6 +31,8 @@ public class Scene1c64 extends BasicC64Screen {
     @Override
     public void create() {
         super.create();
+        Gdx.input.setCursorPosition(Gdx.graphics.getWidth() , Gdx.graphics.getWidth());
+
         this.createMusic();
         this.batch2 = new SpriteBatch(2);
         backgroundSprites = new ArrayList<>(2);
@@ -42,6 +45,10 @@ public class Scene1c64 extends BasicC64Screen {
         Arrays.asList("poke646_1.png", "clrscr.png").forEach(picPath -> {
             initSprite(picPath, shift, backgroundSprites2);
         });
+
+        backgroundSprite3 = new Sprite(new Texture("winter/lightblu_bkgnd.png"));
+        backgroundSprite3.setX(0);
+        backgroundSprite3.setY(250);
     }
 
     private void initSprite(String picPath, AtomicReference<Float> shift, List<Sprite> spriteList) {
@@ -62,7 +69,7 @@ public class Scene1c64 extends BasicC64Screen {
         }
 
         if (frame == 400) {
-            this.backgroundColor = C64Colors.WHITE;
+            this.borderColor = C64Colors.WHITE;
         }
         else if (frame == 600){
             Globals.CURSOR_COLOR = C64Colors.WHITE;
@@ -75,12 +82,21 @@ public class Scene1c64 extends BasicC64Screen {
 
         long frame = Gdx.graphics.getFrameId();
         batch2.begin();
-        if (frame > 300 && frame < 777) {
+        if (frame > 300 && frame < 700) {
             var spriteGroup = backgroundSprites;
 
             if (frame > 550) spriteGroup = backgroundSprites2;
+
             flySprites(spriteGroup);
         }
+        if (frame > 900) {
+            float x = backgroundSprite3.getX();
+            backgroundSprite3.setX(x + 1.5f);
+            double y= backgroundSprite3.getY() + 3.5*Math.sin(x / (4*Math.PI));
+            backgroundSprite3.setY((float) y);
+            backgroundSprite3.draw(batch2);
+        }
+
         batch2.end();
     }
 

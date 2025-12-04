@@ -10,10 +10,12 @@ public class BasicC64Screen extends Scene {
     SpriteBatch batch;
     ShapeRenderer shapeRenderer;
     Texture backgroundTexture;
-    protected C64Colors backgroundColor;
+    protected C64Colors borderColor;
+    protected String backgroundScreenPng;
 
     public BasicC64Screen(String id) {
         super(id);
+        this.backgroundScreenPng = "c64.png";
     }
 
     @Override
@@ -21,8 +23,8 @@ public class BasicC64Screen extends Scene {
         batch = new SpriteBatch();
         shapeRenderer = new ShapeRenderer();
         shapeRenderer.setAutoShapeType(true);
-        backgroundTexture = new Texture(Gdx.files.internal("c64.png"));
-        this.backgroundColor = C64Colors.LIGHT_BLUE;
+        backgroundTexture = new Texture(Gdx.files.internal(this.backgroundScreenPng));
+        this.borderColor = C64Colors.LIGHT_BLUE;
     }
 
     @Override
@@ -32,7 +34,7 @@ public class BasicC64Screen extends Scene {
 
     @Override
     public void render() {
-        var lb = this.backgroundColor;
+        var lb = this.borderColor;
         Gdx.gl.glClearColor(lb.getR(), lb.getG(), lb.getB(), 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
