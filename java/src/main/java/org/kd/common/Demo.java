@@ -7,8 +7,8 @@ public abstract class Demo {
     public static LwjglApplicationConfiguration createConfig(String title) {
         var config = new LwjglApplicationConfiguration();
         config.title = title;
-        config.width = 800;
-        config.height = 600;
+        config.width = Globals.SCREEN_WIDTH;
+        config.height = Globals.SCREEN_HEIGHT;
         config.fullscreen = true;
 
         return config;

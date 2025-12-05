@@ -5,18 +5,19 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import org.kd.common.SceneManager;
 
 import java.util.Arrays;
 
 public class AnimationManager extends ApplicationAdapter {
     SpriteBatch batch;
-    C64SceneManager sceneManager;
+    SceneManager sceneManager;
 
     @Override
     public void create() {
         batch = new SpriteBatch();
-        sceneManager = new C64SceneManager();
-        var scene1Tiles = new Scene1Tiles("scene1");
+        sceneManager = new SceneManager();
+        var scene1Tiles = new Scene1C64("scene1");
         var scene2 = new Scene2("scene2");
 
         Arrays.asList(scene1Tiles, scene2).forEach(s -> {
