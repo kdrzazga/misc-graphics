@@ -9,10 +9,12 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import org.kd.common.BasicC64Screen;
 import org.kd.common.C64Colors;
 import org.kd.common.Globals;
+import org.lwjgl.util.Point;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class Scene1c64 extends BasicC64Screen {
@@ -22,6 +24,9 @@ public class Scene1c64 extends BasicC64Screen {
     private Music kolendaRamosa;
     private List<Sprite> backgroundSprites;
     private List<Sprite> backgroundSprites2;
+    private List<Sprite> snowflakes;
+    private List<Point> snowPatches;
+    private float snowPatchTreshold = 90f;
     private Sprite backgroundSprite3;
 
     public Scene1c64(String id) {
@@ -37,6 +42,8 @@ public class Scene1c64 extends BasicC64Screen {
         this.batch2 = new SpriteBatch(2);
         backgroundSprites = new ArrayList<>(2);
         backgroundSprites2 = new ArrayList<>(2);
+        snowPatches = new ArrayList<>();
+        snowflakes = new ArrayList<>();
         AtomicReference<Float> shift = new AtomicReference<>((float) 0);
 
         Arrays.asList("lda1.png", "sta$d020.png").forEach(picPath -> {
@@ -49,6 +56,14 @@ public class Scene1c64 extends BasicC64Screen {
         backgroundSprite3 = new Sprite(new Texture("winter/lightblu_bkgnd.png"));
         backgroundSprite3.setX(0);
         backgroundSprite3.setY(250);
+
+        var flakeTexture = new Texture("winter/asterisk.png");
+        for(int i = 0; i < 77; i++){
+            var sprite = new Sprite(flakeTexture);
+            sprite.setScale(0.6f, 0.6f);
+            sprite.setPosition(35 + 14*i, (float) (Globals.SCREEN_HEIGHT - 24*Math.sin(i/Math.PI)) + i%5);
+            this.snowflakes.add(sprite);
+        }
     }
 
     private void initSprite(String picPath, AtomicReference<Float> shift, List<Sprite> spriteList) {
@@ -85,6 +100,32 @@ public class Scene1c64 extends BasicC64Screen {
             this.backgroundTexture = new Texture(Gdx.files.internal(this.backgroundScreenPng));
             Globals.BKG_COLOR = C64Colors.LIGHT_BLUE;
         }
+
+        for (int startIndex = 0; startIndex <= 6; startIndex++) {
+            if (frame > 1100 + startIndex * 100) {
+                for (int i = startIndex; i < snowflakes.size(); i += 7) {
+                    var flake =snowflakes.get(i);
+                    flake.setY(flake.getY() - 1);
+
+                    if (flake.getY() <= 0)
+                        flake.setY(Globals.SCREEN_WIDTH -40 - i % 5);
+                }
+            }
+        }
+        //System.out.print(frame + " ");
+        if (frame > 1234 && frame % 3 == 0 && this.snowPatchTreshold <138f){
+            this.snowPatchTreshold += 0.15f;
+            int min = 50;
+            int max = 800-50;
+            int x = (int) (new Random().nextDouble() * (max - min) + min);
+            int y = Math.round(this.snowPatchTreshold);
+            var p = new Point(x, y);
+            this.snowPatches.add(p);
+            //System.out.println(p.getX() + " " + p.getY());
+            if (x < min + max /2){
+                this.snowPatches.add(new Point(x + 2, y +1));
+            }
+        }
     }
 
     @Override
@@ -106,6 +147,20 @@ public class Scene1c64 extends BasicC64Screen {
             double y= backgroundSprite3.getY() + 3.5*Math.sin(x / (4*Math.PI));
             backgroundSprite3.setY((float) y);
             backgroundSprite3.draw(batch2);
+        }
+
+        for (int startIndex = 0; startIndex <= 6; startIndex++) {
+            if (frame > 1100 + startIndex * 100) {
+                for (int i = startIndex; i < snowflakes.size(); i += 7) {
+                    snowflakes.get(i).draw(batch2);
+                }
+            }
+        }
+
+        if (frame > 1234){
+            this.snowPatches.forEach(point -> {
+                font.draw(batch2, "X", point.getX(), point.getY());
+            });
         }
 
         batch2.end();

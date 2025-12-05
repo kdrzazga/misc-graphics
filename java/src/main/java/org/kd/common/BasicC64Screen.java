@@ -3,7 +3,9 @@ package org.kd.common;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 public class BasicC64Screen extends Scene {
@@ -12,6 +14,7 @@ public class BasicC64Screen extends Scene {
     protected Texture backgroundTexture;
     protected C64Colors borderColor;
     protected String backgroundScreenPng;
+    protected BitmapFont font;
 
     public BasicC64Screen(String id) {
         super(id);
@@ -25,6 +28,7 @@ public class BasicC64Screen extends Scene {
         shapeRenderer.setAutoShapeType(true);
         backgroundTexture = new Texture(Gdx.files.internal(this.backgroundScreenPng));
         this.borderColor = C64Colors.LIGHT_BLUE;
+        createFont();
     }
 
     @Override
@@ -54,6 +58,15 @@ public class BasicC64Screen extends Scene {
         batch.draw(backgroundTexture, x, y, scaledWidth, scaledHeight);
         batch.end();
         C64Helper.blinkCursor(frame, shapeRenderer);
+    }
+
+    private void createFont(){
+        var generator = new FreeTypeFontGenerator(Gdx.files.internal("C64_Pro_Mono-STYLE.ttf"));
+        FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        parameter.size = 26; // font size
+        font = generator.generateFont(parameter);
+        font.setColor(1f,1f,1f,0.75f);
+        generator.dispose();
     }
 
     @Override
