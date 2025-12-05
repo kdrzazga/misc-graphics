@@ -65,7 +65,7 @@ public class BasicC64Screen extends Scene {
         FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
         parameter.size = 26; // font size
         font = generator.generateFont(parameter);
-        font.setColor(1f,1f,1f,0.75f);
+        font.setColor(C64Colors.WHITE.getR(), C64Colors.WHITE.getG(), C64Colors.WHITE.getB(),0.75f);
         generator.dispose();
     }
 

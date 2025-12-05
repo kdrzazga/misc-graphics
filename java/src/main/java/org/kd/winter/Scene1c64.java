@@ -26,6 +26,7 @@ public class Scene1c64 extends BasicC64Screen {
     private List<Sprite> backgroundSprites2;
     private List<Sprite> snowflakes;
     private List<Point> snowPatches;
+    private List<Sprite> letters;
     private float snowPatchTreshold = 90f;
     private Sprite backgroundSprite3;
 
@@ -44,6 +45,7 @@ public class Scene1c64 extends BasicC64Screen {
         backgroundSprites2 = new ArrayList<>(2);
         snowPatches = new ArrayList<>();
         snowflakes = new ArrayList<>();
+        letters = new ArrayList<>(5);
         AtomicReference<Float> shift = new AtomicReference<>((float) 0);
 
         Arrays.asList("lda1.png", "sta$d020.png").forEach(picPath -> {
@@ -51,6 +53,16 @@ public class Scene1c64 extends BasicC64Screen {
         });
         Arrays.asList("poke646_1.png", "clrscr.png").forEach(picPath -> {
             initSprite(picPath, shift, backgroundSprites2);
+        });
+
+        AtomicReference<Float> shift2 = new AtomicReference<>((float) 0);
+        Arrays.asList("m.png", "e.png", "r.png", "r.png", "y.png").forEach(picPath ->{
+            initSprite(picPath, new AtomicReference<>((float) 0), letters);
+            var letter = letters.get(letters.size() - 1);
+            letter.setX(100*(shift2.get() + 1));
+            letter.setY(Globals.SCREEN_HEIGHT - 220);
+            letter.setScale(0.2f, 0.2f);
+            shift2.set(shift2.get() + 1);
         });
 
         backgroundSprite3 = new Sprite(new Texture("winter/lightblu_bkgnd.png"));
@@ -112,9 +124,9 @@ public class Scene1c64 extends BasicC64Screen {
                 }
             }
         }
-        //System.out.print(frame + " ");
-        if (frame > 1234 && frame % 3 == 0 && this.snowPatchTreshold <138f){
-            this.snowPatchTreshold += 0.15f;
+        System.out.print(frame + " ");
+        if (frame > 1299 && frame % 3 == 0){
+            if (this.snowPatchTreshold <138f) this.snowPatchTreshold += 0.15f;
             int min = 50;
             int max = 800-50;
             int x = (int) (new Random().nextDouble() * (max - min) + min);
@@ -125,6 +137,20 @@ public class Scene1c64 extends BasicC64Screen {
             if (x < min + max /2){
                 this.snowPatches.add(new Point(x + 2, y +1));
             }
+        }
+
+        if (frame > 2730 && frame%2 == 0){
+            Long index = frame % 5;
+            var letter = letters.get(index.intValue());
+            float scale = letter.getScaleX();
+            if (scale < 1.1f){
+                scale += 0.05f;
+            }
+            letter.setScale(scale, scale);
+        }
+        if(frame > 2800 && letters.get(0).getY() < Globals.SCREEN_HEIGHT - 240){
+            letters.get(0).setY(letters.get(0).getY() -1);
+            letters.get(4).setY(letters.get(4).getY() -1);
         }
     }
 
@@ -161,6 +187,11 @@ public class Scene1c64 extends BasicC64Screen {
             this.snowPatches.forEach(point -> {
                 font.draw(batch2, "X", point.getX(), point.getY());
             });
+        }
+
+
+        if (frame > 2730){
+            letters.forEach(letter -> letter.draw(batch2));
         }
 
         batch2.end();
