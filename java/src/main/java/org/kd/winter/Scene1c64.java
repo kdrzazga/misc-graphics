@@ -125,7 +125,7 @@ public class Scene1c64 extends BasicC64Screen {
             }
         }
         System.out.print(frame + " ");
-        if (frame > 1299 && frame % 3 == 0){
+        if (frame > 1499 && frame % 3 == 0){
             if (this.snowPatchTreshold <138f) this.snowPatchTreshold += 0.15f;
             int min = 50;
             int max = 800-50;
@@ -148,9 +148,11 @@ public class Scene1c64 extends BasicC64Screen {
             }
             letter.setScale(scale, scale);
         }
-        if(frame > 2800 && letters.get(0).getY() < Globals.SCREEN_HEIGHT - 240){
-            letters.get(0).setY(letters.get(0).getY() -1);
-            letters.get(4).setY(letters.get(4).getY() -1);
+        if(frame > 3255 && frame%2 == 0){
+            if (letters.get(0).getY() > 360) {
+                letters.get(0).setY(letters.get(0).getY() - 1);
+                letters.get(4).setY(letters.get(4).getY() - 1);
+            }
         }
     }
 
