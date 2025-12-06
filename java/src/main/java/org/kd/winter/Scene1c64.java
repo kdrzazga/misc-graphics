@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import org.kd.common.BasicC64Screen;
 import org.kd.common.C64Colors;
 import org.kd.common.C64Helper;
@@ -32,6 +33,9 @@ public class Scene1c64 extends BasicC64Screen {
     private Sprite christmasTree;
     private Sprite christmasCaption;
     private Sprite santa;
+    private Sprite reset;
+    private ShapeRenderer shapeRenderer;
+    private boolean snowing;
 
     public Scene1c64(String id) {
         super(id);
@@ -41,6 +45,7 @@ public class Scene1c64 extends BasicC64Screen {
     public void create() {
         super.create();
 
+        this.snowing = true;
         this.batch2 = new SpriteBatch(2);
         fontSmall = this.createFont(12);
         fontSmall.setColor(Color.BLACK);
@@ -86,9 +91,15 @@ public class Scene1c64 extends BasicC64Screen {
         christmasCaption.setScale(0.25f, 1f);
         christmasCaption.setPosition(0, Globals.SCREEN_HEIGHT - 239);
 
+        reset = new Sprite(new Texture("winter/reset.png"));
+        reset.setScale(0.1f, 0.1f);
+        reset.setPosition(Globals.SCREEN_WIDTH/2, Globals.SCREEN_HEIGHT/2);
+
         santa = new Sprite(new Texture("winter/santa.png"));
         santa.setScale(1f, 1f);
         santa.setPosition(150, 30);
+
+        shapeRenderer = new ShapeRenderer();
     }
 
     private void initSprite(String picPath, AtomicReference<Float> shift, List<Sprite> spriteList) {
@@ -104,8 +115,6 @@ public class Scene1c64 extends BasicC64Screen {
     public void update(float delta) {
         long frame = Gdx.graphics.getFrameId();
 
-
-
         if (frame == 400) {
             this.borderColor = C64Colors.WHITE;
         } else if (frame == 600) {
@@ -120,6 +129,7 @@ public class Scene1c64 extends BasicC64Screen {
             Globals.BKG_COLOR = C64Colors.LIGHT_BLUE;
         }
 
+        if (this.snowing)
         for (int startIndex = 0; startIndex <= 6; startIndex++) {
             if (frame > 1100 + startIndex * 100) {
                 for (int i = startIndex; i < snowflakes.size(); i += 7) {
@@ -173,6 +183,9 @@ public class Scene1c64 extends BasicC64Screen {
             christmasTree.setScale(1, christmasTree.getScaleY() + 0.05f);
         }
 
+        if (frame > 8600 && frame < 8800){
+            reset.setScale(reset.getScaleX() + 0.02f);
+        }
     }
 
     @Override
@@ -220,7 +233,7 @@ public class Scene1c64 extends BasicC64Screen {
             christmasCaption.draw(batch2);
         }
 
-        if (frame > 3800 && frame < 9000) {
+        if (frame > 3800 && frame < 8500) {
             santa.draw(batch2);
         }
 
@@ -229,6 +242,19 @@ public class Scene1c64 extends BasicC64Screen {
         drawWishes(batch2, fontSmall, frame, 5700, 6600, Arrays.asList("  Spend", " Christmas", " with your", "family, but", "also don't", "forget abt", "your retro", "hardware."));
         drawWishes(batch2, fontSmall, frame, 6650, 7450, Arrays.asList("Once supper", " is over,", "take your", " siblings, ", " turn on", "  INTER.", "KARATE and"));
         drawWishes(batch2, fontSmall, frame, 7500, 8300, Arrays.asList("   KICK", "  THEIR", " BUTTS !!!", "  HA HA !", "  HO! HO!", "  Merry", "Christmas !"));
+
+        if (frame > 8600 && frame < 9000){
+            reset.draw(batch2);
+        }
+        if (frame > 8700){
+            snowing = false;
+            shapeRenderer.setColor(Color.WHITE);
+            shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+            var width = 90;
+            shapeRenderer.rect(0, 0, width, 600);
+            shapeRenderer.rect(800-width, 0, width, 600);
+            shapeRenderer.end();
+        }
 
         batch2.end();
     }
@@ -255,9 +281,6 @@ public class Scene1c64 extends BasicC64Screen {
         s.setScale(s.getScaleX() + 0.01f, s.getScaleY() + 0.01f);
         s.setAlpha(1f);
     }
-
-
-
 
     @Override
     public void dispose() {

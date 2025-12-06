@@ -1,7 +1,6 @@
 package org.kd.winter;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -16,7 +15,6 @@ public class Scene2Outro extends BasicC64Screen {
     BitmapFont font3;
     Sprite ramos;
     Sprite kd;
-    public Music kolendaRamosa;
 
     public Scene2Outro() {
         super("scene2");
@@ -43,10 +41,11 @@ public class Scene2Outro extends BasicC64Screen {
         super.update(delta);
 
         Globals.CURSOR_COLOR = C64Colors.LIGHT_BLUE;
+        Globals.BKG_COLOR = C64Colors.BLUE;
         Globals.cursorY = Globals.DEFAULT_CURSOR_Y;
 
         long frame = Gdx.graphics.getFrameId();
-        if (frame == 9501) {
+        if (frame == 9301) {
             System.out.println(C64Helper.countElapsedTime());
         }
     }
@@ -57,7 +56,7 @@ public class Scene2Outro extends BasicC64Screen {
         long frame = Gdx.graphics.getFrameId();
 
         batch2.begin();
-        if (frame > 9600) {
+        if (frame > 9300) {
             font3.draw(batch2, "PRINT (TIME$)", LEFT_EDGE, Globals.DEFAULT_CURSOR_Y);
             font3.draw(batch2, C64Helper.countElapsedTime(), LEFT_EDGE, Globals.DEFAULT_CURSOR_Y - 15 - 1);
             font3.draw(batch2, "READY.", LEFT_EDGE, Globals.DEFAULT_CURSOR_Y - 30 - 1);
@@ -65,24 +64,24 @@ public class Scene2Outro extends BasicC64Screen {
             Globals.cursorY = Globals.DEFAULT_CURSOR_Y - 45 - 1;
         }
 
-        if (frame > 10000) {
+        if (frame > 9450) {
             font3.draw(batch2, "CODE & GFX:     KD", LEFT_EDGE, Globals.DEFAULT_CURSOR_Y - 80);
         }
 
-        if (frame > 10000 && frame < 10200) {
+        if (frame > 9450 && frame < 9651) {
             kd.draw(batch2);
         }
 
-        if (frame > 10200) {
+        if (frame > 9650) {
             font3.draw(batch2, "MSX:            RAMOS", LEFT_EDGE, Globals.DEFAULT_CURSOR_Y - 120);
             ramos.draw(batch2);
         }
 
-        if (frame > 10751) {
-            font3.draw(batch2, "~3 min demo is enough. Bye!", LEFT_EDGE, Globals.DEFAULT_CURSOR_Y - 235);
+        if (frame > 9775) {
+            font3.draw(batch2, "Almost 3 min demo is enough. Bye!", LEFT_EDGE, Globals.DEFAULT_CURSOR_Y - 235);
         }
 
-        if (frame > 10900) {
+        if (frame > 9900) {
             Gdx.app.exit();
             System.exit(0);
         }
