@@ -9,6 +9,8 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 public class BasicC64Screen extends Scene {
+    protected static final int LEFT_EDGE = 82;
+
     SpriteBatch batch;
     ShapeRenderer shapeRenderer;
     protected Texture backgroundTexture;
@@ -23,12 +25,13 @@ public class BasicC64Screen extends Scene {
 
     @Override
     public void create() {
+        Gdx.input.setCursorPosition(Gdx.graphics.getWidth(), Gdx.graphics.getWidth());
         batch = new SpriteBatch();
         shapeRenderer = new ShapeRenderer();
         shapeRenderer.setAutoShapeType(true);
         backgroundTexture = new Texture(Gdx.files.internal(this.backgroundScreenPng));
         this.borderColor = C64Colors.LIGHT_BLUE;
-        createFont();
+        font = createFont(26);
     }
 
     @Override
@@ -60,13 +63,14 @@ public class BasicC64Screen extends Scene {
         C64Helper.blinkCursor(frame, shapeRenderer);
     }
 
-    private void createFont(){
+    protected BitmapFont createFont(int size){
         var generator = new FreeTypeFontGenerator(Gdx.files.internal("C64_Pro_Mono-STYLE.ttf"));
-        FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        parameter.size = 26; // font size
-        font = generator.generateFont(parameter);
+        var parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        parameter.size = size; // font size
+        BitmapFont font = generator.generateFont(parameter);
         font.setColor(C64Colors.WHITE.getR(), C64Colors.WHITE.getG(), C64Colors.WHITE.getB(),0.75f);
         generator.dispose();
+        return font;
     }
 
     @Override
