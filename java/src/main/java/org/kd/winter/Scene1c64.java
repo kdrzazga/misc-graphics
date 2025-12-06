@@ -2,12 +2,14 @@ package org.kd.winter;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import org.kd.common.BasicC64Screen;
 import org.kd.common.C64Colors;
+import org.kd.common.C64Helper;
 import org.kd.common.Globals;
 import org.lwjgl.util.Point;
 
@@ -19,8 +21,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public class Scene1c64 extends BasicC64Screen {
     SpriteBatch batch2;
-    ShapeRenderer shapeRenderer;
-    //Texture backgroundTexture;
+    BitmapFont fontSmall;
     private Music kolendaRamosa;
     private List<Sprite> backgroundSprites;
     private List<Sprite> backgroundSprites2;
@@ -29,6 +30,9 @@ public class Scene1c64 extends BasicC64Screen {
     private List<Sprite> letters;
     private float snowPatchTreshold = 90f;
     private Sprite backgroundSprite3;
+    private Sprite christmasTree;
+    private Sprite christmasCaption;
+    private Sprite santa;
 
     public Scene1c64(String id) {
         super(id);
@@ -37,10 +41,12 @@ public class Scene1c64 extends BasicC64Screen {
     @Override
     public void create() {
         super.create();
-        Gdx.input.setCursorPosition(Gdx.graphics.getWidth() , Gdx.graphics.getWidth());
+        Gdx.input.setCursorPosition(Gdx.graphics.getWidth(), Gdx.graphics.getWidth());
 
         this.createMusic();
         this.batch2 = new SpriteBatch(2);
+        fontSmall = this.createFont(12);
+        fontSmall.setColor(Color.BLACK);
         backgroundSprites = new ArrayList<>(2);
         backgroundSprites2 = new ArrayList<>(2);
         snowPatches = new ArrayList<>();
@@ -56,10 +62,10 @@ public class Scene1c64 extends BasicC64Screen {
         });
 
         AtomicReference<Float> shift2 = new AtomicReference<>((float) 0);
-        Arrays.asList("m.png", "e.png", "r.png", "r.png", "y.png").forEach(picPath ->{
+        Arrays.asList("m.png", "e.png", "r.png", "r.png", "y.png").forEach(picPath -> {
             initSprite(picPath, new AtomicReference<>((float) 0), letters);
             var letter = letters.get(letters.size() - 1);
-            letter.setX(100*(shift2.get() + 1));
+            letter.setX(100 * (shift2.get() + 1));
             letter.setY(Globals.SCREEN_HEIGHT - 220);
             letter.setScale(0.2f, 0.2f);
             shift2.set(shift2.get() + 1);
@@ -70,12 +76,24 @@ public class Scene1c64 extends BasicC64Screen {
         backgroundSprite3.setY(250);
 
         var flakeTexture = new Texture("winter/asterisk.png");
-        for(int i = 0; i < 77; i++){
+        for (int i = 0; i < 77; i++) {
             var sprite = new Sprite(flakeTexture);
             sprite.setScale(0.6f, 0.6f);
-            sprite.setPosition(35 + 14*i, (float) (Globals.SCREEN_HEIGHT - 24*Math.sin(i/Math.PI)) + i%5);
+            sprite.setPosition(35 + 14 * i, (float) (Globals.SCREEN_HEIGHT - 24 * Math.sin(i / Math.PI)) + i % 5);
             this.snowflakes.add(sprite);
         }
+
+        christmasTree = new Sprite(new Texture("winter/choinka.png"));
+        christmasTree.setScale(1, 0f);
+        christmasTree.setPosition(2 * 243, 120);
+
+        christmasCaption = new Sprite(new Texture("winter/Christmas.png"));
+        christmasCaption.setScale(0.25f, 1f);
+        christmasCaption.setPosition(0, Globals.SCREEN_HEIGHT - 239);
+
+        santa = new Sprite(new Texture("winter/santa.png"));
+        santa.setScale(1f, 1f);
+        santa.setPosition(150, 30);
     }
 
     private void initSprite(String picPath, AtomicReference<Float> shift, List<Sprite> spriteList) {
@@ -97,17 +115,13 @@ public class Scene1c64 extends BasicC64Screen {
 
         if (frame == 400) {
             this.borderColor = C64Colors.WHITE;
-        }
-        else if (frame == 600){
+        } else if (frame == 600) {
             Globals.CURSOR_COLOR = C64Colors.WHITE;
-        }
-        else if (frame == 699){
+        } else if (frame == 699) {
             this.backgroundScreenPng = "winter/white-ready.png";
             this.backgroundTexture = new Texture(Gdx.files.internal(this.backgroundScreenPng));
-            Globals.cursorY = Math.round(0.753* Globals.SCREEN_HEIGHT) - 2;
-        }
-
-        else if (frame == 1100){
+            Globals.cursorY = Math.round(0.753 * Globals.SCREEN_HEIGHT) - 2;
+        } else if (frame == 1100) {
             this.backgroundScreenPng = "winter/lblue-ready.png";
             this.backgroundTexture = new Texture(Gdx.files.internal(this.backgroundScreenPng));
             Globals.BKG_COLOR = C64Colors.LIGHT_BLUE;
@@ -116,44 +130,56 @@ public class Scene1c64 extends BasicC64Screen {
         for (int startIndex = 0; startIndex <= 6; startIndex++) {
             if (frame > 1100 + startIndex * 100) {
                 for (int i = startIndex; i < snowflakes.size(); i += 7) {
-                    var flake =snowflakes.get(i);
+                    var flake = snowflakes.get(i);
                     flake.setY(flake.getY() - 1);
 
                     if (flake.getY() <= 0)
-                        flake.setY(Globals.SCREEN_WIDTH -40 - i % 5);
+                        flake.setY(Globals.SCREEN_WIDTH - 40 - i % 5);
                 }
             }
         }
         System.out.print(frame + " ");
-        if (frame > 1499 && frame % 3 == 0){
-            if (this.snowPatchTreshold <138f) this.snowPatchTreshold += 0.15f;
+        if (frame > 1499 && frame % 3 == 0) {
+            if (this.snowPatchTreshold < 138f) this.snowPatchTreshold += 0.15f;
             int min = 50;
-            int max = 800-50;
+            int max = 800 - 50;
             int x = (int) (new Random().nextDouble() * (max - min) + min);
             int y = Math.round(this.snowPatchTreshold);
             var p = new Point(x, y);
             this.snowPatches.add(p);
             //System.out.println(p.getX() + " " + p.getY());
-            if (x < min + max /2){
-                this.snowPatches.add(new Point(x + 2, y +1));
+            if (x < min + max / 2) {
+                this.snowPatches.add(new Point(x + 2, y + 1));
             }
         }
 
-        if (frame > 2730 && frame%2 == 0){
+        if (frame > 2730 && frame % 2 == 0) {
             Long index = frame % 5;
             var letter = letters.get(index.intValue());
             float scale = letter.getScaleX();
-            if (scale < 1.1f){
+            if (scale < 1.1f) {
                 scale += 0.05f;
             }
             letter.setScale(scale, scale);
         }
-        if(frame > 3255 && frame%2 == 0){
+
+        if (frame > 3255) {
+            Sprite cc = christmasCaption;
+            if (cc.getScaleX() < 1) cc.setScale(cc.getScaleX() + 0.1f);
+            if (cc.getX() < 200) cc.setX(cc.getX() + 1);System.out.println("\n\n\nElapsed time " + C64Helper.countElapsedTime());
+        }
+
+        if (frame > 3400 && frame % 2 == 0) {
             if (letters.get(0).getY() > 360) {
                 letters.get(0).setY(letters.get(0).getY() - 1);
                 letters.get(4).setY(letters.get(4).getY() - 1);
             }
         }
+
+        if (frame > 3530 && frame % 4 == 0 && christmasTree.getScaleY() < 1 - 0.05f) {
+            christmasTree.setScale(1, christmasTree.getScaleY() + 0.05f);
+        }
+
     }
 
     @Override
@@ -172,7 +198,7 @@ public class Scene1c64 extends BasicC64Screen {
         if (frame > 900) {
             float x = backgroundSprite3.getX();
             backgroundSprite3.setX(x + 1.5f);
-            double y= backgroundSprite3.getY() + 3.5*Math.sin(x / (4*Math.PI));
+            double y = backgroundSprite3.getY() + 3.5 * Math.sin(x / (4 * Math.PI));
             backgroundSprite3.setY((float) y);
             backgroundSprite3.draw(batch2);
         }
@@ -185,18 +211,45 @@ public class Scene1c64 extends BasicC64Screen {
             }
         }
 
-        if (frame > 1234){
+        if (frame > 1234) {
             this.snowPatches.forEach(point -> {
                 font.draw(batch2, "X", point.getX(), point.getY());
             });
+
+            christmasTree.draw(batch2);
         }
 
-
-        if (frame > 2730){
+        if (frame > 2730) {
             letters.forEach(letter -> letter.draw(batch2));
         }
 
+        if (frame > 3255) {
+            christmasCaption.draw(batch2);
+        }
+
+        if (frame > 3800 && frame < 9000) {
+            santa.draw(batch2);
+        }
+
+        drawWishes(batch2, fontSmall, frame, 4000, 4800, Arrays.asList("KD and K&A+", " team send", "best wishes", "2 all retro", "maniacs !!!", "   YOU", "  ROCK !!!"));
+        drawWishes(batch2, fontSmall, frame, 4850, 5650, Arrays.asList(" Let this", " festive", "  season", " bring you", "lotsa joy !", " Joy and", "joysticks !"));
+        drawWishes(batch2, fontSmall, frame, 5700, 6600, Arrays.asList("  Spend", " Christmas", " with your", "family, but", "also don't", "forget abt", "your retro", "hardware."));
+        drawWishes(batch2, fontSmall, frame, 6650, 7450, Arrays.asList("Once supper", " is over,", "take your", " siblings, ", " turn on", "  INTER.", "KARATE and"));
+        drawWishes(batch2, fontSmall, frame, 7500, 8300, Arrays.asList("   KICK", "  THEIR", " BUTTS !!!", "  HA HA !", "  HO! HO!", "  Merry", "Christmas !"));
+
         batch2.end();
+
+        if (frame == 9000){
+            System.out.println(C64Helper.countElapsedTime());
+        }
+    }
+
+    private void drawWishes(SpriteBatch batch, BitmapFont font, long currentFrame, int startFrame, int endFrame, List<String> wishes) {
+        if (currentFrame > startFrame && currentFrame < endFrame) {
+            for (int i = 0; i < wishes.size(); i++) {
+                font.draw(batch, wishes.get(i), 338, 235 - 23 * i);
+            }
+        }
     }
 
     private void flySprites(List<Sprite> spriteGroup) {

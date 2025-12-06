@@ -28,7 +28,7 @@ public class BasicC64Screen extends Scene {
         shapeRenderer.setAutoShapeType(true);
         backgroundTexture = new Texture(Gdx.files.internal(this.backgroundScreenPng));
         this.borderColor = C64Colors.LIGHT_BLUE;
-        createFont();
+        font = createFont(26);
     }
 
     @Override
@@ -60,13 +60,14 @@ public class BasicC64Screen extends Scene {
         C64Helper.blinkCursor(frame, shapeRenderer);
     }
 
-    private void createFont(){
+    protected BitmapFont createFont(int size){
         var generator = new FreeTypeFontGenerator(Gdx.files.internal("C64_Pro_Mono-STYLE.ttf"));
-        FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        parameter.size = 26; // font size
-        font = generator.generateFont(parameter);
+        var parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        parameter.size = size; // font size
+        BitmapFont font = generator.generateFont(parameter);
         font.setColor(C64Colors.WHITE.getR(), C64Colors.WHITE.getG(), C64Colors.WHITE.getB(),0.75f);
         generator.dispose();
+        return font;
     }
 
     @Override
