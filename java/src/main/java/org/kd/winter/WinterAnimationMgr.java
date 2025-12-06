@@ -49,7 +49,7 @@ public class WinterAnimationMgr extends ApplicationAdapter {
             kolendaRamosa.play();
         }
 
-        if (frame == 9230) {
+        if (frame == 9160) {
             sceneManager.switchScene("scene2");
         }
     }
