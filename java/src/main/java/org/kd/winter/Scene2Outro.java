@@ -42,11 +42,11 @@ public class Scene2Outro extends BasicC64Screen {
 
         Globals.CURSOR_COLOR = C64Colors.LIGHT_BLUE;
         Globals.BKG_COLOR = C64Colors.BLUE;
-        Globals.cursorY = Globals.DEFAULT_CURSOR_Y;
 
         long frame = Gdx.graphics.getFrameId();
-        if (frame == 9301) {
+        if (frame == 9900) {
             System.out.println(C64Helper.countElapsedTime());
+            Globals.cursorY = Globals.SCREEN_HEIGHT - 40 - 7*14;
         }
     }
 
@@ -57,11 +57,11 @@ public class Scene2Outro extends BasicC64Screen {
 
         batch2.begin();
         if (frame > 9300) {
-            font3.draw(batch2, "PRINT (TIME$)", LEFT_EDGE, Globals.DEFAULT_CURSOR_Y);
+            font3.draw(batch2, "PRINT TIME$", LEFT_EDGE, Globals.DEFAULT_CURSOR_Y);
             font3.draw(batch2, C64Helper.countElapsedTime(), LEFT_EDGE, Globals.DEFAULT_CURSOR_Y - 15 - 1);
             font3.draw(batch2, "READY.", LEFT_EDGE, Globals.DEFAULT_CURSOR_Y - 30 - 1);
 
-            Globals.cursorY = Globals.DEFAULT_CURSOR_Y - 45 - 1;
+            Globals.cursorY = Globals.DEFAULT_CURSOR_Y - 61;
         }
 
         if (frame > 9450) {

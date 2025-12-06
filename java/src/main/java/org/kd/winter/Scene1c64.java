@@ -92,7 +92,7 @@ public class Scene1c64 extends BasicC64Screen {
 
         reset = new Sprite(new Texture("winter/reset.png"));
         reset.setScale(0.1f, 0.1f);
-        reset.setPosition(Globals.SCREEN_WIDTH / 2, Globals.SCREEN_HEIGHT / 2);
+        reset.setPosition(Globals.SCREEN_WIDTH / 2f, Globals.SCREEN_HEIGHT / 2f);
 
         santa = new Sprite(new Texture("winter/santa.png"));
         santa.setScale(1f, 1f);
@@ -219,7 +219,7 @@ public class Scene1c64 extends BasicC64Screen {
 
         if (frame > 1234) {
             this.snowPatches.forEach(point -> {
-                font.draw(batch2, "X", point.getX(), point.getY());
+                font.draw(batch2, "#", point.getX(), point.getY());
             });
 
             christmasTree.draw(batch2);
@@ -243,7 +243,7 @@ public class Scene1c64 extends BasicC64Screen {
         drawWishes(batch2, fontSmall, frame, 6650, 7450, Arrays.asList("Once supper", " is over,", "take your", " siblings, ", " turn on", "  INTER.", "KARATE and"));
         drawWishes(batch2, fontSmall, frame, 7500, 8300, Arrays.asList("   KICK", "  THEIR", " BUTTS !!!", "  HA HA !", "  HO! HO!", "  Merry", "Christmas !"));
 
-        if (frame > 8600 && frame < 9000) {
+        if (frame > 8600 && frame < 9150) {
             reset.draw(batch2);
         }
         if (frame > 8700) {
