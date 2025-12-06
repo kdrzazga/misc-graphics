@@ -74,11 +74,12 @@ public class Scene2Outro extends BasicC64Screen {
 
         if (frame > 9650) {
             font3.draw(batch2, "MSX:            RAMOS", LEFT_EDGE, Globals.DEFAULT_CURSOR_Y - 120);
+            font3.draw(batch2, "https://csdb.dk/sid/?id=23782", LEFT_EDGE, Globals.DEFAULT_CURSOR_Y - 235);
             ramos.draw(batch2);
         }
 
         if (frame > 9775) {
-            font3.draw(batch2, "Almost 3 min demo is enough. Bye!", LEFT_EDGE, Globals.DEFAULT_CURSOR_Y - 235);
+            font3.draw(batch2, "Almost 3 min demo is enough. Bye!", LEFT_EDGE, Globals.DEFAULT_CURSOR_Y - 235 - 26);
         }
 
         if (frame > 9900) {
