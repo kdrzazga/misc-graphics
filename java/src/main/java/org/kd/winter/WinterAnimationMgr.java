@@ -2,7 +2,6 @@ package org.kd.winter;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import org.kd.common.SceneManager;
@@ -17,9 +16,13 @@ public class WinterAnimationMgr extends ApplicationAdapter {
     public void create() {
         batch = new SpriteBatch();
         sceneManager = new SceneManager();
-        var s = new Scene1c64("scene1");
+        var scene1 = new Scene1c64("scene1");
+        var sceneOutro = new Scene2Outro();
+
+        Arrays.asList(scene1, sceneOutro).forEach(s -> {
             s.create();
             sceneManager.addScene(s.id, s);
+        });
 
         sceneManager.switchScene("scene1");
     }
@@ -36,6 +39,12 @@ public class WinterAnimationMgr extends ApplicationAdapter {
         batch.begin();
         sceneManager.render();
         batch.end();
+
+        long frame = Gdx.graphics.getFrameId();
+
+        if (frame == 9500) {
+            sceneManager.switchScene("scene2");
+        }
     }
 
     @Override

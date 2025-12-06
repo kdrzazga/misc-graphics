@@ -12,8 +12,6 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import org.kd.common.Scene;
 
 public class Scene2 extends Scene {
-    SpriteBatch batch;
-    Texture texture;
     ShapeRenderer shapeRenderer;
     private BitmapFont font;
     private Music anotherVisitor;
@@ -44,6 +42,11 @@ public class Scene2 extends Scene {
         long frame = Gdx.graphics.getFrameId();
         if (frame > 333 && frame < 333 + 7 * 50) {
             anotherVisitor.play();
+        }
+
+        if (frame > 333 + 8 * 50){
+            Gdx.app.exit();
+            System.exit(0);
         }
     }
 

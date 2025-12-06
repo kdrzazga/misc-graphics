@@ -28,7 +28,7 @@ public class Scene1c64 extends BasicC64Screen {
     private List<Sprite> snowflakes;
     private List<Point> snowPatches;
     private List<Sprite> letters;
-    private float snowPatchTreshold = 90f;
+    private float snowPatchThreshold = 90f;
     private Sprite backgroundSprite3;
     private Sprite christmasTree;
     private Sprite christmasCaption;
@@ -54,9 +54,7 @@ public class Scene1c64 extends BasicC64Screen {
         letters = new ArrayList<>(5);
         AtomicReference<Float> shift = new AtomicReference<>((float) 0);
 
-        Arrays.asList("lda1.png", "sta$d020.png").forEach(picPath -> {
-            initSprite(picPath, shift, backgroundSprites);
-        });
+        Arrays.asList("lda1.png", "sta$d020.png").forEach(picPath -> initSprite(picPath, shift, backgroundSprites));
         Arrays.asList("poke646_1.png", "clrscr.png").forEach(picPath -> {
             initSprite(picPath, shift, backgroundSprites2);
         });
@@ -140,11 +138,11 @@ public class Scene1c64 extends BasicC64Screen {
         }
         System.out.print(frame + " ");
         if (frame > 1499 && frame % 3 == 0) {
-            if (this.snowPatchTreshold < 138f) this.snowPatchTreshold += 0.15f;
+            if (this.snowPatchThreshold < 138f) this.snowPatchThreshold += 0.15f;
             int min = 50;
             int max = 800 - 50;
             int x = (int) (new Random().nextDouble() * (max - min) + min);
-            int y = Math.round(this.snowPatchTreshold);
+            int y = Math.round(this.snowPatchThreshold);
             var p = new Point(x, y);
             this.snowPatches.add(p);
             //System.out.println(p.getX() + " " + p.getY());
@@ -154,8 +152,8 @@ public class Scene1c64 extends BasicC64Screen {
         }
 
         if (frame > 2730 && frame % 2 == 0) {
-            Long index = frame % 5;
-            var letter = letters.get(index.intValue());
+            long index = frame % 5;
+            var letter = letters.get((int) index);
             float scale = letter.getScaleX();
             if (scale < 1.1f) {
                 scale += 0.05f;
@@ -238,10 +236,6 @@ public class Scene1c64 extends BasicC64Screen {
         drawWishes(batch2, fontSmall, frame, 7500, 8300, Arrays.asList("   KICK", "  THEIR", " BUTTS !!!", "  HA HA !", "  HO! HO!", "  Merry", "Christmas !"));
 
         batch2.end();
-
-        if (frame == 9000){
-            System.out.println(C64Helper.countElapsedTime());
-        }
     }
 
     private void drawWishes(SpriteBatch batch, BitmapFont font, long currentFrame, int startFrame, int endFrame, List<String> wishes) {

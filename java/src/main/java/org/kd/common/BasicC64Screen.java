@@ -9,6 +9,8 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 public class BasicC64Screen extends Scene {
+    protected static final int LEFT_EDGE = 82;
+
     SpriteBatch batch;
     ShapeRenderer shapeRenderer;
     protected Texture backgroundTexture;
