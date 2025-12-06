@@ -1,7 +1,6 @@
 package org.kd.winter;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -93,7 +92,7 @@ public class Scene1c64 extends BasicC64Screen {
 
         reset = new Sprite(new Texture("winter/reset.png"));
         reset.setScale(0.1f, 0.1f);
-        reset.setPosition(Globals.SCREEN_WIDTH/2, Globals.SCREEN_HEIGHT/2);
+        reset.setPosition(Globals.SCREEN_WIDTH / 2, Globals.SCREEN_HEIGHT / 2);
 
         santa = new Sprite(new Texture("winter/santa.png"));
         santa.setScale(1f, 1f);
@@ -130,17 +129,17 @@ public class Scene1c64 extends BasicC64Screen {
         }
 
         if (this.snowing)
-        for (int startIndex = 0; startIndex <= 6; startIndex++) {
-            if (frame > 1100 + startIndex * 100) {
-                for (int i = startIndex; i < snowflakes.size(); i += 7) {
-                    var flake = snowflakes.get(i);
-                    flake.setY(flake.getY() - 1);
+            for (int startIndex = 0; startIndex <= 6; startIndex++) {
+                if (frame > 1100 + startIndex * 100) {
+                    for (int i = startIndex; i < snowflakes.size(); i += 7) {
+                        var flake = snowflakes.get(i);
+                        flake.setY(flake.getY() - 1);
 
-                    if (flake.getY() <= 0)
-                        flake.setY(Globals.SCREEN_WIDTH - 40 - i % 5);
+                        if (flake.getY() <= 0)
+                            flake.setY(Globals.SCREEN_WIDTH - 40 - i % 5);
+                    }
                 }
             }
-        }
         System.out.print(frame + " ");
         if (frame > 1499 && frame % 3 == 0) {
             if (this.snowPatchThreshold < 138f) this.snowPatchThreshold += 0.15f;
@@ -169,7 +168,8 @@ public class Scene1c64 extends BasicC64Screen {
         if (frame > 3255) {
             Sprite cc = christmasCaption;
             if (cc.getScaleX() < 1) cc.setScale(cc.getScaleX() + 0.1f);
-            if (cc.getX() < 200) cc.setX(cc.getX() + 1);System.out.println("\n\n\nElapsed time " + C64Helper.countElapsedTime());
+            if (cc.getX() < 200) cc.setX(cc.getX() + 1);
+            System.out.println("\n\n\nElapsed time " + C64Helper.countElapsedTime());
         }
 
         if (frame > 3400 && frame % 2 == 0) {
@@ -183,7 +183,7 @@ public class Scene1c64 extends BasicC64Screen {
             christmasTree.setScale(1, christmasTree.getScaleY() + 0.05f);
         }
 
-        if (frame > 8600 && frame < 8800){
+        if (frame > 8600 && frame < 8800) {
             reset.setScale(reset.getScaleX() + 0.02f);
         }
     }
@@ -243,20 +243,25 @@ public class Scene1c64 extends BasicC64Screen {
         drawWishes(batch2, fontSmall, frame, 6650, 7450, Arrays.asList("Once supper", " is over,", "take your", " siblings, ", " turn on", "  INTER.", "KARATE and"));
         drawWishes(batch2, fontSmall, frame, 7500, 8300, Arrays.asList("   KICK", "  THEIR", " BUTTS !!!", "  HA HA !", "  HO! HO!", "  Merry", "Christmas !"));
 
-        if (frame > 8600 && frame < 9000){
+        if (frame > 8600 && frame < 9000) {
             reset.draw(batch2);
         }
-        if (frame > 8700){
-            snowing = false;
-            shapeRenderer.setColor(Color.WHITE);
-            shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-            var width = 90;
-            shapeRenderer.rect(0, 0, width, 600);
-            shapeRenderer.rect(800-width, 0, width, 600);
-            shapeRenderer.end();
+        if (frame > 8700) {
+            executeReset();
         }
 
         batch2.end();
+    }
+
+    private void executeReset() {
+        snowing = false;
+        Globals.CURSOR_COLOR = C64Colors.LIGHT_BLUE;
+        shapeRenderer.setColor(Color.WHITE);
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+        var width = 90;
+        shapeRenderer.rect(0, 0, width, 600);
+        shapeRenderer.rect(800 - width, 0, width, 600);
+        shapeRenderer.end();
     }
 
     private void drawWishes(SpriteBatch batch, BitmapFont font, long currentFrame, int startFrame, int endFrame, List<String> wishes) {
