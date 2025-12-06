@@ -25,6 +25,7 @@ public class BasicC64Screen extends Scene {
 
     @Override
     public void create() {
+        Gdx.input.setCursorPosition(Gdx.graphics.getWidth(), Gdx.graphics.getWidth());
         batch = new SpriteBatch();
         shapeRenderer = new ShapeRenderer();
         shapeRenderer.setAutoShapeType(true);

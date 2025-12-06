@@ -22,7 +22,6 @@ import java.util.concurrent.atomic.AtomicReference;
 public class Scene1c64 extends BasicC64Screen {
     SpriteBatch batch2;
     BitmapFont fontSmall;
-    private Music kolendaRamosa;
     private List<Sprite> backgroundSprites;
     private List<Sprite> backgroundSprites2;
     private List<Sprite> snowflakes;
@@ -41,9 +40,7 @@ public class Scene1c64 extends BasicC64Screen {
     @Override
     public void create() {
         super.create();
-        Gdx.input.setCursorPosition(Gdx.graphics.getWidth(), Gdx.graphics.getWidth());
 
-        this.createMusic();
         this.batch2 = new SpriteBatch(2);
         fontSmall = this.createFont(12);
         fontSmall.setColor(Color.BLACK);
@@ -107,9 +104,7 @@ public class Scene1c64 extends BasicC64Screen {
     public void update(float delta) {
         long frame = Gdx.graphics.getFrameId();
 
-        if (frame > 333 && frame < 333 + 7 * 50) {
-            kolendaRamosa.play();
-        }
+
 
         if (frame == 400) {
             this.borderColor = C64Colors.WHITE;
@@ -262,16 +257,11 @@ public class Scene1c64 extends BasicC64Screen {
     }
 
 
-    private void createMusic() {
-        kolendaRamosa = Gdx.audio.newMusic(Gdx.files.internal("winter/HejKoledaRamos.mp3"));
-        kolendaRamosa.setLooping(false);
-        kolendaRamosa.setVolume(1f);
-    }
+
 
     @Override
     public void dispose() {
         super.dispose();
-        kolendaRamosa.dispose();
         batch2.dispose();
         for (Sprite sprite : backgroundSprites) {
             sprite.getTexture().dispose();

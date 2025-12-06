@@ -31,6 +31,10 @@ public class SceneManager {
         }
     }
 
+    public Scene getScene(int index){
+        return scenes.get(index);
+    }
+
     public void disposeScenes() {
         scenes.values().forEach(scene -> scene.dispose());
     }

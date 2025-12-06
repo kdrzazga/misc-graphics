@@ -2,6 +2,7 @@ package org.kd.winter;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import org.kd.common.SceneManager;
@@ -11,9 +12,11 @@ import java.util.Arrays;
 public class WinterAnimationMgr extends ApplicationAdapter {
     SpriteBatch batch;
     SceneManager sceneManager;
+    private Music kolendaRamosa;
 
     @Override
     public void create() {
+        this.createMusic();
         batch = new SpriteBatch();
         sceneManager = new SceneManager();
         var scene1 = new Scene1c64("scene1");
@@ -42,14 +45,25 @@ public class WinterAnimationMgr extends ApplicationAdapter {
 
         long frame = Gdx.graphics.getFrameId();
 
+        if (frame > 333 && frame < 333 + 7 * 50) {
+            kolendaRamosa.play();
+        }
+
         if (frame == 9500) {
             sceneManager.switchScene("scene2");
         }
     }
 
+    private void createMusic() {
+        kolendaRamosa = Gdx.audio.newMusic(Gdx.files.internal("winter/WsrodNocnejRamos.mp3"));
+        kolendaRamosa.setLooping(false);
+        kolendaRamosa.setVolume(1f);
+    }
+
     @Override
     public void dispose() {
         batch.dispose();
+        kolendaRamosa.dispose();
         sceneManager.disposeScenes();
     }
 }

@@ -1,6 +1,7 @@
 package org.kd.winter;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -14,6 +15,8 @@ public class Scene2Outro extends BasicC64Screen {
     SpriteBatch batch2;
     BitmapFont font3;
     Sprite ramos;
+    Sprite kd;
+    public Music kolendaRamosa;
 
     public Scene2Outro() {
         super("scene2");
@@ -29,7 +32,10 @@ public class Scene2Outro extends BasicC64Screen {
 
         ramos = new Sprite(new Texture("winter/ramos.jpg"));
         ramos.setScale(0.7f);
-        ramos.setPosition(400, 500);
+        ramos.setPosition(400, 100);
+        kd = new Sprite(new Texture("winter/NRG25.jpg"));
+        kd.setScale(0.5f);
+        kd.setPosition(300, 100);
     }
 
     @Override
@@ -63,16 +69,20 @@ public class Scene2Outro extends BasicC64Screen {
             font3.draw(batch2, "CODE & GFX:     KD", LEFT_EDGE, Globals.DEFAULT_CURSOR_Y - 80);
         }
 
-        if (frame > 10800) {
+        if (frame > 10000 && frame < 10200) {
+            kd.draw(batch2);
+        }
+
+        if (frame > 10200) {
             font3.draw(batch2, "MSX:            RAMOS", LEFT_EDGE, Globals.DEFAULT_CURSOR_Y - 120);
             ramos.draw(batch2);
         }
 
-        if (frame > 11111) {
-            font3.draw(batch2, "Over 3 min demo is enough. Bye!", LEFT_EDGE, Globals.DEFAULT_CURSOR_Y - 150);
+        if (frame > 10751) {
+            font3.draw(batch2, "~3 min demo is enough. Bye!", LEFT_EDGE, Globals.DEFAULT_CURSOR_Y - 235);
         }
 
-        if (frame > 11666) {
+        if (frame > 10900) {
             Gdx.app.exit();
             System.exit(0);
         }
