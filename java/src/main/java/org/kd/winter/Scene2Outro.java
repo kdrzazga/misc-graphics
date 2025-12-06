@@ -83,7 +83,7 @@ public class Scene2Outro extends BasicC64Screen {
             font3.draw(batch2, "Almost 3 min demo is enough. Bye!", LEFT_EDGE, Globals.DEFAULT_CURSOR_Y - 235 - 26);
         }
 
-        if (frame > 9900) {
+        if (frame > 10081) {
             Gdx.app.exit();
             System.exit(0);
         }
