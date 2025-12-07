@@ -20,4 +20,13 @@ public class C64Helper {
         shapeRenderer.box(curX, curY, 0, 14, 15, 0);
         shapeRenderer.end();
     }
+
+    public static String countElapsedTime(){
+        long endTime = System.currentTimeMillis();
+        long elapsedTime = endTime - Globals.startTime;
+        long minutes = (elapsedTime / 1000) / 60;
+        long seconds = (elapsedTime / 1000) % 60;
+
+        return String.format("%02d:%02d", minutes, seconds);
+    }
 }

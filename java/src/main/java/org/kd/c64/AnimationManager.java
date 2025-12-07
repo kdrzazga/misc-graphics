@@ -2,7 +2,6 @@ package org.kd.c64;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import org.kd.common.SceneManager;
@@ -41,10 +40,8 @@ public class AnimationManager extends ApplicationAdapter {
         sceneManager.render();
         batch.end();
 
-        // Optional: switch scenes based on input or timers
-        if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
-            sceneManager.switchScene("scene2");
-        }
+        long frame = Gdx.graphics.getFrameId();
+        if (frame == 283) sceneManager.switchScene("scene2");
     }
 
     @Override
