@@ -24,6 +24,7 @@ public class Scene1c64 extends BasicC64Screen {
     BitmapFont fontSmall;
     private List<Sprite> letters;
     private ShapeRenderer shapeRenderer;
+    private Sprite logoSprite;
 
     public Scene1c64(String id) {
         super(id);
@@ -37,7 +38,9 @@ public class Scene1c64 extends BasicC64Screen {
         fontSmall = this.createFont(12);
         fontSmall.setColor(Color.BLACK);
         letters = new ArrayList<>(5);
-
+        this.logoSprite = new Sprite(new Texture("anniversaries/logo.png"));
+        this.logoSprite.setPosition(20f, 300);
+        this.logoSprite.setScale(0.4f);
 
         AtomicReference<Float> shift2 = new AtomicReference<>((float) 0);
         Arrays.asList("m.png", "e.png", "r.png", "r.png", "y.png").forEach(picPath -> {
@@ -113,7 +116,7 @@ public class Scene1c64 extends BasicC64Screen {
         long frame = Gdx.graphics.getFrameId();
         batch2.begin();
         if (frame > 300 && frame < 700) {
-            //var spriteGroup = backgroundSprites;
+            this.logoSprite.draw(batch2);
 
             if (frame > 550) ;
 
