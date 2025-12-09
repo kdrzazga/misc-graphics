@@ -33,7 +33,7 @@ public class Scene1c64 extends BasicC64Screen {
         fontSmall = this.createFont(12);
         fontSmall.setColor(Color.BLACK);
         letters = new ArrayList<>(5);
-        Texture logoTxtr = new Texture(Gdx.files.internal("anniversaries/logo.png"));
+        var logoTxtr = new Texture(Gdx.files.internal("anniversaries/logo.png"));
         this.logoSprite = new TravellingLogo(logoTxtr, Globals.SCREEN_WIDTH, 200, 1000, 50);
         this.logoSprite.colorize(C64Colors.LIGHT_BLUE);
         this.logoSprite.spriteSpeed = 300f;
