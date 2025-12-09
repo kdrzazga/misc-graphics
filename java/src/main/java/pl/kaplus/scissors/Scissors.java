@@ -12,6 +12,7 @@ import com.badlogic.gdx.utils.ScreenUtils;
 public class Scissors extends ApplicationAdapter {
     SpriteBatch batch;
     Texture backgroundTexture;
+    Texture choinkaTxtr;
     TravellingLogo logo;
 
     // Clipping rectangle
@@ -24,7 +25,9 @@ public class Scissors extends ApplicationAdapter {
     public void create() {
         batch = new SpriteBatch();
         backgroundTexture = new Texture("c64.png");
-        logo = new TravellingLogo(new Texture(Gdx.files.internal("anniversaries/logo.png")), 800, 100, 1000, 50);
+        choinkaTxtr = new Texture("winter/choinka.png");
+        Texture logoTxtr = new Texture(Gdx.files.internal("anniversaries/logo.png"));
+        logo = new TravellingLogo(logoTxtr, 800, 200, 1000, 50);
     }
 
     @Override
@@ -45,15 +48,14 @@ public class Scissors extends ApplicationAdapter {
         if (ScissorStack.pushScissors(scissors)) {
             batch.begin();
             batch.draw(backgroundTexture, 0, 0, 800, 600);
+            batch.draw(choinkaTxtr, 250, 50, choinkaTxtr.getWidth(), choinkaTxtr.getHeight());
             logo.draw(batch);
             batch.end();
             ScissorStack.popScissors();
         }
 
-        // Reset sprite position if it moves off screen
         if (logo.getX() + logo.getWidth() < 0) {
-            // Reset position to start at right edge
-            logo.sprite.setX(800);
+            logo.sprite.setX(801);
         }
     }
 
@@ -61,7 +63,5 @@ public class Scissors extends ApplicationAdapter {
     public void dispose() {
         batch.dispose();
         backgroundTexture.dispose();
-        // dispose logo texture if necessary
-        // (You might want to keep a reference to the texture for disposal)
     }
 }
