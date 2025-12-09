@@ -24,7 +24,7 @@ public class Scene1c64 extends BasicC64Screen {
     BitmapFont fontSmall;
     private List<Sprite> letters;
     private ShapeRenderer shapeRenderer;
-    private Sprite logoSprite;
+    private TravellingLogo logoSprite;
 
     public Scene1c64(String id) {
         super(id);
@@ -38,9 +38,10 @@ public class Scene1c64 extends BasicC64Screen {
         fontSmall = this.createFont(12);
         fontSmall.setColor(Color.BLACK);
         letters = new ArrayList<>(5);
-        this.logoSprite = new Sprite(new Texture("anniversaries/logo.png"));
-        this.logoSprite.setPosition(20f, 300);
-        this.logoSprite.setScale(0.4f);
+        this.logoSprite = new TravellingLogo(10f, -1100f, 500, "anniversaries/logo.png");
+        this.logoSprite.scale(0.1f);
+        this.logoSprite.colorize(C64Colors.RED);
+        //
 
         AtomicReference<Float> shift2 = new AtomicReference<>((float) 0);
         Arrays.asList("m.png", "e.png", "r.png", "r.png", "y.png").forEach(picPath -> {
@@ -67,10 +68,10 @@ public class Scene1c64 extends BasicC64Screen {
     @Override
     public void update(float delta) {
         long frame = Gdx.graphics.getFrameId();
-
-        if (frame == 400) {
-            this.borderColor = C64Colors.WHITE;
-        } else if (frame == 600) {
+        if (frame >= 300) {
+            this.logoSprite.move();
+        }
+        if (frame == 600) {
             Globals.CURSOR_COLOR = C64Colors.WHITE;
         } else if (frame == 699) {
             this.backgroundScreenPng = "winter/white-ready.png";
@@ -115,7 +116,7 @@ public class Scene1c64 extends BasicC64Screen {
 
         long frame = Gdx.graphics.getFrameId();
         batch2.begin();
-        if (frame > 300 && frame < 700) {
+        if (frame > 10 && frame < 5200) {
             this.logoSprite.draw(batch2);
 
             if (frame > 550) ;
