@@ -49,4 +49,8 @@ public class TravellingLogo {
     public float getWidth() {
         return sprite.getWidth();
     }
+
+    public Sprite getSprite() {
+        return sprite;
+    }
 }

@@ -21,6 +21,7 @@ public class Scene1c64 extends BasicC64Screen {
     private ShapeRenderer shapeRenderer;
     private TravellingLogo logoSprite;
     private Music gravitationRamos;
+    private int bottomLimit = 170;
 
     public Scene1c64(String id) {
         super(id);
@@ -103,35 +104,73 @@ public class Scene1c64 extends BasicC64Screen {
         super.render();
 
         long frame = Gdx.graphics.getFrameId();
+
+        if (frame > 4400) {
+            this.borderColor = C64Colors.BLACK;
+            this.shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+            this.shapeRenderer.setColor(C64Colors.BLACK.toBadlogicColor());
+            this.shapeRenderer.rect(0,0, 800,this.bottomLimit);
+            this.shapeRenderer.end();
+        }
+
         batch2.begin();
+
+        if (frame > 6000) {
+            letters.forEach(letter -> letter.draw(batch2));
+        }
+
+        textWall(StaticData.messages1, frame, 800, 2350);
+        textWall(StaticData.messages2, frame, 2360, 3930);
+        textWall(StaticData.messages3, frame, 3940, 4690);
+
+        if (frame > 4470) {
+            this.logoSprite.colorize(C64Colors.WHITE);
+            if (frame %5 ==0 && this.logoSprite.getSprite().getY() > 10){
+                var sprite = this.logoSprite.getSprite();
+                sprite.setY(sprite.getY() - 1);
+            }
+
+            if (this.bottomLimit < 550 && frame %2 ==1){
+                this.bottomLimit++;
+            }
+        }
+
+        if (frame > 4590){
+            if(frame % 1200 < 150)
+                this.logoSprite.colorize(C64Colors.YELLOW);
+            else if (frame % 1200 < 300)
+                this.logoSprite.colorize(C64Colors.RED);
+            else if (frame % 1200 < 450)
+                this.logoSprite.colorize(C64Colors.LIGHT_GRAY);
+            else if (frame % 1200 < 600)
+                this.logoSprite.colorize(C64Colors.LIGHT_BLUE);
+            else if (frame % 1200 < 750)
+                this.logoSprite.colorize(C64Colors.PURPLE);
+            else if (frame % 1200 < 900)
+                this.logoSprite.colorize(C64Colors.CYAN);
+            else if (frame % 1200 < 1050)
+                this.logoSprite.colorize(C64Colors.PINK);
+            else
+                this.logoSprite.colorize(C64Colors.WHITE);
+        }
         if (frame > 10) {
             this.logoSprite.draw(batch2, Globals.SCREEN_WIDTH, Globals.SCREEN_HEIGHT);
 
             this.gravitationRamos.play();
         }
-        if (frame > 900) {
-        }
-
-        if (frame > 2730) {
-            letters.forEach(letter -> letter.draw(batch2));
-        }
-
-        textWall(StaticData.messages1, frame, 800, 2400);
-        textWall(StaticData.messages2, frame, 2500, 4100);
-
         batch2.end();
     }
 
     private void textWall(List<String> messages, long frame, int veryInitialFrame, int endFrame) {
         for (int i = 0; i < messages.size(); i++) {
             int fontSize = 22 * (i + 1);
-            drawWishes(batch2, normalFont, frame,  veryInitialFrame + 200*i, endFrame, messages.get(i), fontSize);
+            drawMessage(batch2, normalFont, frame,  veryInitialFrame + 200*i, endFrame, messages.get(i), fontSize);
         }
     }
 
-    private void drawWishes(SpriteBatch batch, BitmapFont font, long currentFrame, int startFrame, int endFrame, String wishes, int shiftY) {
+    private void drawMessage(SpriteBatch batch, BitmapFont font, long currentFrame, int startFrame, int endFrame, String msg, int shiftY) {
         if (currentFrame > startFrame && currentFrame < endFrame) {
-                font.draw(batch, wishes, 80, 406 - shiftY);
+                font.draw(batch, msg, 81, 406 - shiftY);
 
         }
     }
