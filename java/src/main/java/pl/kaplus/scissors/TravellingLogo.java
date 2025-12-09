@@ -16,9 +16,13 @@ public class TravellingLogo {
         sprite.setPosition(startX, startY);
     }
 
-    public void move(float deltaTime) {
+    public void move(float deltaTime, int screenWidth) {
         float newX = sprite.getX() - spriteSpeed * deltaTime;
         sprite.setX(newX);
+
+        if (this.getX() + this.getWidth() < 0) {
+            this.sprite.setX(screenWidth);
+        }
     }
 
     public void draw(SpriteBatch batch, int screenWidth, int screenHeight) {
