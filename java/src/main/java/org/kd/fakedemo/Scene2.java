@@ -1,12 +1,10 @@
-package org.kd.c64;
+package org.kd.fakedemo;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import org.kd.common.Scene;
@@ -57,7 +55,7 @@ public class Scene2 extends Scene {
     }
     
     private void createFont() {
-        var generator = new FreeTypeFontGenerator(Gdx.files.internal("dulski.ttf"));
+        var generator = new FreeTypeFontGenerator(Gdx.files.internal("fake-demo/dulski.ttf"));
         var parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
         var parameter2 = new FreeTypeFontGenerator.FreeTypeFontParameter();
         parameter.size = 22;
@@ -68,7 +66,7 @@ public class Scene2 extends Scene {
     }
 
     private void createMusic() {
-        anotherVisitor = Gdx.audio.newMusic(Gdx.files.internal("anothervisitor.mp3"));
+        anotherVisitor = Gdx.audio.newMusic(Gdx.files.internal("fake-demo/anothervisitor.mp3"));
         anotherVisitor.setLooping(false);
         anotherVisitor.setVolume(1f);
     }

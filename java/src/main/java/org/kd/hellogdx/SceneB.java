@@ -61,7 +61,7 @@ public class SceneB extends Scene {
     }
 
     private void createMusic() {
-        anotherVisitor = Gdx.audio.newMusic(Gdx.files.internal("anothervisitor.mp3"));
+        anotherVisitor = Gdx.audio.newMusic(Gdx.files.internal("fake-demo/anothervisitor.mp3"));
         anotherVisitor.setLooping(false);
         anotherVisitor.setVolume(1f);
     }

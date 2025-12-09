@@ -1,4 +1,4 @@
-package org.kd.c64;
+package org.kd.fakedemo;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;

@@ -1,4 +1,4 @@
-package org.kd.c64;
+package org.kd.fakedemo;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
@@ -33,7 +33,7 @@ public class Scene1C64 extends BasicC64Screen {
     }
 
     private void createMusic() {
-        anotherVisitor = Gdx.audio.newMusic(Gdx.files.internal("anothervisitor.mp3"));
+        anotherVisitor = Gdx.audio.newMusic(Gdx.files.internal("fake-demo/anothervisitor.mp3"));
         anotherVisitor.setLooping(false);
         anotherVisitor.setVolume(1f);
     }
