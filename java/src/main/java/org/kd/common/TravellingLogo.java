@@ -39,6 +39,7 @@ public class TravellingLogo {
 
     public void changeDirection(){
         this.spriteSpeed *= -1;
+        this.sprite.setX(this.getX() - this.spriteSpeed/50);
     }
 
     public float getX() {

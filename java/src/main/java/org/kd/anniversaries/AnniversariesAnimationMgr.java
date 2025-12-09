@@ -12,11 +12,9 @@ import java.util.Arrays;
 public class AnniversariesAnimationMgr extends ApplicationAdapter {
     SpriteBatch batch;
     SceneManager sceneManager;
-    private Music gravitationRamos;
 
     @Override
     public void create() {
-        this.createMusic();
         batch = new SpriteBatch();
         sceneManager = new SceneManager();
 
@@ -43,25 +41,18 @@ public class AnniversariesAnimationMgr extends ApplicationAdapter {
 
         long frame = Gdx.graphics.getFrameId();
 
-        if (frame > 100 && frame < 100 + 7 * 50) {
-            gravitationRamos.play();
-        }
+
 /*
         if (frame == 9160) {
             sceneManager.switchScene("scene2");
         }*/
     }
 
-    private void createMusic() {
-        gravitationRamos = Gdx.audio.newMusic(Gdx.files.internal("anniversaries/Gravitation.mp3"));
-        gravitationRamos.setLooping(true);
-        gravitationRamos.setVolume(2f);
-    }
+
 
     @Override
     public void dispose() {
         batch.dispose();
-        gravitationRamos.dispose();
         sceneManager.disposeScenes();
     }
 }
