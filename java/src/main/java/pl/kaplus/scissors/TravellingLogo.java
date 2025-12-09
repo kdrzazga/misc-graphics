@@ -3,10 +3,12 @@ package pl.kaplus.scissors;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.scenes.scene2d.utils.ScissorStack;
 
 public class TravellingLogo {
     Sprite sprite;
-    private float spriteSpeed = 100f; // pixels per second
+    private final float spriteSpeed = 100f; // pixels per second
 
     public TravellingLogo(Texture texture, float startX, float startY, float width, float height) {
         sprite = new Sprite(texture);
@@ -19,8 +21,12 @@ public class TravellingLogo {
         sprite.setX(newX);
     }
 
-    public void draw(SpriteBatch batch) {
-        sprite.draw(batch);
+    public void draw(SpriteBatch batch, int screenWidth, int screenHeight) {
+        var scissors = new Rectangle(0, 0, screenWidth, screenHeight);
+        if (ScissorStack.pushScissors(scissors)) {
+            sprite.draw(batch);
+        }
+        ScissorStack.popScissors();
     }
 
     public float getX() {
