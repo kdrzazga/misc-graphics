@@ -1,5 +1,7 @@
 package org.kd.common;
 
+import com.badlogic.gdx.graphics.Color;
+
 public enum C64Colors {
     BLACK(0, 0, 0),
     WHITE(1, 1, 1),
@@ -15,6 +17,10 @@ public enum C64Colors {
         this.r = r;
         this.g = g;
         this.b = b;
+    }
+
+    public com.badlogic.gdx.graphics.Color toBadlogicColor(){
+        return new Color(this.r, this.g, this.b, 1);
     }
 
     public float getR() {

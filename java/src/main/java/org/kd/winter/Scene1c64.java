@@ -140,7 +140,7 @@ public class Scene1c64 extends BasicC64Screen {
                     }
                 }
             }
-        System.out.print(frame + " ");
+        // System.out.print(frame + " ");
         if (frame > 1499 && frame % 3 == 0) {
             if (this.snowPatchThreshold < 138f) this.snowPatchThreshold += 0.15f;
             int min = 50;
@@ -169,7 +169,7 @@ public class Scene1c64 extends BasicC64Screen {
             Sprite cc = christmasCaption;
             if (cc.getScaleX() < 1) cc.setScale(cc.getScaleX() + 0.1f);
             if (cc.getX() < 200) cc.setX(cc.getX() + 1);
-            System.out.println("\n\n\nElapsed time " + C64Helper.countElapsedTime());
+            //System.out.println("\n\n\nElapsed time " + C64Helper.countElapsedTime());
         }
 
         if (frame > 3400 && frame % 2 == 0) {

@@ -45,7 +45,7 @@ public class WinterAnimationMgr extends ApplicationAdapter {
 
         long frame = Gdx.graphics.getFrameId();
 
-        if (frame > 333 && frame < 333 + 7 * 50) {
+        if (frame > 100 && frame < 333 + 7 * 50) {
             kolendaRamosa.play();
         }
 

@@ -66,7 +66,7 @@ public class SceneA extends Scene {
         batch = new SpriteBatch(); //SpriteBatch is a renderer, used to effectively draw sprites
         var positions = Arrays.asList(50, 50, 250, 50, 250, 250);
         AtomicInteger index = new AtomicInteger(0);
-        Arrays.asList("skull.bmp", "monster.bmp").forEach(file -> {
+        Arrays.asList("hellogdx/skull.bmp", "hellogdx/monster.bmp").forEach(file -> {
             texture = new Texture(Gdx.files.internal(file));
 
             var sprite = new Sprite(texture);
@@ -85,7 +85,7 @@ public class SceneA extends Scene {
     }
 
     private void createFont() {
-        var generator = new FreeTypeFontGenerator(Gdx.files.internal("dulski.ttf"));
+        var generator = new FreeTypeFontGenerator(Gdx.files.internal("fake-demo/dulski.ttf"));
         var parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
         var parameter2 = new FreeTypeFontGenerator.FreeTypeFontParameter();
         parameter.size = 22;
@@ -97,7 +97,7 @@ public class SceneA extends Scene {
     }
 
     private void createMusic() {
-        music = Gdx.audio.newMusic(Gdx.files.internal("agemixer-audioman.mp3"));
+        music = Gdx.audio.newMusic(Gdx.files.internal("hellogdx/agemixer-audioman.mp3"));
         music.setLooping(true);
         music.setVolume(1f);
         music.play();

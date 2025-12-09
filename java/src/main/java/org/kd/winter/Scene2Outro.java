@@ -43,10 +43,10 @@ public class Scene2Outro extends BasicC64Screen {
         Globals.CURSOR_COLOR = C64Colors.LIGHT_BLUE;
         Globals.BKG_COLOR = C64Colors.BLUE;
 
-        long frame = Gdx.graphics.getFrameId();
+        /*long frame = Gdx.graphics.getFrameId();
         if (frame == 9900) { //the very exit!
-            System.out.println(C64Helper.countElapsedTime());
-        }
+            //System.out.println(C64Helper.countElapsedTime());
+        }*/
     }
 
     @Override
@@ -55,8 +55,8 @@ public class Scene2Outro extends BasicC64Screen {
         long frame = Gdx.graphics.getFrameId();
 
         batch2.begin();
-        if (frame < 9300){
-            Globals.cursorY = Globals.SCREEN_HEIGHT - 114 - 7*14;
+        if (frame < 9300) {
+            Globals.cursorY = Globals.SCREEN_HEIGHT - 114 - 7 * 14;
         } else {
             font3.draw(batch2, "PRINT TIME$", LEFT_EDGE, Globals.DEFAULT_CURSOR_Y);
             font3.draw(batch2, C64Helper.countElapsedTime(), LEFT_EDGE, Globals.DEFAULT_CURSOR_Y - 15 - 1);
@@ -83,11 +83,20 @@ public class Scene2Outro extends BasicC64Screen {
             font3.draw(batch2, "Almost 3 min demo is enough. Bye!", LEFT_EDGE, Globals.DEFAULT_CURSOR_Y - 235 - 26);
         }
 
+        batch2.end();
+
         if (frame > 10081) {
             Gdx.app.exit();
+            System.out.println("\n".repeat(50)+"Herzliche Gruesse an Logiker! Danke, dass du den VCCC organisiert hast!");
+
+            this.dispose();
             System.exit(0);
         }
+    }
 
-        batch2.end();
+    @Override
+    public void dispose() {
+        super.dispose();
+        batch2.dispose();
     }
 }

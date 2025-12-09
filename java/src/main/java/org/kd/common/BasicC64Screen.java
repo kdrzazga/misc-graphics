@@ -17,6 +17,9 @@ public class BasicC64Screen extends Scene {
     protected C64Colors borderColor;
     protected String backgroundScreenPng;
     protected BitmapFont font;
+    protected float x;
+    protected float y;
+    protected float scale = 2f; // be careful with  scaling, results can be pathetic
 
     public BasicC64Screen(String id) {
         super(id);
@@ -32,6 +35,10 @@ public class BasicC64Screen extends Scene {
         backgroundTexture = new Texture(Gdx.files.internal(this.backgroundScreenPng));
         this.borderColor = C64Colors.LIGHT_BLUE;
         font = createFont(26);
+        float scaledWidth = backgroundTexture.getWidth() * this.scale;
+        float scaledHeight = backgroundTexture.getHeight() * this.scale;
+        this.x = (Gdx.graphics.getWidth() - scaledWidth) / 2;
+        this.y = (Gdx.graphics.getHeight() - scaledHeight) / 2;
     }
 
     @Override
@@ -50,15 +57,11 @@ public class BasicC64Screen extends Scene {
     }
 
     private void drawC64(long frame) {
-        float scale = 2f; // be careful with  scaling, results can be pathetic
-
-        float scaledWidth = backgroundTexture.getWidth() * scale;
-        float scaledHeight = backgroundTexture.getHeight() * scale;
-        float x = (Gdx.graphics.getWidth() - scaledWidth) / 2;
-        float y = (Gdx.graphics.getHeight() - scaledHeight) / 2;
+        float scaledWidth = backgroundTexture.getWidth() * this.scale;
+        float scaledHeight = backgroundTexture.getHeight() * this.scale;
 
         batch.begin();
-        batch.draw(backgroundTexture, x, y, scaledWidth, scaledHeight);
+        batch.draw(backgroundTexture, this.x, this.y, scaledWidth, scaledHeight);
         batch.end();
         C64Helper.blinkCursor(frame, shapeRenderer);
     }
