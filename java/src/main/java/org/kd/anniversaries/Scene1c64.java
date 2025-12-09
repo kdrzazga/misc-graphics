@@ -70,16 +70,12 @@ public class Scene1c64 extends BasicC64Screen {
         }
         if (frame == 600) {
             Globals.CURSOR_COLOR = C64Colors.WHITE;
-        } else if (frame == 699) {
-            this.backgroundScreenPng = "winter/white-ready.png";
-            this.backgroundTexture = new Texture(Gdx.files.internal(this.backgroundScreenPng));
-            Globals.cursorY = Math.round(0.753 * Globals.SCREEN_HEIGHT) - 2;
+        } else if (frame == 699) {Globals.cursorY = Math.round(0.753 * Globals.SCREEN_HEIGHT) - 2;
         } else if (frame == 1100) {
             this.backgroundScreenPng = "winter/lblue-ready.png";
             this.backgroundTexture = new Texture(Gdx.files.internal(this.backgroundScreenPng));
             Globals.BKG_COLOR = C64Colors.LIGHT_BLUE;
         }
-
 
         System.out.print(frame + " ");
         if (frame > 1499 && frame % 3 == 0) {
@@ -117,7 +113,6 @@ public class Scene1c64 extends BasicC64Screen {
             this.logoSprite.draw(batch2, Globals.SCREEN_WIDTH, Globals.SCREEN_HEIGHT);
 
             if (frame > 550) ;
-
             //flySprites(spriteGroup);
         }
         if (frame > 900) {
