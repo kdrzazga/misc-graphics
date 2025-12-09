@@ -8,9 +8,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.utils.ScissorStack;
-import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
-//import com.badlogic.gdx.graphics.glutils.ScissorStack;
 
 public class Scissors extends ApplicationAdapter {
     SpriteBatch batch;
@@ -28,8 +26,7 @@ public class Scissors extends ApplicationAdapter {
     @Override
     public void create() {
         batch = new SpriteBatch();
-        texture = new Texture(Gdx.files.internal("anniversaries/logo.png"));
-        sprite = new Sprite(texture);
+        sprite = new Sprite(new Texture(Gdx.files.internal("anniversaries/logo.png")));
         sprite.setSize(1000, 50);
         sprite.setPosition(800, 100);
     }
@@ -53,7 +50,7 @@ public class Scissors extends ApplicationAdapter {
         int scissorX = (int) clipX;
         int scissorY = (int) clipY;
 
-        Rectangle scissors = new Rectangle(scissorX, scissorY, clipWidth, clipHeight);
+        var scissors = new Rectangle(scissorX, scissorY, clipWidth, clipHeight);
         ScissorStack pushScissors = new ScissorStack();
         // Push scissor rectangle
         if (pushScissors.pushScissors(scissors)) {

@@ -12,7 +12,7 @@ import java.util.Arrays;
 public class AnniversariesAnimationMgr extends ApplicationAdapter {
     SpriteBatch batch;
     SceneManager sceneManager;
-    private Music kolendaRamosa;
+    private Music gravitationRamos;
 
     @Override
     public void create() {
@@ -44,7 +44,7 @@ public class AnniversariesAnimationMgr extends ApplicationAdapter {
         long frame = Gdx.graphics.getFrameId();
 
         if (frame > 100 && frame < 100 + 7 * 50) {
-            kolendaRamosa.play();
+            gravitationRamos.play();
         }
 /*
         if (frame == 9160) {
@@ -53,15 +53,15 @@ public class AnniversariesAnimationMgr extends ApplicationAdapter {
     }
 
     private void createMusic() {
-        kolendaRamosa = Gdx.audio.newMusic(Gdx.files.internal("winter/WsrodNocnejRamos.mp3"));
-        kolendaRamosa.setLooping(false);
-        kolendaRamosa.setVolume(1f);
+        gravitationRamos = Gdx.audio.newMusic(Gdx.files.internal("anniversaries/Gravitation.mp3"));
+        gravitationRamos.setLooping(true);
+        gravitationRamos.setVolume(2f);
     }
 
     @Override
     public void dispose() {
         batch.dispose();
-        kolendaRamosa.dispose();
+        gravitationRamos.dispose();
         sceneManager.disposeScenes();
     }
 }
