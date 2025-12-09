@@ -62,8 +62,8 @@
 
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <!--<mainClass>org.kd.hellogdx.Main</mainClass>-->
-                                    <mainClass>org.kd.winter.WinterDemo</mainClass>
+                                    <mainClass>org.kd.anniversaries.AnniversariesDemo</mainClass>
+                                    <!--<mainClass>org.kd.winter.WinterDemo</mainClass>-->
                                 </transformer>
                             </transformers>
                         </configuration>
@@ -73,9 +73,13 @@
         </plugins>
         <resources>
             <resource>
-                <directory>d:/code/misc-graphics/src/main/resources</directory>
+                <directory>d:/code/misc-graphics/java/src/main/resources</directory>
                 <excludes>
-                    <exclude>gdx-freetype64.dll</exclude>
+                    <!-- Remember to use mvn clean before mvn package to get rid of unwanted files-->
+                    <exclude>fake-demo/**</exclude>
+                    <exclude>hellogdx/**</exclude>
+                    <!--<exclude>anniversaries/**</exclude>-->
+                    <exclude>winter/**</exclude>
                 </excludes>
             </resource>
         </resources>
