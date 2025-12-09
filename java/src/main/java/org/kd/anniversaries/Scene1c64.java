@@ -35,7 +35,8 @@ public class Scene1c64 extends BasicC64Screen {
         letters = new ArrayList<>(5);
         Texture logoTxtr = new Texture(Gdx.files.internal("anniversaries/logo.png"));
         this.logoSprite = new TravellingLogo(logoTxtr, Globals.SCREEN_WIDTH, 200, 1000, 50);
-        //
+        this.logoSprite.colorize(C64Colors.LIGHT_BLUE);
+        this.logoSprite.spriteSpeed = 300f;
 
         AtomicReference<Float> shift2 = new AtomicReference<>((float) 0);
         Arrays.asList("m.png", "e.png", "r.png", "r.png", "y.png").forEach(picPath -> {
@@ -64,6 +65,8 @@ public class Scene1c64 extends BasicC64Screen {
         long frame = Gdx.graphics.getFrameId();
         if (frame >= 300) {
             this.logoSprite.move(delta, Globals.SCREEN_WIDTH);
+            if (this.logoSprite.getX()< -500)
+                this.logoSprite.changeDirection();
         }
         if (frame == 600) {
             Globals.CURSOR_COLOR = C64Colors.WHITE;
@@ -120,20 +123,15 @@ public class Scene1c64 extends BasicC64Screen {
         if (frame > 900) {
         }
 
-
-
         if (frame > 2730) {
             letters.forEach(letter -> letter.draw(batch2));
         }
-
 
         drawWishes(batch2, fontSmall, frame, 4000, 4800, Arrays.asList("KD and K&A+", " team send", "best wishes", "2 all retro", "maniacs !!!", "   YOU", "  ROCK !!!"));
         drawWishes(batch2, fontSmall, frame, 4850, 5650, Arrays.asList(" Let this", " festive", "  season", " bring you", "lotsa joy !", " Joy and", "joysticks !"));
         drawWishes(batch2, fontSmall, frame, 5700, 6600, Arrays.asList("  Spend", " Christmas", " with your", "family, but", "also don't", "forget abt", "your retro", "hardware."));
         drawWishes(batch2, fontSmall, frame, 6650, 7450, Arrays.asList("Once supper", " is over,", "take your", " siblings, ", " turn on", "  INTER.", "KARATE and"));
         drawWishes(batch2, fontSmall, frame, 7500, 8300, Arrays.asList("   KICK", "  THEIR", " BUTTS !!!", "  HA HA !", "  HO! HO!", "  Merry", "Christmas !"));
-
-
 
         batch2.end();
     }

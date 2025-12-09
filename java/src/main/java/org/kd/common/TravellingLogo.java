@@ -8,7 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ScissorStack;
 
 public class TravellingLogo {
     Sprite sprite;
-    private final float spriteSpeed = 100f; // pixels per second
+    public float spriteSpeed = 100f; // pixels per second
 
     public TravellingLogo(Texture texture, float startX, float startY, float width, float height) {
         sprite = new Sprite(texture);
@@ -31,6 +31,14 @@ public class TravellingLogo {
             sprite.draw(batch);
         }
         ScissorStack.popScissors();
+    }
+
+    public void colorize(C64Colors color){
+        this.sprite.setColor(color.toBadlogicColor());
+    }
+
+    public void changeDirection(){
+        this.spriteSpeed *= -1;
     }
 
     public float getX() {
