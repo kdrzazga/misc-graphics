@@ -7,16 +7,11 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import org.kd.common.BasicC64Screen;
-import org.kd.common.C64Colors;
-import org.kd.common.C64Helper;
-import org.kd.common.Globals;
-import org.lwjgl.util.Point;
+import org.kd.common.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class Scene1c64 extends BasicC64Screen {
@@ -38,9 +33,8 @@ public class Scene1c64 extends BasicC64Screen {
         fontSmall = this.createFont(12);
         fontSmall.setColor(Color.BLACK);
         letters = new ArrayList<>(5);
-        this.logoSprite = new TravellingLogo(10f, -1100f, 500, "anniversaries/logo.png");
-        this.logoSprite.scale(0.1f);
-        this.logoSprite.colorize(C64Colors.RED);
+        Texture logoTxtr = new Texture(Gdx.files.internal("anniversaries/logo.png"));
+        this.logoSprite = new TravellingLogo(logoTxtr, Globals.SCREEN_WIDTH, 200, 1000, 50);
         //
 
         AtomicReference<Float> shift2 = new AtomicReference<>((float) 0);
@@ -69,7 +63,7 @@ public class Scene1c64 extends BasicC64Screen {
     public void update(float delta) {
         long frame = Gdx.graphics.getFrameId();
         if (frame >= 300) {
-            this.logoSprite.move();
+            this.logoSprite.move(delta, Globals.SCREEN_WIDTH);
         }
         if (frame == 600) {
             Globals.CURSOR_COLOR = C64Colors.WHITE;
@@ -117,7 +111,7 @@ public class Scene1c64 extends BasicC64Screen {
         long frame = Gdx.graphics.getFrameId();
         batch2.begin();
         if (frame > 10 && frame < 5200) {
-            this.logoSprite.draw(batch2);
+            this.logoSprite.draw(batch2, Globals.SCREEN_WIDTH, Globals.SCREEN_HEIGHT);
 
             if (frame > 550) ;
 

@@ -1,4 +1,4 @@
-package pl.kaplus.scissors;
+package org.kd.common;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;

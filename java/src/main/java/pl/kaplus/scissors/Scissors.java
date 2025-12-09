@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
+import org.kd.common.TravellingLogo;
 
 public class Scissors extends ApplicationAdapter {
     static final int SCREEN_WIDTH = 800;
@@ -27,7 +28,6 @@ public class Scissors extends ApplicationAdapter {
     public void render() {
         float deltaTime = Gdx.graphics.getDeltaTime();
 
-        // Move the logo
         logo.move(deltaTime, SCREEN_WIDTH);
 
         Gdx.gl.glClearColor(0, 0, 0, 1);
