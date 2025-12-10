@@ -13,8 +13,9 @@ public class BasicC64Screen extends Scene {
 
     SpriteBatch batch;
     ShapeRenderer shapeRenderer;
-    protected Texture backgroundTexture;
+    public Texture backgroundTexture;
     protected C64Colors borderColor;
+    protected boolean blinkingCursor = true;
     protected String backgroundScreenPng;
     protected BitmapFont font;
     protected float x;
@@ -63,7 +64,7 @@ public class BasicC64Screen extends Scene {
         batch.begin();
         batch.draw(backgroundTexture, this.x, this.y, scaledWidth, scaledHeight);
         batch.end();
-        C64Helper.blinkCursor(frame, shapeRenderer);
+        if (this.blinkingCursor) C64Helper.blinkCursor(frame, shapeRenderer);
     }
 
     protected BitmapFont createFont(int size){

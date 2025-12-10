@@ -28,6 +28,7 @@ public class Scene1c64 extends BasicC64Screen {
     private Music twentyFiveYearsAgo;
     private Music thirtyYearsAgo;
     private int bottomLimit = 170;
+    private Year2021 year2021;
 
     public Scene1c64(String id) {
         super(id);
@@ -35,6 +36,7 @@ public class Scene1c64 extends BasicC64Screen {
 
     @Override
     public void create() {
+        this.year2021 = new Year2021();
         super.create();
         this.createMusic();
 
@@ -111,10 +113,12 @@ public class Scene1c64 extends BasicC64Screen {
 
         long frame = Gdx.graphics.getFrameId();
 
-        if (frame > 4400) {
+        if (frame == 4400) {
             this.borderColor = C64Colors.BLACK;
+        }
+        if (frame > 4400 && frame < 4917) {
             this.shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-            this.shapeRenderer.setColor(C64Colors.BLACK.toBadlogicColor());
+            this.shapeRenderer.setColor(this.borderColor.toBadlogicColor());
             this.shapeRenderer.rect(0, 0, 800, this.bottomLimit);
             this.shapeRenderer.end();
         }
@@ -136,7 +140,8 @@ public class Scene1c64 extends BasicC64Screen {
                 sprite.setY(sprite.getY() - 1);
             }
 
-            if (this.bottomLimit < 550 && frame % 2 == 1) {
+            boolean extraCondition = frame > 4502 ? true : frame % 2 == 1;
+            if (this.bottomLimit < 550 && extraCondition) {
                 this.bottomLimit++;
             }
         }
@@ -160,10 +165,12 @@ public class Scene1c64 extends BasicC64Screen {
                 this.logoSprite.colorize(C64Colors.WHITE);
         }
 
-        if (frame == 5417) {
+        if (frame == 4900) {
             fiveYearsAgo.play();
-        } else if(frame > 5417){
-            Year2021.draw(frame);
+            this.blinkingCursor = false;
+        } else if (frame > 4917) {
+            this.borderColor = C64Colors.DARK_GRAY;
+            this.year2021.draw(frame, this);
         }
 
         if (frame > 10) {

@@ -9,7 +9,7 @@ public class StaticData {
             "Welcome to 'ANNIVERSARIES'- a small demo",
             "        It's already 2026 !!!",
             "  and this year is an anniversary of ",
-            "several interesting events in the world",
+            "several interesting events in history",
             "   of computers and widely known IT."
     );
 
