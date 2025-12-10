@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 public class BasicC64Screen extends Scene {
@@ -13,8 +12,9 @@ public class BasicC64Screen extends Scene {
 
     SpriteBatch batch;
     ShapeRenderer shapeRenderer;
-    protected Texture backgroundTexture;
+    public Texture backgroundTexture;
     protected C64Colors borderColor;
+    protected boolean blinkingCursor = true;
     protected String backgroundScreenPng;
     protected BitmapFont font;
     protected float x;
@@ -34,7 +34,7 @@ public class BasicC64Screen extends Scene {
         shapeRenderer.setAutoShapeType(true);
         backgroundTexture = new Texture(Gdx.files.internal(this.backgroundScreenPng));
         this.borderColor = C64Colors.LIGHT_BLUE;
-        font = createFont(26);
+        font = C64Helper.createFont(26,"C64_Pro_Mono-STYLE.ttf");
         float scaledWidth = backgroundTexture.getWidth() * this.scale;
         float scaledHeight = backgroundTexture.getHeight() * this.scale;
         this.x = (Gdx.graphics.getWidth() - scaledWidth) / 2;
@@ -63,17 +63,7 @@ public class BasicC64Screen extends Scene {
         batch.begin();
         batch.draw(backgroundTexture, this.x, this.y, scaledWidth, scaledHeight);
         batch.end();
-        C64Helper.blinkCursor(frame, shapeRenderer);
-    }
-
-    protected BitmapFont createFont(int size){
-        var generator = new FreeTypeFontGenerator(Gdx.files.internal("C64_Pro_Mono-STYLE.ttf"));
-        var parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        parameter.size = size; // font size
-        BitmapFont font = generator.generateFont(parameter);
-        font.setColor(C64Colors.WHITE.getR(), C64Colors.WHITE.getG(), C64Colors.WHITE.getB(),0.75f);
-        generator.dispose();
-        return font;
+        if (this.blinkingCursor) C64Helper.blinkCursor(frame, shapeRenderer);
     }
 
     @Override

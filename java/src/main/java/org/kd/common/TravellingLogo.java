@@ -39,6 +39,7 @@ public class TravellingLogo {
 
     public void changeDirection(){
         this.spriteSpeed *= -1;
+        this.sprite.setX(this.getX() - this.spriteSpeed/25);
     }
 
     public float getX() {
@@ -47,5 +48,9 @@ public class TravellingLogo {
 
     public float getWidth() {
         return sprite.getWidth();
+    }
+
+    public Sprite getSprite() {
+        return sprite;
     }
 }

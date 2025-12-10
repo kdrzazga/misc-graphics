@@ -1,7 +1,7 @@
 package org.kd.anniversaries;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -16,10 +16,17 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public class Scene1c64 extends BasicC64Screen {
     SpriteBatch batch2;
-    BitmapFont fontSmall;
+    BitmapFont normalFont;
     private List<Sprite> letters;
     private ShapeRenderer shapeRenderer;
     private TravellingLogo logoSprite;
+    private Music gravitationRamos;
+    private int bottomLimit = 170;
+    private Year2021 year2021;
+    private Year2006 year2006;
+    private Year2001 year2001;
+    private Year1981 year1981;
+    private Year1976 year1976;
 
     public Scene1c64(String id) {
         super(id);
@@ -28,13 +35,19 @@ public class Scene1c64 extends BasicC64Screen {
     @Override
     public void create() {
         super.create();
+        this.year2021 = new Year2021();
+        this.year2006 = new Year2006();
+        this.year2001 = new Year2001();
+        this.year1981 = new Year1981();
+        this.year1976 = new Year1976();
+        this.createMusic();
 
         this.batch2 = new SpriteBatch(2);
-        fontSmall = this.createFont(12);
-        fontSmall.setColor(Color.BLACK);
+        normalFont = C64Helper.createFont(16, "C64_Pro_Mono-STYLE.ttf");
+        normalFont.setColor(C64Colors.LIGHT_BLUE.toBadlogicColor());
         letters = new ArrayList<>(5);
         var logoTxtr = new Texture(Gdx.files.internal("anniversaries/logo.png"));
-        this.logoSprite = new TravellingLogo(logoTxtr, Globals.SCREEN_WIDTH, 200, 1000, 50);
+        this.logoSprite = new TravellingLogo(logoTxtr, Globals.SCREEN_WIDTH, 110, 1000, 50);
         this.logoSprite.colorize(C64Colors.LIGHT_BLUE);
         this.logoSprite.spriteSpeed = 300f;
 
@@ -63,18 +76,11 @@ public class Scene1c64 extends BasicC64Screen {
     @Override
     public void update(float delta) {
         long frame = Gdx.graphics.getFrameId();
-        if (frame >= 300) {
+        if (frame >= 330) {
             this.logoSprite.move(delta, Globals.SCREEN_WIDTH);
-            if (this.logoSprite.getX()< -500)
-                this.logoSprite.changeDirection();
-        }
-        if (frame == 600) {
-            Globals.CURSOR_COLOR = C64Colors.WHITE;
-        } else if (frame == 699) {Globals.cursorY = Math.round(0.753 * Globals.SCREEN_HEIGHT) - 2;
-        } else if (frame == 1100) {
-            this.backgroundScreenPng = "winter/lblue-ready.png";
-            this.backgroundTexture = new Texture(Gdx.files.internal(this.backgroundScreenPng));
-            Globals.BKG_COLOR = C64Colors.LIGHT_BLUE;
+            if (frame >= 500)
+                if (this.logoSprite.getX() < -355 || this.logoSprite.getX() > 260)
+                    this.logoSprite.changeDirection();
         }
 
         System.out.print(frame + " ");
@@ -108,34 +114,113 @@ public class Scene1c64 extends BasicC64Screen {
         super.render();
 
         long frame = Gdx.graphics.getFrameId();
+
+        if (frame == 4400) {
+            this.borderColor = C64Colors.BLACK;
+        }
+        if (frame > 4400 && frame < 4917) {
+            this.shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+            this.shapeRenderer.setColor(this.borderColor.toBadlogicColor());
+            this.shapeRenderer.rect(0, 0, 800, this.bottomLimit);
+            this.shapeRenderer.end();
+        }
+
         batch2.begin();
-        if (frame > 10 && frame < 5200) {
-            this.logoSprite.draw(batch2, Globals.SCREEN_WIDTH, Globals.SCREEN_HEIGHT);
 
-            if (frame > 550) ;
-            //flySprites(spriteGroup);
-        }
-        if (frame > 900) {
-        }
-
-        if (frame > 2730) {
+        if (frame > 6000) {
             letters.forEach(letter -> letter.draw(batch2));
         }
 
-        drawWishes(batch2, fontSmall, frame, 4000, 4800, Arrays.asList("KD and K&A+", " team send", "best wishes", "2 all retro", "maniacs !!!", "   YOU", "  ROCK !!!"));
-        drawWishes(batch2, fontSmall, frame, 4850, 5650, Arrays.asList(" Let this", " festive", "  season", " bring you", "lotsa joy !", " Joy and", "joysticks !"));
-        drawWishes(batch2, fontSmall, frame, 5700, 6600, Arrays.asList("  Spend", " Christmas", " with your", "family, but", "also don't", "forget abt", "your retro", "hardware."));
-        drawWishes(batch2, fontSmall, frame, 6650, 7450, Arrays.asList("Once supper", " is over,", "take your", " siblings, ", " turn on", "  INTER.", "KARATE and"));
-        drawWishes(batch2, fontSmall, frame, 7500, 8300, Arrays.asList("   KICK", "  THEIR", " BUTTS !!!", "  HA HA !", "  HO! HO!", "  Merry", "Christmas !"));
+        textWall(StaticData.messages1, frame, 800, 2350);
+        textWall(StaticData.messages2, frame, 2360, 3930);
+        textWall(StaticData.messages3, frame, 3940, 4600);
 
+        if (frame > 4470) {
+            this.logoSprite.colorize(C64Colors.WHITE);
+            if (frame % 5 == 0 && this.logoSprite.getSprite().getY() > 10) {
+                var sprite = this.logoSprite.getSprite();
+                sprite.setY(sprite.getY() - 1);
+            }
+
+            boolean extraCondition = frame > 4502 || frame % 2 == 1;
+            if (this.bottomLimit < 550 && extraCondition) {
+                this.bottomLimit++;
+            }
+        }
+
+        if (frame > 4590) {
+            conditionallyColorizeLogo(frame);
+        }
+
+        if (frame == 4900) {
+            this.blinkingCursor = false;
+        } else if (frame > 4917 && frame < 5700) {
+            this.borderColor = C64Colors.DARK_GRAY;
+            this.year2021.sayItOnce();
+            this.year2021.draw(frame, this);
+
+        } else if (frame <= 5700) {
+            //2016
+        } else if (frame < 6000) {
+            //2011
+        } else if (frame < 6250) {
+            this.year2006.sayItOnce();
+            this.year2006.draw(frame, this);
+        } else if (frame < 6500) {
+            this.year2001.sayItOnce();
+            this.year2001.draw(frame, this);
+        } else if (frame < 6750) {
+            //1996
+        } else if (frame < 7000) {
+            //1991
+        } else if (frame < 7250) {
+            //1986
+        } else if (frame < 7500) {
+            this.year1981.sayItOnce();
+            this.year1981.draw(frame, this);
+        } else if (frame < 8000) {
+            this.year1976.sayItOnce();
+            this.year1976.draw(frame, this);
+        }
+
+        if (frame > 10) {
+            this.logoSprite.draw(batch2, Globals.SCREEN_WIDTH, Globals.SCREEN_HEIGHT);
+
+            this.gravitationRamos.play();
+        }
         batch2.end();
     }
 
-    private void drawWishes(SpriteBatch batch, BitmapFont font, long currentFrame, int startFrame, int endFrame, List<String> wishes) {
+    private void conditionallyColorizeLogo(long frame) {
+        if (frame % 1200 < 150)
+            this.logoSprite.colorize(C64Colors.YELLOW);
+        else if (frame % 1200 < 300)
+            this.logoSprite.colorize(C64Colors.RED);
+        else if (frame % 1200 < 450)
+            this.logoSprite.colorize(C64Colors.LIGHT_GRAY);
+        else if (frame % 1200 < 600)
+            this.logoSprite.colorize(C64Colors.LIGHT_BLUE);
+        else if (frame % 1200 < 750)
+            this.logoSprite.colorize(C64Colors.PURPLE);
+        else if (frame % 1200 < 900)
+            this.logoSprite.colorize(C64Colors.CYAN);
+        else if (frame % 1200 < 1050)
+            this.logoSprite.colorize(C64Colors.PINK);
+        else
+            this.logoSprite.colorize(C64Colors.WHITE);
+    }
+
+    private void textWall(List<String> messages, long frame, int veryInitialFrame, int endFrame) {
+        for (int i = 0; i < messages.size(); i++) {
+            int fontSize = 22 * (i + 1);
+            drawMessage(batch2, normalFont, frame, veryInitialFrame + 200 * i, endFrame, messages.get(i), fontSize);
+        }
+    }
+
+    private void drawMessage(SpriteBatch batch, BitmapFont font, long currentFrame, int startFrame, int endFrame, String msg, int shiftY) {
         if (currentFrame > startFrame && currentFrame < endFrame) {
-            for (int i = 0; i < wishes.size(); i++) {
-                font.draw(batch, wishes.get(i), 338, 235 - 23 * i);
-            }
+            font.draw(batch, msg, 81, 406 - shiftY);
+
         }
     }
 
@@ -144,6 +229,12 @@ public class Scene1c64 extends BasicC64Screen {
             Sprite s = spriteGroup.get(i);
             flyCaptionSprite(s, i);
         }
+    }
+
+    private void createMusic() {
+        gravitationRamos = Gdx.audio.newMusic(Gdx.files.internal("anniversaries/Gravitation.mp3"));
+        gravitationRamos.setLooping(false);
+        gravitationRamos.setVolume(2f);
     }
 
     private void flyCaptionSprite(Sprite s, int i) {
@@ -158,5 +249,6 @@ public class Scene1c64 extends BasicC64Screen {
     public void dispose() {
         super.dispose();
         batch2.dispose();
+        gravitationRamos.dispose();
     }
 }

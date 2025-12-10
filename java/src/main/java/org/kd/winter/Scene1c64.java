@@ -20,7 +20,7 @@ import java.util.Random;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class Scene1c64 extends BasicC64Screen {
-    SpriteBatch batch2;
+    public SpriteBatch batch2;
     BitmapFont fontSmall;
     private List<Sprite> backgroundSprites;
     private List<Sprite> backgroundSprites2;
@@ -46,7 +46,7 @@ public class Scene1c64 extends BasicC64Screen {
 
         this.snowing = true;
         this.batch2 = new SpriteBatch(2);
-        fontSmall = this.createFont(12);
+        fontSmall = C64Helper.createFont(12, "C64_Pro_Mono-STYLE.ttf");
         fontSmall.setColor(Color.BLACK);
         backgroundSprites = new ArrayList<>(2);
         backgroundSprites2 = new ArrayList<>(2);

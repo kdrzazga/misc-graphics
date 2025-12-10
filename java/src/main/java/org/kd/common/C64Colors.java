@@ -5,9 +5,15 @@ import com.badlogic.gdx.graphics.Color;
 public enum C64Colors {
     BLACK(0, 0, 0),
     WHITE(1, 1, 1),
-    RED(136/255,0,0),
+    RED(0.53f,0,0),
     BLUE(0.239f,0.278f, 0.725f),
-    LIGHT_BLUE(0.415f, 0.463f, 0.988f);
+    YELLOW(1f,1f, 0f),
+    LIGHT_BLUE(0.415f, 0.463f, 0.988f),
+    CYAN(0f, 1f, 1f),
+    PURPLE(1f, 0f, 1f),
+    DARK_GRAY(0.2f,0.2f,0.2f),
+    LIGHT_GRAY(0.7f, 0.7f, 0.7f),
+    PINK(0.75f, 0.51f, 0.47f);
 
     private final float r;
     private final float g;

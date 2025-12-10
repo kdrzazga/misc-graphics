@@ -68,7 +68,7 @@ public class SceneB extends Scene {
 
 
     private void drawC64() {
-        Gdx.gl.glClearColor(0, (136 / 255), 1, 1);
+        Gdx.gl.glClearColor(0, 0.53f, 1, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);

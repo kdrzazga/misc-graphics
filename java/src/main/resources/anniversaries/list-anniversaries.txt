@@ -1,0 +1,114 @@
+Certainly! Here are notable events in the world of computers for each of those years:
+
+**2021**  TIMESTAMP 5517
+- Release of Windows 11 by Microsoft. June 24, 2021
+
+Raspberry PI ZERO W - october 2021
+- Continued growth of cloud computing and remote work technologies due to the COVID-19 pandemic.
+- Introduction of Apple’s M1-powered Macs, marking a shift to Apple Silicon.
+- Rise of AI and machine learning applications in various industries.
+- Major data breaches and cybersecurity concerns became prominent.
+
+Resident Evil Village (PC, consoles)
+Hitman 3 (PC, consoles) 20 January 2021
+
+
+**2016**  5750
+- Launch of Pokémon GO, popularizing augmented reality gaming.
+- Microsoft announced the end of support for Windows 7.
+- Apple announced the iPhone 7 and iPhone 7 Plus.
+- DeepMind’s AlphaGo defeated world champion Go players.
+- Growth of blockchain technology and cryptocurrencies like Bitcoin.
+Pokémon GO (Mobile)
+Battlefield 1 (PC, consoles)
+
+**2011** 6000
+- Launch of Windows 8 by Microsoft.
+- Apple introduced the iPad 2 and the first iPhone 4S with Siri.
+- IBM's Watson defeated human champions on Jeopardy!.
+- Google+ was launched, trying to compete with Facebook.
+- The rise of cloud services and mobile computing.
+Minecraft (Console editions)
+January 4, 2011 - Motorola ceased to exist
+Steve Jobs died
+
+**2006** 6250
+- Introduction of the Nintendo Wii, changing gaming dynamics.
+- Twitter was launched.
+- Apple announced the first MacBook Pro.
+- Google acquired YouTube for $1.65 billion.
+- The rise of social media platforms as mainstream communication tools.
+Guitar Hero II (Consoles)
+
+**2001** 6500
+- Release of Windows XP. August 24, 2001
+- Apple introduced the iPod, revolutionizing digital music.
+- Wikipedia was launched Jan 15, 2001
+- The first version of Mac OS X was released. (March 24, 2001)
+- The burst of the dot-com bubble.
+Grand Theft Auto III (PC, consoles)
+Black & White (PC)
+Max Payne (PC, consoles)
+
+**1996** 6750
+- Launch of Windows 95 as a major update by Microsoft.
+- Mac OS 8 released.
+- The founding of Google (though officially incorporated in 1998, its development began around this time).
+- The advent of DVD technology for storage.
+- The rise of the Internet as a mainstream tool.
+- IBM's Deep Blue defeated chess champion Garry Kasparov in 1997 (though this was later, the era of advanced AI in computing was beginning).
+
+    Quake (PC)
+    Diablo (PC)
+    Resident Evil (PlayStation)
+    Tomb Raider: The Angel of Darkness (PC, consoles)
+
+
+**1991** 7000
+- The World Wide Web was publicly debuted by Tim Berners-Lee. (Aug 6, 1991)
+- Linux kernel 1.0 was released (Oct 5 1991)
+AmigaOS 2.0 – August 1991
+
+Python February 1991
+
+- Introduction of the first GSM mobile phones.
+Street Fighter II (Arcade, SNES) March 7, 1991
+Civilization (PC)
+Mortal Kombat (Arcade, consoles) -1992
+
+**1986** 7250
+
+Atari 7800 console released (May 1986)
+- Microsoft released Windows 1.0.
+- The IBM PC compatible market grew rapidly.
+- The first 3.5-inch floppy disks were introduced.
+- The Macintosh Plus was launched by Apple.
+The Legend of Zelda (NES)
+Out Run (Arcade)
+Bubble Bobble (Arcade)
+
+**1981** 7500
+- IBM introduced the IBM PC August 12, 1981
+- Microsoft announced MS-DOS.August 12, 1981
+- The first personal computer with a graphical interface, the Xerox 8010 Star, was developed.
+- The Commodore VIC-20 was released.
+The ZX Spectrum was released in the UK, becoming a huge hit and influencing gaming and programming culture.(1982)
+Commodore's VIC-20 was introduced, serving as a budget-friendly home computer.
+The Atari 400/800 was released, targeting the home and educational markets.
+
+    Donkey Kong (Arcade)
+    Frogger (Arcade)
+    Galaga (Arcade)
+    Lode Runner (Apple II)
+
+
+**1976** 8000
+- Apple Computer was founded by Steve Jobs, Steve Wozniak, and Ronald Wayne.
+- The Cray-1 supercomputer was introduced.
+- The first laser printer was developed.
+- The Altair 8800 was released, sparking the microcomputer revolution.
+- Microsoft was officially founded (though in 1975, it became a corporation in 1981).
+The Altair 8800 was released, sparking the personal computer revolution.
+The Apple I was introduced, laying the groundwork for Apple Inc.
+
+Pong

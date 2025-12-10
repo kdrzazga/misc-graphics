@@ -1,6 +1,8 @@
 package org.kd.common;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 public class C64Helper {
@@ -28,5 +30,15 @@ public class C64Helper {
         long seconds = (elapsedTime / 1000) % 60;
 
         return String.format("%02d:%02d", minutes, seconds);
+    }
+
+    public static BitmapFont createFont(int size, String ttfFile){
+        var generator = new FreeTypeFontGenerator(Gdx.files.internal(ttfFile));
+        var parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        parameter.size = size; // font size
+        BitmapFont font = generator.generateFont(parameter);
+        font.setColor(C64Colors.WHITE.getR(), C64Colors.WHITE.getG(), C64Colors.WHITE.getB(),0.75f);
+        generator.dispose();
+        return font;
     }
 }

@@ -59,7 +59,6 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
-
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <mainClass>org.kd.anniversaries.AnniversariesDemo</mainClass>
@@ -76,10 +75,10 @@
                 <directory>d:/code/misc-graphics/java/src/main/resources</directory>
                 <excludes>
                     <!-- Remember to use mvn clean before mvn package to get rid of unwanted files-->
-                    <exclude>fake-demo/**</exclude>
+                    <!--<exclude>fake-demo/**</exclude>
                     <exclude>hellogdx/**</exclude>
-                    <!--<exclude>anniversaries/**</exclude>-->
-                    <exclude>winter/**</exclude>
+                    <exclude>anniversaries/**</exclude>
+                    <exclude>winter/**</exclude>-->
                 </excludes>
             </resource>
         </resources>
