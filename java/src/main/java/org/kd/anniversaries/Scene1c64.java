@@ -21,6 +21,12 @@ public class Scene1c64 extends BasicC64Screen {
     private ShapeRenderer shapeRenderer;
     private TravellingLogo logoSprite;
     private Music gravitationRamos;
+    private Music fiveYearsAgo;
+    private Music tenYearsAgo;
+    private Music fifteenYearsAgo;
+    private Music twentyYearsAgo;
+    private Music twentyFiveYearsAgo;
+    private Music thirtyYearsAgo;
     private int bottomLimit = 170;
 
     public Scene1c64(String id) {
@@ -69,7 +75,7 @@ public class Scene1c64 extends BasicC64Screen {
         if (frame >= 330) {
             this.logoSprite.move(delta, Globals.SCREEN_WIDTH);
             if (frame >= 500)
-                if (this.logoSprite.getX()< -355 || this.logoSprite.getX() > 260)
+                if (this.logoSprite.getX() < -355 || this.logoSprite.getX() > 260)
                     this.logoSprite.changeDirection();
         }
 
@@ -109,7 +115,7 @@ public class Scene1c64 extends BasicC64Screen {
             this.borderColor = C64Colors.BLACK;
             this.shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
             this.shapeRenderer.setColor(C64Colors.BLACK.toBadlogicColor());
-            this.shapeRenderer.rect(0,0, 800,this.bottomLimit);
+            this.shapeRenderer.rect(0, 0, 800, this.bottomLimit);
             this.shapeRenderer.end();
         }
 
@@ -125,18 +131,18 @@ public class Scene1c64 extends BasicC64Screen {
 
         if (frame > 4470) {
             this.logoSprite.colorize(C64Colors.WHITE);
-            if (frame %5 ==0 && this.logoSprite.getSprite().getY() > 10){
+            if (frame % 5 == 0 && this.logoSprite.getSprite().getY() > 10) {
                 var sprite = this.logoSprite.getSprite();
                 sprite.setY(sprite.getY() - 1);
             }
 
-            if (this.bottomLimit < 550 && frame %2 ==1){
+            if (this.bottomLimit < 550 && frame % 2 == 1) {
                 this.bottomLimit++;
             }
         }
 
-        if (frame > 4590){
-            if(frame % 1200 < 150)
+        if (frame > 4590) {
+            if (frame % 1200 < 150)
                 this.logoSprite.colorize(C64Colors.YELLOW);
             else if (frame % 1200 < 300)
                 this.logoSprite.colorize(C64Colors.RED);
@@ -153,6 +159,13 @@ public class Scene1c64 extends BasicC64Screen {
             else
                 this.logoSprite.colorize(C64Colors.WHITE);
         }
+
+        if (frame == 5417) {
+            fiveYearsAgo.play();
+        } else if(frame > 5417){
+            Year2021.draw(frame);
+        }
+
         if (frame > 10) {
             this.logoSprite.draw(batch2, Globals.SCREEN_WIDTH, Globals.SCREEN_HEIGHT);
 
@@ -164,13 +177,13 @@ public class Scene1c64 extends BasicC64Screen {
     private void textWall(List<String> messages, long frame, int veryInitialFrame, int endFrame) {
         for (int i = 0; i < messages.size(); i++) {
             int fontSize = 22 * (i + 1);
-            drawMessage(batch2, normalFont, frame,  veryInitialFrame + 200*i, endFrame, messages.get(i), fontSize);
+            drawMessage(batch2, normalFont, frame, veryInitialFrame + 200 * i, endFrame, messages.get(i), fontSize);
         }
     }
 
     private void drawMessage(SpriteBatch batch, BitmapFont font, long currentFrame, int startFrame, int endFrame, String msg, int shiftY) {
         if (currentFrame > startFrame && currentFrame < endFrame) {
-                font.draw(batch, msg, 81, 406 - shiftY);
+            font.draw(batch, msg, 81, 406 - shiftY);
 
         }
     }
@@ -186,6 +199,12 @@ public class Scene1c64 extends BasicC64Screen {
         gravitationRamos = Gdx.audio.newMusic(Gdx.files.internal("anniversaries/Gravitation.mp3"));
         gravitationRamos.setLooping(false);
         gravitationRamos.setVolume(2f);
+
+        fiveYearsAgo = Gdx.audio.newMusic(Gdx.files.internal("anniversaries/ya/5 years ago.mp3"));
+        tenYearsAgo = Gdx.audio.newMusic(Gdx.files.internal("anniversaries/ya/10 years ago.mp3"));
+        fifteenYearsAgo = Gdx.audio.newMusic(Gdx.files.internal("anniversaries/ya/15 years ago.mp3"));
+        twentyYearsAgo = Gdx.audio.newMusic(Gdx.files.internal("anniversaries/ya/20 years ago.mp3"));
+        thirtyYearsAgo = Gdx.audio.newMusic(Gdx.files.internal("anniversaries/ya/30 years ago.mp3"));
     }
 
     private void flyCaptionSprite(Sprite s, int i) {
