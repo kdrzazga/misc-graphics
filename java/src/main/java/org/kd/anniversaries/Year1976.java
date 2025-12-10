@@ -17,7 +17,7 @@ public class Year1976 extends Year{
 
         BitmapFont zxSpectrumFont = C64Helper.createFont(32, "zx-spectrum.ttf");
         zxSpectrumFont.draw(screen.batch2, "1976", 300, 570);
-        if (frame < 8000) {
+        if (frame < 8400) {
             screen.backgroundTexture = this.jobsWozniak;
         }
     }

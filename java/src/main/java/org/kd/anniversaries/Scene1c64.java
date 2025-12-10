@@ -23,6 +23,8 @@ public class Scene1c64 extends BasicC64Screen {
     private Music gravitationRamos;
     private int bottomLimit = 170;
     private Year2021 year2021;
+    private Year2006 year2006;
+    private Year2001 year2001;
     private Year1981 year1981;
     private Year1976 year1976;
 
@@ -32,10 +34,12 @@ public class Scene1c64 extends BasicC64Screen {
 
     @Override
     public void create() {
+        super.create();
         this.year2021 = new Year2021();
+        this.year2006 = new Year2006();
+        this.year2001 = new Year2001();
         this.year1981 = new Year1981();
         this.year1976 = new Year1976();
-        super.create();
         this.createMusic();
 
         this.batch2 = new SpriteBatch(2);
@@ -150,15 +154,31 @@ public class Scene1c64 extends BasicC64Screen {
 
         if (frame == 4900) {
             this.blinkingCursor = false;
-        } else if (frame > 4917 &&  frame < 5700) {
+        } else if (frame > 4917 && frame < 5700) {
             this.borderColor = C64Colors.DARK_GRAY;
             this.year2021.sayItOnce();
             this.year2021.draw(frame, this);
 
-        } else if (frame > 7000 && frame <= 7800) {
+        } else if (frame <= 5700) {
+            //2016
+        } else if (frame < 6000) {
+            //2011
+        } else if (frame < 6250) {
+            this.year2006.sayItOnce();
+            this.year2006.draw(frame, this);
+        } else if (frame < 6500) {
+            this.year2001.sayItOnce();
+            this.year2001.draw(frame, this);
+        } else if (frame < 6750) {
+            //1996
+        } else if (frame < 7000) {
+            //1991
+        } else if (frame < 7250) {
+            //1986
+        } else if (frame < 7500) {
             this.year1981.sayItOnce();
             this.year1981.draw(frame, this);
-        } else if (frame > 7800) {
+        } else if (frame < 8000) {
             this.year1976.sayItOnce();
             this.year1976.draw(frame, this);
         }

@@ -1,6 +1,6 @@
 Certainly! Here are notable events in the world of computers for each of those years:
 
-**2021**
+**2021**  TIMESTAMP 5517
 - Release of Windows 11 by Microsoft. June 24, 2021
 
 Raspberry PI ZERO W - october 2021
@@ -13,7 +13,7 @@ Resident Evil Village (PC, consoles)
 Hitman 3 (PC, consoles) 20 January 2021
 
 
-**2016**
+**2016**  5750
 - Launch of Pokémon GO, popularizing augmented reality gaming.
 - Microsoft announced the end of support for Windows 7.
 - Apple announced the iPhone 7 and iPhone 7 Plus.
@@ -22,7 +22,7 @@ Hitman 3 (PC, consoles) 20 January 2021
 Pokémon GO (Mobile)
 Battlefield 1 (PC, consoles)
 
-**2011**
+**2011** 6000
 - Launch of Windows 8 by Microsoft.
 - Apple introduced the iPad 2 and the first iPhone 4S with Siri.
 - IBM's Watson defeated human champions on Jeopardy!.
@@ -32,7 +32,7 @@ Minecraft (Console editions)
 January 4, 2011 - Motorola ceased to exist
 Steve Jobs died
 
-**2006**
+**2006** 6250
 - Introduction of the Nintendo Wii, changing gaming dynamics.
 - Twitter was launched.
 - Apple announced the first MacBook Pro.
@@ -40,7 +40,7 @@ Steve Jobs died
 - The rise of social media platforms as mainstream communication tools.
 Guitar Hero II (Consoles)
 
-**2001**
+**2001** 6500
 - Release of Windows XP. August 24, 2001
 - Apple introduced the iPod, revolutionizing digital music.
 - Wikipedia was launched Jan 15, 2001
@@ -50,7 +50,7 @@ Grand Theft Auto III (PC, consoles)
 Black & White (PC)
 Max Payne (PC, consoles)
 
-**1996**
+**1996** 6750
 - Launch of Windows 95 as a major update by Microsoft.
 - Mac OS 8 released.
 - The founding of Google (though officially incorporated in 1998, its development began around this time).
@@ -64,7 +64,7 @@ Max Payne (PC, consoles)
     Tomb Raider: The Angel of Darkness (PC, consoles)
 
 
-**1991**
+**1991** 7000
 - The World Wide Web was publicly debuted by Tim Berners-Lee. (Aug 6, 1991)
 - Linux kernel 1.0 was released (Oct 5 1991)
 AmigaOS 2.0 – August 1991
@@ -72,11 +72,11 @@ AmigaOS 2.0 – August 1991
 Python February 1991
 
 - Introduction of the first GSM mobile phones.
-Street Fighter II (Arcade, SNES)
+Street Fighter II (Arcade, SNES) March 7, 1991
 Civilization (PC)
-Mortal Kombat (Arcade, consoles)
+Mortal Kombat (Arcade, consoles) -1992
 
-**1986**
+**1986** 7250
 
 Atari 7800 console released (May 1986)
 - Microsoft released Windows 1.0.
@@ -87,7 +87,7 @@ The Legend of Zelda (NES)
 Out Run (Arcade)
 Bubble Bobble (Arcade)
 
-**1981**
+**1981** 7500
 - IBM introduced the IBM PC August 12, 1981
 - Microsoft announced MS-DOS.August 12, 1981
 - The first personal computer with a graphical interface, the Xerox 8010 Star, was developed.
@@ -102,7 +102,7 @@ The Atari 400/800 was released, targeting the home and educational markets.
     Lode Runner (Apple II)
 
 
-**1976**
+**1976** 8000
 - Apple Computer was founded by Steve Jobs, Steve Wozniak, and Ronald Wayne.
 - The Cray-1 supercomputer was introduced.
 - The first laser printer was developed.
