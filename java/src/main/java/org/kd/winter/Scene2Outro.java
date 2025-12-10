@@ -24,7 +24,7 @@ public class Scene2Outro extends BasicC64Screen {
     public void create() {
         super.create();
         batch2 = new SpriteBatch();
-        font3 = createFont(15);
+        font3 = createFont(15, "C64_Pro_Mono-STYLE.ttf");
         var lb = C64Colors.LIGHT_BLUE;
         font3.setColor(lb.getR(), lb.getG(), lb.getB(), 1f);
 

@@ -41,7 +41,7 @@ public class Scene1c64 extends BasicC64Screen {
         this.createMusic();
 
         this.batch2 = new SpriteBatch(2);
-        normalFont = this.createFont(16);
+        normalFont = this.createFont(16, "C64_Pro_Mono-STYLE.ttf");
         normalFont.setColor(C64Colors.LIGHT_BLUE.toBadlogicColor());
         letters = new ArrayList<>(5);
         var logoTxtr = new Texture(Gdx.files.internal("anniversaries/logo.png"));
@@ -140,7 +140,7 @@ public class Scene1c64 extends BasicC64Screen {
                 sprite.setY(sprite.getY() - 1);
             }
 
-            boolean extraCondition = frame > 4502 ? true : frame % 2 == 1;
+            boolean extraCondition = frame > 4502 || frame % 2 == 1;
             if (this.bottomLimit < 550 && extraCondition) {
                 this.bottomLimit++;
             }
