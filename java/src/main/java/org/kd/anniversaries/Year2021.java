@@ -2,6 +2,7 @@ package org.kd.anniversaries;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import org.kd.common.C64Helper;
 
 public class Year2021 {
 
@@ -15,7 +16,7 @@ public class Year2021 {
 
     public void draw(long frame, Scene1c64 screen) {
 
-        BitmapFont zxSpectrumFont = screen.createFont(32, "zx-spectrum.ttf");
+        BitmapFont zxSpectrumFont = C64Helper.createFont(32, "zx-spectrum.ttf");
         zxSpectrumFont.draw(screen.batch2, "2021", 300, 570);
         if (frame < 5117) {
             screen.backgroundTexture = this.raspberryPI;

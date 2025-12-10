@@ -27,8 +27,13 @@ public class Scene1c64 extends BasicC64Screen {
     private Music twentyYearsAgo;
     private Music twentyFiveYearsAgo;
     private Music thirtyYearsAgo;
+    private Music thirtyFiveYearsAgo;
+    private Music fortyYearsAgo;
+    private Music fortyFiveYearsAgo;
     private int bottomLimit = 170;
     private Year2021 year2021;
+    private Year1981 year1981;
+    private Year1976 year1976;
 
     public Scene1c64(String id) {
         super(id);
@@ -37,11 +42,13 @@ public class Scene1c64 extends BasicC64Screen {
     @Override
     public void create() {
         this.year2021 = new Year2021();
+        this.year1981 = new Year1981();
+        this.year1976 = new Year1976();
         super.create();
         this.createMusic();
 
         this.batch2 = new SpriteBatch(2);
-        normalFont = this.createFont(16, "C64_Pro_Mono-STYLE.ttf");
+        normalFont = C64Helper.createFont(16, "C64_Pro_Mono-STYLE.ttf");
         normalFont.setColor(C64Colors.LIGHT_BLUE.toBadlogicColor());
         letters = new ArrayList<>(5);
         var logoTxtr = new Texture(Gdx.files.internal("anniversaries/logo.png"));
@@ -166,11 +173,20 @@ public class Scene1c64 extends BasicC64Screen {
         }
 
         if (frame == 4900) {
-            fiveYearsAgo.play();
+
             this.blinkingCursor = false;
-        } else if (frame > 4917) {
+
+        } else if (frame > 4917 &&  frame < 5700) {
             this.borderColor = C64Colors.DARK_GRAY;
+            fiveYearsAgo.play();
             this.year2021.draw(frame, this);
+
+        } else if (frame > 7000) {
+            this.fortyFiveYearsAgo.play();
+            this.year1981.draw(frame, this);
+        } else if (frame > 7500) {
+            this.fortyFiveYearsAgo.play(); //TODO: should be 50
+            this.year1976.draw(frame, this);
         }
 
         if (frame > 10) {
@@ -212,6 +228,9 @@ public class Scene1c64 extends BasicC64Screen {
         fifteenYearsAgo = Gdx.audio.newMusic(Gdx.files.internal("anniversaries/ya/15 years ago.mp3"));
         twentyYearsAgo = Gdx.audio.newMusic(Gdx.files.internal("anniversaries/ya/20 years ago.mp3"));
         thirtyYearsAgo = Gdx.audio.newMusic(Gdx.files.internal("anniversaries/ya/30 years ago.mp3"));
+        thirtyFiveYearsAgo = Gdx.audio.newMusic(Gdx.files.internal("anniversaries/ya/30 years ago.mp3"));
+        fortyYearsAgo = Gdx.audio.newMusic(Gdx.files.internal("anniversaries/ya/40 years ago.mp3"));
+        fortyFiveYearsAgo = Gdx.audio.newMusic(Gdx.files.internal("anniversaries/ya/45 years ago.mp3"));
     }
 
     private void flyCaptionSprite(Sprite s, int i) {

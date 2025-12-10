@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import org.kd.common.BasicC64Screen;
 import org.kd.common.C64Colors;
+import org.kd.common.C64Helper;
 import org.kd.common.Globals;
 import org.lwjgl.util.Point;
 
@@ -19,7 +20,7 @@ import java.util.Random;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class Scene1c64 extends BasicC64Screen {
-    SpriteBatch batch2;
+    public SpriteBatch batch2;
     BitmapFont fontSmall;
     private List<Sprite> backgroundSprites;
     private List<Sprite> backgroundSprites2;
@@ -45,7 +46,7 @@ public class Scene1c64 extends BasicC64Screen {
 
         this.snowing = true;
         this.batch2 = new SpriteBatch(2);
-        fontSmall = this.createFont(12, "C64_Pro_Mono-STYLE.ttf");
+        fontSmall = C64Helper.createFont(12, "C64_Pro_Mono-STYLE.ttf");
         fontSmall.setColor(Color.BLACK);
         backgroundSprites = new ArrayList<>(2);
         backgroundSprites2 = new ArrayList<>(2);
