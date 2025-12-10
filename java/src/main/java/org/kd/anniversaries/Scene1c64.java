@@ -21,15 +21,6 @@ public class Scene1c64 extends BasicC64Screen {
     private ShapeRenderer shapeRenderer;
     private TravellingLogo logoSprite;
     private Music gravitationRamos;
-    private Music fiveYearsAgo;
-    private Music tenYearsAgo;
-    private Music fifteenYearsAgo;
-    private Music twentyYearsAgo;
-    private Music twentyFiveYearsAgo;
-    private Music thirtyYearsAgo;
-    private Music thirtyFiveYearsAgo;
-    private Music fortyYearsAgo;
-    private Music fortyFiveYearsAgo;
     private int bottomLimit = 170;
     private Year2021 year2021;
     private Year1981 year1981;
@@ -138,7 +129,7 @@ public class Scene1c64 extends BasicC64Screen {
 
         textWall(StaticData.messages1, frame, 800, 2350);
         textWall(StaticData.messages2, frame, 2360, 3930);
-        textWall(StaticData.messages3, frame, 3940, 4690);
+        textWall(StaticData.messages3, frame, 3940, 4600);
 
         if (frame > 4470) {
             this.logoSprite.colorize(C64Colors.WHITE);
@@ -154,38 +145,21 @@ public class Scene1c64 extends BasicC64Screen {
         }
 
         if (frame > 4590) {
-            if (frame % 1200 < 150)
-                this.logoSprite.colorize(C64Colors.YELLOW);
-            else if (frame % 1200 < 300)
-                this.logoSprite.colorize(C64Colors.RED);
-            else if (frame % 1200 < 450)
-                this.logoSprite.colorize(C64Colors.LIGHT_GRAY);
-            else if (frame % 1200 < 600)
-                this.logoSprite.colorize(C64Colors.LIGHT_BLUE);
-            else if (frame % 1200 < 750)
-                this.logoSprite.colorize(C64Colors.PURPLE);
-            else if (frame % 1200 < 900)
-                this.logoSprite.colorize(C64Colors.CYAN);
-            else if (frame % 1200 < 1050)
-                this.logoSprite.colorize(C64Colors.PINK);
-            else
-                this.logoSprite.colorize(C64Colors.WHITE);
+            conditionallyColorizeLogo(frame);
         }
 
         if (frame == 4900) {
-
             this.blinkingCursor = false;
-
         } else if (frame > 4917 &&  frame < 5700) {
             this.borderColor = C64Colors.DARK_GRAY;
-            fiveYearsAgo.play();
+            this.year2021.sayItOnce();
             this.year2021.draw(frame, this);
 
-        } else if (frame > 7000) {
-            this.fortyFiveYearsAgo.play();
+        } else if (frame > 7000 && frame <= 7800) {
+            this.year1981.sayItOnce();
             this.year1981.draw(frame, this);
-        } else if (frame > 7500) {
-            this.fortyFiveYearsAgo.play(); //TODO: should be 50
+        } else if (frame > 7800) {
+            this.year1976.sayItOnce();
             this.year1976.draw(frame, this);
         }
 
@@ -195,6 +169,25 @@ public class Scene1c64 extends BasicC64Screen {
             this.gravitationRamos.play();
         }
         batch2.end();
+    }
+
+    private void conditionallyColorizeLogo(long frame) {
+        if (frame % 1200 < 150)
+            this.logoSprite.colorize(C64Colors.YELLOW);
+        else if (frame % 1200 < 300)
+            this.logoSprite.colorize(C64Colors.RED);
+        else if (frame % 1200 < 450)
+            this.logoSprite.colorize(C64Colors.LIGHT_GRAY);
+        else if (frame % 1200 < 600)
+            this.logoSprite.colorize(C64Colors.LIGHT_BLUE);
+        else if (frame % 1200 < 750)
+            this.logoSprite.colorize(C64Colors.PURPLE);
+        else if (frame % 1200 < 900)
+            this.logoSprite.colorize(C64Colors.CYAN);
+        else if (frame % 1200 < 1050)
+            this.logoSprite.colorize(C64Colors.PINK);
+        else
+            this.logoSprite.colorize(C64Colors.WHITE);
     }
 
     private void textWall(List<String> messages, long frame, int veryInitialFrame, int endFrame) {
@@ -222,15 +215,6 @@ public class Scene1c64 extends BasicC64Screen {
         gravitationRamos = Gdx.audio.newMusic(Gdx.files.internal("anniversaries/Gravitation.mp3"));
         gravitationRamos.setLooping(false);
         gravitationRamos.setVolume(2f);
-
-        fiveYearsAgo = Gdx.audio.newMusic(Gdx.files.internal("anniversaries/ya/5 years ago.mp3"));
-        tenYearsAgo = Gdx.audio.newMusic(Gdx.files.internal("anniversaries/ya/10 years ago.mp3"));
-        fifteenYearsAgo = Gdx.audio.newMusic(Gdx.files.internal("anniversaries/ya/15 years ago.mp3"));
-        twentyYearsAgo = Gdx.audio.newMusic(Gdx.files.internal("anniversaries/ya/20 years ago.mp3"));
-        thirtyYearsAgo = Gdx.audio.newMusic(Gdx.files.internal("anniversaries/ya/30 years ago.mp3"));
-        thirtyFiveYearsAgo = Gdx.audio.newMusic(Gdx.files.internal("anniversaries/ya/30 years ago.mp3"));
-        fortyYearsAgo = Gdx.audio.newMusic(Gdx.files.internal("anniversaries/ya/40 years ago.mp3"));
-        fortyFiveYearsAgo = Gdx.audio.newMusic(Gdx.files.internal("anniversaries/ya/45 years ago.mp3"));
     }
 
     private void flyCaptionSprite(Sprite s, int i) {

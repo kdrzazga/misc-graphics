@@ -4,11 +4,12 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import org.kd.common.C64Helper;
 
-public class Year1976 {
+public class Year1976 extends Year{
 
     private final Texture jobsWozniak;
 
     Year1976() {
+        super("anniversaries/ya/50 years ago.mp3");
         this.jobsWozniak = new Texture("anniversaries/os/JobsWayneWozniak.png");
     }
 

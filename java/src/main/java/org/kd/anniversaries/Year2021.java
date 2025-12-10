@@ -4,12 +4,13 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import org.kd.common.C64Helper;
 
-public class Year2021 {
+public class Year2021 extends Year {
 
     private final Texture raspberryPI;
     private final Texture win11Logo;
 
     Year2021() {
+        super("anniversaries/ya/5 years ago.mp3");
         this.raspberryPI = new Texture("anniversaries/computers/RaspberriPi2zero.png");
         this.win11Logo = new Texture("anniversaries/os/win11.png");
     }
