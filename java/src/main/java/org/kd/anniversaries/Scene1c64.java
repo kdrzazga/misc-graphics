@@ -131,47 +131,47 @@ public class Scene1c64 extends BasicC64Screen {
             letters.forEach(letter -> letter.draw(batch2));
         }
 
-        textWall(StaticData.messages1, frame, 800, 2350);
-        textWall(StaticData.messages2, frame, 2360, 3930);
-        textWall(StaticData.messages3, frame, 3940, 4600);
+        textWall(StaticData.messages1, frame, 800, 1811);
+        textWall(StaticData.messages2, frame, 1850, 2922);
+        textWall(StaticData.messages3, frame, 3000, 3600);
 
-        if (frame > 4470) {
+        if (frame > 3670) {
             this.logoSprite.colorize(C64Colors.WHITE);
             if (frame % 5 == 0 && this.logoSprite.getSprite().getY() > 10) {
                 var sprite = this.logoSprite.getSprite();
                 sprite.setY(sprite.getY() - 1);
             }
 
-            boolean extraCondition = frame > 4502 || frame % 2 == 1;
+            boolean extraCondition = frame > 3702 || frame % 2 == 1;
             if (this.bottomLimit < 550 && extraCondition) {
                 this.bottomLimit++;
             }
         }
 
-        if (frame > 4590) {
+        if (frame > 3790) {
             conditionallyColorizeLogo(frame);
         }
 
-        if (frame == 4900) {
+        if (frame == 4100) {
             this.blinkingCursor = false;
-        } else if (frame > 4917 && frame < 5700) {
+        } else if (frame > 4117 && frame < 4900) {
             this.borderColor = C64Colors.DARK_GRAY;
             this.year2021.sayItOnce();
             this.year2021.draw(frame, this);
 
-        } else if (frame <= 5700) {
+        } else if (frame <= 4900) {
             //2016
-        } else if (frame < 6000) {
+        } else if (frame < 5200) {
             //2011
-        } else if (frame < 6250) {
+        } else if (frame < 5450) {
             this.year2006.sayItOnce();
             this.year2006.draw(frame, this);
-        } else if (frame < 6500) {
+        } else if (frame < 5700) {
             this.year2001.sayItOnce();
             this.year2001.draw(frame, this);
-        } else if (frame < 6750) {
+        } else if (frame < 5750) {
             //1996
-        } else if (frame < 7000) {
+        } else if (frame < 6200) {
             //1991
         } else if (frame < 7250) {
             //1986
@@ -213,7 +213,7 @@ public class Scene1c64 extends BasicC64Screen {
     private void textWall(List<String> messages, long frame, int veryInitialFrame, int endFrame) {
         for (int i = 0; i < messages.size(); i++) {
             int fontSize = 22 * (i + 1);
-            drawMessage(batch2, normalFont, frame, veryInitialFrame + 200 * i, endFrame, messages.get(i), fontSize);
+            drawMessage(batch2, normalFont, frame, veryInitialFrame + 150 * i, endFrame, messages.get(i), fontSize);
         }
     }
 

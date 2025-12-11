@@ -19,9 +19,9 @@ public class Year2021 extends Year {
 
         BitmapFont zxSpectrumFont = C64Helper.createFont(32, "zx-spectrum.ttf");
         zxSpectrumFont.draw(screen.batch2, "2021", 300, 570);
-        if (frame < 5117) {
+        if (frame < 4117) {
             screen.backgroundTexture = this.raspberryPI;
-        } else if (frame < 5517) {
+        } else if (frame < 4617) {
             screen.backgroundTexture = this.win11Logo;
         }
     }
