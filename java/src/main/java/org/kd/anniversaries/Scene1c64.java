@@ -23,8 +23,13 @@ public class Scene1c64 extends BasicC64Screen {
     private Music gravitationRamos;
     private int bottomLimit = 170;
     private Year2021 year2021;
+    private Year2016 year2016;
+    private Year2011 year2011;
     private Year2006 year2006;
     private Year2001 year2001;
+    private Year1996 year1996;
+    private Year1991 year1991;
+    private Year1986 year1986;
     private Year1981 year1981;
     private Year1976 year1976;
 
@@ -36,8 +41,13 @@ public class Scene1c64 extends BasicC64Screen {
     public void create() {
         super.create();
         this.year2021 = new Year2021();
+        this.year2016 = new Year2016();
+        this.year2011 = new Year2011();
         this.year2006 = new Year2006();
         this.year2001 = new Year2001();
+        this.year1996 = new Year1996();
+        this.year1991 = new Year1991();
+        this.year1986 = new Year1986();
         this.year1981 = new Year1981();
         this.year1976 = new Year1976();
         this.createMusic();
@@ -115,10 +125,10 @@ public class Scene1c64 extends BasicC64Screen {
 
         long frame = Gdx.graphics.getFrameId();
 
-        if (frame == 4400) {
+        if (frame == 3570) {
             this.borderColor = C64Colors.BLACK;
         }
-        if (frame > 4400 && frame < 4917) {
+        if (frame > 3570 && frame < 3570+517) {
             this.shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
             this.shapeRenderer.setColor(this.borderColor.toBadlogicColor());
             this.shapeRenderer.rect(0, 0, 800, this.bottomLimit);
@@ -152,36 +162,36 @@ public class Scene1c64 extends BasicC64Screen {
             conditionallyColorizeLogo(frame);
         }
 
-        if (frame == 4100) {
-            this.blinkingCursor = false;
-        } else if (frame > 4117 && frame < 4900) {
-            this.borderColor = C64Colors.DARK_GRAY;
-            this.year2021.sayItOnce();
-            this.year2021.draw(frame, this);
-
-        } else if (frame <= 4900) {
-            //2016
-        } else if (frame < 5200) {
-            //2011
-        } else if (frame < 5450) {
-            this.year2006.sayItOnce();
-            this.year2006.draw(frame, this);
-        } else if (frame < 5700) {
-            this.year2001.sayItOnce();
-            this.year2001.draw(frame, this);
-        } else if (frame < 5750) {
-            //1996
-        } else if (frame < 6200) {
-            //1991
-        } else if (frame < 7250) {
-            //1986
-        } else if (frame < 7500) {
-            this.year1981.sayItOnce();
-            this.year1981.draw(frame, this);
-        } else if (frame < 8000) {
-            this.year1976.sayItOnce();
-            this.year1976.draw(frame, this);
-        }
+        if (frame > 4109)
+            if (frame == 4110) {
+                this.blinkingCursor = false;
+            } else if (frame > 4117 && frame < 4900) {
+                this.borderColor = C64Colors.DARK_GRAY;
+                this.year2021.sayItOnce();
+                this.year2021.draw(frame, this);
+            } else if (frame <= 4900) {
+                this.year2016.sayItOnce();
+            } else if (frame < 5200) {
+                this.year2011.sayItOnce();
+            } else if (frame < 5450) {
+                this.year2006.sayItOnce();
+                this.year2006.draw(frame, this);
+            } else if (frame < 5700) {
+                this.year2001.sayItOnce();
+                this.year2001.draw(frame, this);
+            } else if (frame < 5750) {
+                this.year1996.sayItOnce();
+            } else if (frame < 6200) {
+                this.year1991.sayItOnce();
+            } else if (frame < 7250) {
+                this.year1986.sayItOnce();
+            } else if (frame < 7500) {
+                this.year1981.sayItOnce();
+                this.year1981.draw(frame, this);
+            } else if (frame < 8000) {
+                this.year1976.sayItOnce();
+                this.year1976.draw(frame, this);
+            }
 
         if (frame > 10) {
             this.logoSprite.draw(batch2, Globals.SCREEN_WIDTH, Globals.SCREEN_HEIGHT);

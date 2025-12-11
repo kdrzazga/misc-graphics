@@ -15,7 +15,6 @@ public class Year2001 extends Year {
 
     public void draw(long frame, Scene1c64 screen) {
 
-        BitmapFont zxSpectrumFont = C64Helper.createFont(32, "zx-spectrum.ttf");
         zxSpectrumFont.draw(screen.batch2, "2001", 300, 570);
         if (frame < 6700) {
             screen.backgroundTexture = this.winXP;

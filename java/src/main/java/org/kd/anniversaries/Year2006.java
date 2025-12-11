@@ -18,8 +18,6 @@ public class Year2006 extends Year {
     }
 
     public void draw(long frame, Scene1c64 screen) {
-
-        BitmapFont zxSpectrumFont = C64Helper.createFont(32, "zx-spectrum.ttf");
         zxSpectrumFont.draw(screen.batch2, "2006", 300, 570);
         if (frame < 6250) {
             screen.backgroundTexture = this.googleYT;
