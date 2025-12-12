@@ -10,8 +10,8 @@ public class Year2006 extends Year {
     private final Texture twitter2;
     private final Texture googleYT;
 
-    Year2006() {
-        super("anniversaries/ya/20 years ago.mp3");
+    Year2006(long startingFrame) {
+        super("anniversaries/ya/20 years ago.mp3", startingFrame);
         this.twitter1 = new Texture("anniversaries/apps/twitter.jpg");
         this.twitter2 = new Texture("anniversaries/apps/twitter2.jpg");
         this.googleYT = new Texture("anniversaries/apps/googleYT.png");

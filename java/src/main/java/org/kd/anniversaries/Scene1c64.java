@@ -39,16 +39,16 @@ public class Scene1c64 extends BasicC64Screen {
     @Override
     public void create() {
         super.create();
-        this.year2021 = new Year2021();
-        this.year2016 = new Year2016();
-        this.year2011 = new Year2011();
-        this.year2006 = new Year2006();
-        this.year2001 = new Year2001();
-        this.year1996 = new Year1996();
-        this.year1991 = new Year1991();
-        this.year1986 = new Year1986();
-        this.year1981 = new Year1981();
-        this.year1976 = new Year1976();
+        this.year2021 = new Year2021(startAnniversariesDisplay +  310);
+        this.year2016 = new Year2016(startAnniversariesDisplay +  790);
+        this.year2011 = new Year2011(startAnniversariesDisplay + 1091);
+        this.year2006 = new Year2006(startAnniversariesDisplay + 1341);
+        this.year2001 = new Year2001(startAnniversariesDisplay + 1591);
+        this.year1996 = new Year1996(startAnniversariesDisplay + 1641);
+        this.year1991 = new Year1991(startAnniversariesDisplay + 2091);
+        this.year1986 = new Year1986(startAnniversariesDisplay + 3151);
+        this.year1981 = new Year1981(startAnniversariesDisplay + 3401);
+        this.year1976 = new Year1976(startAnniversariesDisplay + 3891);
         this.createMusic();
 
         this.batch2 = new SpriteBatch(2);
@@ -147,30 +147,30 @@ public class Scene1c64 extends BasicC64Screen {
     private void displayAnniversary(long frame) {
         if (frame == startAnniversariesDisplay + 1) {
             this.blinkingCursor = false;
-        } else if (frame > startAnniversariesDisplay + 310 && frame < startAnniversariesDisplay + 790) {
+        } else if (frame > this.year2021.startingFrame && frame < this.year2016.startingFrame) {
             this.borderColor = C64Colors.DARK_GRAY;
             this.year2021.sayItOnce();
             this.year2021.draw(frame, this);
-        } else if (frame <= startAnniversariesDisplay + 790) {
+        } else if (frame <= this.year2016.startingFrame) {
             this.year2016.sayItOnce();
-        } else if (frame < startAnniversariesDisplay + 1091) {
+        } else if (frame < this.year2011.startingFrame) {
             this.year2011.sayItOnce();
-        } else if (frame < startAnniversariesDisplay + 1341) {
+        } else if (frame < this.year2006.startingFrame) {
             this.year2006.sayItOnce();
             this.year2006.draw(frame, this);
-        } else if (frame < startAnniversariesDisplay + 1591) {
+        } else if (frame < this.year2001.startingFrame) {
             this.year2001.sayItOnce();
             this.year2001.draw(frame, this);
-        } else if (frame < startAnniversariesDisplay + 1641) {
+        } else if (frame < this.year1996.startingFrame) {
             this.year1996.sayItOnce();
-        } else if (frame < startAnniversariesDisplay + 2091) {
+        } else if (frame < this.year1991.startingFrame) {
             this.year1991.sayItOnce();
-        } else if (frame < startAnniversariesDisplay + 3151) {
+        } else if (frame < this.year1986.startingFrame) {
             this.year1986.sayItOnce();
-        } else if (frame < startAnniversariesDisplay + 3401) {
+        } else if (frame < this.year1981.startingFrame) {
             this.year1981.sayItOnce();
             this.year1981.draw(frame, this);
-        } else if (frame < startAnniversariesDisplay + 3891) {
+        } else if (frame < this.year1976.startingFrame) {
             this.year1976.sayItOnce();
             this.year1976.draw(frame, this);
         }

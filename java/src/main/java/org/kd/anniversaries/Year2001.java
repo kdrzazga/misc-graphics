@@ -8,8 +8,8 @@ public class Year2001 extends Year {
 
     private final Texture winXP;
 
-    Year2001() {
-        super("anniversaries/ya/25 years ago.mp3"); //should be 25 y a
+    Year2001(long startingFrame) {
+        super("anniversaries/ya/25 years ago.mp3", startingFrame); //should be 25 y a
         this.winXP = new Texture("anniversaries/os/winXP.png");
     }
 

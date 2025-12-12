@@ -6,8 +6,8 @@ public class Year1986 extends Year {
 
     private final Texture gates;
 
-    Year1986() {
-        super("anniversaries/ya/40 years ago.mp3");
+    Year1986(long startingFrame) {
+        super("anniversaries/ya/40 years ago.mp3", startingFrame);
         this.gates = new Texture("anniversaries/os/gates.png");
     }
 
