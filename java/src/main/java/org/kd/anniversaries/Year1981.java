@@ -13,7 +13,7 @@ public class Year1981 extends Year {
 
     public void draw(long frame, Scene1c64 screen) {
         zxSpectrumFont.draw(screen.batch2, "1981", 300, 570);
-        if (frame < 7400) {
+        if (frame < this.startingFrame + Year.DEFAULT_DURATION) {
             screen.backgroundTexture = this.gates;
         }
     }

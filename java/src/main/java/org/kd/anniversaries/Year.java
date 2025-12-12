@@ -7,6 +7,8 @@ import org.kd.common.C64Helper;
 
 public abstract class Year {
 
+    public static final long DEFAULT_DURATION = 400;
+
     protected final BitmapFont zxSpectrumFont;
     protected final String statementPath;
     protected long startingFrame;

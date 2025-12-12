@@ -17,11 +17,11 @@ public class Year2006 extends Year {
 
     public void draw(long frame, Scene1c64 screen) {
         zxSpectrumFont.draw(screen.batch2, "2006", 300, 570);
-        if (frame < 6250) {
+        if (frame < this.startingFrame + 0.4*Year.DEFAULT_DURATION) {
             screen.backgroundTexture = this.googleYT;
-        } else if (frame < 6300) {
+        } else if (frame < this.startingFrame + 0.7*DEFAULT_DURATION) {
             screen.backgroundTexture = this.twitter1;
-        }else if (frame < 6380) {
+        }else if (frame < this.startingFrame + Year.DEFAULT_DURATION) {
             screen.backgroundTexture = this.twitter2;
         }
     }

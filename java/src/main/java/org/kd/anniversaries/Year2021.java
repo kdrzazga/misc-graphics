@@ -15,9 +15,9 @@ public class Year2021 extends Year {
 
     public void draw(long frame, Scene1c64 screen) {
         zxSpectrumFont.draw(screen.batch2, "2021", 300, 570);
-        if (frame < 4117) {
+        if (frame < startingFrame + Year.DEFAULT_DURATION /2) {
             screen.backgroundTexture = this.raspberryPI;
-        } else if (frame < 4617) {
+        } else if (frame <  startingFrame + Year.DEFAULT_DURATION) {
             screen.backgroundTexture = this.win11Logo;
         }
     }
