@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import org.kd.common.*;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Scene1c64 extends BasicC64Screen {
@@ -39,16 +40,17 @@ public class Scene1c64 extends BasicC64Screen {
     @Override
     public void create() {
         super.create();
-        this.year2021 = new Year2021(startAnniversariesDisplay +  310);
-        this.year2016 = new Year2016(startAnniversariesDisplay +  790);
-        this.year2011 = new Year2011(startAnniversariesDisplay + 1091);
-        this.year2006 = new Year2006(startAnniversariesDisplay + 1341);
-        this.year2001 = new Year2001(startAnniversariesDisplay + 1591);
-        this.year1996 = new Year1996(startAnniversariesDisplay + 1641);
-        this.year1991 = new Year1991(startAnniversariesDisplay + 2091);
-        this.year1986 = new Year1986(startAnniversariesDisplay + 3151);
-        this.year1981 = new Year1981(startAnniversariesDisplay + 3401);
-        this.year1976 = new Year1976(startAnniversariesDisplay + 3891);
+
+        this.year2021 = new Year2021(startAnniversariesDisplay + 50);
+        this.year2016 = new Year2016(this.year2021.getStartingFrame() + 400);
+        this.year2011 = new Year2011(this.year2016.getStartingFrame() + 400);
+        this.year2006 = new Year2006(this.year2011.getStartingFrame() + 400);
+        this.year2001 = new Year2001(this.year2006.getStartingFrame() + 400);
+        this.year1996 = new Year1996(this.year2001.getStartingFrame() + 400);
+        this.year1991 = new Year1991(this.year1996.getStartingFrame() + 400);
+        this.year1986 = new Year1986(this.year1991.getStartingFrame() + 400);
+        this.year1981 = new Year1981(this.year1986.getStartingFrame() + 400);
+        this.year1976 = new Year1976(this.year1981.getStartingFrame() + 400);
         this.createMusic();
 
         this.batch2 = new SpriteBatch(2);
@@ -71,23 +73,8 @@ public class Scene1c64 extends BasicC64Screen {
                 if (this.logoSprite.getX() < -355 || this.logoSprite.getX() > 260)
                     this.logoSprite.changeDirection();
         }
-
-        System.out.print(frame + " ");
-        if (frame > 1499 && frame % 3 == 0) {
-        }
-
-        if (frame > 2730 && frame % 2 == 0) {
-        }
-
         if (frame > 3255) {
-            System.out.println("\n\n\nElapsed time " + C64Helper.countElapsedTime());
-        }
-/*
-        if (frame > 3530 && frame % 4 == 0 && christmasTree.getScaleY() < 1 - 0.05f) {
-            christmasTree.setScale(1, christmasTree.getScaleY() + 0.05f);
-        }
-*/
-        if (frame > 8600 && frame < 8800) {
+            System.out.println("\n".repeat(50) + " Elapsed time " + C64Helper.countElapsedTime() + " Frame: " + frame);
         }
     }
 
@@ -145,32 +132,18 @@ public class Scene1c64 extends BasicC64Screen {
     }
 
     private void displayAnniversary(long frame) {
-        if (frame == startAnniversariesDisplay + 1) {
-            this.blinkingCursor = false;
-        } else if (frame > this.year2021.startingFrame && frame < this.year2016.startingFrame) {
-            this.borderColor = C64Colors.DARK_GRAY;
-            this.year2021.sayItOnce();
-            this.year2021.draw(frame, this);
-        } else if (frame <= this.year2016.startingFrame) {
-            this.year2016.sayItOnce();
-        } else if (frame < this.year2011.startingFrame) {
-            this.year2011.sayItOnce();
-        } else if (frame < this.year2006.startingFrame) {
-            this.year2006.sayItOnce();
-            this.year2006.draw(frame, this);
-        } else if (frame < this.year2001.startingFrame) {
-            this.year2001.sayItOnce();
-            this.year2001.draw(frame, this);
-        } else if (frame < this.year1996.startingFrame) {
-            this.year1996.sayItOnce();
-        } else if (frame < this.year1991.startingFrame) {
-            this.year1991.sayItOnce();
-        } else if (frame < this.year1986.startingFrame) {
-            this.year1986.sayItOnce();
-        } else if (frame < this.year1981.startingFrame) {
-            this.year1981.sayItOnce();
-            this.year1981.draw(frame, this);
-        } else if (frame < this.year1976.startingFrame) {
+        this.blinkingCursor = false;
+
+        var allYears = Arrays.asList(this.year2021, this.year2016, this.year2011, this.year2006, this.year2001, this.year1996, this.year1991, this.year1986, this.year1981, this.year1976);
+
+        for (int i = 0; i < allYears.size() - 1; i++) {
+            if (frame > allYears.get(i).startingFrame && frame < allYears.get(i + 1).startingFrame) {
+                this.borderColor = C64Colors.DARK_GRAY;
+                allYears.get(i).sayItOnce();
+                allYears.get(i).draw(frame, this);
+            }
+        }
+        if (frame > this.year1976.startingFrame) {
             this.year1976.sayItOnce();
             this.year1976.draw(frame, this);
         }

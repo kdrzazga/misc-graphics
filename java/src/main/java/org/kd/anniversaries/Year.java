@@ -29,4 +29,8 @@ public abstract class Year {
     }
 
     abstract void draw(long frame, Scene1c64 screen);
+
+    public long getStartingFrame() {
+        return startingFrame;
+    }
 }
