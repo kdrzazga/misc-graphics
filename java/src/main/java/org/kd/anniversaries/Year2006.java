@@ -1,8 +1,6 @@
 package org.kd.anniversaries;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import org.kd.common.C64Helper;
 
 public class Year2006 extends Year {
 
