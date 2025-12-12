@@ -57,7 +57,7 @@ Max Payne (PC, consoles)
 - The advent of DVD technology for storage.
 - The rise of the Internet as a mainstream tool.
 - IBM's Deep Blue defeated chess champion Garry Kasparov in 1997 (though this was later, the era of advanced AI in computing was beginning).
-
+PLaystation
     Quake (PC)
     Diablo (PC)
     Resident Evil (PlayStation)
@@ -79,13 +79,14 @@ Mortal Kombat (Arcade, consoles) -1992
 **1986** 7250
 
 Atari 7800 console released (May 1986)
-- Microsoft released Windows 1.0.
+- Microsoft released Windows 1.0. (November 20 1985)
 - The IBM PC compatible market grew rapidly.
 - The first 3.5-inch floppy disks were introduced.
 - The Macintosh Plus was launched by Apple.
 The Legend of Zelda (NES)
 Out Run (Arcade)
 Bubble Bobble (Arcade)
+ZX Spectrum +2 released
 
 **1981** 7500
 - IBM introduced the IBM PC August 12, 1981
