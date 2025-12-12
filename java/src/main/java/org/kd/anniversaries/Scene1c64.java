@@ -41,16 +41,16 @@ public class Scene1c64 extends BasicC64Screen {
     public void create() {
         super.create();
 
-        this.year2021 = new Year2021(startAnniversariesDisplay + 50);
-        this.year2016 = new Year2016(this.year2021.getStartingFrame() + 400);
-        this.year2011 = new Year2011(this.year2016.getStartingFrame() + 400);
-        this.year2006 = new Year2006(this.year2011.getStartingFrame() + 400);
-        this.year2001 = new Year2001(this.year2006.getStartingFrame() + 400);
-        this.year1996 = new Year1996(this.year2001.getStartingFrame() + 400);
-        this.year1991 = new Year1991(this.year1996.getStartingFrame() + 400);
-        this.year1986 = new Year1986(this.year1991.getStartingFrame() + 400);
-        this.year1981 = new Year1981(this.year1986.getStartingFrame() + 400);
-        this.year1976 = new Year1976(this.year1981.getStartingFrame() + 400);
+        this.year2021 = new Year2021(startAnniversariesDisplay);
+        this.year2016 = new Year2016(this.year2021.getEndFrame());
+        this.year2011 = new Year2011(this.year2016.getEndFrame());
+        this.year2006 = new Year2006(this.year2011.getEndFrame());
+        this.year2001 = new Year2001(this.year2006.getEndFrame());
+        this.year1996 = new Year1996(this.year2001.getEndFrame());
+        this.year1991 = new Year1991(this.year1996.getEndFrame());
+        this.year1986 = new Year1986(this.year1991.getEndFrame());
+        this.year1981 = new Year1981(this.year1986.getEndFrame());
+        this.year1976 = new Year1976(this.year1981.getEndFrame());
         this.createMusic();
 
         this.batch2 = new SpriteBatch(2);

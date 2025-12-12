@@ -4,17 +4,51 @@ import com.badlogic.gdx.graphics.Texture;
 
 public class Year1991 extends Year {
 
-    private final Texture gates;
+    private final Texture python;
+    private final Texture thorvalds;
+    private final Texture penguin;
+    private final Texture amigaOs2;
+    private final Texture streetFighter2;
 
     Year1991(long startingFrame) {
         super("anniversaries/ya/35 years ago.mp3", startingFrame);
-        this.gates = new Texture("anniversaries/languages/python.png");
+        this.endFrame = Math.round(startingFrame + 3.65 * Year.DEFAULT_DURATION);
+        this.amigaOs2 = new Texture("anniversaries/os/amigaos.png");
+        this.python = new Texture("anniversaries/languages/python.png");
+        this.thorvalds = new Texture("anniversaries/os/LinusT.png");
+        this.penguin = new Texture("anniversaries/os/Linux-Pinguino.png");
+        this.streetFighter2 = new Texture("anniversaries/games/sf2.png");
     }
 
     public void draw(long frame, Scene1c64 screen) {
         zxSpectrumFont.draw(screen.batch2, "1991", 300, 570);
-        if (frame < 7400) {
-            screen.backgroundTexture = this.gates;
+        if (frame < this.startingFrame + 0.7 * Year.DEFAULT_DURATION) {
+            c64Font.draw(screen.batch2, "Linus Thorvalds", 100, 495);
+            c64Font.draw(screen.batch2, "created Linux.", 100, 475);
+            screen.backgroundTexture = this.thorvalds;
+        } else if (frame < this.startingFrame + 1.4 * Year.DEFAULT_DURATION) {
+            c64Font.draw(screen.batch2, "Linus Thorvalds", 100, 495);
+            c64Font.draw(screen.batch2, "created Linux.", 100, 475);
+            c64Font.draw(screen.batch2, "pioneering step", 100, 455);
+            c64Font.draw(screen.batch2, "towards ", 100, 435);
+            c64Font.draw(screen.batch2, "open-source", 100, 415);
+            c64Font.draw(screen.batch2, "software.", 100, 395);
+            screen.backgroundTexture = this.penguin;
+        } else if (frame < this.startingFrame + 2.1 * Year.DEFAULT_DURATION) {
+            screen.backgroundTexture = this.amigaOs2;
+            c64Font.draw(screen.batch2, " ".repeat(5) + "AmigaOS 2.0 – August 1991", 93, 535);
+        } else if (frame < this.startingFrame + 2.7 * Year.DEFAULT_DURATION) {
+            screen.backgroundTexture = this.streetFighter2;
+        } else {
+            if (frame < this.startingFrame + 2.9 * Year.DEFAULT_DURATION)
+                c64Font.draw(screen.batch2, "Guido van Rossum developed", 98, 532);
+            else if (frame < this.startingFrame + 3.1 * Year.DEFAULT_DURATION)
+                c64Font.draw(screen.batch2, "all-purpose programming language ", 145, 532);
+            else if (frame < this.startingFrame + 3.3 * Year.DEFAULT_DURATION)
+                c64Font.draw(screen.batch2, " and named it after British comedian group", 87, 532);
+            else
+                c64Font.draw(screen.batch2, "'Monty Python flying circus' ", 143, 532);
+            screen.backgroundTexture = this.python;
         }
     }
 }
