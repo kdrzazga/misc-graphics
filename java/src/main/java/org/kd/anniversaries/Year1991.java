@@ -13,11 +13,11 @@ public class Year1991 extends Year {
     Year1991(long startingFrame) {
         super("anniversaries/ya/35 years ago.mp3", startingFrame);
         this.endFrame = startingFrame + 2 * Year.DEFAULT_DURATION;
-        this.amigaOs2 = new Texture("anniversaries/os/win95.png");
+        this.amigaOs2 = new Texture("anniversaries/os/amigaos.png");
         this.python = new Texture("anniversaries/languages/python.png");
         this.thorvalds = new Texture("anniversaries/os/LinusT.png");
         this.penguin = new Texture("anniversaries/os/Linux-Pinguino.png");
-        this.streetFighter2 = new Texture("anniversaries/os/Linux-Pinguino.png");
+        this.streetFighter2 = new Texture("anniversaries/games/sf2.png");
     }
 
     public void draw(long frame, Scene1c64 screen) {
