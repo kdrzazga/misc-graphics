@@ -24,6 +24,6 @@ public class StaticData {
     static List<String> messages3 = Arrays.asList(
             " ".repeat(2) + "In the beginning",
             " ".repeat(9) + "  let's just change some colors",
-            " ".repeat(2) + "and make some border tricks."
+            "and perform some border tricks."
     );
 }

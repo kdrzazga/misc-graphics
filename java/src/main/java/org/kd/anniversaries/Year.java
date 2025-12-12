@@ -9,12 +9,13 @@ public abstract class Year {
 
     protected final BitmapFont zxSpectrumFont;
     protected final String statementPath;
+    protected long startingFrame;
     private boolean alreadySaid = false;
     private final Music statement;
 
-    public abstract void draw(long frame, Scene1c64 screen);
 
-    protected Year(String statementPath) {
+    protected Year(String statementPath, long startingFrame) {
+        this.startingFrame = startingFrame;
         this.statementPath = statementPath;
         this.statement = Gdx.audio.newMusic(Gdx.files.internal(statementPath));
         zxSpectrumFont = C64Helper.createFont(32, "zx-spectrum.ttf");
@@ -25,5 +26,11 @@ public abstract class Year {
             this.statement.play();
             this.alreadySaid = true;
         }
+    }
+
+    abstract void draw(long frame, Scene1c64 screen);
+
+    public long getStartingFrame() {
+        return startingFrame;
     }
 }

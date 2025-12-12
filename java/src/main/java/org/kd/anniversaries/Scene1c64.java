@@ -9,22 +9,27 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import org.kd.common.*;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class Scene1c64 extends BasicC64Screen {
+
+    private final long startAnniversariesDisplay = 4109;
+
     SpriteBatch batch2;
     BitmapFont normalFont;
-    private List<Sprite> letters;
     private ShapeRenderer shapeRenderer;
     private TravellingLogo logoSprite;
     private Music gravitationRamos;
     private int bottomLimit = 170;
     private Year2021 year2021;
+    private Year2016 year2016;
+    private Year2011 year2011;
     private Year2006 year2006;
     private Year2001 year2001;
+    private Year1996 year1996;
+    private Year1991 year1991;
+    private Year1986 year1986;
     private Year1981 year1981;
     private Year1976 year1976;
 
@@ -35,42 +40,28 @@ public class Scene1c64 extends BasicC64Screen {
     @Override
     public void create() {
         super.create();
-        this.year2021 = new Year2021();
-        this.year2006 = new Year2006();
-        this.year2001 = new Year2001();
-        this.year1981 = new Year1981();
-        this.year1976 = new Year1976();
+
+        this.year2021 = new Year2021(startAnniversariesDisplay + 50);
+        this.year2016 = new Year2016(this.year2021.getStartingFrame() + 400);
+        this.year2011 = new Year2011(this.year2016.getStartingFrame() + 400);
+        this.year2006 = new Year2006(this.year2011.getStartingFrame() + 400);
+        this.year2001 = new Year2001(this.year2006.getStartingFrame() + 400);
+        this.year1996 = new Year1996(this.year2001.getStartingFrame() + 400);
+        this.year1991 = new Year1991(this.year1996.getStartingFrame() + 400);
+        this.year1986 = new Year1986(this.year1991.getStartingFrame() + 400);
+        this.year1981 = new Year1981(this.year1986.getStartingFrame() + 400);
+        this.year1976 = new Year1976(this.year1981.getStartingFrame() + 400);
         this.createMusic();
 
         this.batch2 = new SpriteBatch(2);
         normalFont = C64Helper.createFont(16, "C64_Pro_Mono-STYLE.ttf");
         normalFont.setColor(C64Colors.LIGHT_BLUE.toBadlogicColor());
-        letters = new ArrayList<>(5);
         var logoTxtr = new Texture(Gdx.files.internal("anniversaries/logo.png"));
         this.logoSprite = new TravellingLogo(logoTxtr, Globals.SCREEN_WIDTH, 110, 1000, 50);
         this.logoSprite.colorize(C64Colors.LIGHT_BLUE);
         this.logoSprite.spriteSpeed = 300f;
 
-        AtomicReference<Float> shift2 = new AtomicReference<>((float) 0);
-        Arrays.asList("m.png", "e.png", "r.png", "r.png", "y.png").forEach(picPath -> {
-            initSprite(picPath, new AtomicReference<>((float) 0), letters);
-            var letter = letters.get(letters.size() - 1);
-            letter.setX(100 * (shift2.get() + 1));
-            letter.setY(Globals.SCREEN_HEIGHT - 220);
-            letter.setScale(0.2f, 0.2f);
-            shift2.set(shift2.get() + 1);
-        });
-
         shapeRenderer = new ShapeRenderer();
-    }
-
-    private void initSprite(String picPath, AtomicReference<Float> shift, List<Sprite> spriteList) {
-        var texture = new Texture("winter/" + picPath);
-        var sprite = new Sprite(texture);
-        sprite.setX(2 * 100 + shift.get());
-        sprite.setY(2 * 160 + shift.get());
-        shift.set(shift.get() - 30);
-        spriteList.add(sprite);
     }
 
     @Override
@@ -82,30 +73,8 @@ public class Scene1c64 extends BasicC64Screen {
                 if (this.logoSprite.getX() < -355 || this.logoSprite.getX() > 260)
                     this.logoSprite.changeDirection();
         }
-
-        System.out.print(frame + " ");
-        if (frame > 1499 && frame % 3 == 0) {
-        }
-
-        if (frame > 2730 && frame % 2 == 0) {
-        }
-
         if (frame > 3255) {
-            System.out.println("\n\n\nElapsed time " + C64Helper.countElapsedTime());
-        }
-
-        if (frame > 3400 && frame % 2 == 0) {
-            if (letters.get(0).getY() > 360) {
-                letters.get(0).setY(letters.get(0).getY() - 1);
-                letters.get(4).setY(letters.get(4).getY() - 1);
-            }
-        }
-/*
-        if (frame > 3530 && frame % 4 == 0 && christmasTree.getScaleY() < 1 - 0.05f) {
-            christmasTree.setScale(1, christmasTree.getScaleY() + 0.05f);
-        }
-*/
-        if (frame > 8600 && frame < 8800) {
+            System.out.println("\n".repeat(50) + " Elapsed time " + C64Helper.countElapsedTime() + " Frame: " + frame);
         }
     }
 
@@ -115,73 +84,37 @@ public class Scene1c64 extends BasicC64Screen {
 
         long frame = Gdx.graphics.getFrameId();
 
-        if (frame == 4400) {
+        if (frame == 3570) {
             this.borderColor = C64Colors.BLACK;
         }
-        if (frame > 4400 && frame < 4917) {
-            this.shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-            this.shapeRenderer.setColor(this.borderColor.toBadlogicColor());
-            this.shapeRenderer.rect(0, 0, 800, this.bottomLimit);
-            this.shapeRenderer.end();
+        if (frame > 3570 && frame < 3570 + 517) {
+            hideBottomPart();
         }
 
         batch2.begin();
+        textWall(StaticData.messages1, frame, 800, 1811);
+        textWall(StaticData.messages2, frame, 1850, 2922);
+        textWall(StaticData.messages3, frame, 3000, 3600);
 
-        if (frame > 6000) {
-            letters.forEach(letter -> letter.draw(batch2));
-        }
-
-        textWall(StaticData.messages1, frame, 800, 2350);
-        textWall(StaticData.messages2, frame, 2360, 3930);
-        textWall(StaticData.messages3, frame, 3940, 4600);
-
-        if (frame > 4470) {
+        if (frame > 3670) {
             this.logoSprite.colorize(C64Colors.WHITE);
             if (frame % 5 == 0 && this.logoSprite.getSprite().getY() > 10) {
                 var sprite = this.logoSprite.getSprite();
                 sprite.setY(sprite.getY() - 1);
             }
 
-            boolean extraCondition = frame > 4502 || frame % 2 == 1;
+            boolean extraCondition = frame > 3702 || frame % 2 == 1;
             if (this.bottomLimit < 550 && extraCondition) {
                 this.bottomLimit++;
             }
         }
 
-        if (frame > 4590) {
+        if (frame > 3790) {
             conditionallyColorizeLogo(frame);
         }
 
-        if (frame == 4900) {
-            this.blinkingCursor = false;
-        } else if (frame > 4917 && frame < 5700) {
-            this.borderColor = C64Colors.DARK_GRAY;
-            this.year2021.sayItOnce();
-            this.year2021.draw(frame, this);
-
-        } else if (frame <= 5700) {
-            //2016
-        } else if (frame < 6000) {
-            //2011
-        } else if (frame < 6250) {
-            this.year2006.sayItOnce();
-            this.year2006.draw(frame, this);
-        } else if (frame < 6500) {
-            this.year2001.sayItOnce();
-            this.year2001.draw(frame, this);
-        } else if (frame < 6750) {
-            //1996
-        } else if (frame < 7000) {
-            //1991
-        } else if (frame < 7250) {
-            //1986
-        } else if (frame < 7500) {
-            this.year1981.sayItOnce();
-            this.year1981.draw(frame, this);
-        } else if (frame < 8000) {
-            this.year1976.sayItOnce();
-            this.year1976.draw(frame, this);
-        }
+        if (frame > startAnniversariesDisplay)
+            displayAnniversary(frame);
 
         if (frame > 10) {
             this.logoSprite.draw(batch2, Globals.SCREEN_WIDTH, Globals.SCREEN_HEIGHT);
@@ -189,6 +122,31 @@ public class Scene1c64 extends BasicC64Screen {
             this.gravitationRamos.play();
         }
         batch2.end();
+    }
+
+    private void hideBottomPart() {
+        this.shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+        this.shapeRenderer.setColor(this.borderColor.toBadlogicColor());
+        this.shapeRenderer.rect(0, 0, 800, this.bottomLimit);
+        this.shapeRenderer.end();
+    }
+
+    private void displayAnniversary(long frame) {
+        this.blinkingCursor = false;
+
+        var allYears = Arrays.asList(this.year2021, this.year2016, this.year2011, this.year2006, this.year2001, this.year1996, this.year1991, this.year1986, this.year1981, this.year1976);
+
+        for (int i = 0; i < allYears.size() - 1; i++) {
+            if (frame > allYears.get(i).startingFrame && frame < allYears.get(i + 1).startingFrame) {
+                this.borderColor = C64Colors.DARK_GRAY;
+                allYears.get(i).sayItOnce();
+                allYears.get(i).draw(frame, this);
+            }
+        }
+        if (frame > this.year1976.startingFrame) {
+            this.year1976.sayItOnce();
+            this.year1976.draw(frame, this);
+        }
     }
 
     private void conditionallyColorizeLogo(long frame) {
@@ -213,7 +171,7 @@ public class Scene1c64 extends BasicC64Screen {
     private void textWall(List<String> messages, long frame, int veryInitialFrame, int endFrame) {
         for (int i = 0; i < messages.size(); i++) {
             int fontSize = 22 * (i + 1);
-            drawMessage(batch2, normalFont, frame, veryInitialFrame + 200 * i, endFrame, messages.get(i), fontSize);
+            drawMessage(batch2, normalFont, frame, veryInitialFrame + 150 * i, endFrame, messages.get(i), fontSize);
         }
     }
 
