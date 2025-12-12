@@ -7,7 +7,7 @@ import org.kd.common.C64Helper;
 
 public abstract class Year {
 
-    public static final long DEFAULT_DURATION = 400;
+    public static final long DEFAULT_DURATION = 600;
 
     protected final BitmapFont zxSpectrumFont;
     protected final String statementPath;
