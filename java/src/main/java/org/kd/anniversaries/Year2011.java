@@ -15,6 +15,8 @@ public class Year2011 extends Year {
         zxSpectrumFont.draw(screen.batch2, "2011", 300, 570);
         if (frame < this.endFrame) {
             screen.backgroundTexture = this.motorola;
+            if (frame > startingFrame + Year.DEFAULT_DURATION / 3)
+                c64Font.draw(screen.batch2, "January 4, 2011 - Motorola ceased to exist", 87, 535);
         }
     }
 }

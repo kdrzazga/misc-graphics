@@ -14,6 +14,7 @@ public class Year1986 extends Year {
     public void draw(long frame, Scene1c64 screen) {
         zxSpectrumFont.draw(screen.batch2, "1986", 300, 570);
         if (frame < this.endFrame) {
+            c64Font.draw(screen.batch2, "  Sinclair released ZX Spectrum +2", 128, 478);
             screen.backgroundTexture = this.spectrum;
         }
     }

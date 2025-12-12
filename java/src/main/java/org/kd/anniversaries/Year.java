@@ -3,13 +3,19 @@ package org.kd.anniversaries;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import org.kd.common.C64Helper;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Year {
 
     public static final long DEFAULT_DURATION = 600;
 
+    protected List<String> messages;
     protected final BitmapFont zxSpectrumFont;
+    protected final BitmapFont c64Font;
     protected final String statementPath;
     protected long startingFrame;
     protected long endFrame;
@@ -23,6 +29,8 @@ public abstract class Year {
         this.statementPath = statementPath;
         this.statement = Gdx.audio.newMusic(Gdx.files.internal(statementPath));
         zxSpectrumFont = C64Helper.createFont(32, "zx-spectrum.ttf");
+        c64Font = C64Helper.createFont(15, "C64_Pro_Mono-STYLE.ttf");
+        this.messages = new ArrayList<>(1);
     }
 
     public void sayItOnce() {
@@ -30,6 +38,10 @@ public abstract class Year {
             this.statement.play();
             this.alreadySaid = true;
         }
+    }
+
+    public void writeMessage(SpriteBatch batch, String message, float x, float y){
+        c64Font.draw(batch, message, x, y);
     }
 
     abstract void draw(long frame, Scene1c64 screen);

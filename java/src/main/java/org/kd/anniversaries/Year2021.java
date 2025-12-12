@@ -17,8 +17,15 @@ public class Year2021 extends Year {
         zxSpectrumFont.draw(screen.batch2, "2021", 300, 570);
         if (frame < startingFrame + Year.DEFAULT_DURATION / 2) {
             screen.backgroundTexture = this.raspberryPI;
+
+            if (frame > startingFrame + Year.DEFAULT_DURATION / 5) {
+                c64Font.draw(screen.batch2, "Raspberry PI ZERO W", 255, 460);
+                c64Font.draw(screen.batch2, "was introduced in October 2011", 180, 444);
+            }
         } else if (frame < endFrame) {
             screen.backgroundTexture = this.win11Logo;
+            if (frame > startingFrame + 2 * Year.DEFAULT_DURATION / 3)
+                c64Font.draw(screen.batch2, "Windows 11 was released on June 24, 2011", 98, 535);
         }
     }
 }
