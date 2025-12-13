@@ -20,9 +20,11 @@ public class Year2006 extends Year {
         if (frame < this.startingFrame + 0.4 * Year.DEFAULT_DURATION) {
             screen.backgroundTexture = this.googleYT;
             c64Font.draw(screen.batch2, "Google acquired YouTube for $1.65 billion", 93, 535);
+
         } else if (frame < this.startingFrame + 0.7 * DEFAULT_DURATION) {
             screen.backgroundTexture = this.twitter1;
             c64Font.draw(screen.batch2, "Jack Dorsey,Biz Stone,Noah Glass,and Evan Williams", 28, 535);
+
         } else if (frame < this.endFrame) {
             c64Font.draw(screen.batch2, " founded TWITTER in March 2006", 203, 535);
             screen.backgroundTexture = this.twitter2;

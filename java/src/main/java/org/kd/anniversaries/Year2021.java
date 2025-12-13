@@ -9,7 +9,7 @@ public class Year2021 extends Year {
 
     Year2021(long startingFrame) {
         super("anniversaries/ya/5 years ago.mp3", startingFrame);
-        this.raspberryPI = new Texture("anniversaries/computers/RaspberriPi2zero.png");
+        this.raspberryPI = new Texture("anniversaries/HW/RaspberriPi2zero.png");
         this.win11Logo = new Texture("anniversaries/os/win11.png");
     }
 

@@ -17,7 +17,7 @@ public class Year1991 extends Year {
         this.python = new Texture("anniversaries/languages/python.png");
         this.thorvalds = new Texture("anniversaries/os/LinusT.png");
         this.penguin = new Texture("anniversaries/os/Linux-Pinguino.png");
-        this.amiga500plus = new Texture("anniversaries/computers/Amiga500+.png");
+        this.amiga500plus = new Texture("anniversaries/HW/Amiga500+.png");
     }
 
     public void draw(long frame, Scene1c64 screen) {

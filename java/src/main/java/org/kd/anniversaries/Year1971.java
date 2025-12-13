@@ -7,9 +7,9 @@ public class Year1971 extends Year {
     private final Texture xeroxLaserPrinter;
 
     Year1971(long startingFrame) {
-        super("anniversaries/ya/50 years ago.mp3", startingFrame);
+        super("anniversaries/ya/55 years ago.mp3", startingFrame);
         this.endFrame -= 2 * Year.DEFAULT_DURATION / 3;
-        this.xeroxLaserPrinter = new Texture("anniversaries/computers/xerox-parc-printer.png");//TODO
+        this.xeroxLaserPrinter = new Texture("anniversaries/HW/xerox-parc-printer.png");
     }
 
     public void draw(long frame, Scene1c64 screen) {
