@@ -14,7 +14,7 @@ import java.util.List;
 
 public class Scene1c64 extends BasicC64Screen {
 
-    private final long startAnniversariesDisplay = 4109;
+    private final long startAnniversariesDisplay = 4099;
 
     SpriteBatch batch2;
     BitmapFont normalFont;
@@ -155,8 +155,10 @@ public class Scene1c64 extends BasicC64Screen {
         textWall(StaticData.outroMessages1, frame, Math.round(this.outroBeginFrame + 300), Math.round(this.outroBeginFrame + 700));
         textWall(StaticData.outroMessages2, frame, Math.round(this.outroBeginFrame + 750), Math.round(this.outroBeginFrame + 1200));
 
-        if (frame == this.outroBeginFrame + 1200)
+        if (frame == this.outroBeginFrame + 1200) {
+            this.gravitationRamos.stop();
             thanksForWatching.play();
+        }
         else if (frame > this.outroBeginFrame + 1400) {
             Gdx.app.exit();
             System.out.println("\n".repeat(50) + "End demo: " + C64Helper.countElapsedTime() + " frame = " + frame);
