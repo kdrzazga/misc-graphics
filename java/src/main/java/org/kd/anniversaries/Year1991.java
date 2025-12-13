@@ -9,15 +9,17 @@ public class Year1991 extends Year {
     private final Texture penguin;
     private final Texture amigaOs2;
     private final Texture amiga500plus;
+    private final Texture www;
 
     Year1991(long startingFrame) {
         super("anniversaries/ya/35 years ago.mp3", startingFrame);
-        this.endFrame = Math.round(startingFrame + 3.5 * Year.DEFAULT_DURATION);
+        this.endFrame = Math.round(startingFrame + 4.3 * Year.DEFAULT_DURATION);
         this.amigaOs2 = new Texture("anniversaries/os/amigaos.png");
         this.python = new Texture("anniversaries/languages/python.png");
         this.thorvalds = new Texture("anniversaries/os/LinusT.png");
         this.penguin = new Texture("anniversaries/os/Linux-Pinguino.png");
         this.amiga500plus = new Texture("anniversaries/HW/Amiga500+.png");
+        this.www = new Texture("anniversaries/apps/www.png");
     }
 
     public void draw(long frame, Scene1c64 screen) {
@@ -38,13 +40,13 @@ public class Year1991 extends Year {
 
         } else if (frame < this.startingFrame + 2.1 * Year.DEFAULT_DURATION) {
             screen.backgroundTexture = this.amigaOs2;
-            c64Font.draw(screen.batch2, "     AmigaOS 2.0 released in August 1991", 93, 535);
+            c64Font.draw(screen.batch2, "AmigaOS 2.0 was released in August 1991", 93, 535);
 
         } else if (frame < this.startingFrame + 2.7 * Year.DEFAULT_DURATION) {
             c64Font.draw(screen.batch2, "Commodore company introduced Amiga 500+ in October 1991", 37, 532);
             screen.backgroundTexture = this.amiga500plus;
 
-        } else  {
+        } else if (frame < this.startingFrame + 3.5 * Year.DEFAULT_DURATION)  {
             if (frame < this.startingFrame + 2.9 * Year.DEFAULT_DURATION)
                 c64Font.draw(screen.batch2, "Guido van Rossum developed", 98, 532);
             else if (frame < this.startingFrame + 3.1 * Year.DEFAULT_DURATION)
@@ -54,6 +56,12 @@ public class Year1991 extends Year {
             else
                 c64Font.draw(screen.batch2, "'Monty Python flying circus' ", 163, 532);
             screen.backgroundTexture = this.python;
+        } else {
+            c64Font.draw(screen.batch2, "World Wide Web", 163, 532);
+            c64Font.draw(screen.batch2, "On Aug 6, 1991 Tim Berners-Lee presented", 100, 495);
+            c64Font.draw(screen.batch2, "The World Wide Web project", 100, 475);
+            c64Font.draw(screen.batch2, "First website: http://info.cern.ch", 100, 435);
+            screen.backgroundTexture = this.www;
         }
     }
 }

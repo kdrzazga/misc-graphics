@@ -33,6 +33,8 @@ public class Scene1c64 extends BasicC64Screen {
     private Year1981 year1981;
     private Year1976 year1976;
     private Year1971 year1971;
+    private long outroBeginFrame;
+    private Music thanksForWatching;
 
     public Scene1c64(String id) {
         super(id);
@@ -53,6 +55,7 @@ public class Scene1c64 extends BasicC64Screen {
         this.year1981 = new Year1981(this.year1986.getEndFrame());
         this.year1976 = new Year1976(this.year1981.getEndFrame());
         this.year1971 = new Year1971(this.year1976.getEndFrame());
+        outroBeginFrame = this.year1971.getEndFrame() + 300;
         this.createMusic();
 
         this.batch2 = new SpriteBatch(2);
@@ -89,7 +92,7 @@ public class Scene1c64 extends BasicC64Screen {
         if (frame == 3570) {
             this.borderColor = C64Colors.BLACK;
         }
-        if (frame > 3570 && frame < 3570 + 517) {
+        if (frame > 3570 && frame < 3570 + 527) {
             hideBottomPart();
         }
 
@@ -115,7 +118,7 @@ public class Scene1c64 extends BasicC64Screen {
             conditionallyColorizeLogo(frame);
         }
 
-        if (frame > startAnniversariesDisplay && frame <= this.year1971.getEndFrame() + Year.DEFAULT_DURATION/2)
+        if (frame > startAnniversariesDisplay && frame <= this.year1971.getEndFrame() + Year.DEFAULT_DURATION / 2)
             displayAnniversary(frame);
 
         if (frame > 10) {
@@ -130,7 +133,36 @@ public class Scene1c64 extends BasicC64Screen {
                 ls.setY(ls.getY() + 2);
         }
 
+        if (frame > outroBeginFrame) {
+            this.outro();
+        }
+
         batch2.end();
+    }
+
+    private void outro() {
+        this.backgroundScreenPng = "c64.png";
+        backgroundTexture = new Texture(Gdx.files.internal(this.backgroundScreenPng));
+        this.blinkingCursor = true;
+
+        long frame = Gdx.graphics.getFrameId();
+
+        if (frame > this.outroBeginFrame + 200) {
+            this.borderColor = C64Colors.LIGHT_BLUE;
+            this.logoSprite.colorize(C64Colors.BLUE);
+        }
+
+        textWall(StaticData.outroMessages1, frame, Math.round(this.outroBeginFrame + 300), Math.round(this.outroBeginFrame + 700));
+        textWall(StaticData.outroMessages2, frame, Math.round(this.outroBeginFrame + 750), Math.round(this.outroBeginFrame + 1200));
+
+        if (frame == this.outroBeginFrame + 1200)
+            thanksForWatching.play();
+        else if (frame > this.outroBeginFrame + 1400) {
+            Gdx.app.exit();
+            System.out.println("\n".repeat(50) + "End demo: " + C64Helper.countElapsedTime() + " frame = " + frame);
+            this.dispose();
+            System.exit(0);
+        }
     }
 
     private void hideBottomPart() {
@@ -161,6 +193,9 @@ public class Scene1c64 extends BasicC64Screen {
     }
 
     private void conditionallyColorizeLogo(long frame) {
+        if (frame > this.outroBeginFrame + 200)
+            return;
+
         if (frame % 1200 < 150)
             this.logoSprite.colorize(C64Colors.YELLOW);
         else if (frame % 1200 < 300)
@@ -189,7 +224,6 @@ public class Scene1c64 extends BasicC64Screen {
     private void drawMessage(SpriteBatch batch, BitmapFont font, long currentFrame, int startFrame, int endFrame, String msg, int shiftY) {
         if (currentFrame > startFrame && currentFrame < endFrame) {
             font.draw(batch, msg, 81, 406 - shiftY);
-
         }
     }
 
@@ -204,6 +238,8 @@ public class Scene1c64 extends BasicC64Screen {
         gravitationRamos = Gdx.audio.newMusic(Gdx.files.internal("anniversaries/Gravitation.mp3"));
         gravitationRamos.setLooping(false);
         gravitationRamos.setVolume(2f);
+
+        thanksForWatching = Gdx.audio.newMusic(Gdx.files.internal("anniversaries/Thanks for watching.mp3"));
     }
 
     private void flyCaptionSprite(Sprite s, int i) {
