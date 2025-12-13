@@ -36,7 +36,9 @@ public class StaticData {
             " ".repeat(2) + "CODE: KD",
             " ".repeat(2) + "MSX:  Gravitation by RAMOS",
             " ".repeat(2) + "https://csdb.dk/sid/?id=39487",
-            " ",
+            " "
+    );
+    static List<String> outroMessages3 = Arrays.asList(
             "All pictures in this demo are either in",
             "KOALA or ART-STUDIO format and quality."
     );

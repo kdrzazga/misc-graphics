@@ -155,10 +155,13 @@ public class Scene1c64 extends BasicC64Screen {
         textWall(StaticData.outroMessages1, frame, Math.round(this.outroBeginFrame + 300), Math.round(this.outroBeginFrame + 700));
         textWall(StaticData.outroMessages2, frame, Math.round(this.outroBeginFrame + 750), Math.round(this.outroBeginFrame + 1200));
 
+        textWall(StaticData.outroMessages3, frame, Math.round(this.outroBeginFrame + 1200), Math.round(this.outroBeginFrame + 1650));
+
         if (frame == this.outroBeginFrame + 1200) {
             this.gravitationRamos.stop();
             thanksForWatching.play();
         }
+
         else if (frame > this.outroBeginFrame + 1650) {
             Gdx.app.exit();
             System.out.println("\n".repeat(50) + "End demo: " + C64Helper.countElapsedTime() + " frame = " + frame);
