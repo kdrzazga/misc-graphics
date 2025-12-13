@@ -1,6 +1,7 @@
 package org.kd.anniversaries;
 
 import com.badlogic.gdx.graphics.Texture;
+import org.kd.common.C64Colors;
 
 public class Year2006 extends Year {
 
@@ -26,7 +27,7 @@ public class Year2006 extends Year {
             c64Font.draw(screen.batch2, "Jack Dorsey,Biz Stone,Noah Glass,and Evan Williams", 28, 535);
 
         } else if (frame < this.endFrame) {
-            c64Font.draw(screen.batch2, " founded TWITTER in March 2006", 203, 535);
+            c64Font.draw(screen.batch2, " founded TWITTER in March 2006", 183, 535);
             screen.backgroundTexture = this.twitter2;
         }
     }

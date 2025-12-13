@@ -13,7 +13,7 @@ public class Year1991 extends Year {
 
     Year1991(long startingFrame) {
         super("anniversaries/ya/35 years ago.mp3", startingFrame);
-        this.endFrame = Math.round(startingFrame + 4.3 * Year.DEFAULT_DURATION);
+        this.endFrame = Math.round(startingFrame + 4.4 * Year.DEFAULT_DURATION);
         this.amigaOs2 = new Texture("anniversaries/os/amigaos.png");
         this.python = new Texture("anniversaries/languages/python.png");
         this.thorvalds = new Texture("anniversaries/os/LinusT.png");
@@ -60,7 +60,10 @@ public class Year1991 extends Year {
             c64Font.draw(screen.batch2, "World Wide Web", 163, 532);
             c64Font.draw(screen.batch2, "On Aug 6, 1991 Tim Berners-Lee presented", 100, 495);
             c64Font.draw(screen.batch2, "The World Wide Web project", 100, 475);
-            c64Font.draw(screen.batch2, "First website: http://info.cern.ch", 100, 435);
+            if (frame > this.endFrame - 0.3 * Year.DEFAULT_DURATION) {
+                c64Font.draw(screen.batch2, "First website:", 100, 435);
+                c64Font.draw(screen.batch2, "http://info.cern.ch", 100, 415);
+            }
             screen.backgroundTexture = this.www;
         }
     }
