@@ -32,6 +32,7 @@ public class Scene1c64 extends BasicC64Screen {
     private Year1986 year1986;
     private Year1981 year1981;
     private Year1976 year1976;
+    private Year1971 year1971;
 
     public Scene1c64(String id) {
         super(id);
@@ -51,6 +52,7 @@ public class Scene1c64 extends BasicC64Screen {
         this.year1986 = new Year1986(this.year1991.getEndFrame());
         this.year1981 = new Year1981(this.year1986.getEndFrame());
         this.year1976 = new Year1976(this.year1981.getEndFrame());
+        this.year1971 = new Year1971(this.year1976.getEndFrame());
         this.createMusic();
 
         this.batch2 = new SpriteBatch(2);
@@ -113,7 +115,7 @@ public class Scene1c64 extends BasicC64Screen {
             conditionallyColorizeLogo(frame);
         }
 
-        if (frame > startAnniversariesDisplay)
+        if (frame > startAnniversariesDisplay && frame <= this.year1971.getEndFrame() + Year.DEFAULT_DURATION/2)
             displayAnniversary(frame);
 
         if (frame > 10) {
@@ -121,6 +123,13 @@ public class Scene1c64 extends BasicC64Screen {
 
             this.gravitationRamos.play();
         }
+
+        if (frame > this.year1971.getEndFrame()) {
+            var ls = this.logoSprite.getSprite();
+            if (ls.getY() < 500)
+                ls.setY(ls.getY() + 2);
+        }
+
         batch2.end();
     }
 
@@ -134,7 +143,9 @@ public class Scene1c64 extends BasicC64Screen {
     private void displayAnniversary(long frame) {
         this.blinkingCursor = false;
 
-        var allYears = Arrays.asList(this.year2021, this.year2016, this.year2011, this.year2006, this.year2001, this.year1996, this.year1991, this.year1986, this.year1981, this.year1976);
+        var allYears = Arrays.asList(this.year2021, this.year2016, this.year2011
+                , this.year2006, this.year2001, this.year1996, this.year1991, this.year1986
+                , this.year1981, this.year1976, this.year1971);
 
         for (int i = 0; i < allYears.size() - 1; i++) {
             if (frame > allYears.get(i).startingFrame && frame < allYears.get(i + 1).startingFrame) {
@@ -143,9 +154,9 @@ public class Scene1c64 extends BasicC64Screen {
                 allYears.get(i).draw(frame, this);
             }
         }
-        if (frame > this.year1976.startingFrame) {
-            this.year1976.sayItOnce();
-            this.year1976.draw(frame, this);
+        if (frame > this.year1971.startingFrame && frame <= this.year1971.getEndFrame()) {
+            this.year1971.sayItOnce();
+            this.year1971.draw(frame, this);
         }
     }
 
