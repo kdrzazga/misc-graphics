@@ -65,9 +65,12 @@ PLaystation
 
 
 **1991** 7000
-- The World Wide Web was publicly debuted by Tim Berners-Lee. (Aug 6, 1991)
+- The World Wide Web project was publicly debuted by Tim Berners-Lee. (Aug 6, 1991)
+first website: http://info.cern.ch
+
 - Linux kernel 1.0 was released (Oct 5 1991)
 AmigaOS 2.0 – August 1991
+amiga 500 + October 1991
 
 Python February 1991
 
@@ -106,10 +109,13 @@ The Atari 400/800 was released, targeting the home and educational markets.
 **1976** 8000
 - Apple Computer was founded by Steve Jobs, Steve Wozniak, and Ronald Wayne.
 - The Cray-1 supercomputer was introduced.
+- intel 8085 - 8 bit processor
 - The first laser printer was developed.
 - The Altair 8800 was released, sparking the microcomputer revolution.
 - Microsoft was officially founded (though in 1975, it became a corporation in 1981).
 The Altair 8800 was released, sparking the personal computer revolution.
 The Apple I was introduced, laying the groundwork for Apple Inc.
+
+**1971** Xerox PARC EARS - first prototype of laser printer
 
 Pong

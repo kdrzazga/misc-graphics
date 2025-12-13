@@ -26,4 +26,15 @@ public class StaticData {
             " ".repeat(9) + "  let's just change some colors",
             "and perform some border tricks."
     );
+
+    static List<String> outroMessages1 = Arrays.asList(
+            " ".repeat(2) + "Thank you for watching...",
+            "Quite a lot happened in recent 55 years.",
+            "1991 was significantly fruitful."
+    );
+    static List<String> outroMessages2 = Arrays.asList(
+            " ".repeat(2) + "CODE: KD",
+            " ".repeat(2) + "MSX:  Gravitation by RAMOS",
+            " ".repeat(2) + "https://csdb.dk/sid/?id=39487"
+    );
 }

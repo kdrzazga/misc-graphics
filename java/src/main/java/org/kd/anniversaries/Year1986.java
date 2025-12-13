@@ -8,7 +8,7 @@ public class Year1986 extends Year {
 
     Year1986(long startingFrame) {
         super("anniversaries/ya/40 years ago.mp3", startingFrame);
-        this.spectrum = new Texture("anniversaries/computers/zxSpectrum+2.png");
+        this.spectrum = new Texture("anniversaries/HW/zxSpectrum+2.png");
     }
 
     public void draw(long frame, Scene1c64 screen) {
