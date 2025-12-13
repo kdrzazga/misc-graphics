@@ -159,7 +159,7 @@ public class Scene1c64 extends BasicC64Screen {
             this.gravitationRamos.stop();
             thanksForWatching.play();
         }
-        else if (frame > this.outroBeginFrame + 1400) {
+        else if (frame > this.outroBeginFrame + 1650) {
             Gdx.app.exit();
             System.out.println("\n".repeat(50) + "End demo: " + C64Helper.countElapsedTime() + " frame = " + frame);
             this.dispose();

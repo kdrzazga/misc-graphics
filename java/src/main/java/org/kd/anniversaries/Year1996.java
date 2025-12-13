@@ -37,7 +37,7 @@ public class Year1996 extends Year {
             screen.backgroundTexture = this.java;
 
         } else if (frame < this.endFrame) {
-            if (frame < this.startingFrame + 1.2 * DEFAULT_DURATION)
+            if (frame < this.startingFrame + 1.35 * DEFAULT_DURATION)
                 c64Font.draw(screen.batch2, "In December 1996 flagship product of Sony", 90, 535);
             else c64Font.draw(screen.batch2, " became available in South Africa :D", 90, 535);
             screen.backgroundTexture = this.playstation;
