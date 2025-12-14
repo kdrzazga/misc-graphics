@@ -16,6 +16,10 @@ public class WishesHelper {
         }
     }
 
-    static List<String> initialLoading = List.of("LOAD \"SNOW\"", "", "PRESS PLAY ON TAPE", "OK", "", "SEARCHING FOR SNOW", "FOUND SNOW"
+    static List<String> initialLoading = List.of("LOAD \"SNOW & MUSIC\"", "", "PRESS PLAY ON TAPE", "OK", "", "SEARCHING FOR SNOW & MUSIC", "FOUND SNOW & MUSIC"
             , "LOADING", "READY.");
+
+    static List<String> running1 = List.of("RUN", "", "Staring SNOW and MUSIC playback...", "", "READY.");
+    static List<String> running3 = List.of("POKE 53280, 1 : POKE 646, 1", "", "READY.");
+    static final long KOLENDA_STARTING_FRAME = 400;
 }

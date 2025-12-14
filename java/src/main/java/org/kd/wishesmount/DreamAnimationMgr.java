@@ -12,7 +12,7 @@ import java.util.Arrays;
 public class DreamAnimationMgr extends ApplicationAdapter {
     SpriteBatch batch;
     SceneManager sceneManager;
-    private Music kolendaRamosa;
+    private Music kolenda;
 
     @Override
     public void create() {
@@ -25,9 +25,9 @@ public class DreamAnimationMgr extends ApplicationAdapter {
             s.create();
             sceneManager.addScene(s.id, s);
         });
-
         sceneManager.switchScene("scene1");
     }
+
 
     @Override
     public void render() {
@@ -41,18 +41,23 @@ public class DreamAnimationMgr extends ApplicationAdapter {
         batch.begin();
         sceneManager.render();
         batch.end();
+
+        long frame = Gdx.graphics.getFrameId();
+
+        if (frame == WishesHelper.KOLENDA_STARTING_FRAME)
+            kolenda.play();
     }
 
     private void createMusic() {
-        kolendaRamosa = Gdx.audio.newMusic(Gdx.files.internal("winter/WsrodNocnejRamos.mp3"));
-        kolendaRamosa.setLooping(false);
-        kolendaRamosa.setVolume(1f);
+        kolenda = Gdx.audio.newMusic(Gdx.files.internal("dream210/Foreign_Carols.mp3"));
+        kolenda.setLooping(false);
+        kolenda.setVolume(1f);
     }
 
     @Override
     public void dispose() {
         batch.dispose();
-        kolendaRamosa.dispose();
+        kolenda.dispose();
         sceneManager.disposeScenes();
     }
 }
