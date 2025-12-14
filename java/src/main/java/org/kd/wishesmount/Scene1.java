@@ -41,7 +41,10 @@ public class Scene1 extends BasicC64Screen {
                 }
             }
             var fontSize = this.standardFont.getLineHeight() + 1;
-            Globals.cursorY = Math.round(Globals.DEFAULT_CURSOR_Y - fontSize * 15);
+
+            if (frame < WishesHelper.KOLENDA_STARTING_FRAME)
+                Globals.cursorY = Math.round(Globals.DEFAULT_CURSOR_Y - fontSize * 15);
+            else Globals.cursorY = Math.round(Globals.DEFAULT_CURSOR_Y - fontSize * 14);
         }
 
         if (frame >= WishesHelper.KOLENDA_STARTING_FRAME) {
