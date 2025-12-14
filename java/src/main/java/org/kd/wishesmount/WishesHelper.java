@@ -20,6 +20,7 @@ public class WishesHelper {
             , "LOADING", "READY.");
 
     static List<String> running1 = List.of("RUN", "", "Staring SNOW and MUSIC playback...", "", "READY.");
-    static List<String> running3 = List.of("POKE 53280, 1 : POKE 646, 1", "", "READY.");
+    static List<String> running2 = List.of("POKE 53280, 1 : POKE 646, 1", "");
     static final long KOLENDA_STARTING_FRAME = 400;
+    static final long POKE_WHITE_ST_FRAME = KOLENDA_STARTING_FRAME + 750;
 }

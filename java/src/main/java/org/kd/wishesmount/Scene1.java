@@ -4,6 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import org.kd.common.BasicC64Screen;
+import org.kd.common.C64Colors;
+import org.kd.common.C64Helper;
 import org.kd.common.Globals;
 import org.kd.common.winter.WinterEffects;
 
@@ -44,7 +46,13 @@ public class Scene1 extends BasicC64Screen {
 
             if (frame < WishesHelper.KOLENDA_STARTING_FRAME)
                 Globals.cursorY = Math.round(Globals.DEFAULT_CURSOR_Y - fontSize * 15);
-            else Globals.cursorY = Math.round(Globals.DEFAULT_CURSOR_Y - fontSize * 14);
+            else if (frame < WishesHelper.POKE_WHITE_ST_FRAME)
+                Globals.cursorY = Math.round(Globals.DEFAULT_CURSOR_Y - fontSize * 14);
+            else {
+                Globals.cursorY = Math.round(Globals.DEFAULT_CURSOR_Y - fontSize * 18 + 3);
+                this.borderColor = C64Colors.WHITE;
+                Globals.CURSOR_COLOR = C64Colors.WHITE;
+            }
         }
 
         if (frame >= WishesHelper.KOLENDA_STARTING_FRAME) {
@@ -75,6 +83,16 @@ public class Scene1 extends BasicC64Screen {
             for (int i = 0; i < WishesHelper.running1.size(); i++) {
                 float y = (Globals.DEFAULT_CURSOR_Y - (8 + i) * 16);
                 standardFont.draw(batch2, WishesHelper.running1.get(i), 81, y);
+            }
+
+            if (frame >= WishesHelper.POKE_WHITE_ST_FRAME) {
+                for (int i = 0; i < WishesHelper.running2.size(); i++) {
+                    float y = Globals.DEFAULT_CURSOR_Y - (13 + i) * 16;
+                    standardFont.draw(batch2, WishesHelper.running2.get(i), 81, y);
+                }
+
+                var whiteFont = C64Helper.createFont(15, "C64_Pro_Mono-STYLE.ttf");
+                whiteFont.draw(batch2, "READY.", 81, Math.round(Globals.DEFAULT_CURSOR_Y - 16 * 16 + 2));
             }
         }
         batch2.end();

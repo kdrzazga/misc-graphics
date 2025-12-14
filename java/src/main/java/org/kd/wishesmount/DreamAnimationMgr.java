@@ -21,7 +21,6 @@ public class DreamAnimationMgr extends AnimationManager {
         sceneManager.switchScene("scene1");
     }
 
-
     @Override
     public void render() {
         float delta = Gdx.graphics.getDeltaTime();
