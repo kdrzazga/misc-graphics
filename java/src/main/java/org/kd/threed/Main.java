@@ -9,6 +9,6 @@ public class Main {
         config.title = "3D Rotating Cube";
         config.width = 800;
         config.height = 600;
-        new LwjglApplication(new Gdx3DAnimation(), config);
+        new LwjglApplication(new CubeAnimation(), config);
     }
 }
