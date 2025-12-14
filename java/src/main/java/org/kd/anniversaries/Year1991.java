@@ -54,7 +54,7 @@ public class Year1991 extends Year {
             else if (frame < this.startingFrame + 3.3 * Year.DEFAULT_DURATION)
                 c64Font.draw(screen.batch2, " and named it after British comedian group", 87, 532);
             else
-                c64Font.draw(screen.batch2, "'Monty Python flying circus' ", 163, 532);
+                c64Font.draw(screen.batch2, "Monty Python's flying circus ", 163, 532);
             screen.backgroundTexture = this.python;
         } else {
             c64Font.draw(screen.batch2, "World Wide Web", 163, 532);

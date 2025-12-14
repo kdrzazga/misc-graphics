@@ -1,26 +1,29 @@
 package org.kd.anniversaries;
 
 import com.badlogic.gdx.graphics.Texture;
-import org.kd.common.C64Colors;
 
 public class Year2006 extends Year {
 
     private final Texture twitter1;
     private final Texture twitter2;
     private final Texture googleYT;
+    private final Texture googleNoYT;
 
     Year2006(long startingFrame) {
         super("anniversaries/ya/20 years ago.mp3", startingFrame);
         this.twitter1 = new Texture("anniversaries/apps/twitter.png");
         this.twitter2 = new Texture("anniversaries/apps/twitter2.png");
         this.googleYT = new Texture("anniversaries/apps/googleYT.png");
+        this.googleNoYT = new Texture("anniversaries/apps/googlenoYT.png");
     }
 
     public void draw(long frame, Scene1c64 screen) {
         zxSpectrumFont.draw(screen.batch2, "2006", 300, 570);
         if (frame < this.startingFrame + 0.4 * Year.DEFAULT_DURATION) {
-            screen.backgroundTexture = this.googleYT;
             c64Font.draw(screen.batch2, "Google acquired YouTube for $1.65 billion", 93, 535);
+            if (frame < this.startingFrame + 0.2 * Year.DEFAULT_DURATION)
+                screen.backgroundTexture = this.googleNoYT;
+            else screen.backgroundTexture = this.googleYT;
 
         } else if (frame < this.startingFrame + 0.7 * DEFAULT_DURATION) {
             screen.backgroundTexture = this.twitter1;

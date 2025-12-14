@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.kd</groupId>
-    <artifactId>misc-graphics</artifactId>
+    <artifactId>misc-graphics<!--anniversaries--></artifactId>
     <version>1.0</version>
 
     <properties>
@@ -61,8 +61,8 @@
                         <configuration>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <!--<mainClass>org.kd.anniversaries.AnniversariesDemo</mainClass>-->
-                                    <mainClass>org.kd.winter.WinterDemo</mainClass>
+                                    <mainClass>org.kd.anniversaries.AnniversariesDemo</mainClass>
+                                    <!--<mainClass>org.kd.winter25.WinterDemo</mainClass>-->
                                 </transformer>
                             </transformers>
                         </configuration>
@@ -75,9 +75,9 @@
                 <directory>d:/code/misc-graphics/java/src/main/resources</directory>
                 <excludes>
                     <!-- Remember to use mvn clean before mvn package to get rid of unwanted files
-                    <exclude>fake-demo/**</exclude>
+                    -<exclude>fake-demo/**</exclude>
                     <exclude>hellogdx/**</exclude>
-                    <exclude>anniversaries/**</exclude>
+                    -<exclude>anniversaries/**</exclude>-
                     <exclude>winter/**</exclude>-->
                 </excludes>
             </resource>
