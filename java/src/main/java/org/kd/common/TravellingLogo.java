@@ -7,7 +7,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.utils.ScissorStack;
 
 public class TravellingLogo {
-    Sprite sprite;
+    final Sprite sprite;
     public float spriteSpeed = 100f; // pixels per second
 
     public TravellingLogo(Texture texture, float startX, float startY, float width, float height) {

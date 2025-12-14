@@ -9,5 +9,5 @@ public class Globals {
     static public C64Colors BKG_COLOR = C64Colors.BLUE;
     static public long cursorY = DEFAULT_CURSOR_Y;
 
-    static public long startTime = System.currentTimeMillis();
+    static public final long startTime = System.currentTimeMillis();
 }

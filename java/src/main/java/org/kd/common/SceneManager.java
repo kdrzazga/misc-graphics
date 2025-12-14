@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SceneManager {
-    private Map<String, Scene> scenes = new HashMap<>();
+    private final Map<String, Scene> scenes = new HashMap<>();
     private Scene currentScene;
 
     public void addScene(String name, Scene scene) {
@@ -29,10 +29,6 @@ public class SceneManager {
         if (currentScene != null) {
             currentScene.render();
         }
-    }
-
-    public Scene getScene(int index){
-        return scenes.get(index);
     }
 
     public void disposeScenes() {

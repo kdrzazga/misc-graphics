@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AnimationManager {
-    private Map<String, Scene> scenes = new HashMap<>();
+    private final Map<String, Scene> scenes = new HashMap<>();
     private Scene currentScene;
 
     public void addScene(String name, Scene scene) {

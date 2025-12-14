@@ -5,7 +5,7 @@ import java.util.List;
 
 public class StaticData {
 
-    static List<String> messages1 = Arrays.asList(
+    static final List<String> messages1 = Arrays.asList(
             "Welcome to 'ANNIVERSARIES'- a small demo",
             "        It's already 2026 !!!",
             "  and this year is an anniversary of ",
@@ -13,7 +13,7 @@ public class StaticData {
             "   of computers and widely known IT."
     );
 
-    static List<String> messages2 = Arrays.asList(
+    static final List<String> messages2 = Arrays.asList(
             " ".repeat(5) + "So lemme take you on a journey   ",
             " ".repeat(5) + "  and let's find out together",
             " ".repeat(5) + "  how the IT world looked like  ",
@@ -21,24 +21,24 @@ public class StaticData {
             " ".repeat(5) + "       ...and beyond."
     );
 
-    static List<String> messages3 = Arrays.asList(
+    static final List<String> messages3 = Arrays.asList(
             " ".repeat(2) + "In the beginning",
             " ".repeat(9) + "  let's just change some colors",
             "and perform some border tricks."
     );
 
-    static List<String> outroMessages1 = Arrays.asList(
+    static final List<String> outroMessages1 = Arrays.asList(
             " ".repeat(2) + "Thank you for watching...",
             "Quite a lot happened in recent 55 years.",
             "1991 was significantly fruitful."
     );
-    static List<String> outroMessages2 = Arrays.asList(
+    static final List<String> outroMessages2 = Arrays.asList(
             " ".repeat(2) + "CODE: KD",
             " ".repeat(2) + "MSX:  Gravitation by RAMOS",
             " ".repeat(2) + "https://csdb.dk/sid/?id=39487",
             " "
     );
-    static List<String> outroMessages3 = Arrays.asList(
+    static final List<String> outroMessages3 = Arrays.asList(
             "All pictures in this demo are either in",
             "KOALA or ART-STUDIO format and quality."
     );

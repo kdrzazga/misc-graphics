@@ -39,7 +39,7 @@ public class Scene1 extends BasicC64Screen {
         if (this.snowing) {
             for (int startIndex = 0; startIndex <= 6; startIndex++) {
                 if (snowing && frame > 400 + startIndex * 100) {
-                    WishesHelper.snow(startIndex, this.snowflakes);
+                    WinterEffects.snow(startIndex, this.snowflakes);
                 }
             }
             var fontSize = this.standardFont.getLineHeight() + 1;
@@ -68,31 +68,31 @@ public class Scene1 extends BasicC64Screen {
         batch2.begin();
 
         for (int i = 0; i < WishesHelper.initialLoading.size(); i++) {
-            standardFont.draw(batch2, WishesHelper.initialLoading.get(i), 81, (float) (Globals.DEFAULT_CURSOR_Y - (i - 1) * 16));
+            float y = (Globals.DEFAULT_CURSOR_Y - (i - 1) * 16);
+            standardFont.draw(batch2, WishesHelper.initialLoading.get(i), 81, y);
         }
 
         if (this.snowing) {
+            for (int i = 0; i < WishesHelper.startAppLines.size(); i++) {
+                float y = (Globals.DEFAULT_CURSOR_Y - (8 + i) * 16);
+                standardFont.draw(batch2, WishesHelper.startAppLines.get(i), 81, y);
+            }
+
+            if (frame >= WishesHelper.POKE_WHITE_ST_FRAME) {
+                for (int i = 0; i < WishesHelper.changeColorsLine.size(); i++) {
+                    float y = Globals.DEFAULT_CURSOR_Y - (13 + i) * 16;
+                    standardFont.draw(batch2, WishesHelper.changeColorsLine.get(i), 81, y);
+                }
+                var whiteFont = C64Helper.createFont(15, "C64_Pro_Mono-STYLE.ttf");
+                whiteFont.draw(batch2, "READY.", 81, Math.round(Globals.DEFAULT_CURSOR_Y - 16 * 16 + 2));
+            }
+
             for (int startIndex = 0; startIndex <= 6; startIndex++) {
                 if (frame > 400 + startIndex * 100) {
                     for (int i = startIndex; i < snowflakes.size(); i += 7) {
                         snowflakes.get(i).draw(batch2);
                     }
                 }
-            }
-
-            for (int i = 0; i < WishesHelper.running1.size(); i++) {
-                float y = (Globals.DEFAULT_CURSOR_Y - (8 + i) * 16);
-                standardFont.draw(batch2, WishesHelper.running1.get(i), 81, y);
-            }
-
-            if (frame >= WishesHelper.POKE_WHITE_ST_FRAME) {
-                for (int i = 0; i < WishesHelper.running2.size(); i++) {
-                    float y = Globals.DEFAULT_CURSOR_Y - (13 + i) * 16;
-                    standardFont.draw(batch2, WishesHelper.running2.get(i), 81, y);
-                }
-
-                var whiteFont = C64Helper.createFont(15, "C64_Pro_Mono-STYLE.ttf");
-                whiteFont.draw(batch2, "READY.", 81, Math.round(Globals.DEFAULT_CURSOR_Y - 16 * 16 + 2));
             }
         }
         batch2.end();
