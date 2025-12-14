@@ -1,4 +1,4 @@
-package org.kd.winter;
+package org.kd.winter25;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -11,6 +11,7 @@ import org.kd.common.BasicC64Screen;
 import org.kd.common.C64Colors;
 import org.kd.common.C64Helper;
 import org.kd.common.Globals;
+import org.kd.common.winter.WinterEffects;
 import org.lwjgl.util.Point;
 
 import java.util.ArrayList;
@@ -74,13 +75,7 @@ public class Scene1c64 extends BasicC64Screen {
         backgroundSprite3.setX(0);
         backgroundSprite3.setY(250);
 
-        var flakeTexture = new Texture("winter/asterisk.png");
-        for (int i = 0; i < 77; i++) {
-            var sprite = new Sprite(flakeTexture);
-            sprite.setScale(0.6f, 0.6f);
-            sprite.setPosition(35 + 14 * i, (float) (Globals.SCREEN_HEIGHT - 24 * Math.sin(i / Math.PI)) + i % 5);
-            this.snowflakes.add(sprite);
-        }
+        this.snowflakes = WinterEffects.createSnowflakeSprites();
 
         christmasTree = new Sprite(new Texture("winter/choinka.png"));
         christmasTree.setScale(1, 0f);
@@ -100,6 +95,7 @@ public class Scene1c64 extends BasicC64Screen {
 
         shapeRenderer = new ShapeRenderer();
     }
+
 
     private void initSprite(String picPath, AtomicReference<Float> shift, List<Sprite> spriteList) {
         var texture = new Texture("winter/" + picPath);
@@ -142,17 +138,7 @@ public class Scene1c64 extends BasicC64Screen {
             }
         // System.out.print(frame + " ");
         if (frame > 1499 && frame % 3 == 0) {
-            if (this.snowPatchThreshold < 138f) this.snowPatchThreshold += 0.15f;
-            int min = 50;
-            int max = 800 - 50;
-            int x = (int) (new Random().nextDouble() * (max - min) + min);
-            int y = Math.round(this.snowPatchThreshold);
-            var p = new Point(x, y);
-            this.snowPatches.add(p);
-            //System.out.println(p.getX() + " " + p.getY());
-            if (x < min + max / 2) {
-                this.snowPatches.add(new Point(x + 2, y + 1));
-            }
+            createSnowPatch();
         }
 
         if (frame > 2730 && frame % 2 == 0) {
@@ -185,6 +171,19 @@ public class Scene1c64 extends BasicC64Screen {
 
         if (frame > 8600 && frame < 8800) {
             reset.setScale(reset.getScaleX() + 0.02f);
+        }
+    }
+
+    private void createSnowPatch() {
+        if (this.snowPatchThreshold < 138f) this.snowPatchThreshold += 0.15f;
+        int min = 50;
+        int max = 800 - 50;
+        int x = (int) (new Random().nextDouble() * (max - min) + min);
+        int y = Math.round(this.snowPatchThreshold);
+        var p = new Point(x, y);
+        this.snowPatches.add(p);
+        if (x < min + max / 2) {
+            this.snowPatches.add(new Point(x + 2, y + 1));
         }
     }
 

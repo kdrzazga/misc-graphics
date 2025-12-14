@@ -1,4 +1,4 @@
-package org.kd.winter;
+package org.kd.winter25;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
