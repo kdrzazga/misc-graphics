@@ -6,8 +6,6 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import org.kd.common.SceneManager;
 
-import java.util.Arrays;
-
 public class AnniversariesAnimationMgr extends ApplicationAdapter {
     SpriteBatch batch;
     SceneManager sceneManager;
@@ -18,11 +16,9 @@ public class AnniversariesAnimationMgr extends ApplicationAdapter {
         sceneManager = new SceneManager();
 
         var scene1 = new Scene1c64("scene1");
-        Arrays.asList(scene1).forEach(s -> {
-            s.create();
-            sceneManager.addScene(s.id, s);
-        });
 
+        scene1.create();
+        sceneManager.addScene(scene1.id, scene1);
         sceneManager.switchScene("scene1");
     }
 
@@ -38,16 +34,7 @@ public class AnniversariesAnimationMgr extends ApplicationAdapter {
         sceneManager.render();
         batch.end();
 
-        long frame = Gdx.graphics.getFrameId();
-
-
-/*
-        if (frame == 9160) {
-            sceneManager.switchScene("scene2");
-        }*/
     }
-
-
 
     @Override
     public void dispose() {

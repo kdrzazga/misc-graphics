@@ -1,4 +1,4 @@
-package org.kd.dream21ordie;
+package org.kd.wishesmount;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -23,22 +23,23 @@ public class Scene1 extends BasicC64Screen {
         super.create();
         this.batch2 = new SpriteBatch();
         this.snowflakes = WinterEffects.createSnowflakeSprites();
-        this.snowing = true;
+        this.snowflakes.forEach(flake -> flake.setX((float) (flake.getX() + 21 * Math.random())));
+        this.snowflakes.forEach(flake -> flake.setY(flake.getY() - 40));
+        this.snowing = false;
+        var fontSize = this.standardFont.getLineHeight() + 1;
+        Globals.cursorY = Math.round(Globals.DEFAULT_CURSOR_Y - fontSize * WishesHelper.initialLoading.size());
     }
 
     @Override
     public void update(float delta) {
         long frame = Gdx.graphics.getFrameId();
+        if (frame >= 400)
+            this.snowing = true;
+
         if (this.snowing)
             for (int startIndex = 0; startIndex <= 6; startIndex++) {
-                if (frame > 100 + startIndex * 100) {
-                    for (int i = startIndex; i < snowflakes.size(); i += 7) {
-                        var flake = snowflakes.get(i);
-                        flake.setY(flake.getY() - 1);
-
-                        if (flake.getY() <= 0)
-                            flake.setY(Globals.SCREEN_WIDTH - 40 - i % 5);
-                    }
+                if (snowing && frame > 400 + startIndex * 100) {
+                    WishesHelper.snow(startIndex, this.snowflakes);
                 }
             }
     }
@@ -49,8 +50,13 @@ public class Scene1 extends BasicC64Screen {
 
         long frame = Gdx.graphics.getFrameId();
         batch2.begin();
+
+        for (int i = 0; i < WishesHelper.initialLoading.size(); i++) {
+            standardFont.draw(batch2, WishesHelper.initialLoading.get(i), 81, (float) (Globals.DEFAULT_CURSOR_Y - (i - 1) * 16));
+        }
+
         for (int startIndex = 0; startIndex <= 6; startIndex++) {
-            if (frame > 1100 + startIndex * 100) {
+            if (snowing && frame > 400 + startIndex * 100) {
                 for (int i = startIndex; i < snowflakes.size(); i += 7) {
                     snowflakes.get(i).draw(batch2);
                 }

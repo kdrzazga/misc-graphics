@@ -1,4 +1,4 @@
-package org.kd.dream21ordie;
+package org.kd.wishesmount;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
