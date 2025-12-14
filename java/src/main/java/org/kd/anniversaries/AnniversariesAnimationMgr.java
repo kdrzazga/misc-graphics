@@ -2,16 +2,13 @@ package org.kd.anniversaries;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import org.kd.common.AnimationManager;
-import org.kd.common.SceneManager;
 
 public class AnniversariesAnimationMgr extends AnimationManager {
 
     @Override
     public void create() {
-        batch = new SpriteBatch();
-        sceneManager = new SceneManager();
+        super.create();
 
         var scene1 = new Scene1c64("scene1");
 
