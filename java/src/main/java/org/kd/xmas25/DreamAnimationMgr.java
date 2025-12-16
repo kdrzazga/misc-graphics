@@ -81,7 +81,6 @@ public class DreamAnimationMgr extends AnimationManager {
                         logo.changeDirection();
                 });
         }
-
     }
 
     @Override
