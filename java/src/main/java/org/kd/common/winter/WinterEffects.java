@@ -21,4 +21,15 @@ public class WinterEffects {
 
         return snowflakes;
     }
+
+    public static void snow(int startIndex, List<Sprite> snowflakes) {
+        for (int i = startIndex; i < snowflakes.size(); i += 7) {
+            var flake = snowflakes.get(i);
+            flake.setY(flake.getY() - 1);
+
+            if (flake.getY() <= 0)
+                flake.setY(Globals.SCREEN_WIDTH - 40 - i % 5);
+        }
+
+    }
 }

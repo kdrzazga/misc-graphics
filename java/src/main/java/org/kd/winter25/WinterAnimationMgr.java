@@ -1,24 +1,17 @@
 package org.kd.winter25;
 
-import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import org.kd.common.SceneManager;
+import org.kd.common.AnimationManager;
 
 import java.util.Arrays;
 
-public class WinterAnimationMgr extends ApplicationAdapter {
-    SpriteBatch batch;
-    SceneManager sceneManager;
-    private Music kolendaRamosa;
+public class WinterAnimationMgr extends AnimationManager {
 
     @Override
     public void create() {
-        this.createMusic();
-        batch = new SpriteBatch();
-        sceneManager = new SceneManager();
+        super.create();
+        this.createMusic("winter/WsrodNocnejRamos.mp3");
         var scene1 = new Scene1c64("scene1");
         var sceneOutro = new Scene2Outro();
 
@@ -46,7 +39,7 @@ public class WinterAnimationMgr extends ApplicationAdapter {
         long frame = Gdx.graphics.getFrameId();
 
         if (frame > 100 && frame < 333 + 7 * 50) {
-            kolendaRamosa.play();
+            tune.play();
         }
 
         if (frame == 9160) {
@@ -54,16 +47,10 @@ public class WinterAnimationMgr extends ApplicationAdapter {
         }
     }
 
-    private void createMusic() {
-        kolendaRamosa = Gdx.audio.newMusic(Gdx.files.internal("winter/WsrodNocnejRamos.mp3"));
-        kolendaRamosa.setLooping(false);
-        kolendaRamosa.setVolume(1f);
-    }
-
     @Override
     public void dispose() {
         batch.dispose();
-        kolendaRamosa.dispose();
+        tune.dispose();
         sceneManager.disposeScenes();
     }
 }

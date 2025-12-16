@@ -13,11 +13,11 @@ public abstract class Year {
 
     public static final long DEFAULT_DURATION = 600;
 
-    protected List<String> messages;
+    protected final List<String> messages;
     protected final BitmapFont zxSpectrumFont;
     protected final BitmapFont c64Font;
     protected final String statementPath;
-    protected long startingFrame;
+    protected final long startingFrame;
     protected long endFrame;
     private boolean alreadySaid = false;
     private final Music statement;

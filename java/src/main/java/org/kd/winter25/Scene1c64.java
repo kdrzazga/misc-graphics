@@ -126,15 +126,8 @@ public class Scene1c64 extends BasicC64Screen {
 
         if (this.snowing)
             for (int startIndex = 0; startIndex <= 6; startIndex++) {
-                if (frame > 1100 + startIndex * 100) {
-                    for (int i = startIndex; i < snowflakes.size(); i += 7) {
-                        var flake = snowflakes.get(i);
-                        flake.setY(flake.getY() - 1);
-
-                        if (flake.getY() <= 0)
-                            flake.setY(Globals.SCREEN_WIDTH - 40 - i % 5);
-                    }
-                }
+                if (frame > 1100 + startIndex * 100)
+                    WinterEffects.snow(startIndex, this.snowflakes);
             }
         // System.out.print(frame + " ");
         if (frame > 1499 && frame % 3 == 0) {
@@ -218,7 +211,7 @@ public class Scene1c64 extends BasicC64Screen {
 
         if (frame > 1234) {
             this.snowPatches.forEach(point -> {
-                font.draw(batch2, "#", point.getX(), point.getY());
+                whiteFont.draw(batch2, "#", point.getX(), point.getY());
             });
 
             christmasTree.draw(batch2);

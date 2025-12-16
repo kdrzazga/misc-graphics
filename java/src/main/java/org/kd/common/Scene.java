@@ -2,7 +2,7 @@ package org.kd.common;
 
 public abstract class Scene {
 
-    public String id;
+    public final String id;
 
     public Scene(String id){
         this.id = id;

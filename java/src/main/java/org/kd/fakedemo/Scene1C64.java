@@ -18,11 +18,6 @@ public class Scene1C64 extends BasicC64Screen {
     }
 
     @Override
-    public void update(float delta) {
-        // update scene-specific logic
-    }
-
-    @Override
     public void render() {
         super.render();
 
