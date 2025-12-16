@@ -49,8 +49,10 @@ public class DreamAnimationMgr extends AnimationManager {
         long frame = Gdx.graphics.getFrameId();
         sceneManager.update(delta);
 
-        batch.begin();
+
         sceneManager.render();
+
+        batch.begin();
         if (frame > WishesHelper.ROCK_MUSIC_START_FRAME) {
             this.logoMerry.draw(batch, Globals.SCREEN_WIDTH, Globals.SCREEN_HEIGHT);
             this.logoChristmas.draw(batch, Globals.SCREEN_WIDTH, Globals.SCREEN_HEIGHT);

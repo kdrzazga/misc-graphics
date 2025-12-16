@@ -2,14 +2,20 @@ package org.kd.xmas25;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import org.kd.common.BasicC64Screen;
 import org.kd.common.C64Colors;
 import org.kd.common.Globals;
 
 public class Scene2 extends BasicC64Screen {
-    private boolean snowing;
+
     public SpriteBatch batch2;
+    public ShapeRenderer shapeRenderer;
+
+    private Sprite mikolaj1;
+    private boolean snowing;
 
     public Scene2(String id) {
         super(id);
@@ -21,6 +27,12 @@ public class Scene2 extends BasicC64Screen {
     public void create() {
         super.create();
         this.batch2 = new SpriteBatch();
+        this.shapeRenderer = new ShapeRenderer();
+        var mikolajPng = new Texture("dream210/mikolaj.png");
+        this.mikolaj1 = new Sprite(mikolajPng);
+        this.mikolaj1.setScale(0.8f);
+        this.mikolaj1.setY(Globals.DEFAULT_CURSOR_Y);
+
         this.borderColor = C64Colors.WHITE;
     }
 
@@ -30,7 +42,12 @@ public class Scene2 extends BasicC64Screen {
         var frame = Gdx.graphics.getFrameId();
         if (frame == WishesHelper.SCENE2_START_FRAME + 1) {
             Globals.cursorY = Math.round(0.753 * Globals.SCREEN_HEIGHT) - 2;
+            Globals.BKG_COLOR = C64Colors.LIGHT_BLUE;
         }
+
+        var x = this.mikolaj1.getX() + 1;
+        this.mikolaj1.setX(x % Globals.SCREEN_WIDTH);
+        this.mikolaj1.setY((float) (Globals.DEFAULT_CURSOR_Y + Globals.DEFAULT_CURSOR_Y / 2 * Math.sin(0.1*x / Math.PI)));
     }
 
     @Override
@@ -39,6 +56,14 @@ public class Scene2 extends BasicC64Screen {
 
         long frame = Gdx.graphics.getFrameId();
         batch2.begin();
+        this.mikolaj1.draw(batch2);
         batch2.end();
+
+        this.shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+        this.shapeRenderer.setColor(C64Colors.WHITE.toBadlogicColor());
+        this.shapeRenderer.rect(0, 100, 80, 400);
+        this.shapeRenderer.rect(800 - 80, 100, 80, 400);
+        this.shapeRenderer.end();
+
     }
 }
