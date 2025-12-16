@@ -12,6 +12,7 @@ public class WishesHelper {
     static final long KOLENDA_STARTING_FRAME = 400;
     static final long POKE_WHITE_ST_FRAME = KOLENDA_STARTING_FRAME + 750;
     static final long CLEAR_SCREEN_FRAME = POKE_WHITE_ST_FRAME + 750;
+    static final long ROCK_MUSIC_START_FRAME = 1900;
 
 
 }

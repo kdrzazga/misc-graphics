@@ -1,12 +1,10 @@
 package org.kd.wishesmount;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import org.kd.common.BasicC64Screen;
-import org.kd.common.C64Colors;
-import org.kd.common.C64Helper;
-import org.kd.common.Globals;
+import org.kd.common.*;
 import org.kd.common.winter.WinterEffects;
 
 import java.util.List;
@@ -57,8 +55,10 @@ public class Scene1 extends BasicC64Screen {
 
         if (frame >= WishesHelper.KOLENDA_STARTING_FRAME) {
             this.snowing = true;
+            ConsoleLogger.logBannerWithElapsedTime("dream210/bannerMCh.txt");
         }
     }
+
 
     @Override
     public void render() {
