@@ -11,10 +11,8 @@ import java.util.stream.Collectors;
 
 public class ConsoleLogger {
 
-    public static void logBannerWithElapsedTime(String bannerPath) {
-        //System.out.println(System.getProperty("user.dir"));
-        List<String> banner = readTextfile(bannerPath);
-        banner.forEach(line -> System.out.println(line));
+    public static void logBannerWithElapsedTime(List<String> bannerLines) {
+        bannerLines.forEach(line -> System.out.println(line));
         var frame = Gdx.graphics.getFrameId();
         System.out.println("Elapsed time: " + C64Helper.countElapsedTime() + " Frame: " + frame);
     }

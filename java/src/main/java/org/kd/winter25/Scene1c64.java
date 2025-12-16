@@ -211,7 +211,7 @@ public class Scene1c64 extends BasicC64Screen {
 
         if (frame > 1234) {
             this.snowPatches.forEach(point -> {
-                font.draw(batch2, "#", point.getX(), point.getY());
+                whiteFont.draw(batch2, "#", point.getX(), point.getY());
             });
 
             christmasTree.draw(batch2);

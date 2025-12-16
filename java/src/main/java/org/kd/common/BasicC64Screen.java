@@ -16,7 +16,7 @@ public class BasicC64Screen extends Scene {
     protected C64Colors borderColor;
     protected boolean blinkingCursor = true;
     protected String backgroundScreenPng;
-    protected BitmapFont font, standardFont;
+    protected BitmapFont whiteFont, standardFont;
     protected float x;
     protected float y;
     protected final float scale = 2f; // be careful with  scaling, results can be pathetic
@@ -34,7 +34,7 @@ public class BasicC64Screen extends Scene {
         shapeRenderer.setAutoShapeType(true);
         backgroundTexture = new Texture(Gdx.files.internal(this.backgroundScreenPng));
         this.borderColor = C64Colors.LIGHT_BLUE;
-        font = C64Helper.createFont(26, "C64_Pro_Mono-STYLE.ttf");
+        whiteFont = C64Helper.createFont(15, "C64_Pro_Mono-STYLE.ttf");
         standardFont = C64Helper.createFont(15, C64Colors.LIGHT_BLUE, "C64_Pro_Mono-STYLE.ttf");
         float scaledWidth = backgroundTexture.getWidth() * this.scale;
         float scaledHeight = backgroundTexture.getHeight() * this.scale;

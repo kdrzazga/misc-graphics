@@ -1,7 +1,6 @@
-package org.kd.wishesmount;
+package org.kd.xmas25;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import org.kd.common.*;
@@ -55,7 +54,7 @@ public class Scene1 extends BasicC64Screen {
 
         if (frame >= WishesHelper.KOLENDA_STARTING_FRAME) {
             this.snowing = true;
-            ConsoleLogger.logBannerWithElapsedTime("dream210/bannerMCh.txt");
+            ConsoleLogger.logBannerWithElapsedTime(BannerMCh.lines);
         }
     }
 
@@ -74,7 +73,7 @@ public class Scene1 extends BasicC64Screen {
 
         if (this.snowing) {
             for (int i = 0; i < WishesHelper.startAppLines.size(); i++) {
-                float y = (Globals.DEFAULT_CURSOR_Y - (8 + i) * 16);
+                float y = Globals.DEFAULT_CURSOR_Y - (8 + i) * 16;
                 standardFont.draw(batch2, WishesHelper.startAppLines.get(i), 81, y);
             }
 
@@ -85,6 +84,7 @@ public class Scene1 extends BasicC64Screen {
                 }
                 var whiteFont = C64Helper.createFont(15, "C64_Pro_Mono-STYLE.ttf");
                 whiteFont.draw(batch2, "READY.", 81, Math.round(Globals.DEFAULT_CURSOR_Y - 16 * 16 + 2));
+
             }
 
             for (int startIndex = 0; startIndex <= 6; startIndex++) {
@@ -93,6 +93,15 @@ public class Scene1 extends BasicC64Screen {
                         snowflakes.get(i).draw(batch2);
                     }
                 }
+            }
+        }
+
+        if (frame >= WishesHelper.CLEAR_SCREEN_FRAME) {
+            float y = Math.round(Globals.DEFAULT_CURSOR_Y - 17 * 16 + 2);
+            whiteFont.draw(batch2, WishesHelper.clearScreenLine, 81, y);
+            blinkingCursor = false;
+            if (frame >= WishesHelper.SCENE2_START_FRAME) {
+                this.snowing = false;
             }
         }
         batch2.end();

@@ -1,8 +1,8 @@
-package org.kd.wishesmount;
+package org.kd.xmas25;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 
-public class MainDemo extends org.kd.common.Demo {
+public class XmasDemo25 extends org.kd.common.Demo {
 
     public static void main(String[] args) {
         org.kd.winter25.WinterDemo25.analyzeArguments(args);

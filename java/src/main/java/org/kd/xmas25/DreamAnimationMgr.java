@@ -1,4 +1,4 @@
-package org.kd.wishesmount;
+package org.kd.xmas25;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
@@ -22,8 +22,9 @@ public class DreamAnimationMgr extends AnimationManager {
         this.logoChristmas = this.initLogo("dream210/christmas.png", 39);
 
         var scene1 = new Scene1("scene1");
+        var scene2 = new Scene2("scene2");
 
-        Arrays.asList(scene1).forEach(s -> {
+        Arrays.asList(scene1, scene2).forEach(s -> {
             s.create();
             sceneManager.addScene(s.id, s);
         });
@@ -63,6 +64,8 @@ public class DreamAnimationMgr extends AnimationManager {
             moveBannerMerry(delta);
         }
 
+        if (frame == WishesHelper.SCENE2_START_FRAME)
+            sceneManager.switchScene("scene2");
     }
 
     private void moveBannerMerry(float delta) {
