@@ -48,9 +48,9 @@ public class DreamAnimationMgr extends AnimationManager {
         float delta = Gdx.graphics.getDeltaTime();
         long frame = Gdx.graphics.getFrameId();
         sceneManager.update(delta);
+        sceneManager.render();
 
         batch.begin();
-        sceneManager.render();
         if (frame > WishesHelper.ROCK_MUSIC_START_FRAME) {
             this.logoMerry.draw(batch, Globals.SCREEN_WIDTH, Globals.SCREEN_HEIGHT);
             this.logoChristmas.draw(batch, Globals.SCREEN_WIDTH, Globals.SCREEN_HEIGHT);
@@ -64,24 +64,32 @@ public class DreamAnimationMgr extends AnimationManager {
             moveBannerMerry(delta);
         }
 
+        if (frame > WishesHelper.SCENE2_START_FRAME + 9000) {
+            float vol = this.tune.getVolume();
+            if (vol >= 0.01f) {
+                this.tune.setVolume(vol - 0.003f);
+            } else {
+                this.tune.stop();
+            }
+        }
+
         if (frame == WishesHelper.SCENE2_START_FRAME)
             sceneManager.switchScene("scene2");
     }
 
     private void moveBannerMerry(float delta) {
         long frame = Gdx.graphics.getFrameId();
-        var initFrame =  WishesHelper.ROCK_MUSIC_START_FRAME;
+        var initFrame = WishesHelper.ROCK_MUSIC_START_FRAME;
         if (frame >= initFrame) {
             this.logoMerry.move(delta, Globals.SCREEN_WIDTH);
             if (frame > initFrame + 50)
                 this.logoChristmas.move(delta, Globals.SCREEN_WIDTH);
-            if (frame >= initFrame +500)
+            if (frame >= initFrame + 500)
                 Arrays.asList(this.logoMerry, this.logoChristmas).forEach(logo -> {
                     if (logo.getX() < -355 || logo.getX() > 260)
                         logo.changeDirection();
                 });
         }
-
     }
 
     @Override

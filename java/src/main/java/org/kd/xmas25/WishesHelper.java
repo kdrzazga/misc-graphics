@@ -12,7 +12,7 @@ public class WishesHelper {
     static final String clearScreenLine ="POKE 53281, 14 : ? CHR$(147)";
     static final long KOLENDA_STARTING_FRAME = 400;
     static final long POKE_WHITE_ST_FRAME = KOLENDA_STARTING_FRAME + 750;
-    static final long CLEAR_SCREEN_FRAME = POKE_WHITE_ST_FRAME + 820;
+    static final long CLEAR_SCREEN_FRAME = POKE_WHITE_ST_FRAME + 1500;
     static final long ROCK_MUSIC_START_FRAME = 1900;
     static final long SCENE2_START_FRAME = 2800;
 

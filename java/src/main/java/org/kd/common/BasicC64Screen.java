@@ -19,7 +19,7 @@ public class BasicC64Screen extends Scene {
     protected BitmapFont whiteFont, standardFont;
     protected float x;
     protected float y;
-    protected final float scale = 2f; // be careful with  scaling, results can be pathetic
+    protected final float scale = 2f;
 
     public BasicC64Screen(String id) {
         super(id);
