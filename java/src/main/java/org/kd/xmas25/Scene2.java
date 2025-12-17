@@ -2,7 +2,6 @@ package org.kd.xmas25;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import org.kd.common.BasicC64Screen;
@@ -14,7 +13,7 @@ public class Scene2 extends BasicC64Screen {
     public SpriteBatch batch2;
     public ShapeRenderer shapeRenderer;
 
-    private Sprite mikolaj1;
+    private Mikolaj mikolaj1;
     private boolean snowing;
 
     public Scene2(String id) {
@@ -29,9 +28,7 @@ public class Scene2 extends BasicC64Screen {
         this.batch2 = new SpriteBatch();
         this.shapeRenderer = new ShapeRenderer();
         var mikolajPng = new Texture("dream210/mikolaj.png");
-        this.mikolaj1 = new Sprite(mikolajPng);
-        this.mikolaj1.setScale(0.8f);
-        this.mikolaj1.setY(Globals.DEFAULT_CURSOR_Y);
+        this.mikolaj1 = new Mikolaj(mikolajPng);
 
         this.borderColor = C64Colors.WHITE;
     }
@@ -45,9 +42,7 @@ public class Scene2 extends BasicC64Screen {
             Globals.BKG_COLOR = C64Colors.LIGHT_BLUE;
         }
 
-        var x = this.mikolaj1.getX() + 1;
-        this.mikolaj1.setX(x % Globals.SCREEN_WIDTH);
-        this.mikolaj1.setY((float) (Globals.DEFAULT_CURSOR_Y + Globals.DEFAULT_CURSOR_Y / 2 * Math.sin(0.1*x / Math.PI)));
+        this.mikolaj1.move();
     }
 
     @Override
