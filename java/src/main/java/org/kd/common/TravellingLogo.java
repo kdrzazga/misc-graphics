@@ -7,13 +7,16 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.utils.ScissorStack;
 
 public class TravellingLogo {
-    final Sprite sprite;
+    Sprite sprite;
     public float spriteSpeed = 100f; // pixels per second
+    private final float startX, startY, width, height;
 
     public TravellingLogo(Texture texture, float startX, float startY, float width, float height) {
-        sprite = new Sprite(texture);
-        sprite.setSize(width, height);
-        sprite.setPosition(startX, startY);
+        this.startX = startX;
+        this.startY = startY;
+        this.width = width;
+        this.height = height;
+        this.changeTexture(texture);
     }
 
     public void move(float deltaTime, int screenWidth) {
@@ -33,13 +36,13 @@ public class TravellingLogo {
         ScissorStack.popScissors();
     }
 
-    public void colorize(C64Colors color){
+    public void colorize(C64Colors color) {
         this.sprite.setColor(color.toBadlogicColor());
     }
 
-    public void changeDirection(){
+    public void changeDirection() {
         this.spriteSpeed *= -1;
-        this.sprite.setX(this.getX() - this.spriteSpeed/25);
+        this.sprite.setX(this.getX() - this.spriteSpeed / 25);
     }
 
     public float getX() {
@@ -52,5 +55,11 @@ public class TravellingLogo {
 
     public Sprite getSprite() {
         return sprite;
+    }
+
+    public void changeTexture(Texture texture) {
+        this.sprite = new Sprite(texture);
+        sprite.setSize(width, height);
+        sprite.setPosition(startX, startY);
     }
 }
