@@ -64,12 +64,20 @@ public class DreamAnimationMgr extends AnimationManager {
             moveBannerMerry(delta);
         }
 
-        if (frame > WishesHelper.SCENE2_START_FRAME + 9000) {
+        if (frame > WishesHelper.SCENE2_START_FRAME + 6900) {
             float vol = this.tune.getVolume();
             if (vol >= 0.01f) {
                 this.tune.setVolume(vol - 0.003f);
             } else {
                 this.tune.stop();
+            }
+
+            if (frame > WishesHelper.SCENE2_START_FRAME + 7001){
+                Gdx.app.exit();
+                System.out.println("\n".repeat(50)+"Herzliche Gruesse an Team210! Danke, dass sie den Drem210 organisiert haben!");
+
+                this.dispose();
+                System.exit(0);
             }
         }
 
