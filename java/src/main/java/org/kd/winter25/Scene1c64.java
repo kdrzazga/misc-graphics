@@ -119,7 +119,7 @@ public class Scene1c64 extends BasicC64Screen {
             this.backgroundTexture = new Texture(Gdx.files.internal(this.backgroundScreenPng));
             Globals.cursorY = Math.round(0.753 * Globals.SCREEN_HEIGHT) - 2;
         } else if (frame == 1100) {
-            this.backgroundScreenPng = "winter/lblue-ready.png";
+            this.backgroundScreenPng = "lblue-ready.png";
             this.backgroundTexture = new Texture(Gdx.files.internal(this.backgroundScreenPng));
             Globals.BKG_COLOR = C64Colors.LIGHT_BLUE;
         }

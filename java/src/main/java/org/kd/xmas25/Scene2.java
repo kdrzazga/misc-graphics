@@ -26,7 +26,7 @@ public class Scene2 extends BasicC64Screen {
 
     public Scene2(String id) {
         super(id);
-        this.backgroundScreenPng = "winter/lblue-ready.png";
+        this.backgroundScreenPng = "lblue-ready.png";
         this.backgroundTexture = new Texture(Gdx.files.internal(this.backgroundScreenPng));
     }
 
@@ -78,7 +78,8 @@ public class Scene2 extends BasicC64Screen {
         this.scroll1.move(delta, Globals.SCREEN_WIDTH);
 
         if (frame > WishesHelper.SCENE2_START_FRAME + 50) {
-            this.mikolaj1.move();
+            if (frame > WishesHelper.SCENE2_START_FRAME + 1675)
+                this.mikolaj1.move();
             handleScrollTextChange(frame);
             ConsoleLogger.logBannerWithElapsedTime(BannerMCh.lines);
         }
@@ -118,29 +119,32 @@ public class Scene2 extends BasicC64Screen {
     public void render() {
         super.render();
 
-        long realiveFrame = Gdx.graphics.getFrameId() - WishesHelper.SCENE2_START_FRAME;
+        long relativeFrame = Gdx.graphics.getFrameId() - WishesHelper.SCENE2_START_FRAME;
         batch2.begin();
-        if (realiveFrame > 400 && realiveFrame < 1675)
+        if (relativeFrame > 400 && relativeFrame < 1675)
             this.snowman.draw(batch2);
 
         if (this.snowing) {
-            if (450 < realiveFrame && realiveFrame <= 3400)
+            if (450 < relativeFrame && relativeFrame <= 3400)
                 this.mountain.draw(batch2);
-            else if (3400 < realiveFrame && realiveFrame <= 4900) {
+            else if (3400 < relativeFrame && relativeFrame <= 4900) {
                 this.socks.draw(batch2);
-                this.backgroundScreenPng = "winter/lgrey-ready.png";
+                this.backgroundScreenPng = "lgrey-ready.png";
                 this.backgroundTexture = new Texture(Gdx.files.internal(this.backgroundScreenPng));
                 Globals.BKG_COLOR = C64Colors.GRAY;
             } else {
-                this.backgroundScreenPng = "winter/lblue-ready.png";
+                this.backgroundScreenPng = "lblue-ready.png";
                 this.backgroundTexture = new Texture(Gdx.files.internal(this.backgroundScreenPng));
                 Globals.BKG_COLOR = C64Colors.LIGHT_BLUE;
             }
-            if (realiveFrame > 500)
-                this.forest.draw(batch2);
+
+            if (relativeFrame > 6550){
+                if (relativeFrame < 6870) whiteFont.draw(batch2, "CODE  & GFX: KD", 81, Globals.SCREEN_HEIGHT - 100);
+                else whiteFont.draw(batch2, "MSX: https://csdb.dk/sid/?id=26004", 81, Globals.SCREEN_HEIGHT - 100);
+            }
 
             for (int startIndex = 0; startIndex <= 6; startIndex++) {
-                if (realiveFrame + WishesHelper.SCENE2_START_FRAME > 400 + startIndex * 100) {
+                if (relativeFrame + WishesHelper.SCENE2_START_FRAME > 400 + startIndex * 100) {
                     for (int i = startIndex; i < snowflakes.size(); i += 7) {
                         snowflakes.get(i).draw(batch2);
                     }
@@ -148,7 +152,7 @@ public class Scene2 extends BasicC64Screen {
             }
         }
 
-        if (realiveFrame > WishesHelper.SCENE2_START_FRAME + 50) this.mikolaj1.draw(batch2);
+        if (relativeFrame > 1675) this.mikolaj1.draw(batch2);
         this.scroll1.draw(batch2, Globals.SCREEN_WIDTH, Globals.SCREEN_HEIGHT);
         batch2.end();
 
@@ -156,7 +160,7 @@ public class Scene2 extends BasicC64Screen {
         this.shapeRenderer.setColor(C64Colors.WHITE.toBadlogicColor());
         this.shapeRenderer.rect(0, 100, 80, 400);
         this.shapeRenderer.rect(800 - 80, 100, 80, 400);
-        if (realiveFrame > WishesHelper.SCENE2_START_FRAME + 2340) {
+        if (relativeFrame > WishesHelper.SCENE2_START_FRAME + 2340) {
             this.shapeRenderer.rect(79, 510, 400, 12);
         }
         this.shapeRenderer.end();

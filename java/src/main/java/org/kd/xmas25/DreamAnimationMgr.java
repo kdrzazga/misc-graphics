@@ -72,9 +72,9 @@ public class DreamAnimationMgr extends AnimationManager {
                 this.tune.stop();
             }
 
-            if (frame > WishesHelper.SCENE2_START_FRAME + 7181){
+            if (frame > WishesHelper.SCENE2_START_FRAME + 7181) {
                 Gdx.app.exit();
-                System.out.println("\n".repeat(50)+"Herzliche Gruesse an Team210! Danke, dass sie den Drem210 organisiert haben!");
+                System.out.println("\n".repeat(50) + "Herzliche Gruesse an Team210! Danke, dass sie den Drem210 organisiert haben!");
 
                 this.dispose();
                 System.exit(0);
