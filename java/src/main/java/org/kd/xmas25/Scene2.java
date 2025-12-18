@@ -69,11 +69,11 @@ public class Scene2 extends BasicC64Screen {
             ConsoleLogger.logBannerWithElapsedTime(BannerMCh.lines);
         }
 
-        if (frame > WishesHelper.SCENE2_START_FRAME + 400 && this.snowman.getScaleY() < 0.5f){
+        if (frame > WishesHelper.SCENE2_START_FRAME + 400 && this.snowman.getScaleY() < 0.5f) {
             this.snowman.setScale(this.snowman.getScaleX(), this.snowman.getScaleY() + 0.001f);
         }
 
-        if (frame > WishesHelper.SCENE2_START_FRAME + 800){
+        if (frame > WishesHelper.SCENE2_START_FRAME + 800) {
             if (frame % 30 == 0)
                 this.snowman.setScale(0.55f, 0.5f);
             else if (frame % 30 == 15)
@@ -128,6 +128,9 @@ public class Scene2 extends BasicC64Screen {
         this.shapeRenderer.setColor(C64Colors.WHITE.toBadlogicColor());
         this.shapeRenderer.rect(0, 100, 80, 400);
         this.shapeRenderer.rect(800 - 80, 100, 80, 400);
+        if (frame > WishesHelper.SCENE2_START_FRAME + 2340) {
+            this.shapeRenderer.rect(79, 510, 400, 12);
+        }
         this.shapeRenderer.end();
 
     }
