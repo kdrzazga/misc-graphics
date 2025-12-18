@@ -74,10 +74,9 @@ public class Scene2 extends BasicC64Screen {
         }
 
         if (frame > WishesHelper.SCENE2_START_FRAME + 800) {
-            if (frame % 30 == 0)
-                this.snowman.setScale(0.55f, 0.5f);
-            else if (frame % 30 == 15)
-                this.snowman.setScale(0.55f, 0.52f);
+            var alpha = Math.PI * (WishesHelper.SCENE2_START_FRAME + 800 - frame)/50;
+            var y = (float) (0.5 + 0.02 * Math.sin(alpha));
+            this.snowman.setScale(0.55f, y);
         }
 
         if (this.snowing) {
