@@ -110,7 +110,7 @@ public class Scene2 extends BasicC64Screen {
             this.scroll1.changeTexture(new Texture("dream210/scroll/stanza3.bmp"));
         else if (frame == WishesHelper.SCENE2_START_FRAME + 4900)
             this.scroll1.changeTexture(new Texture("dream210/scroll/stanza4.bmp"));
-        else if (frame == WishesHelper.SCENE2_START_FRAME + 6900)
+        else if (frame == 9350)
             this.scroll1.spriteSpeed = 0;
     }
 
