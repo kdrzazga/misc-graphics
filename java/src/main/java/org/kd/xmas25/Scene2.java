@@ -138,9 +138,9 @@ public class Scene2 extends BasicC64Screen {
                 Globals.BKG_COLOR = C64Colors.LIGHT_BLUE;
             }
 
-            if (relativeFrame > 6550){
-                if (relativeFrame < 6870) whiteFont.draw(batch2, "CODE  & GFX: KD", 81, Globals.SCREEN_HEIGHT - 100);
-                else whiteFont.draw(batch2, "MSX: https://csdb.dk/sid/?id=26004", 81, Globals.SCREEN_HEIGHT - 100);
+            if (relativeFrame > 6550) {
+                var msg = relativeFrame < 6870 ? "CODE  & GFX: KD" : "MSX: KD & https://csdb.dk/sid/?id=26004";
+                whiteFont.draw(batch2, msg, 81, Globals.SCREEN_HEIGHT - 100);
             }
 
             for (int startIndex = 0; startIndex <= 6; startIndex++) {
