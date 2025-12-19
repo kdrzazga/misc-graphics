@@ -76,7 +76,7 @@ public class DreamAnimationMgr extends AnimationManager {
                 Gdx.app.exit();
                 System.out.println("\n".repeat(50) + "Herzliche Gruesse an Team210! Danke, dass sie den Drem210 organisiert haben!");
 
-                this.dispose();
+                //this.dispose();
                 System.exit(0);
             }
         }

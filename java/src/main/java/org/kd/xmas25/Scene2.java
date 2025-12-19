@@ -15,9 +15,12 @@ public class Scene2 extends BasicC64Screen {
     public SpriteBatch batch2;
     public ShapeRenderer shapeRenderer;
 
+    private final float xmasTreeScale = 0.8f;
+
     private Mikolaj mikolaj1;
     private PetsciiSnowman snowman;
     private TravellingLogo scroll1;
+    private TravellingLogo xmasTree;
     private Sprite forest;
     private Sprite mountain;
     private Sprite socks;
@@ -64,6 +67,10 @@ public class Scene2 extends BasicC64Screen {
         this.scroll1 = new TravellingLogo(scroll1, Globals.SCREEN_WIDTH, 100, 2000, 16);
         this.scroll1.spriteSpeed = 100f;
 
+        var choinka = new Texture("dream210/tree/tree.png");
+        this.xmasTree = new TravellingLogo(choinka, Globals.SCREEN_WIDTH, 100, 417, 438);
+        this.xmasTree.getSprite().setX(-100);
+        this.xmasTree.getSprite().setScale(xmasTreeScale);
     }
 
     @Override
@@ -92,6 +99,25 @@ public class Scene2 extends BasicC64Screen {
             var alpha = Math.PI * (WishesHelper.SCENE2_START_FRAME + 800 - frame) / 50;
             var y = (float) (0.5 + 0.02 * Math.sin(alpha));
             this.snowman.setScale(0.55f, y);
+        }
+
+        var treeX = this.xmasTree.getSprite().getX();
+        if (WishesHelper.SCENE2_START_FRAME + 4900 < frame) {
+            var treeBlink1 = new Texture("dream210/tree/tree4.png");
+            var treeBlink2 = new Texture("dream210/tree/tree2.png");
+            var x = this.xmasTree.getX();
+            var y = this.xmasTree.getSprite().getY();
+            if (treeX < 300)
+                this.xmasTree.getSprite().setX(treeX + 2);
+            else if (frame % 30 == 15) {
+                this.xmasTree.changeTexture(treeBlink1);
+                this.xmasTree.getSprite().setPosition(x, y);
+                this.xmasTree.getSprite().setScale(xmasTreeScale);
+            } else if (frame % 30 == 0) {
+                this.xmasTree.changeTexture(treeBlink2);
+                this.xmasTree.getSprite().setPosition(x, y);
+                this.xmasTree.getSprite().setScale(xmasTreeScale);
+            }
         }
 
         if (this.snowing) {
@@ -141,6 +167,10 @@ public class Scene2 extends BasicC64Screen {
             if (relativeFrame > 6550) {
                 var msg = relativeFrame < 6870 ? "CODE  & GFX: KD" : "MSX: KD & https://csdb.dk/sid/?id=26004";
                 whiteFont.draw(batch2, msg, 81, Globals.SCREEN_HEIGHT - 100);
+            }
+
+            if (4900 < relativeFrame && relativeFrame < 6550) {
+                this.xmasTree.draw(batch2, Globals.SCREEN_WIDTH, Globals.SCREEN_HEIGHT);
             }
 
             for (int startIndex = 0; startIndex <= 6; startIndex++) {
