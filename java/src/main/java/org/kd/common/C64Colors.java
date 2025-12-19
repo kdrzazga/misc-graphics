@@ -12,6 +12,7 @@ public enum C64Colors {
     CYAN(0f, 1f, 1f),
     PURPLE(1f, 0f, 1f),
     DARK_GRAY(0.2f,0.2f,0.2f),
+    GRAY(0.46f,0.46f,0.46f),
     LIGHT_GRAY(0.7f, 0.7f, 0.7f),
     PINK(0.75f, 0.51f, 0.47f);
 
