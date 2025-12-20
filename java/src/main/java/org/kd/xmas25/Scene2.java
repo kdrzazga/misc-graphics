@@ -22,6 +22,7 @@ public class Scene2 extends BasicC64Screen {
     private TravellingLogo xmasTree;
     private Sprite forest;
     private Sprite mountain;
+    private Sprite smallLogo;
     private Sprite socks;
     private Sprite bigPresent;
     private Sprite smallPresent;
@@ -44,6 +45,8 @@ public class Scene2 extends BasicC64Screen {
         this.mikolaj1.setColor(Color.BLACK);
 
         this.snowman = new PetsciiSnowman();
+        this.smallLogo = new Sprite(new Texture("dream210/c=xmas.png"));
+        this.smallLogo.setPosition(100, 344);
         this.borderColor = C64Colors.WHITE;
 
         this.forest = new Sprite(new Texture("dream210/las2.png"));
@@ -154,8 +157,12 @@ public class Scene2 extends BasicC64Screen {
 
         long relativeFrame = Gdx.graphics.getFrameId() - WishesHelper.SCENE2_START_FRAME;
         batch2.begin();
-        if (relativeFrame > 400 && relativeFrame < 1675)
-            this.snowman.draw(batch2);
+        if (relativeFrame < 1555) {
+            if (relativeFrame > 100)
+                this.smallLogo.draw(batch2);
+            if (relativeFrame > 400)
+                this.snowman.draw(batch2);
+        }
 
         if (this.snowing) {
             if (450 < relativeFrame && relativeFrame <= 3400) {
