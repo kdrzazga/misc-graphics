@@ -158,9 +158,11 @@ public class Scene2 extends BasicC64Screen {
             this.snowman.draw(batch2);
 
         if (this.snowing) {
-            if (450 < relativeFrame && relativeFrame <= 3400)
+            if (450 < relativeFrame && relativeFrame <= 3400) {
+                if (relativeFrame > 3000)
+                    batch2.draw(new Texture("dream210/tramiel.png"), 300, 230);
                 this.mountain.draw(batch2);
-            else if (3400 < relativeFrame && relativeFrame <= WishesHelper.NIGHT_START_RELATIVE_FRAME) {
+            } else if (3400 < relativeFrame && relativeFrame <= WishesHelper.NIGHT_START_RELATIVE_FRAME) {
                 this.socks.draw(batch2);
                 this.backgroundScreenPng = "lgrey-ready.png";
                 this.backgroundTexture = new Texture(Gdx.files.internal(this.backgroundScreenPng));
@@ -185,22 +187,10 @@ public class Scene2 extends BasicC64Screen {
             }
 
             if (WishesHelper.NIGHT_START_RELATIVE_FRAME < relativeFrame && relativeFrame < 6550) {
-                this.xmasTree.draw(batch2, Globals.SCREEN_WIDTH, Globals.SCREEN_HEIGHT);
-                if (relativeFrame > WishesHelper.NIGHT_START_RELATIVE_FRAME + 400) {
-                    this.bigPresent.draw(batch2);
-                    if (relativeFrame > WishesHelper.NIGHT_START_RELATIVE_FRAME + 600) {
-                        this.smallPresent.draw(batch2);
-                    }
-                }
+                handlePresents(relativeFrame);
             }
 
-            for (int startIndex = 0; startIndex <= 6; startIndex++) {
-                if (relativeFrame + WishesHelper.SCENE2_START_FRAME > 400 + startIndex * 100) {
-                    for (int i = startIndex; i < snowflakes.size(); i += 7) {
-                        snowflakes.get(i).draw(batch2);
-                    }
-                }
-            }
+            snow(relativeFrame);
         }
 
         if (relativeFrame > 1675) this.mikolaj1.draw(batch2);
@@ -217,5 +207,25 @@ public class Scene2 extends BasicC64Screen {
         }
         this.shapeRenderer.end();
 
+    }
+
+    private void handlePresents(long relativeFrame) {
+        this.xmasTree.draw(batch2, Globals.SCREEN_WIDTH, Globals.SCREEN_HEIGHT);
+        if (relativeFrame > WishesHelper.NIGHT_START_RELATIVE_FRAME + 400) {
+            this.bigPresent.draw(batch2);
+            if (relativeFrame > WishesHelper.NIGHT_START_RELATIVE_FRAME + 600) {
+                this.smallPresent.draw(batch2);
+            }
+        }
+    }
+
+    private void snow(long relativeFrame) {
+        for (int startIndex = 0; startIndex <= 6; startIndex++) {
+            if (relativeFrame + WishesHelper.SCENE2_START_FRAME > 400 + startIndex * 100) {
+                for (int i = startIndex; i < snowflakes.size(); i += 7) {
+                    snowflakes.get(i).draw(batch2);
+                }
+            }
+        }
     }
 }
