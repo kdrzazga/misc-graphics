@@ -13,11 +13,9 @@ import java.util.List;
 
 public class Scene2 extends BasicC64Screen {
 
+    private final float xmasTreeScale = 0.8f;
     public SpriteBatch batch2;
     public ShapeRenderer shapeRenderer;
-
-    private final float xmasTreeScale = 0.8f;
-
     private Mikolaj mikolaj1;
     private PetsciiSnowman snowman;
     private TravellingLogo scroll1;
@@ -25,6 +23,8 @@ public class Scene2 extends BasicC64Screen {
     private Sprite forest;
     private Sprite mountain;
     private Sprite socks;
+    private Sprite bigPresent;
+    private Sprite smallPresent;
     private List<Sprite> snowflakes;
     private boolean snowing;
 
@@ -57,6 +57,11 @@ public class Scene2 extends BasicC64Screen {
         this.socks = new Sprite(new Texture("dream210/socks.png"));
         this.socks.setPosition(235, 170 - 17);
         this.socks.setScale(2.05f, 1.5f);
+
+        bigPresent = new Sprite(new Texture("dream210/present1.png"));
+        bigPresent.setPosition(90f, 133f);
+        smallPresent = new Sprite(new Texture("dream210/present2.png"));
+        smallPresent.setPosition(430f, 150f);
 
         this.snowflakes = WinterEffects.createSnowflakeSprites();
         this.snowflakes.forEach(flake -> flake.setX((float) (flake.getX() + 21 * Math.random())));
@@ -165,6 +170,7 @@ public class Scene2 extends BasicC64Screen {
                     this.mikolaj1.setColor(C64Colors.WHITE.toBadlogicColor());
                     this.backgroundScreenPng = "lblack-ready.png";
                     this.borderColor = C64Colors.BLACK;
+                    Globals.BKG_COLOR = C64Colors.BLACK;
                     this.mikolaj1.setColor(Color.CYAN);
                 } else
                     this.backgroundScreenPng = "lblue-ready.png";
@@ -174,10 +180,18 @@ public class Scene2 extends BasicC64Screen {
             if (relativeFrame > 6550) {
                 var msg = relativeFrame < 6870 ? "CODE  & GFX: KD" : "MSX: KD & https://csdb.dk/sid/?id=26004";
                 whiteFont.draw(batch2, msg, 81, Globals.SCREEN_HEIGHT - 100);
+                var y = this.mikolaj1.getY() + 1;
+                this.mikolaj1.setY(y);
             }
 
             if (WishesHelper.NIGHT_START_RELATIVE_FRAME < relativeFrame && relativeFrame < 6550) {
                 this.xmasTree.draw(batch2, Globals.SCREEN_WIDTH, Globals.SCREEN_HEIGHT);
+                if (relativeFrame > WishesHelper.NIGHT_START_RELATIVE_FRAME + 400) {
+                    this.bigPresent.draw(batch2);
+                    if (relativeFrame > WishesHelper.NIGHT_START_RELATIVE_FRAME + 600) {
+                        this.smallPresent.draw(batch2);
+                    }
+                }
             }
 
             for (int startIndex = 0; startIndex <= 6; startIndex++) {
