@@ -84,7 +84,6 @@ public class Scene1 extends BasicC64Screen {
                 }
                 var whiteFont = C64Helper.createFont(15, "C64_Pro_Mono-STYLE.ttf");
                 whiteFont.draw(batch2, "READY.", 81, Math.round(Globals.DEFAULT_CURSOR_Y - 16 * 16 + 2));
-
             }
 
             for (int startIndex = 0; startIndex <= 6; startIndex++) {

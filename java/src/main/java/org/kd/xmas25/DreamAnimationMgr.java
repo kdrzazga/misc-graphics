@@ -1,6 +1,7 @@
 package org.kd.xmas25;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import org.kd.common.AnimationManager;
@@ -87,6 +88,12 @@ public class DreamAnimationMgr extends AnimationManager {
 
     private void moveBannerMerry(float delta) {
         long frame = Gdx.graphics.getFrameId();
+
+        if (frame == WishesHelper.SCENE2_START_FRAME + WishesHelper.NIGHT_START_RELATIVE_FRAME){
+            this.logoMerry.getSprite().setColor(Color.GOLD);
+            this.logoChristmas.getSprite().setColor(Color.FIREBRICK);
+        }
+
         var initFrame = WishesHelper.ROCK_MUSIC_START_FRAME;
         if (frame >= initFrame) {
             this.logoMerry.move(delta, Globals.SCREEN_WIDTH);

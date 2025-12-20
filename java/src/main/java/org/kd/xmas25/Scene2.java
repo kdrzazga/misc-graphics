@@ -1,6 +1,7 @@
 package org.kd.xmas25;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -40,6 +41,7 @@ public class Scene2 extends BasicC64Screen {
         this.shapeRenderer = new ShapeRenderer();
         var mikolajPng = new Texture("dream210/mikolaj.png");
         this.mikolaj1 = new Mikolaj(mikolajPng);
+        this.mikolaj1.setColor(Color.BLACK);
 
         this.snowman = new PetsciiSnowman();
         this.borderColor = C64Colors.WHITE;
@@ -102,7 +104,7 @@ public class Scene2 extends BasicC64Screen {
         }
 
         var treeX = this.xmasTree.getSprite().getX();
-        if (WishesHelper.SCENE2_START_FRAME + 4900 < frame) {
+        if (WishesHelper.SCENE2_START_FRAME + WishesHelper.NIGHT_START_RELATIVE_FRAME < frame) {
             var treeBlink1 = new Texture("dream210/tree/tree4.png");
             var treeBlink2 = new Texture("dream210/tree/tree2.png");
             var x = this.xmasTree.getX();
@@ -135,7 +137,7 @@ public class Scene2 extends BasicC64Screen {
             this.snowing = true;
         } else if (frame == WishesHelper.SCENE2_START_FRAME + 3400)
             this.scroll1.changeTexture(new Texture("dream210/scroll/stanza3.bmp"));
-        else if (frame == WishesHelper.SCENE2_START_FRAME + 4900)
+        else if (frame == WishesHelper.SCENE2_START_FRAME + WishesHelper.NIGHT_START_RELATIVE_FRAME)
             this.scroll1.changeTexture(new Texture("dream210/scroll/stanza4.bmp"));
         else if (frame == 9350)
             this.scroll1.spriteSpeed = 0;
@@ -153,15 +155,20 @@ public class Scene2 extends BasicC64Screen {
         if (this.snowing) {
             if (450 < relativeFrame && relativeFrame <= 3400)
                 this.mountain.draw(batch2);
-            else if (3400 < relativeFrame && relativeFrame <= 4900) {
+            else if (3400 < relativeFrame && relativeFrame <= WishesHelper.NIGHT_START_RELATIVE_FRAME) {
                 this.socks.draw(batch2);
                 this.backgroundScreenPng = "lgrey-ready.png";
                 this.backgroundTexture = new Texture(Gdx.files.internal(this.backgroundScreenPng));
                 Globals.BKG_COLOR = C64Colors.GRAY;
             } else {
-                this.backgroundScreenPng = "lblue-ready.png";
+                if (relativeFrame > WishesHelper.NIGHT_START_RELATIVE_FRAME) {
+                    this.mikolaj1.setColor(C64Colors.WHITE.toBadlogicColor());
+                    this.backgroundScreenPng = "lblack-ready.png";
+                    this.borderColor = C64Colors.BLACK;
+                    this.mikolaj1.setColor(Color.CYAN);
+                } else
+                    this.backgroundScreenPng = "lblue-ready.png";
                 this.backgroundTexture = new Texture(Gdx.files.internal(this.backgroundScreenPng));
-                Globals.BKG_COLOR = C64Colors.LIGHT_BLUE;
             }
 
             if (relativeFrame > 6550) {
@@ -169,7 +176,7 @@ public class Scene2 extends BasicC64Screen {
                 whiteFont.draw(batch2, msg, 81, Globals.SCREEN_HEIGHT - 100);
             }
 
-            if (4900 < relativeFrame && relativeFrame < 6550) {
+            if (WishesHelper.NIGHT_START_RELATIVE_FRAME < relativeFrame && relativeFrame < 6550) {
                 this.xmasTree.draw(batch2, Globals.SCREEN_WIDTH, Globals.SCREEN_HEIGHT);
             }
 
@@ -186,8 +193,9 @@ public class Scene2 extends BasicC64Screen {
         this.scroll1.draw(batch2, Globals.SCREEN_WIDTH, Globals.SCREEN_HEIGHT);
         batch2.end();
 
+        var hidersColor = relativeFrame > WishesHelper.NIGHT_START_RELATIVE_FRAME ? C64Colors.BLACK : C64Colors.WHITE;
         this.shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        this.shapeRenderer.setColor(C64Colors.WHITE.toBadlogicColor());
+        this.shapeRenderer.setColor(hidersColor.toBadlogicColor());
         this.shapeRenderer.rect(0, 100, 80, 400);
         this.shapeRenderer.rect(800 - 80, 100, 80, 400);
         if (relativeFrame > WishesHelper.SCENE2_START_FRAME + 2340) {
