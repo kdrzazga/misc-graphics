@@ -8,8 +8,11 @@ import org.kd.common.Scene;
 
 public class TrickScene1 extends Scene {
 
-    private ShapeRenderer shapeRenderer;
     public SpriteBatch batch2;
+
+    private ShapeRenderer shapeRenderer;
+    private Color topColor = new Color(0f, 0f, 0.5f, 1f);
+    private Color bottomColor = new Color(0.4f, 0.7f, 1f, 1f);
 
     public TrickScene1() {
         super("trick-scene1");
@@ -22,19 +25,15 @@ public class TrickScene1 extends Scene {
 
     @Override
     public void update(float delta) {
-
+        var frame = Gdx.graphics.getFrameId();
+        double x = frame / 1000f * 3.14;
+        topColor.b = (float) Math.abs(Math.sin(x));
     }
 
     @Override
     public void render() {
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
 
-// top‑of‑screen color (e.g. dark blue)
-        Color topColor    = new Color(0f, 0f, 0.5f, 1f);
-// bottom‑of‑screen color (e.g. light blue)
-        Color bottomColor = new Color(0.4f, 0.7f, 1f, 1f);
-
-// rect(x, y, width, height, topLeft, topRight, bottomRight, bottomLeft)
         shapeRenderer.rect(
                 0,                                 // x
                 0,                                 // y
