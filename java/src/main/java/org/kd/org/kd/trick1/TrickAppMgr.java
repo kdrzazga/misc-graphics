@@ -22,7 +22,6 @@ public class TrickAppMgr extends AnimationManager {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         float delta = Gdx.graphics.getDeltaTime();
-        long frame = Gdx.graphics.getFrameId();
         sceneManager.update(delta);
         sceneManager.render();
     }
