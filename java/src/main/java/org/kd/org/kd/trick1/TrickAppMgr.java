@@ -11,8 +11,10 @@ public class TrickAppMgr extends AnimationManager {
         super.create();
 
         var scene1 = new TrickScene1();
+        var scene2 = new TrickScene2();
 
         sceneManager.addScene(scene1.id, scene1);
+        sceneManager.addScene(scene2.id, scene2);
         sceneManager.switchScene("trick-scene1");
     }
 
@@ -24,5 +26,10 @@ public class TrickAppMgr extends AnimationManager {
         float delta = Gdx.graphics.getDeltaTime();
         sceneManager.update(delta);
         sceneManager.render();
+
+        var frame = Gdx.graphics.getFrameId();
+        if (frame == Global.TRICK2_FRAME){
+            sceneManager.switchScene("trick-scene2");
+        }
     }
 }

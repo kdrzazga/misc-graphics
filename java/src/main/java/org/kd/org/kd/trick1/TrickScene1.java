@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import org.kd.common.Scene;
 
-public class TrickScene1 extends Scene {
+public final class TrickScene1 extends Scene {
 
     public SpriteBatch batch2;
 
@@ -57,12 +57,14 @@ public class TrickScene1 extends Scene {
         shapeRenderer.end();
 
         shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
-        shapeRenderer.setColor(Color.BLACK);
+
         for (float y = 0; y < Gdx.graphics.getHeight(); y++) {
+            shapeRenderer.setColor(Color.BLACK);
             float x2 = (float) (100 + 50 * Math.sin(y / Math.PI / sineWidth) + 20 * Math.sin(0.9 * y / 15));
-            shapeRenderer.line(0f, y, x2 + xExit, y);
+            float xLeft = x2 + xExit;
+            shapeRenderer.line(0f, y, xLeft, y);
             shapeRenderer.line(Gdx.graphics.getWidth(), Gdx.graphics.getHeight() - y, Gdx.graphics.getWidth() - x2 - xExit, Gdx.graphics.getHeight() - y);
-            //System.out.println(x2 + " " + y);
+
         }
 
         shapeRenderer.end();
@@ -73,7 +75,7 @@ public class TrickScene1 extends Scene {
 
         if (this.xExit > (float) Gdx.graphics.getWidth() / 2)
             return false;
-        else if (frame > 1000)
+        else if (frame > Global.TRICK1_GRADUAL_EXIT)
             this.xExit++;
 
         return true;
