@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 
 public class PetsciiSnowman extends Sprite {
 
-
     public PetsciiSnowman() {
         super(new Texture("dream210/snowman/PetsciiSnowman.png"));
 

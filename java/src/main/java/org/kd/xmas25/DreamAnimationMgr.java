@@ -1,6 +1,7 @@
 package org.kd.xmas25;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import org.kd.common.AnimationManager;
@@ -64,13 +65,10 @@ public class DreamAnimationMgr extends AnimationManager {
             moveBannerMerry(delta);
         }
 
+        if (frame > 6550 + WishesHelper.SCENE2_START_FRAME) centerMerryChristmas();
+
         if (frame > WishesHelper.SCENE2_START_FRAME + 6870) {
-            float vol = this.tune.getVolume();
-            if (vol >= 0.01f) {
-                this.tune.setVolume(vol - 0.003f);
-            } else {
-                this.tune.stop();
-            }
+            volumeDown();
 
             if (frame > WishesHelper.SCENE2_START_FRAME + 7181) {
                 Gdx.app.exit();
@@ -85,8 +83,30 @@ public class DreamAnimationMgr extends AnimationManager {
             sceneManager.switchScene("scene2");
     }
 
+    private void volumeDown() {
+        float vol = this.tune.getVolume();
+        if (vol >= 0.01f) {
+            this.tune.setVolume(vol - 0.003f);
+        } else {
+            this.tune.stop();
+        }
+    }
+
+    private void centerMerryChristmas() {
+        var lchY = this.logoChristmas.getSprite().getY() + 1;
+        if (lchY < 260) this.logoChristmas.getSprite().setY(lchY);
+        var lmY = this.logoMerry.getSprite().getY() - 1;
+        if (lmY > 320) this.logoMerry.getSprite().setY(lmY);
+    }
+
     private void moveBannerMerry(float delta) {
         long frame = Gdx.graphics.getFrameId();
+
+        if (frame == WishesHelper.SCENE2_START_FRAME + WishesHelper.NIGHT_START_RELATIVE_FRAME) {
+            this.logoMerry.getSprite().setColor(Color.GOLD);
+            this.logoChristmas.getSprite().setColor(Color.FIREBRICK);
+        }
+
         var initFrame = WishesHelper.ROCK_MUSIC_START_FRAME;
         if (frame >= initFrame) {
             this.logoMerry.move(delta, Globals.SCREEN_WIDTH);

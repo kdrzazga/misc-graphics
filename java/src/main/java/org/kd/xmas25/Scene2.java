@@ -1,6 +1,7 @@
 package org.kd.xmas25;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -12,18 +13,19 @@ import java.util.List;
 
 public class Scene2 extends BasicC64Screen {
 
+    private final float xmasTreeScale = 0.8f;
     public SpriteBatch batch2;
     public ShapeRenderer shapeRenderer;
-
-    private final float xmasTreeScale = 0.8f;
-
     private Mikolaj mikolaj1;
     private PetsciiSnowman snowman;
     private TravellingLogo scroll1;
     private TravellingLogo xmasTree;
     private Sprite forest;
     private Sprite mountain;
+    private Sprite smallLogo;
     private Sprite socks;
+    private Sprite bigPresent;
+    private Sprite smallPresent;
     private List<Sprite> snowflakes;
     private boolean snowing;
 
@@ -40,8 +42,11 @@ public class Scene2 extends BasicC64Screen {
         this.shapeRenderer = new ShapeRenderer();
         var mikolajPng = new Texture("dream210/mikolaj.png");
         this.mikolaj1 = new Mikolaj(mikolajPng);
+        this.mikolaj1.setColor(Color.BLACK);
 
         this.snowman = new PetsciiSnowman();
+        this.smallLogo = new Sprite(new Texture("dream210/c=xmas.png"));
+        this.smallLogo.setPosition(100, 344);
         this.borderColor = C64Colors.WHITE;
 
         this.forest = new Sprite(new Texture("dream210/las2.png"));
@@ -55,6 +60,11 @@ public class Scene2 extends BasicC64Screen {
         this.socks = new Sprite(new Texture("dream210/socks.png"));
         this.socks.setPosition(235, 170 - 17);
         this.socks.setScale(2.05f, 1.5f);
+
+        bigPresent = new Sprite(new Texture("dream210/present1.png"));
+        bigPresent.setPosition(90f, 133f);
+        smallPresent = new Sprite(new Texture("dream210/present2.png"));
+        smallPresent.setPosition(430f, 150f);
 
         this.snowflakes = WinterEffects.createSnowflakeSprites();
         this.snowflakes.forEach(flake -> flake.setX((float) (flake.getX() + 21 * Math.random())));
@@ -102,7 +112,7 @@ public class Scene2 extends BasicC64Screen {
         }
 
         var treeX = this.xmasTree.getSprite().getX();
-        if (WishesHelper.SCENE2_START_FRAME + 4900 < frame) {
+        if (WishesHelper.SCENE2_START_FRAME + WishesHelper.NIGHT_START_RELATIVE_FRAME < frame) {
             var treeBlink1 = new Texture("dream210/tree/tree4.png");
             var treeBlink2 = new Texture("dream210/tree/tree2.png");
             var x = this.xmasTree.getX();
@@ -135,7 +145,7 @@ public class Scene2 extends BasicC64Screen {
             this.snowing = true;
         } else if (frame == WishesHelper.SCENE2_START_FRAME + 3400)
             this.scroll1.changeTexture(new Texture("dream210/scroll/stanza3.bmp"));
-        else if (frame == WishesHelper.SCENE2_START_FRAME + 4900)
+        else if (frame == WishesHelper.SCENE2_START_FRAME + WishesHelper.NIGHT_START_RELATIVE_FRAME)
             this.scroll1.changeTexture(new Texture("dream210/scroll/stanza4.bmp"));
         else if (frame == 9350)
             this.scroll1.spriteSpeed = 0;
@@ -147,47 +157,56 @@ public class Scene2 extends BasicC64Screen {
 
         long relativeFrame = Gdx.graphics.getFrameId() - WishesHelper.SCENE2_START_FRAME;
         batch2.begin();
-        if (relativeFrame > 400 && relativeFrame < 1675)
-            this.snowman.draw(batch2);
+        if (relativeFrame < 1555) {
+            if (relativeFrame > 100)
+                this.smallLogo.draw(batch2);
+            if (relativeFrame > 400)
+                this.snowman.draw(batch2);
+        }
 
         if (this.snowing) {
-            if (450 < relativeFrame && relativeFrame <= 3400)
+            if (450 < relativeFrame && relativeFrame <= 3400) {
+                if (relativeFrame > 3000)
+                    batch2.draw(new Texture("dream210/tramiel.png"), 300, 230);
                 this.mountain.draw(batch2);
-            else if (3400 < relativeFrame && relativeFrame <= 4900) {
+            } else if (3400 < relativeFrame && relativeFrame <= WishesHelper.NIGHT_START_RELATIVE_FRAME) {
                 this.socks.draw(batch2);
                 this.backgroundScreenPng = "lgrey-ready.png";
                 this.backgroundTexture = new Texture(Gdx.files.internal(this.backgroundScreenPng));
                 Globals.BKG_COLOR = C64Colors.GRAY;
             } else {
-                this.backgroundScreenPng = "lblue-ready.png";
+                if (relativeFrame > WishesHelper.NIGHT_START_RELATIVE_FRAME) {
+                    this.mikolaj1.setColor(C64Colors.WHITE.toBadlogicColor());
+                    this.backgroundScreenPng = "lblack-ready.png";
+                    this.borderColor = C64Colors.BLACK;
+                    Globals.BKG_COLOR = C64Colors.BLACK;
+                    this.mikolaj1.setColor(Color.CYAN);
+                } else
+                    this.backgroundScreenPng = "lblue-ready.png";
                 this.backgroundTexture = new Texture(Gdx.files.internal(this.backgroundScreenPng));
-                Globals.BKG_COLOR = C64Colors.LIGHT_BLUE;
             }
 
             if (relativeFrame > 6550) {
                 var msg = relativeFrame < 6870 ? "CODE  & GFX: KD" : "MSX: KD & https://csdb.dk/sid/?id=26004";
                 whiteFont.draw(batch2, msg, 81, Globals.SCREEN_HEIGHT - 100);
+                var y = this.mikolaj1.getY() + 1;
+                this.mikolaj1.setY(y);
             }
 
-            if (4900 < relativeFrame && relativeFrame < 6550) {
-                this.xmasTree.draw(batch2, Globals.SCREEN_WIDTH, Globals.SCREEN_HEIGHT);
+            if (WishesHelper.NIGHT_START_RELATIVE_FRAME < relativeFrame && relativeFrame < 6550) {
+                handlePresents(relativeFrame);
             }
 
-            for (int startIndex = 0; startIndex <= 6; startIndex++) {
-                if (relativeFrame + WishesHelper.SCENE2_START_FRAME > 400 + startIndex * 100) {
-                    for (int i = startIndex; i < snowflakes.size(); i += 7) {
-                        snowflakes.get(i).draw(batch2);
-                    }
-                }
-            }
+            snow(relativeFrame);
         }
 
         if (relativeFrame > 1675) this.mikolaj1.draw(batch2);
         this.scroll1.draw(batch2, Globals.SCREEN_WIDTH, Globals.SCREEN_HEIGHT);
         batch2.end();
 
+        var hidersColor = relativeFrame > WishesHelper.NIGHT_START_RELATIVE_FRAME ? C64Colors.BLACK : C64Colors.WHITE;
         this.shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        this.shapeRenderer.setColor(C64Colors.WHITE.toBadlogicColor());
+        this.shapeRenderer.setColor(hidersColor.toBadlogicColor());
         this.shapeRenderer.rect(0, 100, 80, 400);
         this.shapeRenderer.rect(800 - 80, 100, 80, 400);
         if (relativeFrame > WishesHelper.SCENE2_START_FRAME + 2340) {
@@ -195,5 +214,25 @@ public class Scene2 extends BasicC64Screen {
         }
         this.shapeRenderer.end();
 
+    }
+
+    private void handlePresents(long relativeFrame) {
+        this.xmasTree.draw(batch2, Globals.SCREEN_WIDTH, Globals.SCREEN_HEIGHT);
+        if (relativeFrame > WishesHelper.NIGHT_START_RELATIVE_FRAME + 400) {
+            this.bigPresent.draw(batch2);
+            if (relativeFrame > WishesHelper.NIGHT_START_RELATIVE_FRAME + 600) {
+                this.smallPresent.draw(batch2);
+            }
+        }
+    }
+
+    private void snow(long relativeFrame) {
+        for (int startIndex = 0; startIndex <= 6; startIndex++) {
+            if (relativeFrame + WishesHelper.SCENE2_START_FRAME > 400 + startIndex * 100) {
+                for (int i = startIndex; i < snowflakes.size(); i += 7) {
+                    snowflakes.get(i).draw(batch2);
+                }
+            }
+        }
     }
 }
