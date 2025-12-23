@@ -10,6 +10,10 @@ import java.util.List;
 
 public class StarsArray {
 
+
+  public double spread = 1.2;
+    public double spread2 = 20;
+
     private final int width;
     private final List<Point> stars;
 
@@ -18,10 +22,12 @@ public class StarsArray {
         stars = new ArrayList<>(2 * height);
 
         for (int i = 0; i < height; i++) {
-            var x1 = -0.2 * width * Math.random();
+
+           var x1 = -spread * width * Math.random();
             var p1 = new Point((int) x1, i);
 
-            var x2 = x1 + 0.2 * width + 10 * i / height;
+            var x2 = x1 + spread * width + spread2 * i / height;
+
             var p2 = new Point((int) x2, i);
 
             stars.add(p1);

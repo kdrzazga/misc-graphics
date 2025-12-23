@@ -6,6 +6,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import org.kd.common.Scene;
 
+import java.util.stream.IntStream;
+
 public final class TrickScene1 extends Scene {
 
     public SpriteBatch batch2;
@@ -41,6 +43,7 @@ public final class TrickScene1 extends Scene {
 
     @Override
     public void render() {
+        var frame = Gdx.graphics.getFrameId();
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
 
         shapeRenderer.rect(
@@ -67,6 +70,10 @@ public final class TrickScene1 extends Scene {
 
         }
 
+        if (frame > Global.TRICK1_GRADUAL_EXIT) {
+            randomStars();
+        }
+
         shapeRenderer.end();
     }
 
@@ -79,6 +86,23 @@ public final class TrickScene1 extends Scene {
             this.xExit++;
 
         return true;
+    }
+
+    private void randomStars() {
+        shapeRenderer.setColor(Color.WHITE);
+        int w = Gdx.graphics.getWidth();
+        var x = (float) (xExit * Math.random());
+        int h = Gdx.graphics.getHeight();
+        var y = (float) (h / 3 * Math.random());
+
+        var amount = 33;
+
+        IntStream.range(0, amount).forEach(j -> {
+            double i = Math.min(w, h) / (float)amount * j;
+            shapeRenderer.rect((float) (x/11 + i * Math.random()), (float) (y + i * Math.random()), 1, 1);
+            shapeRenderer.rect(w - (float) (x + i/11 * Math.random()), (float) (y + i * Math.random()), 1, 1);
+            shapeRenderer.rect(w - (float) (x + i/11 * Math.random()), h - (float) (y + i * Math.random()), 1, 1);
+        });
     }
 
     @Override

@@ -7,24 +7,29 @@ import java.util.Map;
 
 
 public class Letter {
+    private int size;
     protected Field[][] pattern;
 
-    public Letter() {
+    public Letter(int size) {
+        this.size = size;
         pattern = new Field[8][8];
         for (int i = 0; i < pattern.length; i++)
-            for (int j = 0; j < pattern[0].length; j++)
+            for (int j = 0; j < pattern[0].length; j++) {
+                var field = Field.EMPTY;
+                field.setSize(size);
                 pattern[i][j] = Field.EMPTY;
+            }
     }
 
     public void draw(ShapeRenderer shapeRenderer, float letterX, float letterY) {
 
         shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
-        for (int i = 0; i < pattern.length; i++)
+        for (Field[] fields : pattern)
             for (int j = 0; j < pattern[0].length; j++) {
-                var field = pattern[i][j];
+                var field = fields[j];
                 field.getPoints().forEach(point -> {
-                    var x1 = letterX + 2*point.getX();
-                    var y1 = letterX + 2*point.getY();
+                    var x1 = letterX + 2 * point.getX();
+                    var y1 = letterX + 2 * point.getY();
 
                     shapeRenderer.rect(x1, y1, 1, 1);
                 });
@@ -51,6 +56,10 @@ public class Letter {
             }
             o.println();
         }
+    }
+
+    public Field[][] getPattern() {
+        return pattern;
     }
 }
 
