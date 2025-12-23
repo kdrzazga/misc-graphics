@@ -26,6 +26,7 @@ public final class TrickScene2 extends Scene {
     @Override
     public void update(float delta) {
         starsArray.move();
+
     }
 
     @Override
@@ -39,4 +40,5 @@ public final class TrickScene2 extends Scene {
     public void dispose() {
         shapeRenderer.dispose();
     }
+
 }
