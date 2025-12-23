@@ -19,13 +19,13 @@ public final class TrickScene2 extends Scene {
     @Override
     public void create() {
         starsArray = new StarsArray(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        starsArray.spread = 0.75;
         shapeRenderer = new ShapeRenderer();
     }
 
     @Override
     public void update(float delta) {
         starsArray.move();
-
     }
 
     @Override

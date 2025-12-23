@@ -3,8 +3,8 @@ package org.kd.org.kd.tricks.letters;
 import java.util.Arrays;
 
 public class LetterO extends Letter {
-    public LetterO() {
-        super();
+    public LetterO(int size) {
+        super(size);
         for (int y = 0; y < 7; y++) {
             int finalY = y;
             Arrays.asList(0, 1, 5, 6).forEach(x -> this.pattern[finalY][x] = Field.FULL);

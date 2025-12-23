@@ -14,7 +14,7 @@ public enum Field {
         this.size = 8;
     }
 
-    List<Point> getPoints() {
+    public List<Point> getPoints() {
         var result = new ArrayList<Point>(size * size);
         switch (this) {
             case FULL:
@@ -52,5 +52,10 @@ public enum Field {
                 return result;
         }
         return result; //case EMPTY:
+    }
+
+    public Field setSize(int size){
+        this.size = size;
+        return this;
     }
 }
