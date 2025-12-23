@@ -1,4 +1,4 @@
-package org.kd.org.kd.trick1;
+package org.kd.org.kd.tricks;
 
 public final class Global {
     public static final long TRICK1_GRADUAL_EXIT = 1000;

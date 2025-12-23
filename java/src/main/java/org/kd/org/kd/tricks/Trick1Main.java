@@ -1,4 +1,4 @@
-package org.kd.org.kd.trick1;
+package org.kd.org.kd.tricks;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 
