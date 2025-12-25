@@ -1,17 +1,12 @@
 package org.kd.win311;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
 import org.kd.common.AnimationManager;
-import org.kd.common.C64Colors;
-import org.kd.common.Globals;
-import org.kd.common.TravellingLogo;
 
 import java.util.Arrays;
 
-public class Win311Manager extends AnimationManager {
+public final class Win311Manager extends AnimationManager {
 
     @Override
     public void create() {

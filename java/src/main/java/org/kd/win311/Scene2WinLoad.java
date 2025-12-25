@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import org.kd.common.Scene;
 
-public class Scene2WinLoad extends Scene {
+public final class Scene2WinLoad extends Scene {
 
     public final static int START_FRAME = 150;
     public final static String ID = "win-load";

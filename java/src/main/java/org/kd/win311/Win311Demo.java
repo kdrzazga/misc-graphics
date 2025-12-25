@@ -3,7 +3,7 @@ package org.kd.win311;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import org.kd.common.Demo;
 
-public class Win311Demo extends Demo {
+public final class Win311Demo extends Demo {
 
     public static void main(String[] args) {
         Win311Demo.analyzeArguments(args);
