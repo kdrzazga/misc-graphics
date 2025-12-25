@@ -1,6 +1,7 @@
 package org.kd.test;
 
-import org.kd.org.kd.tricks.letters.*;
+import org.kd.tricks.letters.LetterA;
+import org.kd.tricks.letters.LetterO;
 
 public class LetterWriteOut {
     public static void main(String[] args) {

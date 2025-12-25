@@ -114,17 +114,22 @@ public class Scene2 extends BasicC64Screen {
         var treeX = this.xmasTree.getSprite().getX();
         if (WishesHelper.SCENE2_START_FRAME + WishesHelper.NIGHT_START_RELATIVE_FRAME < frame) {
             var treeBlink1 = new Texture("dream210/tree/tree4.png");
-            var treeBlink2 = new Texture("dream210/tree/tree2.png");
+            var treeBlink2 = new Texture("dream210/tree/tree3.png");
+            var treeBlink3 = new Texture("dream210/tree/tree2.png");
             var x = this.xmasTree.getX();
             var y = this.xmasTree.getSprite().getY();
             if (treeX < 300)
                 this.xmasTree.getSprite().setX(treeX + 2);
-            else if (frame % 30 == 15) {
+            else if (frame % 45 == 30) {
                 this.xmasTree.changeTexture(treeBlink1);
                 this.xmasTree.getSprite().setPosition(x, y);
                 this.xmasTree.getSprite().setScale(xmasTreeScale);
-            } else if (frame % 30 == 0) {
+            }if (frame % 45 == 15) {
                 this.xmasTree.changeTexture(treeBlink2);
+                this.xmasTree.getSprite().setPosition(x, y);
+                this.xmasTree.getSprite().setScale(xmasTreeScale);
+            } else if (frame % 45 == 0) {
+                this.xmasTree.changeTexture(treeBlink3);
                 this.xmasTree.getSprite().setPosition(x, y);
                 this.xmasTree.getSprite().setScale(xmasTreeScale);
             }
@@ -145,9 +150,12 @@ public class Scene2 extends BasicC64Screen {
             this.snowing = true;
         } else if (frame == WishesHelper.SCENE2_START_FRAME + 3400)
             this.scroll1.changeTexture(new Texture("dream210/scroll/stanza3.bmp"));
-        else if (frame == WishesHelper.SCENE2_START_FRAME + WishesHelper.NIGHT_START_RELATIVE_FRAME)
+        else if (frame == WishesHelper.SCENE2_START_FRAME + WishesHelper.NIGHT_START_RELATIVE_FRAME) {
             this.scroll1.changeTexture(new Texture("dream210/scroll/stanza4.bmp"));
-        else if (frame == 9350)
+            this.scroll1.getSprite().setScale(1.45f,1);
+            this.scroll1.spriteSpeed = 105;
+        }
+        else if (frame == 9280)
             this.scroll1.spriteSpeed = 0;
     }
 

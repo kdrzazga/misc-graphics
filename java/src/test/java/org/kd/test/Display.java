@@ -2,9 +2,8 @@ package org.kd.test;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import org.kd.org.kd.tricks.letters.Letter;
-import org.kd.org.kd.tricks.letters.LetterA;
-import org.kd.org.kd.tricks.letters.LetterO;
+import org.kd.tricks.letters.Letter;
+import org.kd.tricks.letters.LetterA;
 
 public class Display extends ApplicationAdapter {
     ShapeRenderer shapeRenderer;

@@ -1,7 +1,7 @@
 package org.kd.test;
 
 import org.junit.Test;
-import org.kd.org.kd.tricks.letters.LetterO;
+import org.kd.tricks.letters.LetterO;
 
 public class FieldTest {
 
