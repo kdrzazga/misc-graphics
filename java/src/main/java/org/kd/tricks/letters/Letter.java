@@ -1,4 +1,4 @@
-package org.kd.org.kd.tricks.letters;
+package org.kd.tricks.letters;
 
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
@@ -50,9 +50,9 @@ public class Letter {
                 , Field.TOP_RIGHT, '\\'
         );
 
-        for (int i = 0; i < pattern.length; i++) {
+        for (Field[] fields : pattern) {
             for (int j = 0; j < pattern[0].length; j++) {
-                o.print(map.get(pattern[i][j]));
+                o.print(map.get(fields[j]));
             }
             o.println();
         }

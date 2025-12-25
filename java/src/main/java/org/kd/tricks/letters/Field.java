@@ -1,4 +1,4 @@
-package org.kd.org.kd.tricks.letters;
+package org.kd.tricks.letters;
 
 import org.lwjgl.util.Point;
 
