@@ -9,7 +9,10 @@ import org.kd.common.Scene;
 import java.util.stream.IntStream;
 
 public final class TrickScene1 extends Scene {
-
+    private final int x1;
+    private final int y1;
+    private final int x2;
+    private final int y2;
     public SpriteBatch batch2;
 
     private ShapeRenderer shapeRenderer;
@@ -19,8 +22,12 @@ public final class TrickScene1 extends Scene {
     private Color topColor = new Color(0f, 0f, 0.5f, 1f);
     private Color bottomColor = new Color(0.4f, 0.7f, 1f, 1f);
 
-    public TrickScene1() {
+    public TrickScene1(int x1, int y1, int x2, int y2) {
         super("trick-scene1");
+        this.x1 = x1;
+        this.y1 = y1;
+        this.x2 = x2;
+        this.y2 = y2;
     }
 
     @Override
@@ -43,21 +50,19 @@ public final class TrickScene1 extends Scene {
 
     @Override
     public void render() {
-        int x = 0;
-        int y = 0;
-        int width = Gdx.graphics.getWidth() - x;
+        int width = Gdx.graphics.getWidth() - x1;
         int height = Gdx.graphics.getHeight();
 
         var frame = Gdx.graphics.getFrameId();
-        drawGradientRectangle(x, y, width - x, height);
+        drawGradientRectangle(x1, y1, width - x1, height);
 
         shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
 
-        for (float yy = y; yy < height; yy++) {
-            shapeRenderer.setColor(Color.BLACK);
+        for (float yy = 0; yy < height; yy++) {
+            shapeRenderer.setColor(Color.RED);
             float x2 = (float) (100 + 50 * Math.sin(yy / Math.PI / sineWidth) + 20 * Math.sin(0.9 * yy / 15));
             float xLeft = x2 + xExit;
-            shapeRenderer.line(x, yy, xLeft + x, yy);
+            shapeRenderer.line(x1, yy, xLeft + x1, yy);
             shapeRenderer.line(width, height - yy, width - x2 - xExit, height - yy);
         }
 

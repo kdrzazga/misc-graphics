@@ -10,8 +10,8 @@ public class TrickAppMgr extends AnimationManager {
     public void create() {
         super.create();
 
-        var scene1 = new TrickScene1();
-        var scene2 = new TrickScene2();
+        var scene1 = new TrickScene1(50, 50, Gdx.graphics.getWidth() - 50, Gdx.graphics.getHeight() - 50);
+        var scene2 = new TrickScene2(50, 50, Gdx.graphics.getWidth() - 50, Gdx.graphics.getHeight() - 50);
 
         sceneManager.addScene(scene1.id, scene1);
         sceneManager.addScene(scene2.id, scene2);
@@ -28,7 +28,7 @@ public class TrickAppMgr extends AnimationManager {
         sceneManager.render();
 
         var frame = Gdx.graphics.getFrameId();
-        if (frame == Global.TRICK2_FRAME){
+        if (frame == Global.TRICK2_FRAME) {
             sceneManager.switchScene("trick-scene2");
         }
     }
