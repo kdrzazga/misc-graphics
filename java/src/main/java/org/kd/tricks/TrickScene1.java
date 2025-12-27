@@ -50,24 +50,27 @@ public final class TrickScene1 extends Scene {
 
     @Override
     public void render() {
-        int width = Gdx.graphics.getWidth() - x1;
-        int height = Gdx.graphics.getHeight();
+        int width = this.x2 - x1;
+        int height = this.y2 - this.y1;
 
         var frame = Gdx.graphics.getFrameId();
-        drawGradientRectangle(x1, y1, width - x1, height);
+        drawGradientRectangle(x1, y1, width, height);
+        drawEdgeWaves(frame);
+    }
 
+    private void drawEdgeWaves(long frame) {
         shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
 
-        for (float yy = 0; yy < height; yy++) {
-            shapeRenderer.setColor(Color.RED);
-            float x2 = (float) (100 + 50 * Math.sin(yy / Math.PI / sineWidth) + 20 * Math.sin(0.9 * yy / 15));
-            float xLeft = x2 + xExit;
+        for (float yy = y1; yy < this.y2; yy++) {
+            shapeRenderer.setColor(Color.BLACK);
+            float xx = (float) (100 + 50 * Math.sin(yy / Math.PI / sineWidth) + 20 * Math.sin(0.9 * yy / 15));
+            float xLeft = xx + xExit;
             shapeRenderer.line(x1, yy, xLeft + x1, yy);
-            shapeRenderer.line(width, height - yy, width - x2 - xExit, height - yy);
+            shapeRenderer.line(this.x2, this.y2 - yy + this.y1, this.x2 - xLeft, this.y2 - yy + this.y1 - 1);
         }
 
         if (frame > Global.TRICK1_GRADUAL_EXIT) {
-            randomStars();
+            //randomStars();
         }
 
         shapeRenderer.end();
