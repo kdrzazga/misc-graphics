@@ -45,11 +45,11 @@ public final class TrickScene1 extends Scene {
     public void render() {
         int x = 0;
         int y = 0;
-        int width = Gdx.graphics.getWidth();
+        int width = Gdx.graphics.getWidth() - x;
         int height = Gdx.graphics.getHeight();
 
         var frame = Gdx.graphics.getFrameId();
-        drawGradientRectangle(x, y, width, height);
+        drawGradientRectangle(x, y, width - x, height);
 
         shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
 
