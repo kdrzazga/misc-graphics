@@ -45,11 +45,13 @@ public class StarsArray {
         });
     }
 
-    public void draw(ShapeRenderer shapeRenderer) {
+    public void draw(ShapeRenderer shapeRenderer, int x1, int y1, int x2, int y2) {
         shapeRenderer.setColor(Color.WHITE);
-        var maxX = Gdx.graphics.getWidth();
+        var maxX = Math.min(x2, Gdx.graphics.getWidth());
+        var maxY = Math.min(y2, Gdx.graphics.getHeight());
         stars.stream()
-                .filter(stars -> stars.getX() > 0 && stars.getX() < maxX)
+                .filter(stars -> stars.getX() > x1 && stars.getX() < maxX)
+                .filter(stars -> stars.getY() > y1 && stars.getY() < maxY)
                 .forEach(star -> shapeRenderer.rect(star.getX(), star.getY(), 1, 1));
     }
 }
