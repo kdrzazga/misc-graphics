@@ -57,9 +57,8 @@ public final class TrickScene1 extends Scene {
             shapeRenderer.setColor(Color.BLACK);
             float x2 = (float) (100 + 50 * Math.sin(yy / Math.PI / sineWidth) + 20 * Math.sin(0.9 * yy / 15));
             float xLeft = x2 + xExit;
-            shapeRenderer.line(x, yy, xLeft, yy);
+            shapeRenderer.line(x, yy, xLeft + x, yy);
             shapeRenderer.line(width, height - yy, width - x2 - xExit, height - yy);
-
         }
 
         if (frame > Global.TRICK1_GRADUAL_EXIT) {
@@ -99,7 +98,7 @@ public final class TrickScene1 extends Scene {
         int w = Gdx.graphics.getWidth();
         var x = (float) (xExit * Math.random());
         int h = Gdx.graphics.getHeight();
-        var y = (float) (h / 3 * Math.random());
+        var y = (float) ((float) h / 3 * Math.random());
 
         var amount = 33;
 
