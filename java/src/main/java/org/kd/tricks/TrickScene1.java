@@ -43,36 +43,42 @@ public final class TrickScene1 extends Scene {
 
     @Override
     public void render() {
+        int x = 0;
+        int y = 0;
+        int width = Gdx.graphics.getWidth();
+        int height = Gdx.graphics.getHeight();
+
         var frame = Gdx.graphics.getFrameId();
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-
-        shapeRenderer.rect(
-                0,                                 // x
-                0,                                 // y
-                Gdx.graphics.getWidth(),          // width
-                Gdx.graphics.getHeight(),         // height
-                topColor,      // top‑left
-                topColor,      // top‑right
-                bottomColor,   // bottom‑right
-                bottomColor    // bottom‑left
-        );
-
-        shapeRenderer.end();
+        drawGradientRectangle(x, y, width, height);
 
         shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
 
-        for (float y = 0; y < Gdx.graphics.getHeight(); y++) {
+        for (float yy = y; yy < height; yy++) {
             shapeRenderer.setColor(Color.BLACK);
-            float x2 = (float) (100 + 50 * Math.sin(y / Math.PI / sineWidth) + 20 * Math.sin(0.9 * y / 15));
+            float x2 = (float) (100 + 50 * Math.sin(yy / Math.PI / sineWidth) + 20 * Math.sin(0.9 * yy / 15));
             float xLeft = x2 + xExit;
-            shapeRenderer.line(0f, y, xLeft, y);
-            shapeRenderer.line(Gdx.graphics.getWidth(), Gdx.graphics.getHeight() - y, Gdx.graphics.getWidth() - x2 - xExit, Gdx.graphics.getHeight() - y);
+            shapeRenderer.line(x, yy, xLeft, yy);
+            shapeRenderer.line(width, height - yy, width - x2 - xExit, height - yy);
 
         }
 
         if (frame > Global.TRICK1_GRADUAL_EXIT) {
             randomStars();
         }
+
+        shapeRenderer.end();
+    }
+
+    private void drawGradientRectangle(int x, int y, int width, int height) {
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+
+        shapeRenderer.rect(
+                x, y, width, height,
+                topColor,      // top‑left
+                topColor,      // top‑right
+                bottomColor,   // bottom‑right
+                bottomColor    // bottom‑left
+        );
 
         shapeRenderer.end();
     }
@@ -98,10 +104,10 @@ public final class TrickScene1 extends Scene {
         var amount = 33;
 
         IntStream.range(0, amount).forEach(j -> {
-            double i = Math.min(w, h) / (float)amount * j;
-            shapeRenderer.rect((float) (x/11 + i * Math.random()), (float) (y + i * Math.random()), 1, 1);
-            shapeRenderer.rect(w - (float) (x + i/11 * Math.random()), (float) (y + i * Math.random()), 1, 1);
-            shapeRenderer.rect(w - (float) (x + i/11 * Math.random()), h - (float) (y + i * Math.random()), 1, 1);
+            double i = Math.min(w, h) / (float) amount * j;
+            shapeRenderer.rect((float) (x / 11 + i * Math.random()), (float) (y + i * Math.random()), 1, 1);
+            shapeRenderer.rect(w - (float) (x + i / 11 * Math.random()), (float) (y + i * Math.random()), 1, 1);
+            shapeRenderer.rect(w - (float) (x + i / 11 * Math.random()), h - (float) (y + i * Math.random()), 1, 1);
         });
     }
 
