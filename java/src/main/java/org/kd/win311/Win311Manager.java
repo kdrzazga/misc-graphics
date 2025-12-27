@@ -11,7 +11,7 @@ public final class Win311Manager extends AnimationManager {
     @Override
     public void create() {
         super.create();
-        this.createMusic("dream210/przybiezeli.mp3"); //TODO
+        this.createMusic("win311/EscapeRamos.mp3"); //TODO
 
         var scene1 = new Scene1Bios();
         var scene2 = new Scene2WinLoad();
@@ -38,6 +38,8 @@ public final class Win311Manager extends AnimationManager {
             sceneManager.switchScene(Scene2WinLoad.ID);
         if (frame == Scene3ProgramMgr.START_FRAME)
             sceneManager.switchScene(Scene3ProgramMgr.ID);
+        if (frame == Scene3ProgramMgr.PLAY_MUSIC_FRAME)
+            tune.play();
     }
 
     @Override

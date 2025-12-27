@@ -23,7 +23,7 @@ public final class Scene1Bios extends Scene {
 
     @Override
     public void update(float delta) {
-
+        Gdx.input.setCursorPosition(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
     }
 
     @Override
@@ -37,6 +37,6 @@ public final class Scene1Bios extends Scene {
 
     @Override
     public void dispose() {
-        batch.dispose();
+        //batch.dispose();
     }
 }
