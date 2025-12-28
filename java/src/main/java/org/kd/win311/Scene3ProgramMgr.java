@@ -64,10 +64,10 @@ public final class Scene3ProgramMgr extends Scene {
             Helper.moveCursor(new Vector2(205, 615), new Vector2(29, 103), 333, getRelFrame());
         } else if (this.getRelFrame() > 600 && this.getRelFrame() < 730) {
             //go to MediaPlayer button OK
-            Helper.moveCursor(new Vector2(29, 103), new Vector2(179, 74), 530, getRelFrame());
-        } else if (this.getRelFrame() > 770 && this.getRelFrame() < 1000) {
-            //go to MediaPlayer button OK
-            Helper.moveCursor(new Vector2(179, 74), new Vector2(205, 615), 770, getRelFrame());
+            Helper.moveCursor(new Vector2(29, 103), new Vector2(179, 90), 530, getRelFrame());
+        } else if (this.getRelFrame() > 770 && this.getRelFrame() < 910) {
+            //go to Paintbrush
+            Helper.moveCursor(new Vector2(179, 74), new Vector2(205, 500), 770, getRelFrame());
         }
 
         if (getRelFrame() % 5 == 0) {

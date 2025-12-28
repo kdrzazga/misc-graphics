@@ -28,7 +28,9 @@ public class Scene4Paintbrush extends Scene {
 
     @Override
     public void update(float delta) {
-
+        if (this.getRelFrame() == 1){
+            Gdx.input.setCursorPosition(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+        }
     }
 
     @Override
@@ -37,8 +39,14 @@ public class Scene4Paintbrush extends Scene {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         batch.begin();
+        batch.draw(this.mediaPlayerW, 5, 570);
         batch.draw(this.paintbrushW, 10, 10);
         batch.end();
+    }
+
+    private long getRelFrame() {
+        var frame = Gdx.graphics.getFrameId();
+        return frame - Scene3ProgramMgr.START_FRAME;
     }
 
     @Override

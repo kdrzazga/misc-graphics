@@ -23,6 +23,7 @@ public final class Win311Manager extends AnimationManager {
             sceneManager.addScene(s.id, s);
         });
         sceneManager.switchScene("BIOS");
+        tune.setLooping(true);
     }
 
     @Override
