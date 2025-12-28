@@ -16,8 +16,9 @@ public final class Win311Manager extends AnimationManager {
         var scene1 = new Scene1Bios();
         var scene2 = new Scene2WinLoad();
         var scene3 = new Scene3ProgramMgr();
+        var scene4 = new Scene4Paintbrush();
 
-        Arrays.asList(scene1, scene2, scene3).forEach(s -> {
+        Arrays.asList(scene1, scene2, scene3, scene4).forEach(s -> {
             s.create();
             sceneManager.addScene(s.id, s);
         });
@@ -40,6 +41,8 @@ public final class Win311Manager extends AnimationManager {
             sceneManager.switchScene(Scene3ProgramMgr.ID);
         if (frame == Scene3ProgramMgr.PLAY_MUSIC_FRAME)
             tune.play();
+        if (frame == Scene4Paintbrush.START_FRAME)
+            sceneManager.switchScene(Scene4Paintbrush.ID);
     }
 
     @Override
