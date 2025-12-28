@@ -9,10 +9,11 @@ import com.badlogic.gdx.graphics.Cursor;
 import com.badlogic.gdx.math.Vector2;
 import org.kd.common.Helper;
 import org.kd.common.Scene;
+import org.lwjgl.input.Mouse;
 
 public final class Scene3ProgramMgr extends Scene {
     public final static int START_FRAME = Scene2WinLoad.START_FRAME + 150;
-    public final static int PLAY_MUSIC_FRAME = START_FRAME + 300;
+    public final static int PLAY_MUSIC_FRAME = START_FRAME + 560;
     public final static String ID = "prgmgr";
 
     private Texture programMgrW;
@@ -54,14 +55,21 @@ public final class Scene3ProgramMgr extends Scene {
             var x1 = Gdx.graphics.getWidth() / 2;
             var y1 = Gdx.graphics.getHeight() / 2;
             var y2 = Gdx.graphics.getHeight() - 80;
+            //go to Accessories icon in ProgramManager window
             Helper.moveCursor(new Vector2(x1, y1), new Vector2(10,y2),50, getRelFrame());
         }
-        if (this.getRelFrame() > 300 && this.getRelFrame() < 450){
-            var y1 = Gdx.graphics.getHeight() - 80;
-            Helper.moveCursor(new Vector2(10,y1), new Vector2(5,570), 305, getRelFrame());
+        else if (this.getRelFrame() > 270 && this.getRelFrame() <330){
+            //go to Media player icon
+            Helper.moveCursor(new Vector2(135,601), new Vector2(205,615),270, getRelFrame());
         }
-
-
+        else if (this.getRelFrame() > 330 && this.getRelFrame() < 527){
+            //go to MediaPlayer File menu
+            Helper.moveCursor(new Vector2(205,615), new Vector2(29,103), 333, getRelFrame());
+        }
+        if (getRelFrame() % 5 == 0) {
+            System.out.print(Gdx.input.getX() + " " + Gdx.input.getY() + "\t");
+            System.out.println(Mouse.getX() + " " + Mouse.getY());
+        }
 
     }
 
@@ -76,8 +84,10 @@ public final class Scene3ProgramMgr extends Scene {
             batch.draw(programMgrW, 60, 90);
         if (this.getRelFrame() > 220)
             batch.draw(accesoriesW, 82, 70);
-        if (this.getRelFrame() > 250)
+        if (this.getRelFrame() > 330)
             batch.draw(this.mediaPlayerW, 5, 570);
+
+        //if(this.getRelFrame() > )
         batch.end();
     }
 
