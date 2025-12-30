@@ -36,9 +36,9 @@ public class WavedEdgeTrick {
 
     public void update() {
 
-        var frame = Gdx.graphics.getFrameId();
+        var frame = Gdx.graphics.getFrameId(); // this frame does not need to be relative. It's only for cycling color gradient
 
-        System.out.print(" fr=" + frame + " ");
+        //System.out.print(" fr=" + frame + " ");
         double x = (frame + 400) / 1000f * 3.14;
         topColor.b = (float) Math.abs(Math.sin(x));
 
@@ -52,11 +52,11 @@ public class WavedEdgeTrick {
 
         var frame = Gdx.graphics.getFrameId();
         drawGradientRectangle(x1, y1, width, height);
-        drawEdgeWaves(frame);
+        drawEdgeWaves();
 
     }
 
-    private void drawEdgeWaves(long frame) {
+    private void drawEdgeWaves() {
         shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
 
         for (float yy = y1; yy < this.y2; yy++) {
@@ -67,7 +67,7 @@ public class WavedEdgeTrick {
             shapeRenderer.line(this.x2, this.y2 - yy + this.y1, this.x2 - xLeft, this.y2 - yy + this.y1 - 1);
         }
 
-        if (frame > TRICK1_GRADUAL_EXIT) {
+        if (this.getRelativeFrame() > TRICK1_GRADUAL_EXIT) {
             //randomStars();
         }
 
