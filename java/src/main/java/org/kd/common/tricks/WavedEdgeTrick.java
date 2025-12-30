@@ -50,7 +50,6 @@ public class WavedEdgeTrick {
         int width = this.x2 - x1;
         int height = this.y2 - this.y1;
 
-        var frame = Gdx.graphics.getFrameId();
         drawGradientRectangle(x1, y1, width, height);
         drawEdgeWaves();
 
