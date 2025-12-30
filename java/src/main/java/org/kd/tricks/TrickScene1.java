@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import org.kd.common.Scene;
+import org.kd.common.tricks.WavedEdgeTrick;
 
 import java.util.stream.IntStream;
 
@@ -19,8 +20,8 @@ public final class TrickScene1 extends Scene {
     private float sineWidth = 20f;
     private float xExit = 0f;
 
-    private Color topColor = new Color(0f, 0f, 0.5f, 1f);
-    private Color bottomColor = new Color(0.4f, 0.7f, 1f, 1f);
+    private WavedEdgeTrick wavedEdgeTrick;
+
 
     public TrickScene1(int x1, int y1, int x2, int y2) {
         super("trick-scene1");
@@ -34,71 +35,18 @@ public final class TrickScene1 extends Scene {
     public void create() {
         this.shapeRenderer = new ShapeRenderer();
         this.batch2 = new SpriteBatch();
+        this.wavedEdgeTrick = new WavedEdgeTrick(x1, y1, x2, y2, this.batch2, this.shapeRenderer, this.sineWidth, this.xExit);
+        this.wavedEdgeTrick.setInitialFrame(Gdx.graphics.getFrameId());
     }
 
     @Override
     public void update(float delta) {
-        var frame = Gdx.graphics.getFrameId();
-
-        System.out.print(" fr=" + frame + " ");
-        double x = (frame + 400) / 1000f * 3.14;
-        topColor.b = (float) Math.abs(Math.sin(x));
-
-        sineWidth = (float) (23 + 12 * Math.cos(x / 3));
-        conditionalExit();
+        this.wavedEdgeTrick.update();
     }
 
     @Override
     public void render() {
-        int width = this.x2 - x1;
-        int height = this.y2 - this.y1;
-
-        var frame = Gdx.graphics.getFrameId();
-        drawGradientRectangle(x1, y1, width, height);
-        drawEdgeWaves(frame);
-    }
-
-    private void drawEdgeWaves(long frame) {
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
-
-        for (float yy = y1; yy < this.y2; yy++) {
-            shapeRenderer.setColor(Color.BLACK);
-            float xx = (float) (100 + 50 * Math.sin(yy / Math.PI / sineWidth) + 20 * Math.sin(0.9 * yy / 15));
-            float xLeft = xx + xExit;
-            shapeRenderer.line(x1, yy, xLeft + x1, yy);
-            shapeRenderer.line(this.x2, this.y2 - yy + this.y1, this.x2 - xLeft, this.y2 - yy + this.y1 - 1);
-        }
-
-        if (frame > Global.TRICK1_GRADUAL_EXIT) {
-            //randomStars();
-        }
-
-        shapeRenderer.end();
-    }
-
-    private void drawGradientRectangle(int x, int y, int width, int height) {
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-
-        shapeRenderer.rect(
-                x, y, width, height,
-                topColor,      // top‑left
-                topColor,      // top‑right
-                bottomColor,   // bottom‑right
-                bottomColor    // bottom‑left
-        );
-
-        shapeRenderer.end();
-    }
-
-    private boolean conditionalExit() {
-        var frame = Gdx.graphics.getFrameId();
-
-        if (this.xExit > (float) Gdx.graphics.getWidth() / 2)
-            return false;
-        else if (frame > Global.TRICK1_GRADUAL_EXIT)
-            this.xExit++;
-
-        return true;
+        this.wavedEdgeTrick.render();
     }
 
     private void randomStars() {
