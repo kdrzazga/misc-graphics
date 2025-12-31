@@ -32,7 +32,8 @@ public class GoodJobAnimationMgr extends AnimationManager {
         System.out.print(frame + " ");
         if (frame == Scene2.START_FRAME){
             sceneManager.switchScene("2");
-            this.createMusic("good-job/Ramosnoname.mp3");
+            this.createMusic("good-job/Ramosnoname.mp3"); //https://csdb.dk/sid/?id=23786
+            this.tune.setVolume(1f);
             tune.setLooping(true);
             tune.play();
         }

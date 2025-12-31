@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
 import org.kd.common.AnimationManager;
 import org.kd.common.C64Colors;
 import org.kd.common.Globals;
-import org.kd.common.TravellingLogo;
+import org.kd.common.tricks.TravellingLogo;
 
 import java.util.Arrays;
 
