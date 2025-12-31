@@ -1,1 +1,7 @@
 https://mountainbytes.ch/events/competitions
+
+Tools used:
+IntelliJ for Java coding (+Maven)
+Gimp for simple graphics processing
+Online Sequencer for very simple chiptunes.
+GoatTracker for more advanced, retro-style chiptunes.
