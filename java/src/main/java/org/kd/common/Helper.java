@@ -27,4 +27,13 @@ public class Helper {
         int currentY = Math.round(source.y + (destination.y - source.y) * progress);
         Gdx.input.setCursorPosition(currentX, currentY);
     }
+
+    public static String countElapsedTime() {
+        long endTime = System.currentTimeMillis();
+        long elapsedTime = endTime - Globals.startTime;
+        long minutes = (elapsedTime / 1000) / 60;
+        long seconds = (elapsedTime / 1000) % 60;
+
+        return String.format("%02d:%02d", minutes, seconds);
+    }
 }

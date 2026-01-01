@@ -5,10 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import org.kd.common.BasicC64Screen;
-import org.kd.common.C64Colors;
-import org.kd.common.C64Helper;
-import org.kd.common.Globals;
+import org.kd.common.*;
 
 public class Scene2Outro extends BasicC64Screen {
     SpriteBatch batch2;
@@ -59,7 +56,7 @@ public class Scene2Outro extends BasicC64Screen {
             Globals.cursorY = Globals.SCREEN_HEIGHT - 114 - 7 * 14;
         } else {
             font3.draw(batch2, "PRINT TIME$", LEFT_EDGE, Globals.DEFAULT_CURSOR_Y);
-            font3.draw(batch2, C64Helper.countElapsedTime(), LEFT_EDGE, Globals.DEFAULT_CURSOR_Y - 15 - 1);
+            font3.draw(batch2, Helper.countElapsedTime(), LEFT_EDGE, Globals.DEFAULT_CURSOR_Y - 15 - 1);
             font3.draw(batch2, "READY.", LEFT_EDGE, Globals.DEFAULT_CURSOR_Y - 30 - 1);
 
             Globals.cursorY = Globals.DEFAULT_CURSOR_Y - 61;

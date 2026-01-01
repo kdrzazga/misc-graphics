@@ -8,9 +8,15 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import org.kd.common.C64Helper;
+import org.kd.common.ConsoleLogger;
 import org.kd.common.Scene;
+import org.kd.goodjob.appendix.BannerApple;
 import org.kd.tricks.GradientRectangleTrick;
 import org.kd.tricks.StarsArray;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.IntStream;
 
 public final class Scene2 extends Scene {
 
@@ -18,6 +24,7 @@ public final class Scene2 extends Scene {
 
     private SpriteBatch batch;
     private Sprite ronaldWayne, steveWozniak, steveJobs;
+    private List<Sprite> threeAmigosSprites;
     private GradientRectangleTrick gradientRectangle;
     private ShapeRenderer shapeRenderer;
     private StarsArray starsArray;
@@ -49,11 +56,18 @@ public final class Scene2 extends Scene {
         starsArray.spread = 0.75;
 
         this.fontSmall = C64Helper.createFont(50, "Helvetica Regular.otf");
+
+        threeAmigosSprites = new ArrayList<>(10);
+        IntStream.range(0, 9).forEach(i -> {
+            var t = new Texture("good-job/3amigos/pic" + i + ".png");
+            var s = new Sprite(t);
+            s.setScale(0.02f, 1f);
+            threeAmigosSprites.add(s);
+        });
     }
 
     @Override
     public void update(float delta) {
-        long frame = Gdx.graphics.getFrameId();
         this.gradientRectangle.update(false, false, true);
         //int speed = Math.toIntExact(Math.round(7.5 + 3.5 * Math.sin(frame / 100f * Math.PI)));
         starsArray.move(6);
@@ -71,6 +85,36 @@ public final class Scene2 extends Scene {
                 var newScale = Math.min(2f, this.steveJobs.getScaleX() + 0.01f);
                 this.steveJobs.setScale(newScale, newScale);
             }
+
+            if (this.getRelativeFrame() < 1800) threeAmigosGoRound();
+            else bringAmigosTogether();
+        }
+
+        if (1360 < this.getRelativeFrame() && this.getRelativeFrame() < 1800) {
+            this.threeAmigosSprites.forEach(sprite -> {
+                var sc = sprite.getScaleX();
+                sc = Math.min(1f, sc + 0.02f);
+                sprite.setScale(sc, 1f);
+            });
+        }
+    }
+
+    private void bringAmigosTogether() {
+        float destY = Gdx.graphics.getHeight() / 2f;
+        float destX0 = Gdx.graphics.getWidth() / 4f;
+        float width = this.threeAmigosSprites.get(0).getWidth();
+
+        for (int i = 0; i < this.threeAmigosSprites.size(); i++) {
+            var s = this.threeAmigosSprites.get(i);
+
+            var decY = 1;//Math.abs(s.getY() - destY) > 13 ? 5 : 1;
+            if (s.getY() > destY) s.setY(s.getY() - decY);
+            else if (s.getY() < destY) s.setY(s.getY() + decY);
+
+            float destX = destX0 + i * width;
+            var dX = 1;//Math.abs(s.getX() - destX) > 13 ? 5 : 1;
+            if (s.getX() > destX) s.setX(s.getX() - dX);
+            else if (s.getX() < destX) s.setX(s.getX() + dX);
         }
     }
 
@@ -89,11 +133,17 @@ public final class Scene2 extends Scene {
                 drawFounder(this.steveJobs, "Steve Jobs", 480);
             }
         }
+
+        if (this.getRelativeFrame() > 1350) {
+            this.threeAmigosSprites.forEach(sprite -> sprite.draw(batch));
+        }
         batch.end();
 
         shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
         this.starsArray.draw(shapeRenderer, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         shapeRenderer.end();
+
+        ConsoleLogger.logBannerWithElapsedTime(BannerApple.lines);
     }
 
     private void drawFounder(Sprite founder, String caption, float shiftX) {
@@ -101,6 +151,22 @@ public final class Scene2 extends Scene {
         founder.setPosition(founderX, Gdx.graphics.getHeight() / 2f - 240);
         founder.draw(batch);
         fontSmall.draw(batch, caption, Gdx.graphics.getWidth() / 2f - 20, 50);
+    }
+
+    private void threeAmigosGoRound() {
+        final int r1 = Gdx.graphics.getWidth() / 4;
+        final int r2 = Gdx.graphics.getHeight() / 4;
+
+        String frameStr = Long.toString(getRelativeFrame() + 1000);
+        String firstTwoDigitsStr = frameStr.length() >= 4 ? frameStr.substring(2, 4) : frameStr;
+        int firstTwoDigits = Integer.parseInt(firstTwoDigitsStr);
+
+        final double angle = Math.PI * firstTwoDigits / 50;
+        for (int i = 0; i < threeAmigosSprites.size(); i++) {
+            var x = (float) (2 * r1 + r1 * Math.cos(angle + i * 2 * Math.PI / 7));
+            var y = (float) (2 * r2 + r2 * Math.sin(angle + i * 2 * Math.PI / 7));
+            threeAmigosSprites.get(i).setPosition(x, y);
+        }
     }
 
     @Override
