@@ -25,6 +25,8 @@ public final class Scene2 extends Scene {
     private SpriteBatch batch;
     private Sprite ronaldWayne, steveWozniak, steveJobs;
     private List<Sprite> threeAmigosSprites;
+    private Texture threeAmigos;
+    private List<Sprite> apple1Sprites;
     private GradientRectangleTrick gradientRectangle;
     private ShapeRenderer shapeRenderer;
     private StarsArray starsArray;
@@ -39,7 +41,7 @@ public final class Scene2 extends Scene {
         var wayneTexture = new Texture("good-job/RonaldWayne.png");
         var wozniakTexture = new Texture("good-job/SteveWozniak.png");
         var jobsTexture = new Texture("good-job/SteveJobs.png");
-        Texture threeAmigos = new Texture("good-job/jobsWayneWoz.jpg");
+        threeAmigos = new Texture("good-job/jobsWayneWoz.jpg");
 
         batch = new SpriteBatch();
         this.ronaldWayne = new Sprite(wayneTexture);
@@ -58,7 +60,7 @@ public final class Scene2 extends Scene {
         this.fontSmall = C64Helper.createFont(50, "Helvetica Regular.otf");
 
         threeAmigosSprites = new ArrayList<>(10);
-        IntStream.range(0, 9).forEach(i -> {
+        IntStream.range(0, 9+1).forEach(i -> {
             var t = new Texture("good-job/3amigos/pic" + i + ".png");
             var s = new Sprite(t);
             s.setScale(0.02f, 1f);
@@ -86,8 +88,10 @@ public final class Scene2 extends Scene {
                 this.steveJobs.setScale(newScale, newScale);
             }
 
-            if (this.getRelativeFrame() < 1800) threeAmigosGoRound();
-            else bringAmigosTogether();
+            if (this.getRelativeFrame() < 1600) threeAmigosGoRound();
+            else if (this.getRelativeFrame() < 2100)
+                bringAmigosTogether(this.threeAmigosSprites, Gdx.graphics.getHeight() / 2f, Gdx.graphics.getWidth() / 4f);
+
         }
 
         if (1360 < this.getRelativeFrame() && this.getRelativeFrame() < 1800) {
@@ -99,23 +103,22 @@ public final class Scene2 extends Scene {
         }
     }
 
-    private void bringAmigosTogether() {
-        float destY = Gdx.graphics.getHeight() / 2f;
-        float destX0 = Gdx.graphics.getWidth() / 4f;
-        float width = this.threeAmigosSprites.get(0).getWidth();
+    private void bringAmigosTogether(List<Sprite> sprites, float destY, float destX0) {
+        float width = sprites.get(3).getWidth();
 
-        for (int i = 0; i < this.threeAmigosSprites.size(); i++) {
-            var s = this.threeAmigosSprites.get(i);
+        for (int i = 0; i < sprites.size(); i++) {
+            var s = sprites.get(i);
 
-            var decY = 1;//Math.abs(s.getY() - destY) > 13 ? 5 : 1;
+            var decY = Math.abs(s.getY() - destY) > 13 ? 5 : 1;
             if (s.getY() > destY) s.setY(s.getY() - decY);
             else if (s.getY() < destY) s.setY(s.getY() + decY);
 
             float destX = destX0 + i * width;
-            var dX = 1;//Math.abs(s.getX() - destX) > 13 ? 5 : 1;
+            var dX = Math.abs(s.getX() - destX) > 13 ? 5 : 1;
             if (s.getX() > destX) s.setX(s.getX() - dX);
             else if (s.getX() < destX) s.setX(s.getX() + dX);
         }
+
     }
 
     @Override
@@ -134,9 +137,10 @@ public final class Scene2 extends Scene {
             }
         }
 
-        if (this.getRelativeFrame() > 1350) {
+        if (1350 < this.getRelativeFrame() && this.getRelativeFrame() < 1950) {
             this.threeAmigosSprites.forEach(sprite -> sprite.draw(batch));
-        }
+        } else if (this.getRelativeFrame() > 1950)
+            batch.draw(this.threeAmigos, this.threeAmigosSprites.get(0).getX(), this.threeAmigosSprites.get(0).getY());
         batch.end();
 
         shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
