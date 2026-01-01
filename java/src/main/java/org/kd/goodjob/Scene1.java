@@ -12,7 +12,7 @@ import org.kd.common.C64Helper;
 import org.kd.common.Scene;
 import org.kd.common.tricks.Effects;
 
-public class Scene1 extends Scene {
+public final class Scene1 extends Scene {
 
     private SpriteBatch batch;
     private BitmapFont hugeFont, fontSmall;
@@ -59,7 +59,7 @@ public class Scene1 extends Scene {
         batch.begin();
 
         if (720 < frame && frame < 850 + 500)
-            hugeFont.draw(batch, "50", Gdx.graphics.getWidth() / 2 - 3*fiftyFontSize/4, Gdx.graphics.getHeight() / 2 + fiftyFontSize / 2);
+            hugeFont.draw(batch, "50", Gdx.graphics.getWidth() / 2f - 3*fiftyFontSize/4f, Gdx.graphics.getHeight() / 2f + fiftyFontSize / 2f);
 
         else if (850 + 550 < frame && frame < 850 + 550 + 630) {
             float a = Math.max(0.01f, 1 - (frame - 850f - 550f) / 500f);

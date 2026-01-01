@@ -5,7 +5,6 @@ import org.kd.common.Demo;
 
 public class GoodJobMrJobs extends Demo {
 
-
     public static void main(String[] args) {
         GoodJobMrJobs.analyzeArguments(args);
         var config = Demo.createConfig("Good job Mr. Jobs");

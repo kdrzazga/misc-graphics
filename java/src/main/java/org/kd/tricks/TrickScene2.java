@@ -33,7 +33,7 @@ public final class TrickScene2 extends Scene {
 
     @Override
     public void update(float delta) {
-        starsArray.move();
+        starsArray.move(1);
 
     }
 

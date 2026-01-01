@@ -22,7 +22,6 @@ public final class TrickScene1 extends Scene {
 
     private WavedEdgeTrick wavedEdgeTrick;
 
-
     public TrickScene1(int x1, int y1, int x2, int y2) {
         super("trick-scene1");
         this.x1 = x1;
