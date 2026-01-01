@@ -96,7 +96,6 @@ public class Scene1c64 extends BasicC64Screen {
         shapeRenderer = new ShapeRenderer();
     }
 
-
     private void initSprite(String picPath, AtomicReference<Float> shift, List<Sprite> spriteList) {
         var texture = new Texture("winter/" + picPath);
         var sprite = new Sprite(texture);

@@ -1,10 +1,11 @@
-package org.kd.common;
+package org.kd.common.tricks;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.utils.ScissorStack;
+import org.kd.common.C64Colors;
 
 public class TravellingLogo {
     Sprite sprite;

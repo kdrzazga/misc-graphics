@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
-import org.kd.common.TravellingLogo;
+import org.kd.common.tricks.TravellingLogo;
 
 public class Scissors extends ApplicationAdapter {
     static final int SCREEN_WIDTH = 800;

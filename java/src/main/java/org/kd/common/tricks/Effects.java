@@ -26,7 +26,6 @@ public class Effects {
 
             var lottery = new Random().nextFloat() * 2;
             var frequency = lottery > 1 ? 1000 : 2000;
-
             beep.playBeep(frequency);
         }
     }

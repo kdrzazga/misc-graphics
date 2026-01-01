@@ -18,10 +18,8 @@ public class BeepSound {
 
         for (int i = 0; i < numSamples; i++) {
             double t = i / (double) SAMPLE_RATE;
-            // Generate sine wave
             double sineValue = Math.sin(2 * Math.PI * frequency * t);
-            // Convert to short (-32768 to 32767)
-            samples[i] = (short) (sineValue * Short.MAX_VALUE);
+            samples[i] = (short) (sineValue * Short.MAX_VALUE); // short (-32768 to 32767)
         }
 
         audioDevice.writeSamples(samples, 0, numSamples);

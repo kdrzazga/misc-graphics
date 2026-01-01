@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import org.kd.common.*;
+import org.kd.common.tricks.TravellingLogo;
 
 import java.util.Arrays;
 import java.util.List;

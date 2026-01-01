@@ -29,10 +29,12 @@ public class GoodJobAnimationMgr extends AnimationManager {
         super.render();
 
         var frame = Gdx.graphics.getFrameId();
-        System.out.print(frame + " ");
+        //System.out.print(frame + " ");
         if (frame == Scene2.START_FRAME){
             sceneManager.switchScene("2");
-            this.createMusic("good-job/Ramosnoname.mp3");
+            this.createMusic("good-job/Ramosnoname.mp3"); //https://csdb.dk/sid/?id=23786
+            this.tune.setVolume(1f);
+            this.tune.setPosition(0.15f);
             tune.setLooping(true);
             tune.play();
         }

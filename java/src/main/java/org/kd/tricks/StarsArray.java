@@ -10,7 +10,6 @@ import java.util.List;
 
 public class StarsArray {
 
-
   public double spread = 1.2;
     public double spread2 = 20;
 
@@ -36,10 +35,10 @@ public class StarsArray {
 
     }
 
-    public void move() {
+    public void move(int speed) {
         stars.forEach(star -> {
-            var speed = 1 + 3 * Math.random();
-            var newX = Long.valueOf(Math.round(star.getX() + speed)).intValue();
+            var totalVelocity = speed + 3 * Math.random();
+            var newX = Long.valueOf(Math.round(star.getX() + totalVelocity)).intValue();
             star.setX(newX);
             if (star.getX() > width) star.setX(0);
         });
