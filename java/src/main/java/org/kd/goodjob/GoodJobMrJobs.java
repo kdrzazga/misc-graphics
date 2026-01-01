@@ -11,7 +11,7 @@ public class GoodJobMrJobs extends Demo {
         var config = Demo.createConfig("Good job Mr. Jobs");
         config.width = 1152;//90% 1280;
         config.height = 922; //90% of 1024
-        config.fullscreen = false;
+        //config.fullscreen = false;
 
         new LwjglApplication(new GoodJobAnimationMgr(), config);
     }

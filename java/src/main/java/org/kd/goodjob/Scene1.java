@@ -18,6 +18,8 @@ public class Scene1 extends Scene {
     private BitmapFont hugeFont, fontSmall;
     private ShapeRenderer shapeRenderer;
     private Sprite appleLogo;
+    private Texture appleTexture;
+    private final int fiftyFontSize = 700;
 
     public Scene1() {
         super("50");
@@ -25,19 +27,19 @@ public class Scene1 extends Scene {
 
     @Override
     public void create() {
-        this.hugeFont = C64Helper.createFont(700, "Big Daddy LED TFB.ttf");
+        this.hugeFont = C64Helper.createFont(fiftyFontSize, "Big Daddy LED TFB.ttf");
         this.fontSmall = C64Helper.createFont(50, "Helvetica Regular.otf");
 
         this.batch = new SpriteBatch();
         this.shapeRenderer = new ShapeRenderer();
 
-        var appleTexture = new Texture("good-job/apple-logo.png");
-
+        this.appleTexture = new Texture("good-job/apple-logo.png");
         this.appleLogo = new Sprite(appleTexture);
     }
 
     @Override
     public void update(float delta) {
+        Gdx.input.setCursorPosition(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
         var frame = Gdx.graphics.getFrameId();
 
@@ -57,12 +59,14 @@ public class Scene1 extends Scene {
         batch.begin();
 
         if (720 < frame && frame < 850 + 500)
-            hugeFont.draw(batch, "50", 50, 750);
+            hugeFont.draw(batch, "50", Gdx.graphics.getWidth() / 2 - 3*fiftyFontSize/4, Gdx.graphics.getHeight() / 2 + fiftyFontSize / 2);
 
         else if (850 + 550 < frame && frame < 850 + 550 + 630) {
             float a = Math.max(0.01f, 1 - (frame - 850f - 550f) / 500f);
             batch.setColor(new Color(a, a, a, 1f));
-            batch.draw(this.appleLogo, 30, 0);
+            var x = Gdx.graphics.getWidth() / 2 - appleTexture.getWidth() / 2;
+            var y = Gdx.graphics.getHeight() / 2 - appleTexture.getHeight() / 2;
+            batch.draw(this.appleLogo, x, y);
         } else if (2099 < frame && frame < 2180) {
             Effects.typewriter(batch, fontSmall, 20, 900, 2100, "April 1st, 1976...", 2);
             Effects.typewriter(batch, fontSmall, 20, 850, 2140, "the legend was born...", 2);
