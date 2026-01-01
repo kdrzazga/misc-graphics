@@ -69,7 +69,7 @@ public final class Scene2 extends Scene {
 
         apple1Sprites = new ArrayList<>(10);
         IntStream.range(0, 9 + 1).forEach(i -> {
-            var t = new Texture("good-job/3amigos/pic" + i + ".png");//TODO
+            var t = new Texture("good-job/apple1/pic" + i + ".png");
             var s = new Sprite(t);
             s.setScale(0.02f, 1f);
             apple1Sprites.add(s);
@@ -110,7 +110,7 @@ public final class Scene2 extends Scene {
         if (1360 < this.getRelativeFrame() && this.getRelativeFrame() < 1800) {
             restoreSize(this.threeAmigosSprites);
         }
-        else if (2250 < this.getRelativeFrame() && this.getRelativeFrame() < 2700) {
+        else if (2160 < this.getRelativeFrame() && this.getRelativeFrame() < 2700) {
             restoreSize(this.apple1Sprites);
         }
     }
