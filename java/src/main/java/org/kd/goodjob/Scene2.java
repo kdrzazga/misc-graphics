@@ -60,11 +60,19 @@ public final class Scene2 extends Scene {
         this.fontSmall = C64Helper.createFont(50, "Helvetica Regular.otf");
 
         threeAmigosSprites = new ArrayList<>(10);
-        IntStream.range(0, 9+1).forEach(i -> {
+        IntStream.range(0, 9 + 1).forEach(i -> {
             var t = new Texture("good-job/3amigos/pic" + i + ".png");
             var s = new Sprite(t);
             s.setScale(0.02f, 1f);
             threeAmigosSprites.add(s);
+        });
+
+        apple1Sprites = new ArrayList<>(10);
+        IntStream.range(0, 9 + 1).forEach(i -> {
+            var t = new Texture("good-job/3amigos/pic" + i + ".png");//TODO
+            var s = new Sprite(t);
+            s.setScale(0.02f, 1f);
+            apple1Sprites.add(s);
         });
     }
 
@@ -88,19 +96,31 @@ public final class Scene2 extends Scene {
                 this.steveJobs.setScale(newScale, newScale);
             }
 
-            if (this.getRelativeFrame() < 1600) threeAmigosGoRound();
+            if (this.getRelativeFrame() < 1600)
+                threeAmigosGoRound(this.threeAmigosSprites, Gdx.graphics.getWidth() / 3, Gdx.graphics.getHeight() / 2);
             else if (this.getRelativeFrame() < 2100)
-                bringAmigosTogether(this.threeAmigosSprites, Gdx.graphics.getHeight() / 2f, Gdx.graphics.getWidth() / 4f);
+                bringAmigosTogether(this.threeAmigosSprites, Gdx.graphics.getHeight() / 3f, Gdx.graphics.getWidth() / 4f);
+            else if (this.getRelativeFrame() < 2250)
+                threeAmigosGoRound(this.apple1Sprites, 3 * Gdx.graphics.getWidth() / 5, Gdx.graphics.getHeight() / 2 - 30);
+            else
+                bringAmigosTogether(this.apple1Sprites, 3 * Gdx.graphics.getHeight() / 5f, Gdx.graphics.getWidth() / 2f - 30);
 
         }
 
         if (1360 < this.getRelativeFrame() && this.getRelativeFrame() < 1800) {
-            this.threeAmigosSprites.forEach(sprite -> {
-                var sc = sprite.getScaleX();
-                sc = Math.min(1f, sc + 0.02f);
-                sprite.setScale(sc, 1f);
-            });
+            restoreSize(this.threeAmigosSprites);
         }
+        else if (2250 < this.getRelativeFrame() && this.getRelativeFrame() < 2700) {
+            restoreSize(this.apple1Sprites);
+        }
+    }
+
+    private void restoreSize(List<Sprite> sprites) {
+        sprites.forEach(sprite -> {
+            var sc = sprite.getScaleX();
+            sc = Math.min(1f, sc + 0.02f);
+            sprite.setScale(sc, 1f);
+        });
     }
 
     private void bringAmigosTogether(List<Sprite> sprites, float destY, float destX0) {
@@ -139,8 +159,10 @@ public final class Scene2 extends Scene {
 
         if (1350 < this.getRelativeFrame() && this.getRelativeFrame() < 1950) {
             this.threeAmigosSprites.forEach(sprite -> sprite.draw(batch));
-        } else if (this.getRelativeFrame() > 1950)
+        } else if (1950 < this.getRelativeFrame())
             batch.draw(this.threeAmigos, this.threeAmigosSprites.get(0).getX(), this.threeAmigosSprites.get(0).getY());
+        if (this.getRelativeFrame() > 2100)
+            this.apple1Sprites.forEach(sprite -> sprite.draw(batch));
         batch.end();
 
         shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
@@ -157,7 +179,7 @@ public final class Scene2 extends Scene {
         fontSmall.draw(batch, caption, Gdx.graphics.getWidth() / 2f - 20, 50);
     }
 
-    private void threeAmigosGoRound() {
+    private void threeAmigosGoRound(List<Sprite> sprites, int x0, int y0) {
         final int r1 = Gdx.graphics.getWidth() / 4;
         final int r2 = Gdx.graphics.getHeight() / 4;
 
@@ -166,10 +188,10 @@ public final class Scene2 extends Scene {
         int firstTwoDigits = Integer.parseInt(firstTwoDigitsStr);
 
         final double angle = Math.PI * firstTwoDigits / 50;
-        for (int i = 0; i < threeAmigosSprites.size(); i++) {
-            var x = (float) (2 * r1 + r1 * Math.cos(angle + i * 2 * Math.PI / 7));
-            var y = (float) (2 * r2 + r2 * Math.sin(angle + i * 2 * Math.PI / 7));
-            threeAmigosSprites.get(i).setPosition(x, y);
+        for (int i = 0; i < sprites.size(); i++) {
+            var x = (float) (x0 + r1 * Math.cos(angle + i * 2 * Math.PI / 7));
+            var y = (float) (y0 + r2 * Math.sin(angle + i * 2 * Math.PI / 7));
+            sprites.get(i).setPosition(x, y);
         }
     }
 
