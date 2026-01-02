@@ -3,7 +3,6 @@ package org.kd.goodjob;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import org.kd.common.AnimationManager;
-import org.kd.common.Scene;
 
 import java.util.Arrays;
 
@@ -16,12 +15,13 @@ public class GoodJobAnimationMgr extends AnimationManager {
         tune.setLooping(false);
         tune.play();
 
-        var scene1 = new Scene1();
+        var scene1 = new Scene1intro();
         var scene2 = new Scene2();
         var scene3 = new Scene3();
         var scene4 = new Scene4();
+        var scene5 = new Scene5Exit();
 
-        Arrays.asList(scene1, scene2, scene3, scene4).forEach(s -> {
+        Arrays.asList(scene1, scene2, scene3, scene4, scene5).forEach(s -> {
             s.create();
             sceneManager.addScene(s.id, s);
         });

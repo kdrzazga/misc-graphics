@@ -13,7 +13,7 @@ public final class Scene4 extends Scene {
 
     public static final long START_FRAME = Scene3.START_FRAME + 629;
     private SpriteBatch batch4;
-    private Sprite comebackPic, jobs;
+    private Sprite comebackPic, jobs, mac1, mac2;
 
     public Scene4() {
         super("4.Jobs Returns");
@@ -28,12 +28,25 @@ public final class Scene4 extends Scene {
 
         var jobsTxtr = new Texture("good-job/JobsComeback/jobs.png");
         this.jobs = new Sprite(jobsTxtr);
-        this.jobs.setScale(0.75f);
+        this.jobs.setScale(0.65f);
+
+        var macTexture = new Texture("good-job/macintosh/makintosz.png");
+        mac1 = new Sprite(macTexture);
+        mac1.setPosition(10, 81);
+        mac2 = new Sprite(macTexture);
+        mac2.flip(true, false);
+        mac2.setPosition(Gdx.graphics.getWidth() * 0.81f, 81);
     }
 
     @Override
     public void update(float delta) {
+        if (getRelativeFrame() > 240) {
 
+            if (getRelativeFrame() % 3 == 1) {
+                var newScale = Math.min(1, this.jobs.getScaleX()) + 0.01f;
+                this.jobs.setScale(newScale);
+            }
+        }
     }
 
     @Override
@@ -45,22 +58,20 @@ public final class Scene4 extends Scene {
         if (getRelativeFrame() < 240) {
             comebackPic.draw(batch4);
         } else {
-            if (getRelativeFrame() % 3 == 1){
-                var newScale = Math.min(1, this.jobs.getScaleX()) + 0.01f;
-                this.jobs.setScale(newScale);
-            }
+            mac1.draw(batch4);
+            mac2.draw(batch4);
         }
 
         var jobsX = Gdx.graphics.getWidth() / 2f - this.jobs.getWidth() / 2;
         var jobsY = Gdx.graphics.getHeight() - this.jobs.getHeight() - 2;
         batch4.draw(this.jobs, jobsX, jobsY);
 
-        this.draw(batch4);
+        this.drawPixels(batch4);
 
         batch4.end();
     }
 
-    private void draw(SpriteBatch batch){
+    private void drawPixels(SpriteBatch batch) {
         Pixmap pixmap = new Pixmap(100, 100, Pixmap.Format.RGBA4444);
         pixmap.setColor(Color.RED);
         pixmap.fillRectangle(1, 1, 3, 3);

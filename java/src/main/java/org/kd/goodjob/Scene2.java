@@ -142,7 +142,7 @@ public final class Scene2 extends Scene {
             this.apple1Sprites.forEach(sprite -> sprite.draw(batch));
         else if (2420 < this.getRelativeFrame()) {
             batch.draw(this.apple1, this.apple1Sprites.get(0).getX(), this.apple1Sprites.get(0).getY());
-            if (this.getRelativeFrame() < 3400) fontSmall.draw(batch,"Apple I was assembled in Job's garage in Los Altos, CA in 1976.", 30, 45);
+            if (this.getRelativeFrame() < 3400) fontSmall.draw(batch,"Apple 1 was assembled in Job's garage in Los Altos, CA in 1976.", 30, 45);
         }
 
         /*if (2100 < this.getRelativeFrame() && this.getRelativeFrame() < 2700)

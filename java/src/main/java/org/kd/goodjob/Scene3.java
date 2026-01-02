@@ -49,12 +49,12 @@ public final class Scene3 extends Scene {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         batch3.begin();
-        Effects.typewriter(batch3, fontSmaller, 20, 900, START_FRAME + 60, 260, "Steve Jobs quit APPLE in 1985 and founded NeXT(another computer producer).", 2);
-        Effects.typewriter(batch3, fontSmall, 20, 830, START_FRAME + 210, 140, "Apple continued development of new models of Macintosh,", 2);
-        Effects.typewriter(batch3, fontSmall, 20, 830 - 70, START_FRAME + 330, 120, "but was no longer a key player on a market.", 1);
-        Effects.typewriter(batch3, fontSmall, 20, 830 - 140, START_FRAME + 390, 90, "Finally, in 1997 the company bought NeXT....................................", 1);
+        Effects.typewriter(batch3, fontSmaller, 20, 900, START_FRAME + 60, 260, "Steve Jobs quit APPLE in 1985 and founded NeXT(another computer producer).", 1);
+        Effects.typewriter(batch3, fontSmall, 20, 830, START_FRAME + 120, 140, "Apple continued development of new models of Macintosh,", 1);
+        Effects.typewriter(batch3, fontSmall, 20, 830 - 70, START_FRAME + 220, 120, "but was no longer a key player on a market.", 1);
+        Effects.typewriter(batch3, fontSmall, 20, 830 - 140, START_FRAME + 250, 90, "Finally, in 1997 the company bought NeXT....................................", 1);
 
-        if (getRelativeFrame() > 350) {
+        if (getRelativeFrame() > 260) {
             comebackPic.draw(batch3);
         }
 
