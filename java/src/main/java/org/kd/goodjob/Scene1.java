@@ -28,7 +28,7 @@ public final class Scene1 extends Scene {
     @Override
     public void create() {
         this.hugeFont = C64Helper.createFont(fiftyFontSize, "Big Daddy LED TFB.ttf");
-        this.fontSmall = C64Helper.createFont(50, "Helvetica Regular.otf");
+        this.fontSmall = C64Helper.createFont(45, "Helvetica Regular.otf");
 
         this.batch = new SpriteBatch();
         this.shapeRenderer = new ShapeRenderer();

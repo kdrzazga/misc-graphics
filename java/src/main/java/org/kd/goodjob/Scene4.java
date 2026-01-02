@@ -53,7 +53,7 @@ public final class Scene4 extends Scene {
 
         var jobsX = Gdx.graphics.getWidth() / 2f - this.jobs.getWidth() / 2;
         var jobsY = Gdx.graphics.getHeight() - this.jobs.getHeight() - 2;
-        //batch4.draw(this.jobs, jobsX, jobsY);
+        batch4.draw(this.jobs, jobsX, jobsY);
 
         this.draw(batch4);
 
@@ -63,10 +63,10 @@ public final class Scene4 extends Scene {
     private void draw(SpriteBatch batch){
         Pixmap pixmap = new Pixmap(100, 100, Pixmap.Format.RGBA4444);
         pixmap.setColor(Color.RED);
-        pixmap.drawPixel(1, 1);
-        pixmap.drawPixel(20, 20);
-        pixmap.drawPixel(30, 70);
-        pixmap.drawPixel(70, 30);
+        pixmap.fillRectangle(1, 1, 3, 3);
+        pixmap.fillRectangle(20, 20, 3, 3);
+        pixmap.fillRectangle(30, 70, 3, 3);
+        pixmap.fillRectangle(70, 30, 3, 3);
         Texture texture = new Texture(pixmap);
 
 

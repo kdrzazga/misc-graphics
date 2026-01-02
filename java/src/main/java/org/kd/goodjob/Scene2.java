@@ -28,7 +28,7 @@ public final class Scene2 extends Scene {
     private Texture threeAmigos, apple1, apple2, macintosh;
     private List<Sprite> apple1Sprites;
     private StarsArray starsArray;
-    private BitmapFont fontSmall;
+    private BitmapFont fontSmall, fontSmaller;
 
     public Scene2() {
         super("2");
@@ -56,7 +56,8 @@ public final class Scene2 extends Scene {
         starsArray = new StarsArray(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         starsArray.spread = 0.75;
 
-        this.fontSmall = C64Helper.createFont(50, "Helvetica Regular.otf");
+        this.fontSmall = C64Helper.createFont(45, "Helvetica Regular.otf");
+        this.fontSmaller = C64Helper.createFont(40, "Helvetica Regular.otf");
 
         threeAmigosSprites = new ArrayList<>(10);
         IntStream.range(0, 9 + 1).forEach(i -> {
@@ -123,11 +124,11 @@ public final class Scene2 extends Scene {
         batch.begin();
         if (this.getRelativeFrame() > 500) {
             if (this.getRelativeFrame() < 778) {
-                drawFounder(this.ronaldWayne, "Ronald Wayne", 0);
+                drawFounder(this.ronaldWayne, "Ronald Wayne", 140);
             } else if (this.getRelativeFrame() < 1000) {
-                drawFounder(this.steveWozniak, "Steve Wozniak", 240);
+                drawFounder(this.steveWozniak, "Steve Wozniak", 340);
             } else if (this.getRelativeFrame() < 1280) {
-                drawFounder(this.steveJobs, "Steve Jobs", 480);
+                drawFounder(this.steveJobs, "Steve Jobs", 580);
             }
         }
 
@@ -135,9 +136,9 @@ public final class Scene2 extends Scene {
             this.threeAmigosSprites.forEach(sprite -> sprite.draw(batch));
         } else if (1699 < this.getRelativeFrame()){
             batch.draw(this.threeAmigos, this.threeAmigosSprites.get(0).getX(), this.threeAmigosSprites.get(0).getY());
-            if (this.getRelativeFrame() < 2100) fontSmall.draw(batch,"Wayne didn't believe in the company and left soon after co-founding Apple.", 30, 45);
+            if (this.getRelativeFrame() < 2100) fontSmaller.draw(batch,"Wayne didn't believe in the company and left soon after co-founding Apple.", 30, 45);
         }
-        if (2100 < this.getRelativeFrame() && this.getRelativeFrame() < 2480)
+        if (2100 < this.getRelativeFrame() && this.getRelativeFrame() < 2420)
             this.apple1Sprites.forEach(sprite -> sprite.draw(batch));
         else if (2420 < this.getRelativeFrame()) {
             batch.draw(this.apple1, this.apple1Sprites.get(0).getX(), this.apple1Sprites.get(0).getY());
@@ -148,7 +149,7 @@ public final class Scene2 extends Scene {
             this.apple1Sprites.forEach(sprite -> sprite.draw(batch));
         else*/
         if (3400 < this.getRelativeFrame()){
-            batch.draw(this.apple2, 374, 710);
+            batch.draw(this.apple2, 70, 475);
             if (this.getRelativeFrame() < 4200) fontSmall.draw(batch,"Apple II was released in June 1977.", 30, 45);
         }
 
