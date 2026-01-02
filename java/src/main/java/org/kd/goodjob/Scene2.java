@@ -136,7 +136,7 @@ public final class Scene2 extends Scene {
             this.threeAmigosSprites.forEach(sprite -> sprite.draw(batch));
         } else if (1699 < this.getRelativeFrame()){
             batch.draw(this.threeAmigos, this.threeAmigosSprites.get(0).getX(), this.threeAmigosSprites.get(0).getY());
-            if (this.getRelativeFrame() < 2100) fontSmaller.draw(batch,"Wayne didn't believe in the company and left soon after co-founding Apple.", 30, 45);
+            if (this.getRelativeFrame() < 2100) fontSmaller.draw(batch,"Wayne didn't believe in APPLE and left soon after co-founding the company.", 30, 45);
         }
         if (2100 < this.getRelativeFrame() && this.getRelativeFrame() < 2420)
             this.apple1Sprites.forEach(sprite -> sprite.draw(batch));
