@@ -67,26 +67,9 @@ public final class Scene4JobsReturn extends Scene {
         jobs.setPosition(jobsX, jobsY);
         jobs.draw(batch4);
 
-        this.drawPixels(batch4);
-
         batch4.end();
     }
 
-    private void drawPixels(SpriteBatch batch) {
-        Pixmap pixmap = new Pixmap(100, 100, Pixmap.Format.RGBA4444);
-        pixmap.setColor(Color.RED);
-        pixmap.fillRectangle(1, 1, 3, 3);
-        pixmap.fillRectangle(20, 20, 3, 3);
-        pixmap.fillRectangle(30, 70, 3, 3);
-        pixmap.fillRectangle(70, 30, 3, 3);
-        Texture texture = new Texture(pixmap);
-
-
-        batch.draw(texture, 0, 150);
-
-        texture.dispose();
-        pixmap.dispose();
-    }
 
     @Override
     public void dispose() {
