@@ -11,9 +11,13 @@ public class Effects {
     private static final BeepSound beep = new BeepSound();
 
     public static void typewriter(SpriteBatch batch, BitmapFont font, float x, float y,
-                                  long startFrame, String caption, int frameSkip) {
+                                  long startFrame, long duration, String caption, int frameSkip) {
 
         long currentFrame = Gdx.graphics.getFrameId();
+
+        if (currentFrame > startFrame + duration)
+            return;
+
         long relativeFrame = currentFrame - startFrame;
 
         if (relativeFrame >= 0) {

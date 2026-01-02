@@ -80,7 +80,7 @@ public class Scene1c64 extends BasicC64Screen {
                     this.logoSprite.changeDirection();
         }
         if (frame > 3255) {
-            System.out.println("\n".repeat(50) + " Elapsed time " + C64Helper.countElapsedTime() + " Frame: " + frame);
+            System.out.println("\n".repeat(50) + " Elapsed time " + Helper.countElapsedTime() + " Frame: " + frame);
         }
     }
 
@@ -161,11 +161,9 @@ public class Scene1c64 extends BasicC64Screen {
         if (frame == this.outroBeginFrame + 1200) {
             this.gravitationRamos.stop();
             thanksForWatching.play();
-        }
-
-        else if (frame > this.outroBeginFrame + 1650) {
+        } else if (frame > this.outroBeginFrame + 1650) {
             Gdx.app.exit();
-            System.out.println("\n".repeat(50) + "End demo: " + C64Helper.countElapsedTime() + " frame = " + frame);
+            System.out.println("\n".repeat(50) + "End demo: " + Helper.countElapsedTime() + " frame = " + frame);
             this.dispose();
             System.exit(0);
         }
