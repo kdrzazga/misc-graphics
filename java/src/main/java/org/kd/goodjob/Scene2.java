@@ -7,12 +7,10 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-
 import org.kd.common.C64Helper;
 import org.kd.common.ConsoleLogger;
 import org.kd.common.Scene;
 import org.kd.goodjob.appendix.BannerApple;
-import org.kd.tricks.GradientRectangleTrick;
 import org.kd.tricks.StarsArray;
 
 import java.util.ArrayList;
@@ -21,15 +19,14 @@ import java.util.stream.IntStream;
 
 public final class Scene2 extends Scene {
 
-    public static final long START_FRAME = 2200;
+    public static final long START_FRAME = 2222;
 
     private SpriteBatch batch;
+    private ShapeRenderer shapeRenderer;
     private Sprite ronaldWayne, steveWozniak, steveJobs;
     private List<Sprite> threeAmigosSprites;
     private Texture threeAmigos, apple1, apple2, macintosh;
     private List<Sprite> apple1Sprites;
-    private GradientRectangleTrick gradientRectangle;
-    private ShapeRenderer shapeRenderer;
     private StarsArray starsArray;
     private BitmapFont fontSmall;
 
@@ -56,8 +53,6 @@ public final class Scene2 extends Scene {
         this.steveJobs.setScale(0.5f, 0.5f);
 
         this.shapeRenderer = new ShapeRenderer();
-        this.gradientRectangle = new GradientRectangleTrick(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getWidth(), batch, shapeRenderer);
-
         starsArray = new StarsArray(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         starsArray.spread = 0.75;
 
@@ -82,8 +77,9 @@ public final class Scene2 extends Scene {
 
     @Override
     public void update(float delta) {
-        this.gradientRectangle.update(false, false, true);
-        //int speed = Math.toIntExact(Math.round(7.5 + 3.5 * Math.sin(frame / 100f * Math.PI)));
+
+        if (this.getRelativeFrame() > 5029)
+            return;
         starsArray.move(6);
 
         System.out.print(this.getRelativeFrame() + " ");
@@ -112,14 +108,15 @@ public final class Scene2 extends Scene {
 
         if (1360 < this.getRelativeFrame() && this.getRelativeFrame() < 1800) {
             restoreSize(this.threeAmigosSprites);
-        }
-        else if (2160 < this.getRelativeFrame() && this.getRelativeFrame() < 2700) {
+        } else if (2160 < this.getRelativeFrame() && this.getRelativeFrame() < 2700) {
             restoreSize(this.apple1Sprites);
         }
     }
 
     @Override
     public void render() {
+        if (this.getRelativeFrame() > 5029)
+            return;
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
@@ -134,23 +131,30 @@ public final class Scene2 extends Scene {
             }
         }
 
-        if (1350 < this.getRelativeFrame() && this.getRelativeFrame() < 1950) {
+        if (1350 < this.getRelativeFrame() && this.getRelativeFrame() < 1730) {
             this.threeAmigosSprites.forEach(sprite -> sprite.draw(batch));
-        } else if (1950 < this.getRelativeFrame())
+        } else if (1730 < this.getRelativeFrame())
             batch.draw(this.threeAmigos, this.threeAmigosSprites.get(0).getX(), this.threeAmigosSprites.get(0).getY());
-        if (2100 < this.getRelativeFrame() && this.getRelativeFrame() < 2700)
+        if (2100 < this.getRelativeFrame() && this.getRelativeFrame() < 2480)
             this.apple1Sprites.forEach(sprite -> sprite.draw(batch));
-        else if (2700 < this.getRelativeFrame())
+        else if (2420 < this.getRelativeFrame())
             batch.draw(this.apple1, this.apple1Sprites.get(0).getX(), this.apple1Sprites.get(0).getY());
 
         /*if (2100 < this.getRelativeFrame() && this.getRelativeFrame() < 2700)
             this.apple1Sprites.forEach(sprite -> sprite.draw(batch));
-        else*/ if (3400 < this.getRelativeFrame())
-            batch.draw(this.apple2, 350, 720);
+        else*/
+        if (3400 < this.getRelativeFrame()){
+            batch.draw(this.apple2, 374, 710);
+            if (this.getRelativeFrame() < 4200) fontSmall.draw(batch,"Apple II was released in June 1977.", 30, 45);
+        }
+
         /*if (2100 < this.getRelativeFrame() && this.getRelativeFrame() < 2700)
             this.apple1Sprites.forEach(sprite -> sprite.draw(batch));
-        else*/ if (5000 < this.getRelativeFrame())
-            batch.draw(this.macintosh, 350, 120);
+        else*/
+        if (4200 < this.getRelativeFrame()) {
+            batch.draw(this.macintosh, 310, 122);
+            if (this.getRelativeFrame() < 5029) fontSmall.draw(batch,"Macintosh appeared in January 1984 (there's no snow in California).", 30, 45);
+        }
 
         batch.end();
 
@@ -212,7 +216,14 @@ public final class Scene2 extends Scene {
 
     @Override
     public void dispose() {
+        batch.dispose();
+        shapeRenderer.dispose();
+        threeAmigosSprites.clear();
+        apple1Sprites.clear();
+        this.starsArray = null;
 
+        Gdx.gl.glClearColor(0, 0, 0, 1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
     }
 
     private long getRelativeFrame() {

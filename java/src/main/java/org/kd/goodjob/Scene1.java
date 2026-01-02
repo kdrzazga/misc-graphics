@@ -59,7 +59,7 @@ public final class Scene1 extends Scene {
         batch.begin();
 
         if (720 < frame && frame < 850 + 500)
-            hugeFont.draw(batch, "50", Gdx.graphics.getWidth() / 2f - 3*fiftyFontSize/4f, Gdx.graphics.getHeight() / 2f + fiftyFontSize / 2f);
+            hugeFont.draw(batch, "50", Gdx.graphics.getWidth() / 2f - 3 * fiftyFontSize / 4f, Gdx.graphics.getHeight() / 2f + fiftyFontSize / 2f);
 
         else if (850 + 550 < frame && frame < 850 + 550 + 630) {
             float a = Math.max(0.01f, 1 - (frame - 850f - 550f) / 500f);
@@ -68,8 +68,8 @@ public final class Scene1 extends Scene {
             var y = Gdx.graphics.getHeight() / 2 - appleTexture.getHeight() / 2;
             batch.draw(this.appleLogo, x, y);
         } else if (2099 < frame && frame < 2180) {
-            Effects.typewriter(batch, fontSmall, 20, 900, 2100, "April 1st, 1976...", 2);
-            Effects.typewriter(batch, fontSmall, 20, 850, 2140, "the legend was born...", 2);
+            Effects.typewriter(batch, fontSmall, 20, 900, 2100, 80, "On April 1st, 1976...", 2);
+            Effects.typewriter(batch, fontSmall, 20, 850, 2140, 40, "the legend was born...", 2);
         }
 
         batch.end();
