@@ -131,14 +131,18 @@ public final class Scene2 extends Scene {
             }
         }
 
-        if (1350 < this.getRelativeFrame() && this.getRelativeFrame() < 1730) {
+        if (1350 < this.getRelativeFrame() && this.getRelativeFrame() < 1699) {
             this.threeAmigosSprites.forEach(sprite -> sprite.draw(batch));
-        } else if (1730 < this.getRelativeFrame())
+        } else if (1699 < this.getRelativeFrame()){
             batch.draw(this.threeAmigos, this.threeAmigosSprites.get(0).getX(), this.threeAmigosSprites.get(0).getY());
+            if (this.getRelativeFrame() < 2100) fontSmall.draw(batch,"Wayne didn't believe in the company and left soon after co-founding Apple.", 30, 45);
+        }
         if (2100 < this.getRelativeFrame() && this.getRelativeFrame() < 2480)
             this.apple1Sprites.forEach(sprite -> sprite.draw(batch));
-        else if (2420 < this.getRelativeFrame())
+        else if (2420 < this.getRelativeFrame()) {
             batch.draw(this.apple1, this.apple1Sprites.get(0).getX(), this.apple1Sprites.get(0).getY());
+            if (this.getRelativeFrame() < 3400) fontSmall.draw(batch,"Apple I was assembled in Job's garage in Los Altos, CA in 1976.", 30, 45);
+        }
 
         /*if (2100 < this.getRelativeFrame() && this.getRelativeFrame() < 2700)
             this.apple1Sprites.forEach(sprite -> sprite.draw(batch));
