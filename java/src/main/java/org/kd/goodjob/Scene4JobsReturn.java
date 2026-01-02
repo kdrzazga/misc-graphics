@@ -9,13 +9,13 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import org.kd.common.Scene;
 
-public final class Scene4 extends Scene {
+public final class Scene4JobsReturn extends Scene {
 
     public static final long START_FRAME = Scene3.START_FRAME + 629;
     private SpriteBatch batch4;
     private Sprite comebackPic, jobs, mac1, mac2;
 
-    public Scene4() {
+    public Scene4JobsReturn() {
         super("4.Jobs Returns");
     }
 
@@ -32,7 +32,7 @@ public final class Scene4 extends Scene {
 
         var macTexture = new Texture("good-job/macintosh/makintosz.png");
         mac1 = new Sprite(macTexture);
-        mac1.setPosition(10, 81);
+        mac1.setPosition(21, 81);
         mac2 = new Sprite(macTexture);
         mac2.flip(true, false);
         mac2.setPosition(Gdx.graphics.getWidth() * 0.81f, 81);
@@ -64,7 +64,8 @@ public final class Scene4 extends Scene {
 
         var jobsX = Gdx.graphics.getWidth() / 2f - this.jobs.getWidth() / 2;
         var jobsY = Gdx.graphics.getHeight() - this.jobs.getHeight() - 2;
-        batch4.draw(this.jobs, jobsX, jobsY);
+        jobs.setPosition(jobsX, jobsY);
+        jobs.draw(batch4);
 
         this.drawPixels(batch4);
 

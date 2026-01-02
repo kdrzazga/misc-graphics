@@ -67,7 +67,7 @@ public final class Scene1intro extends Scene {
             batch.draw(this.appleLogo, x, y);
         } else if (2099 < frame && frame < 2180) {
             Effects.typewriter(batch, fontSmall, 20, 900, 2100, 80, "On April 1st, 1976", 2);
-            Effects.typewriter(batch, fontSmall, 20, 850, 2120, 60, "the legend was born.....", 2);
+            Effects.typewriter(batch, fontSmall, 20, 850, 2131, 60, "the legend was born.....", 2);
         }
 
         batch.end();

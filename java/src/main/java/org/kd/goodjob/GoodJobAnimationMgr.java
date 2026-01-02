@@ -18,7 +18,7 @@ public class GoodJobAnimationMgr extends AnimationManager {
         var scene1 = new Scene1intro();
         var scene2 = new Scene2();
         var scene3 = new Scene3();
-        var scene4 = new Scene4();
+        var scene4 = new Scene4JobsReturn();
         var scene5 = new Scene5Exit();
 
         Arrays.asList(scene1, scene2, scene3, scene4, scene5).forEach(s -> {
@@ -47,7 +47,7 @@ public class GoodJobAnimationMgr extends AnimationManager {
             Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
             sceneManager.switchScene("3");
 
-        } else if (frame == Scene4.START_FRAME){
+        } else if (frame == Scene4JobsReturn.START_FRAME){
             sceneManager.switchScene("4.Jobs Returns");
             this.createMusic("good-job/Fancyramos.mp3"); //https://csdb.dk/sid/?id=23786
             this.tune.setVolume(1f);
