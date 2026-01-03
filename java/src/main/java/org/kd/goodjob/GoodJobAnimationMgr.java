@@ -33,7 +33,7 @@ public class GoodJobAnimationMgr extends AnimationManager {
 
         var frame = Gdx.graphics.getFrameId();
         //System.out.print(frame + " ");
-        if (frame == Scene2.START_FRAME){
+        if (frame == Scene2.START_FRAME) {
             sceneManager.switchScene("2");
             this.createMusic("good-job/Ramosnoname.mp3"); //https://csdb.dk/sid/?id=23786
             this.tune.setVolume(1f);
@@ -47,13 +47,22 @@ public class GoodJobAnimationMgr extends AnimationManager {
             Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
             sceneManager.switchScene("3");
 
-        } else if (frame == Scene4JobsReturn.START_FRAME){
+        } else if (frame == Scene4JobsReturn.START_FRAME) {
             sceneManager.switchScene("4.Jobs Returns");
             this.createMusic("good-job/Fancyramos.mp3"); //https://csdb.dk/sid/?id=23786
             this.tune.setVolume(1f);
             this.tune.setPosition(0.15f);
             tune.setLooping(false);
             tune.play();
+        } else if (frame == Scene5Exit.START_FRAME) {
+            sceneManager.switchScene("exit");
+        } else if (frame > Scene5Exit.DEMO_END_FRAME - 125) {
+            var newVolume = tune.getVolume() * 0.9f;
+            tune.setVolume(newVolume);
+
+            if (frame == Scene5Exit.DEMO_END_FRAME) {
+                Gdx.app.exit();
+            }
         }
 
         sceneManager.update(0);
