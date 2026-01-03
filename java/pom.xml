@@ -90,6 +90,7 @@
                     <exclude>hellogdx/**</exclude>
                     <exclude>anniversaries/**</exclude>
                     <exclude>winter/**</exclude>
+                    <exclude>good-job/**</exclude>
                     -->
                 </excludes>
             </resource>
