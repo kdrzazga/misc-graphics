@@ -52,7 +52,7 @@ public final class Scene3 extends Scene {
         Effects.typewriter(batch3, fontSmaller, 20, 900, START_FRAME + 60, 110, "Steve Jobs quit APPLE in 1985 and founded NeXT(another computer producer).", 1);
         Effects.typewriter(batch3, fontSmall, 20, 830, START_FRAME + 120, 110, "Apple continued development of new models of Macintosh,", 1);
         Effects.typewriter(batch3, fontSmall, 20, 830 - 70, START_FRAME + 195, 110, "but was no longer a key player on a market.", 1);
-        Effects.typewriter(batch3, fontSmall, 20, 830 - 140, START_FRAME + 250, 90, "Finally, in 1997 the company bought NeXT....................................", 1);
+        Effects.typewriter(batch3, fontSmall, 20, 830 - 140, START_FRAME + 250, 90, "Finally, in 1997 the company acquired NeXT....................................", 1);
 
         if (getRelativeFrame() > 260) {
             comebackPic.draw(batch3);

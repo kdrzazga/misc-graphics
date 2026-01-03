@@ -3,17 +3,20 @@ package org.kd.goodjob;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import org.kd.common.Scene;
+import org.kd.tricks.HorizontalGradientTrick;
 
 public final class Scene4JobsReturn extends Scene {
 
     public static final long START_FRAME = Scene3.START_FRAME + 629;
     private SpriteBatch batch4;
-    private Sprite comebackPic, jobs, mac1, mac2;
+    private Sprite comebackPic, jobs, mac1, mac2, wallpaper;
+    private HorizontalGradientTrick trick;
+    private ShapeRenderer shapeRenderer;
 
     public Scene4JobsReturn() {
         super("4.Jobs Returns");
@@ -24,7 +27,9 @@ public final class Scene4JobsReturn extends Scene {
         batch4 = new SpriteBatch();
         var comebackTxtr = new Texture("good-job/bigComeback.png");
         this.comebackPic = new Sprite(comebackTxtr);
-        this.comebackPic.setPosition(Gdx.graphics.getWidth() / 8f, Gdx.graphics.getHeight() / 4f);
+        int W = Gdx.graphics.getWidth();
+        int H = Gdx.graphics.getHeight();
+        this.comebackPic.setPosition(W / 8f, H / 4f);
 
         var jobsTxtr = new Texture("good-job/JobsComeback/jobs.png");
         this.jobs = new Sprite(jobsTxtr);
@@ -35,17 +40,30 @@ public final class Scene4JobsReturn extends Scene {
         mac1.setPosition(21, 81);
         mac2 = new Sprite(macTexture);
         mac2.flip(true, false);
-        mac2.setPosition(Gdx.graphics.getWidth() * 0.81f, 81);
+        mac2.setPosition(W * 0.81f, 81);
+
+        var wallpaperTexture = new Texture("good-job/wallpaper.png");
+        var wallpaperX = W / 2f - wallpaperTexture.getWidth() / 2f;
+        var wallpaperY = H / 2f - wallpaperTexture.getHeight() / 2f;
+        wallpaper = new Sprite(wallpaperTexture);
+        wallpaper.setPosition(wallpaperX, wallpaperY);
+
+        this.shapeRenderer = new ShapeRenderer();
+        this.trick = new HorizontalGradientTrick(Math.round(W / 4f), Math.round(H / 4f), Math.round(W / 2f), Math.round(H / 2f)
+                , new Color(0f, 0f, 0.4f, 1f), 1);
     }
 
     @Override
     public void update(float delta) {
-        if (getRelativeFrame() > 240) {
+        if (240 < getRelativeFrame() && getRelativeFrame() < 2800) {
 
             if (getRelativeFrame() % 3 == 1) {
                 var newScale = Math.min(1, this.jobs.getScaleX()) + 0.01f;
                 this.jobs.setScale(newScale);
             }
+        } else {
+            if (getRelativeFrame() == 2800) this.trick.start();
+            this.trick.update();
         }
     }
 
@@ -55,17 +73,25 @@ public final class Scene4JobsReturn extends Scene {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         batch4.begin();
+
+        if (getRelativeFrame() < 800) {
+            var jobsX = Gdx.graphics.getWidth() / 2f - this.jobs.getWidth() / 2;
+            var jobsY = Gdx.graphics.getHeight() - this.jobs.getHeight() - 2;
+            jobs.setPosition(jobsX, jobsY);
+            jobs.draw(batch4);
+        } else if (getRelativeFrame() < 3800) {
+            batch4.end();
+            trick.draw(shapeRenderer);
+            batch4.begin();
+            //wallpaper.draw(batch4);
+        }
+
         if (getRelativeFrame() < 240) {
             comebackPic.draw(batch4);
         } else {
             mac1.draw(batch4);
             mac2.draw(batch4);
         }
-
-        var jobsX = Gdx.graphics.getWidth() / 2f - this.jobs.getWidth() / 2;
-        var jobsY = Gdx.graphics.getHeight() - this.jobs.getHeight() - 2;
-        jobs.setPosition(jobsX, jobsY);
-        jobs.draw(batch4);
 
         batch4.end();
     }
