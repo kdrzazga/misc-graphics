@@ -1,10 +1,17 @@
 package org.kd.goodjob;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import org.kd.common.C64Helper;
 import org.kd.common.Scene;
+import org.kd.common.tricks.Effects;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public final class Scene5Exit extends Scene {
 
@@ -12,23 +19,32 @@ public final class Scene5Exit extends Scene {
     static final long DEMO_END_FRAME = START_FRAME + 1629;
     private SpriteBatch batch5;
     private Texture cake;
+    private BitmapFont font, fontSmall;
+    private final List<Message> messages;
+    private Music endSpeech;
 
     public Scene5Exit() {
         super("exit");
+
+        messages = new ArrayList<>();
+        messages.add(new Message("This demo is not intended as an advertisement of Apple company", 122));
+        messages.add(new Message("But as a tribute to a great man, who created a great firm.", 222));
+        messages.add(new Message("IT is a dynamic environment, and hardly any company is able ", 322));
+        messages.add(new Message("to stay 50 years on a market...", 422));
+        messages.add(new Message("and thrive.", 522));
     }
 
     @Override
     public void create() {
         batch5 = new SpriteBatch();
         this.cake = new Texture("good-job/cake.jpg");
+        this.font = C64Helper.createFont(44, "DRENA.ttf");
+        this.fontSmall = C64Helper.createFont(45, "Helvetica Regular.otf");
+        this.endSpeech = Gdx.audio.newMusic(Gdx.files.internal("good-job/end-speech.mp3"));
     }
 
     @Override
     public void update(float delta) {
-
-
-
-
     }
 
     @Override
@@ -39,12 +55,49 @@ public final class Scene5Exit extends Scene {
         batch5.begin();
         batch5.draw(cake, 0, 0);
 
+        if (getRelativeFrame() > 122) {
+            int baseY = Gdx.graphics.getHeight() - 30;
+            int lineSpacing = 57;
+
+            for (int i = 0; i < messages.size(); i++) {
+                Message msg = messages.get(i);
+                if (getRelativeFrame() > msg.frameThreshold) {
+                    int yPosition = baseY - (i * lineSpacing);
+                    font.draw(batch5, msg.text, 30, yPosition);
+                }
+            }
+
+            if (getRelativeFrame() == 470) endSpeech.play();
+
+            if (getRelativeFrame() > DEMO_END_FRAME - 400) {
+                fontSmall.draw(batch5, "CODE & GFX: KD ", Gdx.graphics.getWidth() - 130, cake.getHeight());
+                fontSmall.draw(batch5, "MSX: RAMOS ", Gdx.graphics.getWidth() - 130, cake.getHeight() - 40);
+            }
+
+            Effects.typewriter(batch5, font, 30, Gdx.graphics.getHeight() - 57 * messages.size() - 28, DEMO_END_FRAME - 300
+                    , 60, "GOOD JOB MR. JOBS !!!", 1);
+        }
 
         batch5.end();
+    }
+
+    private long getRelativeFrame() {
+        var frame = Gdx.graphics.getFrameId();
+        return frame - START_FRAME;
     }
 
     @Override
     public void dispose() {
 
+    }
+
+    static class Message {
+        String text;
+        int frameThreshold;
+
+        Message(String text, int frameThreshold) {
+            this.text = text;
+            this.frameThreshold = frameThreshold;
+        }
     }
 }
