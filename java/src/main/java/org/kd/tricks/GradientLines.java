@@ -6,9 +6,9 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 public class GradientLines {
 
-    private int x, y, width, height;
-    private Color color;
-    private ShapeRenderer shapeRenderer;
+    private final int x, y, width, height;
+    private final Color color;
+    private final ShapeRenderer shapeRenderer;
 
     public GradientLines(ShapeRenderer shapeRenderer, int x, int y, int width, int height, Color startingColor) {
         this.shapeRenderer = shapeRenderer;

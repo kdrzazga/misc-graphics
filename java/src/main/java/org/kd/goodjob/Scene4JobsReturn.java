@@ -9,7 +9,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import org.kd.common.Scene;
 import org.kd.tricks.GradientLines;
-import org.kd.tricks.GradientRectangleTrick;
 
 public final class Scene4JobsReturn extends Scene {
 
@@ -17,7 +16,6 @@ public final class Scene4JobsReturn extends Scene {
     private SpriteBatch batch4;
     private Sprite comebackPic, jobs, mac1, mac2, wallpaper;
     private GradientLines trick;
-    private ShapeRenderer shapeRenderer;
 
     public Scene4JobsReturn() {
         super("4.Jobs Returns");
