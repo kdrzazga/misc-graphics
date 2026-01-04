@@ -39,7 +39,7 @@ public final class Scene5Exit extends Scene {
         batch5 = new SpriteBatch();
         this.cake = new Texture("good-job/cake.jpg");
         this.font = C64Helper.createFont(44, "DRENA.ttf");
-        this.fontSmall = C64Helper.createFont(45, "Helvetica Regular.otf");
+        this.fontSmall = C64Helper.createFont(22, "Helvetica Regular.otf");
         this.endSpeech = Gdx.audio.newMusic(Gdx.files.internal("good-job/end-speech.mp3"));
     }
 
@@ -67,15 +67,16 @@ public final class Scene5Exit extends Scene {
                 }
             }
 
-            if (getRelativeFrame() == 470) endSpeech.play();
+            if (getRelativeFrame() == 400) endSpeech.play();
 
-            if (getRelativeFrame() > DEMO_END_FRAME - 400) {
-                fontSmall.draw(batch5, "CODE & GFX: KD ", Gdx.graphics.getWidth() - 130, cake.getHeight());
-                fontSmall.draw(batch5, "MSX: RAMOS ", Gdx.graphics.getWidth() - 130, cake.getHeight() - 40);
+            if (Gdx.graphics.getFrameId() > DEMO_END_FRAME - 400) {
+                //System.err.println("KD and RamOS");
+                fontSmall.draw(batch5, "CODE & GFX: KD ", 0.85f * Gdx.graphics.getWidth(), cake.getHeight() - 60);
+                fontSmall.draw(batch5, "MSX: RAMOS ", 0.85f * Gdx.graphics.getWidth(), cake.getHeight() - 80);
             }
 
             Effects.typewriter(batch5, font, 30, Gdx.graphics.getHeight() - 57 * messages.size() - 28, DEMO_END_FRAME - 300
-                    , 60, "GOOD JOB MR. JOBS !!!", 1);
+                    , 60, "GOOD JOB MR. JOBS !!! !!! !!! !!! !!! !!! !!! !!! !!!", 1);
         }
 
         batch5.end();

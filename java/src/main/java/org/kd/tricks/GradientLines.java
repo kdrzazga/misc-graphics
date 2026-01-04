@@ -41,7 +41,7 @@ public class GradientLines {
             this.update(false, false, true);
             shapeRenderer.setColor(this.color);
             shapeRenderer.rect(this.x, y, this.x + width, this.height / 255f);
-            System.out.println(y + " " + this.color.r);
+            //System.out.println(y + " " + this.color.r);
         }
         shapeRenderer.end();
     }
