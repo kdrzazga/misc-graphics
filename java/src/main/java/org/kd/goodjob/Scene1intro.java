@@ -12,26 +12,24 @@ import org.kd.common.C64Helper;
 import org.kd.common.Scene;
 import org.kd.common.tricks.Effects;
 
-public final class Scene1 extends Scene {
+public final class Scene1intro extends Scene {
 
     private SpriteBatch batch;
     private BitmapFont hugeFont, fontSmall;
-    private ShapeRenderer shapeRenderer;
     private Sprite appleLogo;
     private Texture appleTexture;
     private final int fiftyFontSize = 700;
 
-    public Scene1() {
+    public Scene1intro() {
         super("50");
     }
 
     @Override
     public void create() {
         this.hugeFont = C64Helper.createFont(fiftyFontSize, "Big Daddy LED TFB.ttf");
-        this.fontSmall = C64Helper.createFont(50, "Helvetica Regular.otf");
+        this.fontSmall = C64Helper.createFont(45, "Helvetica Regular.otf");
 
         this.batch = new SpriteBatch();
-        this.shapeRenderer = new ShapeRenderer();
 
         this.appleTexture = new Texture("good-job/apple-logo.png");
         this.appleLogo = new Sprite(appleTexture);
@@ -68,8 +66,8 @@ public final class Scene1 extends Scene {
             var y = Gdx.graphics.getHeight() / 2 - appleTexture.getHeight() / 2;
             batch.draw(this.appleLogo, x, y);
         } else if (2099 < frame && frame < 2180) {
-            Effects.typewriter(batch, fontSmall, 20, 900, 2100, 80, "On April 1st, 1976...", 2);
-            Effects.typewriter(batch, fontSmall, 20, 850, 2140, 40, "the legend was born...", 2);
+            Effects.typewriter(batch, fontSmall, 20, 900, 2100, 80, "On April 1st, 1976", 2);
+            Effects.typewriter(batch, fontSmall, 20, 850, 2131, 60, "the legend was born.....", 2);
         }
 
         batch.end();

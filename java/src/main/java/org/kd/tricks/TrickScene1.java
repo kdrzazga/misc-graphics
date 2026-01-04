@@ -36,6 +36,7 @@ public final class TrickScene1 extends Scene {
         this.batch2 = new SpriteBatch();
         this.wavedEdgeTrick = new WavedEdgeTrick(x1, y1, x2, y2, this.batch2, this.shapeRenderer, this.sineWidth, this.xExit);
         this.wavedEdgeTrick.setInitialFrame(Gdx.graphics.getFrameId());
+        this.wavedEdgeTrick.setFrequency(5);
     }
 
     @Override
