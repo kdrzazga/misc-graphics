@@ -1,12 +1,14 @@
 package org.kd.goodjob;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import org.kd.common.Scene;
+import org.kd.tricks.GradientLines;
 import org.kd.tricks.GradientRectangleTrick;
 
 public final class Scene4JobsReturn extends Scene {
@@ -14,7 +16,7 @@ public final class Scene4JobsReturn extends Scene {
     public static final long START_FRAME = Scene3.START_FRAME + 629;
     private SpriteBatch batch4;
     private Sprite comebackPic, jobs, mac1, mac2, wallpaper;
-    private GradientRectangleTrick trick;
+    private GradientLines trick;
     private ShapeRenderer shapeRenderer;
 
     public Scene4JobsReturn() {
@@ -47,11 +49,8 @@ public final class Scene4JobsReturn extends Scene {
         wallpaper = new Sprite(wallpaperTexture);
         wallpaper.setPosition(wallpaperX, wallpaperY);
 
-        this.shapeRenderer = new ShapeRenderer();
-        this.trick = new GradientRectangleTrick(Math.round(W / 4f), Math.round(H / 4f), Math.round(3f * W / 4f), Math.round(3f * H / 4f)
-                , this.batch4, shapeRenderer);
-        this.trick.setFrequency(5f);
-        this.trick.setInitialFrame(5079 + 2800);//= 2080 + Scene3.START_FRAME + 629 ?
+        this.trick = new GradientLines(new ShapeRenderer(), Math.round(W / 4f), Math.round(H / 4f), Math.round(3f * W / 4f), Math.round(3f * H / 4f), Color.BLACK);
+
     }
 
     @Override
@@ -62,8 +61,6 @@ public final class Scene4JobsReturn extends Scene {
                 var newScale = Math.min(1, this.jobs.getScaleX()) + 0.01f;
                 this.jobs.setScale(newScale);
             }
-        } else {
-            this.trick.update(false, false, true);
         }
     }
 
@@ -81,9 +78,9 @@ public final class Scene4JobsReturn extends Scene {
             jobs.draw(batch4);
         } else if (getRelativeFrame() < 3800) {
             batch4.end();
-            trick.drawGradientRectangle();
+            this.trick.draw(6);
             batch4.begin();
-            //wallpaper.draw(batch4);
+            wallpaper.draw(batch4);
         }
 
         if (getRelativeFrame() < 240) {
