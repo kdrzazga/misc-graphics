@@ -6,7 +6,7 @@ import org.kd.common.AnimationManager;
 
 import java.util.Arrays;
 
-public class GoodJobAnimationMgr extends AnimationManager {
+public final class GoodJobAnimationMgr extends AnimationManager {
 
     @Override
     public void create() {

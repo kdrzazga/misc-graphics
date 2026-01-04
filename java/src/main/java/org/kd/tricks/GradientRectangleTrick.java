@@ -23,15 +23,15 @@ public class GradientRectangleTrick {
         this.y1 = y1;
         this.x2 = x2;
         this.y2 = y2;
-        this.batch2 = batch2;
         this.shapeRenderer = shapeRenderer;
         frequency = 1000f;
+        this.initialFrame = Gdx.graphics.getFrameId();
     }
 
     public void update(boolean r, boolean g, boolean b) {
-        var frame = Gdx.graphics.getFrameId(); // this frame does not need to be relative. It's only for cycling color gradient
+        var frame = Gdx.graphics.getFrameId() - initialFrame;
 
-        //System.out.print(" fr=" + frame + " ");
+        System.out.print(" fr=" + frame + " ");
         double x = (frame + 400) / frequency * 3.14;
         if (r) topColor.r = (float) Math.abs(Math.sin(x));
         if (g) topColor.g = (float) Math.abs(Math.sin(x));
@@ -60,5 +60,9 @@ public class GradientRectangleTrick {
 
     public void setFrequency(float frequency) {
         this.frequency = frequency;
+    }
+
+    public void setInitialFrame(long initialFrame) {
+        this.initialFrame = initialFrame;
     }
 }

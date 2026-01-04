@@ -70,7 +70,4 @@ public class WavedEdgeTrick extends GradientRectangleTrick {
         return frame - this.initialFrame;
     }
 
-    public void setInitialFrame(long initialFrame) {
-        this.initialFrame = initialFrame;
-    }
 }

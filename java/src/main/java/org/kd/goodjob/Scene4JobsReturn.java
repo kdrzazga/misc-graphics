@@ -1,21 +1,20 @@
 package org.kd.goodjob;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import org.kd.common.Scene;
-import org.kd.tricks.HorizontalGradientTrick;
+import org.kd.tricks.GradientRectangleTrick;
 
 public final class Scene4JobsReturn extends Scene {
 
     public static final long START_FRAME = Scene3.START_FRAME + 629;
     private SpriteBatch batch4;
     private Sprite comebackPic, jobs, mac1, mac2, wallpaper;
-    private HorizontalGradientTrick trick;
+    private GradientRectangleTrick trick;
     private ShapeRenderer shapeRenderer;
 
     public Scene4JobsReturn() {
@@ -49,8 +48,10 @@ public final class Scene4JobsReturn extends Scene {
         wallpaper.setPosition(wallpaperX, wallpaperY);
 
         this.shapeRenderer = new ShapeRenderer();
-        this.trick = new HorizontalGradientTrick(Math.round(W / 4f), Math.round(H / 4f), Math.round(W / 2f), Math.round(H / 2f)
-                , new Color(0f, 0f, 0.4f, 1f), 1);
+        this.trick = new GradientRectangleTrick(Math.round(W / 4f), Math.round(H / 4f), Math.round(3f * W / 4f), Math.round(3f * H / 4f)
+                , this.batch4, shapeRenderer);
+        this.trick.setFrequency(5f);
+        this.trick.setInitialFrame(5079 + 2800);//= 2080 + Scene3.START_FRAME + 629 ?
     }
 
     @Override
@@ -62,8 +63,7 @@ public final class Scene4JobsReturn extends Scene {
                 this.jobs.setScale(newScale);
             }
         } else {
-            if (getRelativeFrame() == 2800) this.trick.start();
-            this.trick.update();
+            this.trick.update(false, false, true);
         }
     }
 
@@ -81,7 +81,7 @@ public final class Scene4JobsReturn extends Scene {
             jobs.draw(batch4);
         } else if (getRelativeFrame() < 3800) {
             batch4.end();
-            trick.draw(shapeRenderer);
+            trick.drawGradientRectangle();
             batch4.begin();
             //wallpaper.draw(batch4);
         }

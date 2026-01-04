@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import org.kd.common.Scene;
 
-public class Scene5Exit extends Scene {
+public final class Scene5Exit extends Scene {
 
     public static final long START_FRAME = Scene4JobsReturn.START_FRAME + 1629;
     static final long DEMO_END_FRAME = START_FRAME + 1629;
