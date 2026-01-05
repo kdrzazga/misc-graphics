@@ -7,10 +7,8 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import org.kd.common.C64Helper;
-import org.kd.common.ConsoleLogger;
 import org.kd.common.Scene;
 import org.kd.common.tricks.Effects;
-import org.kd.goodjob.appendix.BannerApple;
 
 public final class Scene3 extends Scene {
 
@@ -59,8 +57,6 @@ public final class Scene3 extends Scene {
         }
 
         batch3.end();
-
-        ConsoleLogger.logBannerWithElapsedTime(BannerApple.lines);
     }
 
     @Override

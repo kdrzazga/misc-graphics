@@ -56,8 +56,8 @@ public final class GoodJobAnimationMgr extends AnimationManager {
             tune.play();
         } else if (frame == Scene5Exit.START_FRAME) {
             sceneManager.switchScene("exit");
-        } else if (frame > Scene5Exit.DEMO_END_FRAME - 125) {
-            var newVolume = tune.getVolume() * 0.97f;
+        } else if (frame > Scene5Exit.DEMO_END_FRAME - 435) {
+            var newVolume = tune.getVolume() * 0.992f;
             tune.setVolume(newVolume);
 
             if (frame == Scene5Exit.DEMO_END_FRAME) {

@@ -7,8 +7,10 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import org.kd.common.C64Helper;
+import org.kd.common.ConsoleLogger;
 import org.kd.common.Scene;
 import org.kd.common.tricks.Effects;
+import org.kd.goodjob.appendix.BannerApple;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +47,7 @@ public final class Scene5Exit extends Scene {
 
     @Override
     public void update(float delta) {
+        ConsoleLogger.logBannerWithElapsedTime(BannerApple.lines);
     }
 
     @Override

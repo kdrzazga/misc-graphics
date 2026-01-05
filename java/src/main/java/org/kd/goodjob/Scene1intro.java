@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import org.kd.common.C64Helper;
 import org.kd.common.Scene;
 import org.kd.common.tricks.Effects;
@@ -37,9 +36,9 @@ public final class Scene1intro extends Scene {
 
     @Override
     public void update(float delta) {
-        Gdx.input.setCursorPosition(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-
         var frame = Gdx.graphics.getFrameId();
+        if (300 < frame)
+            Gdx.input.setCursorPosition(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
         if (850 < frame && frame < 850 + 500) {
             var a = 1 - (frame - 850f) / 500f;
