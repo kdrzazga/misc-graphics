@@ -12,7 +12,7 @@ import org.kd.tricks.GradientLines;
 
 public final class Scene4JobsReturn extends Scene {
 
-    public static final long START_FRAME = Scene3.START_FRAME + 629;
+    public static final long START_FRAME = Scene3Typewriter.START_FRAME + 629;
     private SpriteBatch batch4;
     private Sprite comebackPic, jobs, mac1, mac2, wallpaper;
     private GradientLines trick;

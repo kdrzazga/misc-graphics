@@ -15,9 +15,9 @@ public final class GoodJobAnimationMgr extends AnimationManager {
         tune.setLooping(false);
         tune.play();
 
-        var scene1 = new Scene1intro();
-        var scene2 = new Scene2();
-        var scene3 = new Scene3();
+        var scene1 = new Scene1Intro();
+        var scene2 = new Scene2Stars();
+        var scene3 = new Scene3Typewriter();
         var scene4 = new Scene4JobsReturn();
         var scene5 = new Scene5Exit();
 
@@ -33,14 +33,14 @@ public final class GoodJobAnimationMgr extends AnimationManager {
 
         var frame = Gdx.graphics.getFrameId();
         //System.out.print(frame + " ");
-        if (frame == Scene2.START_FRAME) {
+        if (frame == Scene2Stars.START_FRAME) {
             sceneManager.switchScene("2");
             this.createMusic("good-job/Ramosnoname.mp3"); //https://csdb.dk/sid/?id=23786
             this.tune.setVolume(1f);
             this.tune.setPosition(0.15f);
             tune.setLooping(false);
             tune.play();
-        } else if (frame == Scene3.START_FRAME) {
+        } else if (frame == Scene3Typewriter.START_FRAME) {
             tune.stop();
 
             Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -49,7 +49,7 @@ public final class GoodJobAnimationMgr extends AnimationManager {
 
         } else if (frame == Scene4JobsReturn.START_FRAME) {
             sceneManager.switchScene("4.Jobs Returns");
-            this.createMusic("good-job/Fancyramos.mp3"); //https://csdb.dk/sid/?id=23786
+            this.createMusic("good-job/Fancyramos.mp3"); //https://csdb.dk/sid/?id=23777
             this.tune.setVolume(1f);
             this.tune.setPosition(0.15f);
             tune.setLooping(false);

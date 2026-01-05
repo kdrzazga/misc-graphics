@@ -29,11 +29,11 @@ public final class Scene5Exit extends Scene {
         super("exit");
 
         messages = new ArrayList<>();
-        messages.add(new Message("This demo is not intended as an advertisement of Apple company", 122));
-        messages.add(new Message("But as a tribute to a great man, who created a great firm.", 222));
-        messages.add(new Message("IT is a dynamic environment, and hardly any company is able ", 322));
-        messages.add(new Message("to stay 50 years on a market...", 422));
-        messages.add(new Message("and thrive.", 522));
+        messages.add(new Message("This demo is not intended as an advertisement of Apple company", 121));
+        messages.add(new Message("But as a tribute to a great man, who created a great firm.", 391));
+        messages.add(new Message("IT is a dynamic environment, and hardly any company is able ", 612));
+        messages.add(new Message("to stay 50 years on a market...", 870));
+        messages.add(new Message("and thrive.", 991));
     }
 
     @Override
@@ -57,6 +57,7 @@ public final class Scene5Exit extends Scene {
 
         batch5.begin();
         batch5.draw(cake, 0, 0);
+        if (getRelativeFrame() == 122) endSpeech.play();
 
         if (getRelativeFrame() > 122) {
             int baseY = Gdx.graphics.getHeight() - 30;
@@ -69,8 +70,6 @@ public final class Scene5Exit extends Scene {
                     font.draw(batch5, msg.text, 30, yPosition);
                 }
             }
-
-            if (getRelativeFrame() == 400) endSpeech.play();
 
             if (Gdx.graphics.getFrameId() > DEMO_END_FRAME - 400) {
                 //System.err.println("KD and RamOS");
