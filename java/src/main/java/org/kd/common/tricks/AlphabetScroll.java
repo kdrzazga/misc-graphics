@@ -48,11 +48,12 @@ public final class AlphabetScroll {
 
         for (int i = 0; i < textSprites.size(); i++) {
             var s = textSprites.get(i);
-            float delay = i * textSprites.get(0).getWidth()*0.1f  - 7*speed;
+            float delay = i * textSprites.get(0).getWidth() * 0.1f - 7 * speed;
             if (frame > delay) {
                 if (s.getX() < startX && s.getX() > endX) {
                     var x = s.getX() + speed;
-                    s.setX(x);
+                    float y = (float) (s.getHeight() * Math.sin(Math.PI * x / startX));
+                    s.setPosition(x, y);
                 }
             }
         }
@@ -62,8 +63,12 @@ public final class AlphabetScroll {
         textSprites.forEach(sprite -> sprite.draw(openBatch));
     }
 
-    public void colorize(Color color){
+    public void colorize(Color color) {
         textSprites.forEach(s -> s.setColor(color));
+    }
+
+    public void scale(float scale) {
+        textSprites.forEach(sprite -> sprite.setScale(scale));
     }
 
     private static StringBuilder convertToFilename(Character letter) {

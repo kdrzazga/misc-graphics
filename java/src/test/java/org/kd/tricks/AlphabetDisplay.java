@@ -14,7 +14,12 @@ public class AlphabetDisplay extends ApplicationAdapter {
     @Override
     public void create() {
         //scroll = new AlphabetScroll("abcde fghijklmnopqrstuvwxyz");
-        scroll = new AlphabetScroll("abcde fghijklmnopqrstuvwxyz");
+        scroll = new AlphabetScroll("after returning to apple  steve jobs spearheaded the launch of the " +
+                "imac  revitalizing the company design and technology  he then led the development of " +
+                "groundbreaking products like the ipod  iphone   and the ipad   transforming " +
+                "multiple industries   jobs continued to innovate until his death  leaving a lasting legacy as a " +
+                "visionary tech pioneer");
+        scroll.scale(0.7f);
         batch = new SpriteBatch();
     }
 
