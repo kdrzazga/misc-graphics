@@ -1,6 +1,7 @@
 package org.kd.common.tricks;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -59,6 +60,10 @@ public final class AlphabetScroll {
 
     public void render(SpriteBatch openBatch) {
         textSprites.forEach(sprite -> sprite.draw(openBatch));
+    }
+
+    public void colorize(Color color){
+        textSprites.forEach(s -> s.setColor(color));
     }
 
     private static StringBuilder convertToFilename(Character letter) {
