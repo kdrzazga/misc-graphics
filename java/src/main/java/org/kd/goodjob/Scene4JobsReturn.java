@@ -16,7 +16,8 @@ public final class Scene4JobsReturn extends Scene {
     public static final long START_FRAME = Scene3Typewriter.START_FRAME + 929;
     private SpriteBatch batch4;
     private Sprite comebackPic, jobs, mac1, mac2, wallpaper;
-    private GradientLines trick;
+    private Texture tombstone, iMac, iPod, iPhone;
+    private GradientLines backgroundLinesTrick;
     private AlphabetScroll scroll;
 
     public Scene4JobsReturn() {
@@ -50,7 +51,12 @@ public final class Scene4JobsReturn extends Scene {
         wallpaper = new Sprite(wallpaperTexture);
         wallpaper.setPosition(wallpaperX, wallpaperY);
 
-        this.trick = new GradientLines(new ShapeRenderer(), Math.round(W / 4f), Math.round(H / 4f), Math.round(3f * W / 4f), Math.round(3f * H / 4f), Color.BLACK);
+        this.tombstone = new Texture("good-job/tombstone/tombstone.png");
+        this.iMac = new Texture("good-job/iMac.png");
+        this.iPod = new Texture("good-job/iPod.png");
+        this.iPhone = new Texture("good-job/iPhone.png");
+
+        this.backgroundLinesTrick = new GradientLines(new ShapeRenderer(), Math.round(W / 4f), Math.round(H / 4f), Math.round(3f * W / 4f), Math.round(3f * H / 4f), Color.BLACK);
 
         scroll = new AlphabetScroll("after returning to apple  steve jobs spearheaded the launch of the " +
                 "imac  revitalizing the company design and technology  he then led the development of " +
@@ -72,6 +78,8 @@ public final class Scene4JobsReturn extends Scene {
             if (getRelativeFrame() % 2 == 0)
                 scroll.update();
         }
+
+        System.out.println("4.Job's return " + getRelativeFrame());
     }
 
     @Override
@@ -88,10 +96,20 @@ public final class Scene4JobsReturn extends Scene {
             jobs.draw(batch4);
         } else if (getRelativeFrame() < 3800) {
             batch4.end();
-            this.trick.draw(6);
+            this.backgroundLinesTrick.draw(6);
             batch4.begin();
             wallpaper.draw(batch4);
+            if (1400 < getRelativeFrame() && getRelativeFrame() < 1500)
+                batch4.draw(iMac, Gdx.graphics.getWidth() / 2f - 265, Gdx.graphics.getHeight() / 2f);
+            else if (2400 < getRelativeFrame() && getRelativeFrame() < 2560)
+                batch4.draw(iPod, Gdx.graphics.getWidth() / 2f - 265, Gdx.graphics.getHeight() / 2f);
+            else if ( getRelativeFrame() < 2760)
+                batch4.draw(iPhone, Gdx.graphics.getWidth() / 2f - 265, Gdx.graphics.getHeight() / 2f);
+
         }
+
+        if (3300 < getRelativeFrame() && getRelativeFrame() < 3800)
+            batch4.draw(tombstone, Gdx.graphics.getWidth() / 2f - 265, Gdx.graphics.getHeight() / 3f);
 
         if (getRelativeFrame() < 240) {
             comebackPic.draw(batch4);
