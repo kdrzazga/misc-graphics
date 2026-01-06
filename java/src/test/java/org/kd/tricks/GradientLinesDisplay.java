@@ -4,7 +4,7 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
-public class Display extends ApplicationAdapter {
+public class GradientLinesDisplay extends ApplicationAdapter {
     GradientLines gradientLines;
 
     @Override
