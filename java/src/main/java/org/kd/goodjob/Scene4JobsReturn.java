@@ -7,8 +7,10 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import org.kd.common.ConsoleLogger;
 import org.kd.common.Scene;
 import org.kd.common.tricks.AlphabetScroll;
+import org.kd.goodjob.appendix.BannerTombstone;
 import org.kd.tricks.GradientLines;
 
 public final class Scene4JobsReturn extends Scene {
@@ -77,9 +79,12 @@ public final class Scene4JobsReturn extends Scene {
             }
             if (getRelativeFrame() % 2 == 0)
                 scroll.update();
-        }
 
-        System.out.println("4.Job's return " + getRelativeFrame());
+            if (3300 < getRelativeFrame() && getRelativeFrame() < 3800) {
+                ConsoleLogger.logBannerWithElapsedTime(BannerTombstone.lines);
+            }
+        }
+        //System.out.println("4.Job's return " + getRelativeFrame());
     }
 
     @Override
@@ -103,13 +108,13 @@ public final class Scene4JobsReturn extends Scene {
                 batch4.draw(iMac, Gdx.graphics.getWidth() / 2f - 265, Gdx.graphics.getHeight() / 2f);
             else if (2400 < getRelativeFrame() && getRelativeFrame() < 2560)
                 batch4.draw(iPod, Gdx.graphics.getWidth() / 2f - 265, Gdx.graphics.getHeight() / 2f);
-            else if ( getRelativeFrame() < 2760)
+            else if (getRelativeFrame() < 2760)
                 batch4.draw(iPhone, Gdx.graphics.getWidth() / 2f - 265, Gdx.graphics.getHeight() / 2f);
 
         }
 
         if (3300 < getRelativeFrame() && getRelativeFrame() < 3800)
-            batch4.draw(tombstone, Gdx.graphics.getWidth() / 2f - 265, Gdx.graphics.getHeight() / 3f);
+            batch4.draw(tombstone, Gdx.graphics.getWidth() / 2f - 265, Gdx.graphics.getHeight() * 0.27f);
 
         if (getRelativeFrame() < 240) {
             comebackPic.draw(batch4);
