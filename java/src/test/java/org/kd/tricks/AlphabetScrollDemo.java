@@ -7,7 +7,7 @@ public class AlphabetScrollDemo {
     public static void main(String[] args) {
         var config = new LwjglApplicationConfiguration();
         config.title = "Alphabet Scroll";
-        config.width = 640;
+        config.width = 1000;
         config.height = 480;
         config.fullscreen = false;
 

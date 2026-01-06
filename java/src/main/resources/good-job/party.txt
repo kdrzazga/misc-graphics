@@ -7,4 +7,4 @@ Online Sequencer for very simple chiptunes.
 GoatTracker for more advanced, retro-style chiptunes.
 
 
-2.05.1981
+ArekK 2.05.1981

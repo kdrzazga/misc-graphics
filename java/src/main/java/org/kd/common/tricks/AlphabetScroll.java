@@ -17,7 +17,7 @@ public final class AlphabetScroll {
     private final int speed;
 
     public AlphabetScroll(String text) {
-        this(text, 0.81f * Gdx.graphics.getWidth(), 21f, -5);
+        this(text, 0.81f * Gdx.graphics.getWidth(), 21f, -15);
     }
 
     public AlphabetScroll(String text, float startX, float endX, int speed) {
@@ -32,7 +32,9 @@ public final class AlphabetScroll {
 
             var texture = new Texture(filename);
             var sprite = new Sprite(texture);
+            sprite.setX(speed > 0 ? startX + 1 : startX - 1);
             this.textSprites.add(sprite);
+
         });
 
         this.startX = startX;
@@ -41,12 +43,18 @@ public final class AlphabetScroll {
     }
 
     public void update() {
-        textSprites.stream()
-                .filter(sprite -> sprite.getX() > startX && sprite.getX() < endX)
-                .forEach(sprite -> {
-                    var x = sprite.getX() + speed;
-                    sprite.setX(x);
-                });
+        var frame = Gdx.graphics.getFrameId();
+
+        for (int i = 0; i < textSprites.size(); i++) {
+            var s = textSprites.get(i);
+            float delay = i * textSprites.get(0).getWidth()*0.1f  - 7*speed;
+            if (frame > delay) {
+                if (s.getX() < startX && s.getX() > endX) {
+                    var x = s.getX() + speed;
+                    s.setX(x);
+                }
+            }
+        }
     }
 
     public void render(SpriteBatch openBatch) {
@@ -63,7 +71,4 @@ public final class AlphabetScroll {
         return filename;
     }
 
-    public List<Sprite> getTextSprites() {
-        return textSprites;
-    }
 }
