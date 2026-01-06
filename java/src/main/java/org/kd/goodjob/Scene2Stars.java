@@ -17,20 +17,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
-public final class Scene2 extends Scene {
+public final class Scene2Stars extends Scene {
 
     public static final long START_FRAME = 2222;
 
     private SpriteBatch batch;
     private ShapeRenderer shapeRenderer;
     private Sprite ronaldWayne, steveWozniak, steveJobs;
-    private List<Sprite> threeAmigosSprites;
+    private List<Sprite> threeAmigosSprites, apple1Sprites;
     private Texture threeAmigos, apple1, apple2, macintosh, noSnow;
-    private List<Sprite> apple1Sprites;
     private StarsArray starsArray;
     private BitmapFont fontSmall, fontSmaller;
 
-    public Scene2() {
+    public Scene2Stars() {
         super("2");
     }
 
@@ -99,13 +98,13 @@ public final class Scene2 extends Scene {
             }
 
             if (this.getRelativeFrame() < 1600)
-                amigosGoRound(this.threeAmigosSprites, Gdx.graphics.getWidth() / 3, Gdx.graphics.getHeight() / 2);
+                picFragmentsGoRound(this.threeAmigosSprites, Gdx.graphics.getWidth() / 3, Gdx.graphics.getHeight() / 2);
             else if (this.getRelativeFrame() < 2100)
-                bringAmigosTogether(this.threeAmigosSprites, Gdx.graphics.getHeight() / 3f, Gdx.graphics.getWidth() / 4f);
+                gluePictureFragments(this.threeAmigosSprites, Gdx.graphics.getHeight() / 3f, Gdx.graphics.getWidth() / 4f);
             else if (this.getRelativeFrame() < 2250)
-                amigosGoRound(this.apple1Sprites, 3 * Gdx.graphics.getWidth() / 5, Gdx.graphics.getHeight() / 2 - 30);
+                picFragmentsGoRound(this.apple1Sprites, 3 * Gdx.graphics.getWidth() / 5, Gdx.graphics.getHeight() / 2 - 30);
             else
-                bringAmigosTogether(this.apple1Sprites, 3 * Gdx.graphics.getHeight() / 5f, Gdx.graphics.getWidth() / 2f - 30);
+                gluePictureFragments(this.apple1Sprites, 3 * Gdx.graphics.getHeight() / 5f, Gdx.graphics.getWidth() / 2f - 30);
         }
 
         if (1360 < this.getRelativeFrame() && this.getRelativeFrame() < 1800) {
@@ -145,7 +144,7 @@ public final class Scene2 extends Scene {
         else if (2418 < this.getRelativeFrame()) {
             batch.draw(this.apple1, this.apple1Sprites.get(0).getX(), this.apple1Sprites.get(0).getY());
             if (this.getRelativeFrame() < 3400)
-                fontSmall.draw(batch, "Apple 1 was assembled in Job's garage in Los Altos, CA in 1976.", 30, 45);
+                fontSmall.draw(batch, "Apple 1 was assembled in Jobs's garage in Los Altos, CA in 1976.", 30, 45);
         }
 
         /*if (2100 < this.getRelativeFrame() && this.getRelativeFrame() < 2700)
@@ -185,7 +184,7 @@ public final class Scene2 extends Scene {
         fontSmall.draw(batch, caption, Gdx.graphics.getWidth() / 2f - 20, 50);
     }
 
-    private void amigosGoRound(List<Sprite> sprites, int x0, int y0) {
+    private void picFragmentsGoRound(List<Sprite> sprites, int x0, int y0) {
         final int r1 = Gdx.graphics.getWidth() / 4;
         final int r2 = Gdx.graphics.getHeight() / 4;
 
@@ -209,7 +208,7 @@ public final class Scene2 extends Scene {
         });
     }
 
-    private void bringAmigosTogether(List<Sprite> sprites, float destY, float destX0) {
+    private void gluePictureFragments(List<Sprite> sprites, float destY, float destX0) {
         float width = sprites.get(3).getWidth();
 
         for (int i = 0; i < sprites.size(); i++) {

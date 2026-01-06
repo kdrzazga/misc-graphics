@@ -7,20 +7,18 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import org.kd.common.C64Helper;
-import org.kd.common.ConsoleLogger;
 import org.kd.common.Scene;
 import org.kd.common.tricks.Effects;
-import org.kd.goodjob.appendix.BannerApple;
 
-public final class Scene3 extends Scene {
+public final class Scene3Typewriter extends Scene {
 
-    public static final long START_FRAME = Scene2.START_FRAME + 5029;
+    public static final long START_FRAME = Scene2Stars.START_FRAME + 5029;
 
     private SpriteBatch batch3;
     private BitmapFont fontSmall, fontSmaller;
     private Sprite comebackPic;
 
-    public Scene3() {
+    public Scene3Typewriter() {
         super("3");
     }
 
@@ -59,8 +57,6 @@ public final class Scene3 extends Scene {
         }
 
         batch3.end();
-
-        ConsoleLogger.logBannerWithElapsedTime(BannerApple.lines);
     }
 
     @Override

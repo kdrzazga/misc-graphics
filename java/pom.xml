@@ -81,6 +81,7 @@
         </plugins>
         <resources>
             <resource>
+                <!--<directory>C:\Users\jerzy\IdeaProjects\misc-graphics\java\src\main\resources</directory>-->
                 <directory>d:/code/misc-graphics/java/src/main/resources</directory>
                 <excludes>
                     <!-- Remember to use mvn clean before mvn package to get rid of unwanted files

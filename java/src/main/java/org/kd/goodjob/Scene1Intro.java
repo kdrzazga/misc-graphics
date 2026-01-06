@@ -7,12 +7,11 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import org.kd.common.C64Helper;
 import org.kd.common.Scene;
 import org.kd.common.tricks.Effects;
 
-public final class Scene1intro extends Scene {
+public final class Scene1Intro extends Scene {
 
     private SpriteBatch batch;
     private BitmapFont hugeFont, fontSmall;
@@ -20,7 +19,7 @@ public final class Scene1intro extends Scene {
     private Texture appleTexture;
     private final int fiftyFontSize = 700;
 
-    public Scene1intro() {
+    public Scene1Intro() {
         super("50");
     }
 
@@ -37,13 +36,13 @@ public final class Scene1intro extends Scene {
 
     @Override
     public void update(float delta) {
-        Gdx.input.setCursorPosition(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-
         var frame = Gdx.graphics.getFrameId();
+        if (300 < frame)
+            Gdx.input.setCursorPosition(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
         if (850 < frame && frame < 850 + 500) {
-            var a = 1 - (frame - 850f) / 500f;
-            hugeFont.setColor(a, a, a, a);
+            var colorParam = 1 - (frame - 850f) / 500f;
+            hugeFont.setColor(colorParam, colorParam, colorParam, colorParam);
         }
     }
 
