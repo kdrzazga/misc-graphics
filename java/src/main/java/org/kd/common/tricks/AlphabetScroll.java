@@ -16,13 +16,16 @@ public final class AlphabetScroll {
     private final List<Sprite> textSprites;
     private final float startX, endX;
     private final int speed;
+    private final long initialFrame;
+    private float shiftY = 0;
 
-    public AlphabetScroll(String text) {
-        this(text, 0.81f * Gdx.graphics.getWidth(), 21f, -15);
+    public AlphabetScroll(String text, long initialFrame) {
+        this(text, 0.91f * Gdx.graphics.getWidth(), 21f, -15, initialFrame);
     }
 
-    public AlphabetScroll(String text, float startX, float endX, int speed) {
+    public AlphabetScroll(String text, float startX, float endX, int speed, long initialFrame) {
         this.textSprites = new ArrayList<>(text.length());
+        this.initialFrame = initialFrame;
 
         List<Character> letters = Stream.of(text.split(""))
                 .map(s -> s.charAt(0))
@@ -44,7 +47,7 @@ public final class AlphabetScroll {
     }
 
     public void update() {
-        var frame = Gdx.graphics.getFrameId();
+        var frame = Gdx.graphics.getFrameId() - initialFrame;
 
         for (int i = 0; i < textSprites.size(); i++) {
             var s = textSprites.get(i);
@@ -52,7 +55,7 @@ public final class AlphabetScroll {
             if (frame > delay) {
                 if (s.getX() < startX && s.getX() > endX) {
                     var x = s.getX() + speed;
-                    float y = (float) (s.getHeight() * Math.sin(Math.PI * x / startX));
+                    float y = shiftY + (float) (s.getHeight() * Math.sin(Math.PI * x / startX));
                     s.setPosition(x, y);
                 }
             }
@@ -81,4 +84,8 @@ public final class AlphabetScroll {
         return filename;
     }
 
+    public void setShiftY(float shiftY) {
+        this.shiftY = shiftY;
+        textSprites.forEach(s -> s.setY(shiftY));
+    }
 }

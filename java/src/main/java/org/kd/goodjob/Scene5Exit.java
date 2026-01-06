@@ -17,7 +17,7 @@ import java.util.List;
 
 public final class Scene5Exit extends Scene {
 
-    public static final long START_FRAME = Scene4JobsReturn.START_FRAME + 1629;
+    public static final long START_FRAME = Scene4JobsReturn.START_FRAME + 4300;
     static final long DEMO_END_FRAME = START_FRAME + 1629;
     private SpriteBatch batch5;
     private Texture cake;
