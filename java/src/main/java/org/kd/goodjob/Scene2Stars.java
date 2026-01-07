@@ -155,18 +155,18 @@ public final class Scene2Stars extends Scene {
 
         if (2600 < this.getRelativeFrame()) {
             if (this.getRelativeFrame() < 2900) {
+                asciiBlack.setPosition(70f, 375f);
                 asciiBlack.draw(batch);
-                asciiBlack.setPosition(70, 475);
                 float color = this.getRelativeFrame() - 2600;
                 asciiBlack.setColor(new Color(color / 300f, color / 300f, color / 300f, color / 300f));
             } else if (getRelativeFrame() < 3150) {
                 if (getRelativeFrame() % 20 > 10)
-                    batch.draw(asciiWhite, 70, 475);
+                    batch.draw(asciiWhite, 70f, 375f);
                 else
                     asciiBlack.draw(batch);
             } else if (getRelativeFrame() <= 3400) {
+                asciiColor.setPosition(70f, 375f);
                 asciiColor.draw(batch);
-                asciiColor.setPosition(70, 475);
                 var scaleX = Math.max(0.5f, asciiColor.getScaleX() * 0.995f);
                 var scaleY = Math.max(0.6f, asciiColor.getScaleY() * 0.995f);
 

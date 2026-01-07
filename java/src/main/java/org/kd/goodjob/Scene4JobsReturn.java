@@ -41,7 +41,7 @@ public final class Scene4JobsReturn extends Scene {
 
         var macTexture = new Texture("good-job/macintosh/makintosz.png");
         mac1 = new Sprite(macTexture);
-        int macY = 81;
+        float macY = 61;
         mac1.setPosition(11, macY);
         mac2 = new Sprite(macTexture);
         mac2.flip(true, false);
@@ -104,17 +104,17 @@ public final class Scene4JobsReturn extends Scene {
             this.backgroundLinesTrick.draw(6);
             batch4.begin();
             wallpaper.draw(batch4);
-            if (1400 < getRelativeFrame() && getRelativeFrame() < 1500)
-                batch4.draw(iMac, Gdx.graphics.getWidth() / 2f - 265, Gdx.graphics.getHeight() / 2f);
+            if (1400 < getRelativeFrame() && getRelativeFrame() < 1900)
+                batch4.draw(iMac, Gdx.graphics.getWidth() / 2f - iMac.getWidth()/2f, Gdx.graphics.getHeight() / 3.95f);
             else if (2400 < getRelativeFrame() && getRelativeFrame() < 2560)
-                batch4.draw(iPod, Gdx.graphics.getWidth() / 2f - 265, Gdx.graphics.getHeight() / 2f);
-            else if (getRelativeFrame() < 2760)
-                batch4.draw(iPhone, Gdx.graphics.getWidth() / 2f - 265, Gdx.graphics.getHeight() / 2f);
+                batch4.draw(iPod, Gdx.graphics.getWidth() / 2f - iPod.getWidth()/2f, Gdx.graphics.getHeight() / 3.95f);
+            else if (2600 < getRelativeFrame() && getRelativeFrame() < 2760)
+                batch4.draw(iPhone, Gdx.graphics.getWidth() / 2f - iPhone.getWidth()/2f, Gdx.graphics.getHeight() / 3.95f);
 
         }
 
         if (3300 < getRelativeFrame() && getRelativeFrame() < 3800)
-            batch4.draw(tombstone, Gdx.graphics.getWidth() / 2f - 265, Gdx.graphics.getHeight() * 0.27f);
+            batch4.draw(tombstone, Gdx.graphics.getWidth() / 2f - 265, Gdx.graphics.getHeight() * 0.255f);
 
         if (getRelativeFrame() < 240) {
             comebackPic.draw(batch4);

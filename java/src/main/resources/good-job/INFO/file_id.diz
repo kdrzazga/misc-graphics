@@ -15,3 +15,9 @@ java -jar WinterDemo25.jar
 Description:
 
 50
+
+Tools used:
+IntelliJ for Java coding (+Maven, +Git)
+Gimp for simple graphics processing
+Online Sequencer for simple chiptunes, GoatTracker for more advanced, retro-style chiptunes.
+Narakeet - text to speech
