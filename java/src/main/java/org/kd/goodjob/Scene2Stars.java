@@ -1,6 +1,7 @@
 package org.kd.goodjob;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -23,9 +24,9 @@ public final class Scene2Stars extends Scene {
 
     private SpriteBatch batch;
     private ShapeRenderer shapeRenderer;
-    private Sprite ronaldWayne, steveWozniak, steveJobs;
+    private Sprite ronaldWayne, steveWozniak, steveJobs, asciiColor, asciiBlack;
     private List<Sprite> threeAmigosSprites, apple1Sprites;
-    private Texture threeAmigos, apple1, apple2, macintosh, noSnow;
+    private Texture threeAmigos, apple1, apple2, macintosh, noSnow, asciiWhite;
     private StarsArray starsArray;
     private BitmapFont fontSmall, fontSmaller;
 
@@ -40,7 +41,12 @@ public final class Scene2Stars extends Scene {
         var jobsTexture = new Texture("good-job/SteveJobs.png");
         threeAmigos = new Texture("good-job/3amigos/jobsWayneWoz.jpg");
         apple1 = new Texture("good-job/apple1/Apple1.jpg");
+
         apple2 = new Texture("good-job/apple2/apple2.jpg");
+        asciiWhite = new Texture("good-job/apple2/asciiWHT.png");
+        asciiBlack = new Sprite(new Texture("good-job/apple2/asciiBLK.png"));
+        asciiColor = new Sprite(new Texture("good-job/apple2/asciiCOL.png"));
+
         macintosh = new Texture("good-job/macintosh/jobs-macintosh.jpg");
         noSnow = new Texture("good-job/macintosh/nosnow.png");
 
@@ -147,9 +153,27 @@ public final class Scene2Stars extends Scene {
                 fontSmall.draw(batch, "Apple 1 was assembled in Jobs's garage in Los Altos, CA in 1976.", 30, 45);
         }
 
-        /*if (2100 < this.getRelativeFrame() && this.getRelativeFrame() < 2700)
-            this.apple1Sprites.forEach(sprite -> sprite.draw(batch));
-        else*/
+        if (2600 < this.getRelativeFrame()) {
+            if (this.getRelativeFrame() < 2900) {
+                asciiBlack.draw(batch);
+                asciiBlack.setPosition(70, 475);
+                float color = this.getRelativeFrame() - 2600;
+                asciiBlack.setColor(new Color(color / 300f, color / 300f, color / 300f, color / 300f));
+            } else if (getRelativeFrame() < 3150) {
+                if (getRelativeFrame() % 20 > 10)
+                    batch.draw(asciiWhite, 70, 475);
+                else
+                    asciiBlack.draw(batch);
+            } else if (getRelativeFrame() <= 3400) {
+                asciiColor.draw(batch);
+                asciiColor.setPosition(70, 475);
+                var scaleX = Math.max(0.5f, asciiColor.getScaleX() * 0.995f);
+                var scaleY = Math.max(0.6f, asciiColor.getScaleY() * 0.995f);
+
+                asciiColor.setScale(scaleX, scaleY);
+            }
+        }
+
         if (3400 < this.getRelativeFrame()) {
             batch.draw(this.apple2, 70, 475);
             if (this.getRelativeFrame() < 4200) fontSmall.draw(batch, "Apple II was released in June 1977.", 30, 45);
