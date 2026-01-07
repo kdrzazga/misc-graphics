@@ -18,7 +18,7 @@ public final class Scene4JobsReturn extends Scene {
     public static final long START_FRAME = Scene3Typewriter.START_FRAME + 929;
     private SpriteBatch batch4;
     private Sprite comebackPic, jobs, mac1, mac2, wallpaper;
-    private Texture tombstone, iMac, iPod, iPad, iPhone;
+    private Texture tombstone, iMac, iPod, iPad, iPhone, appleTV, aplleWatch, iCloud;
     private GradientLines backgroundLinesTrick;
     private AlphabetScroll scroll;
 
@@ -58,6 +58,9 @@ public final class Scene4JobsReturn extends Scene {
         this.iPod = new Texture("good-job/iPod.png");
         this.iPad = new Texture("good-job/iPad.png");
         this.iPhone = new Texture("good-job/iPhone.png");
+        this.aplleWatch = new Texture("good-job/JobsComeback/appleWatch.png");
+        this.appleTV = new Texture("good-job/JobsComeback/AppleTV.jpg");
+        this.iCloud = new Texture("good-job/JobsComeback/iCloud.jpg");
 
         this.backgroundLinesTrick = new GradientLines(new ShapeRenderer(), Math.round(W / 4f), Math.round(H / 4f), Math.round(3f * W / 4f), Math.round(3f * H / 4f), Color.BLACK);
 
@@ -110,17 +113,26 @@ public final class Scene4JobsReturn extends Scene {
             if (getRelativeFrame() < 3300) wallpaper.draw(batch4);
             if (1400 < getRelativeFrame() && getRelativeFrame() < 1900)
                 batch4.draw(iMac, W / 2f - iMac.getWidth() / 2f, H / 3.95f);
-            else if (2400 < getRelativeFrame() && getRelativeFrame() < 2560)
+            else if (2100 < getRelativeFrame() && getRelativeFrame() < 2260)
                 batch4.draw(iPod, W / 2f - iPod.getWidth() / 2f, H / 3.95f);
-            else if (2600 < getRelativeFrame() && getRelativeFrame() < 2700)
+            else if (2400 < getRelativeFrame() && getRelativeFrame() < 2500)
                 batch4.draw(iPhone, W / 2f - iPhone.getWidth() / 2f, H / 3.95f);
-            else if (2720 < getRelativeFrame() && getRelativeFrame() < 3040)
+            else if (2520 < getRelativeFrame() && getRelativeFrame() < 2840)
                 batch4.draw(iPad, W / 2f - iPad.getWidth() / 2f, H / 3.95f);
         } else {
             batch4.end();
             if (getRelativeFrame() > 4100) this.backgroundLinesTrick.draw(6);
             batch4.begin();
-            if (getRelativeFrame() > 4100) wallpaper.draw(batch4);
+            if (getRelativeFrame() > 4100) {
+                wallpaper.draw(batch4);
+
+                if (4321 < getRelativeFrame() && getRelativeFrame() < 4380)
+                    batch4.draw(aplleWatch, W / 2f - iPad.getWidth() / 2f, H / 3.95f);
+                else if (4381 < getRelativeFrame() && getRelativeFrame() < 4431)
+                    batch4.draw(appleTV, W / 2f - iPad.getWidth() / 2f, H / 3.95f);
+                else if (4431 < getRelativeFrame() && getRelativeFrame() < 4490)
+                    batch4.draw(iCloud, W / 2f - iPad.getWidth() / 2f, H / 3.95f);
+            }
         }
 
         if (3300 < getRelativeFrame() && getRelativeFrame() < 3800)
