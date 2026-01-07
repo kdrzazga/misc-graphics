@@ -62,17 +62,18 @@ public final class Scene4JobsReturn extends Scene {
         this.backgroundLinesTrick = new GradientLines(new ShapeRenderer(), Math.round(W / 4f), Math.round(H / 4f), Math.round(3f * W / 4f), Math.round(3f * H / 4f), Color.BLACK);
 
         scroll = new AlphabetScroll("after returning to apple  steve jobs spearheaded the launch of the " +
-                "imac  revitalizing the company design and technology  he then led the development of " +
-                "groundbreaking products like the ipod  iphone   and the ipad   transforming " +
-                "multiple industries   jobs continued to innovate until his death  leaving a lasting legacy as a " +
-                "visionary tech pioneer", START_FRAME + 480);
+                "imac  revitalizing the company design and technology  and led the development of " +
+                "groundbreaking products like ipod  iphone and ipad transforming " +
+                "multiple industries   he continued to innovate until his death  leaving a lasting legacy " +
+                " Tim Cook took over apple and continued Jobs vision creating " +
+                "AppleWatch AppleTV and iCloud".toLowerCase(), START_FRAME + 480);
         scroll.setShiftY(81f);
         scroll.scale(0.7f);
     }
 
     @Override
     public void update(float delta) {
-        if (240 < getRelativeFrame() && getRelativeFrame() < 4300) {
+        if (240 < getRelativeFrame() && getRelativeFrame() < 4900) {
 
             if (getRelativeFrame() % 3 == 1) {
                 var newScale = Math.min(1, this.jobs.getScaleX()) + 0.01f;
@@ -95,28 +96,35 @@ public final class Scene4JobsReturn extends Scene {
 
         batch4.begin();
 
+        int W = Gdx.graphics.getWidth();
+        int H = Gdx.graphics.getHeight();
         if (getRelativeFrame() < 800) {
-            var jobsX = Gdx.graphics.getWidth() / 2f - this.jobs.getWidth() / 2f;
-            var jobsY = Gdx.graphics.getHeight() - this.jobs.getHeight() - 2f;
+            var jobsX = W / 2f - this.jobs.getWidth() / 2f;
+            var jobsY = H - this.jobs.getHeight() - 2f;
             jobs.setPosition(jobsX, jobsY);
             jobs.draw(batch4);
         } else if (getRelativeFrame() < 3800) {
             batch4.end();
-            this.backgroundLinesTrick.draw(6);
+            if (getRelativeFrame() < 3300) this.backgroundLinesTrick.draw(6);
             batch4.begin();
-            wallpaper.draw(batch4);
+            if (getRelativeFrame() < 3300) wallpaper.draw(batch4);
             if (1400 < getRelativeFrame() && getRelativeFrame() < 1900)
-                batch4.draw(iMac, Gdx.graphics.getWidth() / 2f - iMac.getWidth()/2f, Gdx.graphics.getHeight() / 3.95f);
+                batch4.draw(iMac, W / 2f - iMac.getWidth() / 2f, H / 3.95f);
             else if (2400 < getRelativeFrame() && getRelativeFrame() < 2560)
-                batch4.draw(iPod, Gdx.graphics.getWidth() / 2f - iPod.getWidth()/2f, Gdx.graphics.getHeight() / 3.95f);
-            else if (2600 < getRelativeFrame() && getRelativeFrame() < 2760)
-                batch4.draw(iPhone, Gdx.graphics.getWidth() / 2f - iPhone.getWidth()/2f, Gdx.graphics.getHeight() / 3.95f);
-            else if (2780 < getRelativeFrame() && getRelativeFrame() < 3100)
-                batch4.draw(iPad, Gdx.graphics.getWidth() / 2f - iPad.getWidth()/2f, Gdx.graphics.getHeight() / 3.95f);
+                batch4.draw(iPod, W / 2f - iPod.getWidth() / 2f, H / 3.95f);
+            else if (2600 < getRelativeFrame() && getRelativeFrame() < 2700)
+                batch4.draw(iPhone, W / 2f - iPhone.getWidth() / 2f, H / 3.95f);
+            else if (2720 < getRelativeFrame() && getRelativeFrame() < 3040)
+                batch4.draw(iPad, W / 2f - iPad.getWidth() / 2f, H / 3.95f);
+        } else {
+            batch4.end();
+            if (getRelativeFrame() > 4100) this.backgroundLinesTrick.draw(6);
+            batch4.begin();
+            if (getRelativeFrame() > 4100) wallpaper.draw(batch4);
         }
 
         if (3300 < getRelativeFrame() && getRelativeFrame() < 3800)
-            batch4.draw(tombstone, Gdx.graphics.getWidth() / 2f - 265, Gdx.graphics.getHeight() * 0.255f);
+            batch4.draw(tombstone, W / 2f - 265, H * 0.255f);
 
         if (getRelativeFrame() < 240) {
             comebackPic.draw(batch4);

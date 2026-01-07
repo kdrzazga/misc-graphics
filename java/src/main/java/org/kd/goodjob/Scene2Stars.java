@@ -176,7 +176,7 @@ public final class Scene2Stars extends Scene {
         }
 
         if (3400 < this.getRelativeFrame()) {
-            batch.draw(this.apple2, 70f, 475f);
+            batch.draw(this.apple2, 90f, 495f);
             if (this.getRelativeFrame() < 4200) fontSmall.draw(batch, "Apple II was released in June 1977.", 30, 45);
         }
 
