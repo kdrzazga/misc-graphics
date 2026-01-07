@@ -18,7 +18,7 @@ public final class Scene4JobsReturn extends Scene {
     public static final long START_FRAME = Scene3Typewriter.START_FRAME + 929;
     private SpriteBatch batch4;
     private Sprite comebackPic, jobs, mac1, mac2, wallpaper;
-    private Texture tombstone, iMac, iPod, iPhone;
+    private Texture tombstone, iMac, iPod, iPad, iPhone;
     private GradientLines backgroundLinesTrick;
     private AlphabetScroll scroll;
 
@@ -56,6 +56,7 @@ public final class Scene4JobsReturn extends Scene {
         this.tombstone = new Texture("good-job/tombstone/tombstone.png");
         this.iMac = new Texture("good-job/iMac.png");
         this.iPod = new Texture("good-job/iPod.png");
+        this.iPad = new Texture("good-job/iPad.png");
         this.iPhone = new Texture("good-job/iPhone.png");
 
         this.backgroundLinesTrick = new GradientLines(new ShapeRenderer(), Math.round(W / 4f), Math.round(H / 4f), Math.round(3f * W / 4f), Math.round(3f * H / 4f), Color.BLACK);
@@ -110,7 +111,8 @@ public final class Scene4JobsReturn extends Scene {
                 batch4.draw(iPod, Gdx.graphics.getWidth() / 2f - iPod.getWidth()/2f, Gdx.graphics.getHeight() / 3.95f);
             else if (2600 < getRelativeFrame() && getRelativeFrame() < 2760)
                 batch4.draw(iPhone, Gdx.graphics.getWidth() / 2f - iPhone.getWidth()/2f, Gdx.graphics.getHeight() / 3.95f);
-
+            else if (2780 < getRelativeFrame() && getRelativeFrame() < 3100)
+                batch4.draw(iPad, Gdx.graphics.getWidth() / 2f - iPad.getWidth()/2f, Gdx.graphics.getHeight() / 3.95f);
         }
 
         if (3300 < getRelativeFrame() && getRelativeFrame() < 3800)

@@ -153,29 +153,30 @@ public final class Scene2Stars extends Scene {
                 fontSmall.draw(batch, "Apple 1 was assembled in Jobs's garage in Los Altos, CA in 1976.", 30, 45);
         }
 
+        float asciiY = 365f;
         if (2600 < this.getRelativeFrame()) {
             if (this.getRelativeFrame() < 2900) {
-                asciiBlack.setPosition(70f, 375f);
+                asciiBlack.setPosition(70f, asciiY);
                 asciiBlack.draw(batch);
                 float color = this.getRelativeFrame() - 2600;
                 asciiBlack.setColor(new Color(color / 300f, color / 300f, color / 300f, color / 300f));
             } else if (getRelativeFrame() < 3150) {
                 if (getRelativeFrame() % 20 > 10)
-                    batch.draw(asciiWhite, 70f, 375f);
+                    batch.draw(asciiWhite, 70f, asciiY);
                 else
                     asciiBlack.draw(batch);
             } else if (getRelativeFrame() <= 3400) {
-                asciiColor.setPosition(70f, 375f);
+                asciiColor.setPosition(70f, asciiY);
                 asciiColor.draw(batch);
-                var scaleX = Math.max(0.5f, asciiColor.getScaleX() * 0.995f);
-                var scaleY = Math.max(0.6f, asciiColor.getScaleY() * 0.995f);
+                var scaleX = Math.max(0.7f, asciiColor.getScaleX() * 0.995f);
+                var scaleY = Math.max(0.5f, asciiColor.getScaleY() * 0.995f);
 
                 asciiColor.setScale(scaleX, scaleY);
             }
         }
 
         if (3400 < this.getRelativeFrame()) {
-            batch.draw(this.apple2, 70, 475);
+            batch.draw(this.apple2, 70f, 475f);
             if (this.getRelativeFrame() < 4200) fontSmall.draw(batch, "Apple II was released in June 1977.", 30, 45);
         }
 
