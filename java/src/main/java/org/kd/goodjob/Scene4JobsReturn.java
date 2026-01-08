@@ -59,7 +59,7 @@ public final class Scene4JobsReturn extends Scene {
         this.iPad = new Texture("good-job/iPad.png");
         this.iPhone = new Texture("good-job/iPhone.png");
         this.aplleWatch = new Texture("good-job/JobsComeback/appleWatch.png");
-        this.appleTV = new Texture("good-job/JobsComeback/AppleTV.jpg");
+        this.appleTV = new Texture("good-job/JobsComeback/AppleTV.png");
         this.iCloud = new Texture("good-job/JobsComeback/iCloud.jpg");
 
         this.backgroundLinesTrick = new GradientLines(new ShapeRenderer(), Math.round(W / 4f), Math.round(H / 4f), Math.round(3f * W / 4f), Math.round(3f * H / 4f), Color.BLACK);
