@@ -169,14 +169,14 @@ public final class Scene2Stars extends Scene {
                 asciiColor.setPosition(70f, asciiY);
                 asciiColor.draw(batch);
                 var scaleX = Math.max(0.7f, asciiColor.getScaleX() * 0.995f);
-                var scaleY = Math.max(0.5f, asciiColor.getScaleY() * 0.995f);
+                var scaleY = Math.max(0.55f, asciiColor.getScaleY() * 0.995f);
 
                 asciiColor.setScale(scaleX, scaleY);
             }
         }
 
         if (3400 < this.getRelativeFrame()) {
-            batch.draw(this.apple2, 37f, 512f);
+            batch.draw(this.apple2, 2*70f, 552f);
             if (this.getRelativeFrame() < 4200) fontSmall.draw(batch, "Apple II was released in June 1977.", 30, 45);
         }
 
