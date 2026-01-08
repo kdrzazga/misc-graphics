@@ -47,7 +47,7 @@ public final class Scene2Stars extends Scene {
         asciiBlack = new Sprite(new Texture("good-job/apple2/asciiBLK.png"));
         asciiColor = new Sprite(new Texture("good-job/apple2/asciiCOL.png"));
 
-        macintosh = new Texture("good-job/macintosh/jobs-macintosh.jpg");
+        macintosh = new Texture("good-job/macintosh/2jobs-macintosh.jpg");
         noSnow = new Texture("good-job/macintosh/nosnow.png");
 
         batch = new SpriteBatch();
