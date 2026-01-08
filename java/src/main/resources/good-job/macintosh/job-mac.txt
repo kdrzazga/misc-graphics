@@ -1,0 +1,27 @@
+    l|    .|.    |O                  ....                XXXXXXXXXXXXXKKKKKKKK
+    l|-----+-----|O               0xc:looxOX             kkkkk                
+    o|    .|.    |O              d,.     .,xKX           oooo              ___
+    o|    .|.    |O             l....  ....,dX                            0000
+    o|    .|.    |O            d.   .;:c;.. ,0X                        00OkkOO
+    d|    '|.    |O            d..;coOxddl' ;KXXXK              dollc:::;,;clo
+    x|-----+-----|O           oc..xNX0OOKO; ,OKKKK          c..        'c::ccc
+    d|    .|.    |k       0o'.    ,k0kdxxc.  .,,;d          |          .odlooo
+    x|    .|'    |k      l,...    .,d0Oxl.   .....:k        |          .lolooo
+    x|    .|'    |k    c..........';oko:;'.........'l       |          ,oolooo
+    d|    .|.    |k   d..........   .....''...........:k    |          .colloo
+    k+-----+-----+0   O;... ...'---------------,.......:    |           ;olcll
+    O0000000000000     Oooold:.|XO00KKKK00000KN|;,.....l    |           .clccl
+                             x:|0+-----------+X|:lc:;:      |            ;lclc
+                             x:|O|           |X|',:         |            ,lccc
+                             o;|O|           |X|..',:       |     .  ....'cccl
+                             :;|O|           |K|....,;      |       ......:ccl
+=============================;;|NXXXXXKKKKKKKNK| ....';=====|         .. .clll
+clddxxxxxxxxkkkkkkOOOdcccclxkdx|NNNNNNXXXX---N0|   ....',;::............ .clcl
+,;:cllllllllllooooodl,......,:d|NNNNWNNNNNNNNWk| ....................    .coll
+,;cclllooooooooddddddooolc;'..:+---------------+';:loololc:;.            .cllo
+,;cclllloooloxxxddxxdxxxxddoc:ldocccoddxxxkkxkdodxxdddddxxxl............ .',,;
+,;:cccllllllokkxxxdxkkxdoooooocccc;';ooooodddxxxxxxxkxxxkkxl'..............'..
+,;:cccclllllodxkkxxxxdddddooddlcclc,cxddxxxxxxxxxkkkkkkxxdo:...............'''
+,;:cccccccccccc:cclllooolc::::;,,,'.:lccccloooolccc:ccc:;,,,'..............'''
+',;::;;;:::::;,,,,,;;;;;;;;;;;:::::;;:::::::::;;,'''''''''';,''''.........',,,
+.';::,,,,,,;;;;::::cccccccccccccccc:cllllollllllcccccc:::;;,,,,,,,''''''.',,,,
