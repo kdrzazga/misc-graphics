@@ -64,12 +64,13 @@ public final class Scene4JobsReturn extends Scene {
 
         this.backgroundLinesTrick = new GradientLines(new ShapeRenderer(), Math.round(W / 4f), Math.round(H / 4f), Math.round(3f * W / 4f), Math.round(3f * H / 4f), Color.BLACK);
 
-        scroll = new AlphabetScroll("after returning to apple  steve jobs spearheaded the launch of the " +
+        String scrollText = "After returning to apple  Steve Jobs spearheaded the launch of the " +
                 "imac  revitalizing the company design and technology  and led the development of " +
                 "groundbreaking products like ipod  iphone and ipad transforming " +
-                "multiple industries   he continued to innovate until his death  leaving a lasting legacy " +
+                "multiple industries   He continued to innovate until his death  leaving a lasting legacy " +
                 " Tim Cook took over apple and continued Jobs vision creating " +
-                "AppleWatch AppleTV and iCloud".toLowerCase(), START_FRAME + 480);
+                "AppleWatch AppleTV and iCloud";
+        scroll = new AlphabetScroll(scrollText.toLowerCase(), START_FRAME + 480);
         scroll.setShiftY(81f);
         scroll.scale(0.7f);
     }
