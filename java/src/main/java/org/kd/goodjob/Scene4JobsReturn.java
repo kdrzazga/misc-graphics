@@ -7,8 +7,10 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import org.kd.common.ConsoleLogger;
 import org.kd.common.Scene;
 import org.kd.common.tricks.AlphabetScroll;
+import org.kd.goodjob.appendix.BannerTombstone;
 import org.kd.tricks.GradientLines;
 
 public final class Scene4JobsReturn extends Scene {
@@ -16,7 +18,7 @@ public final class Scene4JobsReturn extends Scene {
     public static final long START_FRAME = Scene3Typewriter.START_FRAME + 929;
     private SpriteBatch batch4;
     private Sprite comebackPic, jobs, mac1, mac2, wallpaper;
-    private Texture tombstone, iMac, iPod, iPhone;
+    private Texture tombstone, iMac, iPod, iPad, iPhone, appleTV, aplleWatch, iCloud;
     private GradientLines backgroundLinesTrick;
     private AlphabetScroll scroll;
 
@@ -39,7 +41,7 @@ public final class Scene4JobsReturn extends Scene {
 
         var macTexture = new Texture("good-job/macintosh/makintosz.png");
         mac1 = new Sprite(macTexture);
-        int macY = 81;
+        float macY = 61;
         mac1.setPosition(11, macY);
         mac2 = new Sprite(macTexture);
         mac2.flip(true, false);
@@ -54,22 +56,28 @@ public final class Scene4JobsReturn extends Scene {
         this.tombstone = new Texture("good-job/tombstone/tombstone.png");
         this.iMac = new Texture("good-job/iMac.png");
         this.iPod = new Texture("good-job/iPod.png");
+        this.iPad = new Texture("good-job/iPad.png");
         this.iPhone = new Texture("good-job/iPhone.png");
+        this.aplleWatch = new Texture("good-job/JobsComeback/appleWatch.png");
+        this.appleTV = new Texture("good-job/JobsComeback/AppleTV.png");
+        this.iCloud = new Texture("good-job/JobsComeback/iCloud.jpg");
 
         this.backgroundLinesTrick = new GradientLines(new ShapeRenderer(), Math.round(W / 4f), Math.round(H / 4f), Math.round(3f * W / 4f), Math.round(3f * H / 4f), Color.BLACK);
 
-        scroll = new AlphabetScroll("after returning to apple  steve jobs spearheaded the launch of the " +
-                "imac  revitalizing the company design and technology  he then led the development of " +
-                "groundbreaking products like the ipod  iphone   and the ipad   transforming " +
-                "multiple industries   jobs continued to innovate until his death  leaving a lasting legacy as a " +
-                "visionary tech pioneer", START_FRAME + 480);
+        String scrollText = "After returning to apple  Steve Jobs spearheaded the launch of the " +
+                "imac  revitalizing the company design and technology  and led the development of " +
+                "groundbreaking products like ipod  iphone and ipad transforming " +
+                "multiple industries   He continued to innovate until his death  leaving a lasting legacy " +
+                " Tim Cook took over apple and continued Jobs vision creating " +
+                "AppleWatch AppleTV and iCloud";
+        scroll = new AlphabetScroll(scrollText.toLowerCase(), START_FRAME + 480);
         scroll.setShiftY(81f);
         scroll.scale(0.7f);
     }
 
     @Override
     public void update(float delta) {
-        if (240 < getRelativeFrame() && getRelativeFrame() < 4300) {
+        if (240 < getRelativeFrame() && getRelativeFrame() < 4900) {
 
             if (getRelativeFrame() % 3 == 1) {
                 var newScale = Math.min(1, this.jobs.getScaleX()) + 0.01f;
@@ -77,9 +85,12 @@ public final class Scene4JobsReturn extends Scene {
             }
             if (getRelativeFrame() % 2 == 0)
                 scroll.update();
-        }
 
-        System.out.println("4.Job's return " + getRelativeFrame());
+            if (3300 < getRelativeFrame() && getRelativeFrame() < 3800) {
+                ConsoleLogger.logBannerWithElapsedTime(BannerTombstone.lines);
+            }
+        }
+        //System.out.println("4.Job's return " + getRelativeFrame());
     }
 
     @Override
@@ -89,27 +100,44 @@ public final class Scene4JobsReturn extends Scene {
 
         batch4.begin();
 
+        int W = Gdx.graphics.getWidth();
+        int H = Gdx.graphics.getHeight();
         if (getRelativeFrame() < 800) {
-            var jobsX = Gdx.graphics.getWidth() / 2f - this.jobs.getWidth() / 2f;
-            var jobsY = Gdx.graphics.getHeight() - this.jobs.getHeight() - 2f;
+            var jobsX = W / 2f - this.jobs.getWidth() / 2f;
+            var jobsY = H - this.jobs.getHeight() - 2f;
             jobs.setPosition(jobsX, jobsY);
             jobs.draw(batch4);
         } else if (getRelativeFrame() < 3800) {
             batch4.end();
-            this.backgroundLinesTrick.draw(6);
+            if (getRelativeFrame() < 3300) this.backgroundLinesTrick.draw(6);
             batch4.begin();
-            wallpaper.draw(batch4);
-            if (1400 < getRelativeFrame() && getRelativeFrame() < 1500)
-                batch4.draw(iMac, Gdx.graphics.getWidth() / 2f - 265, Gdx.graphics.getHeight() / 2f);
-            else if (2400 < getRelativeFrame() && getRelativeFrame() < 2560)
-                batch4.draw(iPod, Gdx.graphics.getWidth() / 2f - 265, Gdx.graphics.getHeight() / 2f);
-            else if ( getRelativeFrame() < 2760)
-                batch4.draw(iPhone, Gdx.graphics.getWidth() / 2f - 265, Gdx.graphics.getHeight() / 2f);
+            if (getRelativeFrame() < 3300) wallpaper.draw(batch4);
+            if (1400 < getRelativeFrame() && getRelativeFrame() < 1900)
+                batch4.draw(iMac, W / 2f - iMac.getWidth() / 2f, H / 3.95f);
+            else if (2300 < getRelativeFrame() && getRelativeFrame() < 2400)
+                batch4.draw(iPod, W / 2f - iPod.getWidth() / 2f, H / 3.95f);
+            else if (2415 < getRelativeFrame() && getRelativeFrame() < 2515)
+                batch4.draw(iPhone, W / 2f - iPhone.getWidth() / 2f, H / 3.95f);
+            else if (2520 < getRelativeFrame() && getRelativeFrame() < 2840)
+                batch4.draw(iPad, W / 2f - iPad.getWidth() / 2f, H / 3.95f);
+        } else {
+            batch4.end();
+            if (getRelativeFrame() > 4100) this.backgroundLinesTrick.draw(6);
+            batch4.begin();
+            if (getRelativeFrame() > 4100) {
+                wallpaper.draw(batch4);
 
+                if (4321 < getRelativeFrame() && getRelativeFrame() < 4380)
+                    batch4.draw(aplleWatch, W / 2f - iPad.getWidth() / 2f, H / 3.95f);
+                else if (4381 < getRelativeFrame() && getRelativeFrame() < 4431)
+                    batch4.draw(appleTV, W / 2f - iPad.getWidth() / 2f, H / 3.95f);
+                else if (4431 < getRelativeFrame() && getRelativeFrame() < 4490)
+                    batch4.draw(iCloud, W / 2f - iPad.getWidth() / 2f, H / 3.95f);
+            }
         }
 
         if (3300 < getRelativeFrame() && getRelativeFrame() < 3800)
-            batch4.draw(tombstone, Gdx.graphics.getWidth() / 2f - 265, Gdx.graphics.getHeight() / 3f);
+            batch4.draw(tombstone, W / 2f - 265, H * 0.255f);
 
         if (getRelativeFrame() < 240) {
             comebackPic.draw(batch4);

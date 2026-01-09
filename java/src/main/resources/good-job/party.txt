@@ -5,7 +5,7 @@ IntelliJ for Java coding (+Maven, +Git)
 Gimp for simple graphics processing
 Online Sequencer for very simple chiptunes.
 GoatTracker for more advanced, retro-style chiptunes.
-
+Narakeet - text to speech
 
 ArekK 2.05.1981
 

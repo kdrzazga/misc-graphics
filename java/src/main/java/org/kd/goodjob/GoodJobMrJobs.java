@@ -8,8 +8,8 @@ public class GoodJobMrJobs extends Demo {
     public static void main(String[] args) {
         GoodJobMrJobs.analyzeArguments(args);
         var config = Demo.createConfig("Good job Mr. Jobs");
-        config.width = 1400;//90% 1280;
-        config.height = 922; //90% of 1024
+        config.width = 1700;//
+        config.height = 990;//
         //config.fullscreen = false;
 
         new LwjglApplication(new GoodJobAnimationMgr(), config);

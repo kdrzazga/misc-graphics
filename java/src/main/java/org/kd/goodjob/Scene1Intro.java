@@ -37,7 +37,7 @@ public final class Scene1Intro extends Scene {
     @Override
     public void update(float delta) {
         var frame = Gdx.graphics.getFrameId();
-        if (300 < frame)
+        if (25 < frame)
             Gdx.input.setCursorPosition(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
         if (850 < frame && frame < 850 + 500) {
