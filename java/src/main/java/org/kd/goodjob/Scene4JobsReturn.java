@@ -127,11 +127,11 @@ public final class Scene4JobsReturn extends Scene {
             if (getRelativeFrame() > 4100) {
                 wallpaper.draw(batch4);
 
-                if (4321 < getRelativeFrame() && getRelativeFrame() < 4380)
+                if (4341 < getRelativeFrame() && getRelativeFrame() < 4380)
                     batch4.draw(aplleWatch, W / 2f - iPad.getWidth() / 2f, H / 3.95f);
-                else if (4381 < getRelativeFrame() && getRelativeFrame() < 4431)
+                else if (4381 < getRelativeFrame() && getRelativeFrame() < 4441)
                     batch4.draw(appleTV, W / 2f - iPad.getWidth() / 2f, H / 3.95f);
-                else if (4431 < getRelativeFrame() && getRelativeFrame() < 4490)
+                else if (4441 < getRelativeFrame() && getRelativeFrame() < 4570)
                     batch4.draw(iCloud, W / 2f - iPad.getWidth() / 2f, H / 3.95f);
             }
         }

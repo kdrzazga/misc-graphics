@@ -21,7 +21,7 @@ import java.util.stream.IntStream;
 
 public final class Scene2Stars extends Scene {
 
-    public static final long START_FRAME = 2222;
+    public static final long START_FRAME = 2229;
 
     private SpriteBatch batch;
     private ShapeRenderer shapeRenderer;
@@ -189,7 +189,7 @@ public final class Scene2Stars extends Scene {
             if (this.getRelativeFrame() < 3700) {
                 this.macAsciiDark.draw(batch);
                 Arrays.asList(macAsciiDark, macAsciiLight, macAsciiColor).forEach(mac -> mac.setPosition(macX, macY));
-            } else if (this.getRelativeFrame() < 4170) {
+            } else if (this.getRelativeFrame() < 4104) {
                 if (getRelativeFrame() % 28 > 14)
                     this.macAsciiDark.draw(batch);
                 else this.macAsciiLight.draw(batch);
@@ -204,10 +204,13 @@ public final class Scene2Stars extends Scene {
                     scaleY = Math.max(scaleY, desiredScaleY);
                     mac.setScale(scaleX, scaleY);
                 });
-            } else {
+            } else if (this.getRelativeFrame() < 4200){
 
-                var x = this.macAsciiColor.getX() - 1f;
-                var y = this.macAsciiColor.getY() - 1f;
+                var x = this.macAsciiColor.getX() - 1.75f;
+                var y = this.macAsciiColor.getY() - 1.5f;
+
+                //x = Math.max(x, macX);
+                //y = Math.max(y, macY);
                 this.macAsciiColor.setPosition(x, y);
                 this.macAsciiColor.draw(batch);
             }
