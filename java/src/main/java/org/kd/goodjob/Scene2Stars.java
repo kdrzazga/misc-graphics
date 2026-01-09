@@ -185,11 +185,11 @@ public final class Scene2Stars extends Scene {
         var macX = 310;
         var macY = 122;
 
-        if (3600 < this.getRelativeFrame() && this.getRelativeFrame() < 4100) {
+        if (3600 < this.getRelativeFrame() && this.getRelativeFrame() < 4200) {
             if (this.getRelativeFrame() < 3700) {
                 this.macAsciiDark.draw(batch);
                 Arrays.asList(macAsciiDark, macAsciiLight, macAsciiColor).forEach(mac -> mac.setPosition(macX, macY));
-            } else if (this.getRelativeFrame() < 3900) {
+            } else if (this.getRelativeFrame() < 4170) {
                 if (getRelativeFrame() % 28 > 14)
                     this.macAsciiDark.draw(batch);
                 else this.macAsciiLight.draw(batch);
