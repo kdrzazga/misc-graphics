@@ -17,7 +17,7 @@ public final class Scene4JobsReturn extends Scene {
 
     public static final long START_FRAME = Scene3Typewriter.START_FRAME + 929;
     private SpriteBatch batch4;
-    private Sprite comebackPic, jobs, mac1, mac2, wallpaper;
+    private Sprite comebackPic, jobs, mac1, mac2, wallpaper, timCook, timCookAscii;
     private Texture tombstone, iMac, iPod, iPad, iPhone, appleTV, aplleWatch, iCloud;
     private GradientLines backgroundLinesTrick;
     private AlphabetScroll scroll;
@@ -52,6 +52,9 @@ public final class Scene4JobsReturn extends Scene {
         var wallpaperY = H / 2f - wallpaperTexture.getHeight() / 2f;
         wallpaper = new Sprite(wallpaperTexture);
         wallpaper.setPosition(wallpaperX, wallpaperY);
+
+        timCookAscii = new Sprite(new Texture("good-job/JobsComeback/timCookAscii.png"));
+        timCook = new Sprite(new Texture("good-job/JobsComeback/timCook.png"));
 
         this.tombstone = new Texture("good-job/tombstone/tombstone.png");
         this.iMac = new Texture("good-job/iMac.png");
@@ -126,12 +129,17 @@ public final class Scene4JobsReturn extends Scene {
 
     private void drawWatchTvCloud(int W, int H) {
         batch4.end();
-        if (getRelativeFrame() > 4100) this.backgroundLinesTrick.draw(6);
+        if (getRelativeFrame() > 3900) this.backgroundLinesTrick.draw(6);
         batch4.begin();
-        if (getRelativeFrame() > 4100) {
+        if (getRelativeFrame() > 3900) {
             wallpaper.draw(batch4);
-
-            if (4341 < getRelativeFrame() && getRelativeFrame() < 4380)
+            if (4000 < getRelativeFrame() && getRelativeFrame() < 4200) {
+                timCookAscii.draw(batch4);
+                timCookAscii.setPosition(-timCookAscii.getWidth()/2f + W/2f, -timCookAscii.getHeight()/2 + H/2f);
+            } else if (4250 < getRelativeFrame()) {
+                timCook.setPosition(-timCook.getWidth()/2f + W/2f, -timCook.getHeight()/2 - H/2f);
+                timCook.draw(batch4);
+            } else if (4300 < getRelativeFrame() && getRelativeFrame() < 4380)
                 batch4.draw(aplleWatch, W / 2f - aplleWatch.getWidth() / 2f, H / 3.95f);
             else if (4381 < getRelativeFrame() && getRelativeFrame() < 4441)
                 batch4.draw(appleTV, W / 2f - appleTV.getWidth() / 2f, H / 3.95f);
