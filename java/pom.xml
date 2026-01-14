@@ -84,15 +84,15 @@
                 <!--<directory>C:\Users\jerzy\IdeaProjects\misc-graphics\java\src\main\resources</directory>-->
                 <directory>d:/code/misc-graphics/java/src/main/resources</directory>
                 <excludes>
-                    <!-- Remember to use mvn clean before mvn package to get rid of unwanted files
+                    <!-- Remember to use mvn clean before mvn package to get rid of unwanted files-
                     <exclude>dream210/**</exclude>
                     <exclude>win311/**</exclude>
                     <exclude>fake-demo/**</exclude>
                     <exclude>hellogdx/**</exclude>
                     <exclude>anniversaries/**</exclude>
                     <exclude>winter/**</exclude>
-                    <exclude>good-job/**</exclude>
-                    -->
+                    <!-<exclude>good-job/**</exclude>-->
+
                 </excludes>
             </resource>
         </resources>
