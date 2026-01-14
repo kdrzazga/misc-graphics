@@ -6,10 +6,10 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class TwoMovingBackgrounds {
 
-    private TravellingLogo rearBackground;
-    private TravellingLogo frontBackground;
-    private float screenWidth;
-    private float screenHeight;
+    private final TravellingLogo rearBackground;
+    private final TravellingLogo frontBackground;
+    private final float screenWidth;
+    private final float screenHeight;
 
     public TwoMovingBackgrounds(String rearBackgroundPath, String frontBackgroundPath, float screenWidth, float screenHeight) {
         this.screenWidth = screenWidth;
