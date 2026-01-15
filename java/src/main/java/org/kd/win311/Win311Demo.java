@@ -10,7 +10,7 @@ public final class Win311Demo extends Demo {
         var config = Demo.createConfig("Windows 3.11");
         config.width = 1024;
         config.height = 768;
-        config.fullscreen = false;
+        //config.fullscreen = false;
 
         new LwjglApplication(new Win311Manager(), config);
     }

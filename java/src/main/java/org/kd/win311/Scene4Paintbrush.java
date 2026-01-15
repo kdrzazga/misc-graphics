@@ -34,10 +34,10 @@ public class Scene4Paintbrush extends Scene {
     public void update(float delta) {
         System.out.println(this.getRelFrame());
         if (this.getRelFrame() == START_WAVE_FRAME) {
-            int x1 = 119;
-            int y1 = 78;
-            int x2 = 1111;
-            int y2 = 755;
+            int x1 = 104;//ok
+            int y1 = 109;
+            int x2 = 901;//ok
+            int y2 = 657;
             this.wavedEdgeTrick = new WavedEdgeTrick(x1, y1, x2, y2, batch, this.shapeRenderer, 20, 0);
             this.wavedEdgeTrick.setInitialFrame(Gdx.graphics.getFrameId());
 
