@@ -7,11 +7,11 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import org.kd.common.ConsoleLogger;
-import org.kd.common.Scene;
-import org.kd.common.tricks.AlphabetScroll;
 import org.kd.goodjob.appendix.BannerTombstone;
+import org.kd.common.tricks.AlphabetScroll;
+import org.kd.common.ConsoleLogger;
 import org.kd.tricks.GradientLines;
+import org.kd.common.Scene;
 
 public final class Scene4JobsReturn extends Scene {
 
@@ -113,7 +113,7 @@ public final class Scene4JobsReturn extends Scene {
             drawWatchTvCloud(W, H);
         }
 
-        if (3300 < getRelativeFrame() && getRelativeFrame() < 3800)
+        if (3300 < getRelativeFrame() && getRelativeFrame() < 3750)
             batch4.draw(tombstone, W / 2f - 265, H * 0.255f);
 
         if (getRelativeFrame() < 240) {
