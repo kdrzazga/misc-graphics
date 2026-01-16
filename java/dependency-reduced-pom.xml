@@ -8,14 +8,6 @@
     <resources>
       <resource>
         <directory>d:/code/misc-graphics/java/src/main/resources</directory>
-        <excludes>
-          <exclude>dream210/**</exclude>
-          <exclude>win311/**</exclude>
-          <exclude>fake-demo/**</exclude>
-          <exclude>hellogdx/**</exclude>
-          <exclude>anniversaries/**</exclude>
-          <exclude>winter/**</exclude>
-        </excludes>
       </resource>
     </resources>
     <plugins>

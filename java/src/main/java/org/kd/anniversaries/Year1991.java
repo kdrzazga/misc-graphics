@@ -26,16 +26,18 @@ public class Year1991 extends Year {
         zxSpectrumFont.draw(screen.batch2, "1991", 300, 570);
         if (frame < this.startingFrame + 0.7 * Year.DEFAULT_DURATION) {
             c64Font.draw(screen.batch2, "Linus Thorvalds", 100, 495);
-            c64Font.draw(screen.batch2, "created Linux", 100, 475);
+            c64Font.draw(screen.batch2, "started coding ", 100, 475);
+            c64Font.draw(screen.batch2, "LINUX kernel", 100, 455);
             screen.backgroundTexture = this.thorvalds;
 
         } else if (frame < this.startingFrame + 1.4 * Year.DEFAULT_DURATION) {
             c64Font.draw(screen.batch2, "Linus Thorvalds", 100, 495);
-            c64Font.draw(screen.batch2, "created Linux,", 100, 475);
-            c64Font.draw(screen.batch2, "pioneering step", 100, 455);
-            c64Font.draw(screen.batch2, "towards ", 100, 435);
-            c64Font.draw(screen.batch2, "open-source", 100, 415);
-            c64Font.draw(screen.batch2, "software.", 100, 395);
+            c64Font.draw(screen.batch2, "started coding,", 100, 475);
+            c64Font.draw(screen.batch2, "LINUX kernel,", 100, 455);
+            c64Font.draw(screen.batch2, "pioneering step", 100, 435);
+            c64Font.draw(screen.batch2, "towards ", 100, 415);
+            c64Font.draw(screen.batch2, "open-source", 100, 395);
+            c64Font.draw(screen.batch2, "software.", 100, 375);
             screen.backgroundTexture = this.penguin;
 
         } else if (frame < this.startingFrame + 2.1 * Year.DEFAULT_DURATION) {

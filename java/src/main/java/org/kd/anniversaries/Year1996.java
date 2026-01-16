@@ -28,7 +28,7 @@ public class Year1996 extends Year {
             if (frame > this.startingFrame + 0.45 * DEFAULT_DURATION) {
                 c64Font.draw(screen.batch2, "Java is like a wheel", 100, 255);
                 c64Font.draw(screen.batch2, "invented long time ago,", 100, 235);
-                c64Font.draw(screen.batch2, "but steel needed.", 100, 215);
+                c64Font.draw(screen.batch2, "but still needed.", 100, 215);
             }
             if (frame > this.startingFrame + 0.6 * DEFAULT_DURATION) {
                 c64Font.draw(screen.batch2, "This demo is actually", 100, 165);

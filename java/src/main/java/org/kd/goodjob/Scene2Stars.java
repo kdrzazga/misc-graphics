@@ -21,13 +21,14 @@ import java.util.stream.IntStream;
 
 public final class Scene2Stars extends Scene {
 
-    public static final long START_FRAME = 2222;
+    public static final long START_FRAME = 2229;
 
     private SpriteBatch batch;
     private ShapeRenderer shapeRenderer;
     private Sprite ronaldWayne, steveWozniak, steveJobs, asciiColor, asciiBlack, macAsciiDark, macAsciiLight, macAsciiColor;
+    private Sprite macintosh;
     private List<Sprite> threeAmigosSprites, apple1Sprites;
-    private Texture threeAmigos, apple1, apple2, macintosh, noSnow, asciiWhite;
+    private Texture threeAmigos, apple1, apple2,  noSnow, asciiWhite;
     private StarsArray starsArray;
     private BitmapFont fontSmall, fontSmaller;
 
@@ -51,7 +52,7 @@ public final class Scene2Stars extends Scene {
         macAsciiLight = new Sprite(new Texture("good-job/macintosh/ascii-light.png"));
         macAsciiColor = new Sprite(new Texture("good-job/macintosh/1ascii-color.png"));
 
-        macintosh = new Texture("good-job/macintosh/2jobs-macintosh.jpg");
+        macintosh = new Sprite(new Texture("good-job/macintosh/2jobs-macintosh.jpg"));
         noSnow = new Texture("good-job/macintosh/nosnow.png");
 
         batch = new SpriteBatch();
@@ -93,7 +94,7 @@ public final class Scene2Stars extends Scene {
             return;
         starsArray.move(6);
 
-        System.out.print(this.getRelativeFrame() + " ");
+        //System.out.print(this.getRelativeFrame() + " ");
 
         if (this.getRelativeFrame() > 500) {
             if (this.getRelativeFrame() < 778) {
@@ -189,7 +190,7 @@ public final class Scene2Stars extends Scene {
             if (this.getRelativeFrame() < 3700) {
                 this.macAsciiDark.draw(batch);
                 Arrays.asList(macAsciiDark, macAsciiLight, macAsciiColor).forEach(mac -> mac.setPosition(macX, macY));
-            } else if (this.getRelativeFrame() < 4170) {
+            } else if (this.getRelativeFrame() < 4104) {
                 if (getRelativeFrame() % 28 > 14)
                     this.macAsciiDark.draw(batch);
                 else this.macAsciiLight.draw(batch);
@@ -204,16 +205,18 @@ public final class Scene2Stars extends Scene {
                     scaleY = Math.max(scaleY, desiredScaleY);
                     mac.setScale(scaleX, scaleY);
                 });
-            } else {
+            } else if (this.getRelativeFrame() < 4200){
 
-                var x = this.macAsciiColor.getX() - 1f;
-                var y = this.macAsciiColor.getY() - 1f;
+                var x = this.macAsciiColor.getX() - 1.75f;
+                var y = this.macAsciiColor.getY() - 1.5f;
+
                 this.macAsciiColor.setPosition(x, y);
                 this.macAsciiColor.draw(batch);
             }
         }
         if (4200 < this.getRelativeFrame()) {
-            batch.draw(this.macintosh, macX, macY);
+            this.macintosh.setPosition(macX, macY);
+            this.macintosh.draw(batch);
             if (this.getRelativeFrame() < 5029) {
                 fontSmall.draw(batch, "Macintosh appeared in January 1984", 30, 45);
                 if (this.getRelativeFrame() > 4859) batch.draw(noSnow, macX - 190, macY + 228);

@@ -71,7 +71,7 @@ public final class Scene5Exit extends Scene {
                 }
             }
 
-            if (Gdx.graphics.getFrameId() > DEMO_END_FRAME - 400) {
+            if (Gdx.graphics.getFrameId() > DEMO_END_FRAME - 250) {
                 //System.err.println("KD and RamOS");
                 fontSmall.draw(batch5, "CODE & GFX: KD ", 0.85f * Gdx.graphics.getWidth(), cake.getHeight() - 60);
                 fontSmall.draw(batch5, "MSX: RAMOS ", 0.85f * Gdx.graphics.getWidth(), cake.getHeight() - 80);
