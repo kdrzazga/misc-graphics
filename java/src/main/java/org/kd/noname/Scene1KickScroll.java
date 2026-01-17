@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import org.kd.common.Scene;
 
@@ -12,8 +13,10 @@ import java.util.Arrays;
 public class Scene1KickScroll extends Scene {
 
     private Music fok, whatchaLookinAt;
-    private Texture tuffGuy, kick;
+    private Texture tuffGuy, boot;
+    private Sprite kick;
     private SpriteBatch batch;
+    private int W, H;
 
     public Scene1KickScroll() {
         super("scene1-kick-scroll");
@@ -21,6 +24,9 @@ public class Scene1KickScroll extends Scene {
 
     @Override
     public void create() {
+        W = Gdx.graphics.getWidth();
+        H = Gdx.graphics.getHeight();
+
         batch = new SpriteBatch();
 
         fok = Gdx.audio.newMusic(Gdx.files.internal("noname/audio/fok.mp3"));
@@ -32,7 +38,9 @@ public class Scene1KickScroll extends Scene {
         });
 
         tuffGuy = new Texture("noname/wb.png");
-        kick = new Texture("noname/kick.png");
+        boot = new Texture("noname/boot.png");
+        kick = new Sprite(new Texture("noname/kick.png"));
+        kick.setPosition(W * 0.5f - kick.getWidth() / 2f, 0.1f * H);
     }
 
     @Override
@@ -41,7 +49,7 @@ public class Scene1KickScroll extends Scene {
         if (frame == 200)
             whatchaLookinAt.play();
 
-        else if (frame == 450)
+        else if (frame == 370)
             fok.play();
     }
 
@@ -52,16 +60,20 @@ public class Scene1KickScroll extends Scene {
         Gdx.gl.glClearColor(0, 0, 0, 1);
 
         var frame = Gdx.graphics.getFrameId();
-        var W = Gdx.graphics.getWidth();
-        var H = Gdx.graphics.getHeight();
 
         batch.begin();
-        if (200 < frame && frame < 500)
-            batch.draw(tuffGuy, W *0.5f - tuffGuy.getWidth() / 2f, 0.1f*H);
+        if (200 < frame && frame < 420)
+            batch.draw(tuffGuy, W * 0.5f - tuffGuy.getWidth() / 2f, 0.1f * H);
 
-        if (frame > 500)
-            batch.draw(kick, W *0.51f - tuffGuy.getWidth() / 2f, 0.1f*H);
+        if (frame > 420) {
+            kick.draw(batch);
+            if (frame > 530 && kick.getColor().a > 0.2f) {
+                var a = kick.getColor().a - 0.005f;
+                kick.setAlpha(a);
+            }
 
+            batch.draw(boot, kick.getX(), kick.getY());
+        }
         batch.end();
     }
 
