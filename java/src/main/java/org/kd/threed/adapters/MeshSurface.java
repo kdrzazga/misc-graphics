@@ -1,4 +1,4 @@
-package org.kd.threed;
+package org.kd.threed.adapters;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
@@ -15,14 +15,14 @@ import com.badlogic.gdx.graphics.g3d.utils.CameraInputController;
 import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
+import org.kd.common.tricks.Mesh;
 
-public class TexturedWorldAnimation extends ApplicationAdapter {
+public class MeshSurface extends ApplicationAdapter {
     public final Color BACKGROUND_COLOUR = new Color(153f / 255f, 255f / 255f, 236f / 255f, 1.0f);
 
     private PerspectiveCamera cam;
     private CameraInputController camController;
     private Environment environment;
-    private Model modelGround;
     private Array<ModelInstance> instances;
     private ModelBatch modelBatch;
 
@@ -37,32 +37,22 @@ public class TexturedWorldAnimation extends ApplicationAdapter {
 
         setupEnv();
 
-        var textureGround = new Texture(Gdx.files.internal("win311/loading.png"), true);
-        textureGround.setFilter(Texture.TextureFilter.MipMapLinearLinear, Texture.TextureFilter.Linear);
-        textureGround.setWrap(Texture.TextureWrap.MirroredRepeat, Texture.TextureWrap.Repeat);
-        TextureRegion textureGroundRegion = new TextureRegion(textureGround);
+        var meshPixmap = Mesh.createMeshPixmap(Color.CYAN,40, 5 , 5);
+        var textureGround = new Texture(meshPixmap);
+        textureGround.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        textureGround.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
+        var textureGroundRegion = new TextureRegion(textureGround);
         int repeats = 3;
         textureGroundRegion.setRegion(0, 0, textureGround.getWidth() * repeats, textureGround.getHeight() * repeats);
 
-        var textureWall = new Texture(Gdx.files.internal("c64.png"), true);
-        textureWall.setFilter(Texture.TextureFilter.MipMapLinearLinear, Texture.TextureFilter.Linear);
-        //textureWall.setWrap(Texture.TextureWrap.MirroredRepeat, Texture.TextureWrap.Repeat);
-        var textureWallRegion = new TextureRegion(textureWall);
-        textureWallRegion.setRegion(0, 0, textureWall.getWidth() , textureWall.getHeight() );
-
         var modelBuilder = new ModelBuilder();
 
-        modelGround = modelBuilder.createBox(100f, 1f, 100f,
+        Model modelGround = modelBuilder.createBox(100f, 1f, 100f,
                 new Material(TextureAttribute.createDiffuse(textureGroundRegion)),
-                VertexAttributes.Usage.Position | VertexAttributes.Usage.Normal | VertexAttributes.Usage.TextureCoordinates);
-
-        Model modelWall = modelBuilder.createBox(100f, 100f, 1f, // wall thickness
-                new Material(TextureAttribute.createDiffuse(textureWallRegion)),
                 VertexAttributes.Usage.Position | VertexAttributes.Usage.Normal | VertexAttributes.Usage.TextureCoordinates);
 
         instances = new Array<>();
         instances.add(new ModelInstance(modelGround, 0, -1, 0));
-        instances.add(new ModelInstance(modelWall , 0, 0, 1));
 
     }
 
