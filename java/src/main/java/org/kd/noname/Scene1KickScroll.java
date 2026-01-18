@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import org.kd.common.Scene;
+import org.kd.common.tricks.AlphabetScroll;
 
 import java.util.Arrays;
 
@@ -17,6 +18,7 @@ public class Scene1KickScroll extends Scene {
     private Sprite kick;
     private SpriteBatch batch;
     private int W, H;
+    private BootAlphabetScroll scroll;
 
     public Scene1KickScroll() {
         super("scene1-kick-scroll");
@@ -41,6 +43,14 @@ public class Scene1KickScroll extends Scene {
         boot = new Texture("noname/boot.png");
         kick = new Sprite(new Texture("noname/kick.png"));
         kick.setPosition(W * 0.5f - kick.getWidth() / 2f, 0.1f * H);
+
+        String scrollText = "Welcome to this ass kicking demo     " +
+                "imac  revitalizing the company design and technology  and led the development of " +
+                "groundbreaking products like ipod  iphone and ipad transforming " +
+                "multiple industries   He continued to innovate until his death  leaving a lasting legacy " +
+                " Tim Cook took over apple and continued Jobs vision creating " +
+                "AppleWatch AppleTV and iCloud";
+        scroll = new BootAlphabetScroll(scrollText.toLowerCase(), 0 + 480);
     }
 
     @Override
@@ -51,6 +61,9 @@ public class Scene1KickScroll extends Scene {
 
         else if (frame == 370)
             fok.play();
+        else if (frame > 370){
+            scroll.update();
+        }
     }
 
     @Override
@@ -67,6 +80,7 @@ public class Scene1KickScroll extends Scene {
 
         if (frame > 420) {
             kick.draw(batch);
+            scroll.render(batch);
             if (frame > 530 && kick.getColor().a > 0.2f) {
                 var a = kick.getColor().a - 0.005f;
                 kick.setAlpha(a);

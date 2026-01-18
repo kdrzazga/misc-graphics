@@ -11,13 +11,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public final class AlphabetScroll {
+public class AlphabetScroll {
 
-    private final List<Sprite> textSprites;
-    private final float startX, endX;
-    private final int speed;
-    private final long initialFrame;
-    private float shiftY = 0;
+    protected final List<Sprite> textSprites;
+    protected final float startX, endX;
+    protected int speed;
+    protected final long initialFrame;
+    protected float shiftY = 0;
 
     public AlphabetScroll(String text, long initialFrame) {
         this(text, 0.91f * Gdx.graphics.getWidth(), 21f, -15, initialFrame);
