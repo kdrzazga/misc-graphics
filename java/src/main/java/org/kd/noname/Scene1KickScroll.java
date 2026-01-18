@@ -15,7 +15,7 @@ public class Scene1KickScroll extends Scene {
 
     private Music fok, whatchaLookinAt;
     private Texture tuffGuy, boot;
-    private Sprite kick;
+    private Sprite kick, bigBoot;
     private SpriteBatch batch;
     private int W, H;
     private BootAlphabetScroll scroll;
@@ -44,9 +44,13 @@ public class Scene1KickScroll extends Scene {
         kick = new Sprite(new Texture("noname/kick.png"));
         kick.setPosition(W * 0.5f - kick.getWidth() / 2f, 0.1f * H);
 
+        bigBoot = new Sprite(new Texture("noname/leftboot.png"));
+        bigBoot.setScale(1.3f);
+        bigBoot.setPosition(W / 2 - bigBoot.getWidth() / 2, H);
+
         String scrollText = "Welcome to this ass kicking demo     " +
-                "imac  revitalizing the company design and technology  and led the development of " +
-                "groundbreaking products like ipod  iphone and ipad transforming " +
+                "In the beginning I would like to send greetings to Pan Areczek " +
+                "of Komoda and Amiga PLUS                   " +
                 "multiple industries   He continued to innovate until his death  leaving a lasting legacy " +
                 " Tim Cook took over apple and continued Jobs vision creating " +
                 "AppleWatch AppleTV and iCloud";
@@ -61,8 +65,18 @@ public class Scene1KickScroll extends Scene {
 
         else if (frame == 370)
             fok.play();
-        else if (frame > 370){
+        else if (frame > 370) {
             scroll.update();
+        }
+
+        if (frame > 1200 && bigBoot.getY() > 85) {
+            var y = bigBoot.getY() - 4;
+            if (frame > 1210) {
+                y -= 2;
+            }
+            if (frame > 1270)
+                y -= 5;
+            bigBoot.setY(y);
         }
     }
 
@@ -87,6 +101,10 @@ public class Scene1KickScroll extends Scene {
             }
 
             batch.draw(boot, kick.getX(), kick.getY());
+
+            if (frame > 1200) {
+                bigBoot.draw(batch);
+            }
         }
         batch.end();
     }
