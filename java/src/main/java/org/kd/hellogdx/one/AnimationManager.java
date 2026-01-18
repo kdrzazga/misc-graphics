@@ -1,4 +1,4 @@
-package org.kd.hellogdx;
+package org.kd.hellogdx.one;
 
 import org.kd.common.Scene;
 
@@ -36,6 +36,6 @@ public class AnimationManager {
     }
 
     public void disposeScenes() {
-        scenes.values().forEach(scene -> scene.dispose());
+        scenes.values().forEach(Scene::dispose);
     }
 }

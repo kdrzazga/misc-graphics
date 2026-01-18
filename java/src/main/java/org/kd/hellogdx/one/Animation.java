@@ -1,4 +1,4 @@
-package org.kd.hellogdx;
+package org.kd.hellogdx.one;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
