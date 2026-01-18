@@ -5,8 +5,8 @@ import com.badlogic.gdx.graphics.Pixmap;
 
 public class Mesh {
     public static Pixmap createMeshPixmap(Color color, int squareSize, int horizontalSquares, int verticalSquares) {
-        int textureWidth = Math.round((1.5f + horizontalSquares) * squareSize);
-        int textureHeight = Math.round((1.5f + verticalSquares) * squareSize);
+        int textureWidth = Math.round((0f + horizontalSquares) * squareSize);
+        int textureHeight = Math.round((0f + verticalSquares) * squareSize);
         var pixmap = new Pixmap(textureWidth, textureHeight, Pixmap.Format.RGBA8888);
         pixmap.setColor(0, 0, 0, 0);
         pixmap.fill();
