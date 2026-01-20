@@ -128,16 +128,18 @@ public final class Scene4JobsReturn extends Scene {
     }
 
     private void drawWatchTvCloud(int W, int H) {
+        if (getRelativeFrame() < 3900) {
+            timCookAscii.draw(batch4);
+            timCookAscii.setPosition(-timCookAscii.getWidth() / 2f + W / 2f, -timCookAscii.getHeight() / 2 + H / 2f);
+        }
+
         batch4.end();
         if (getRelativeFrame() > 3900) this.backgroundLinesTrick.draw(6);
         batch4.begin();
         if (getRelativeFrame() > 3900) {
             wallpaper.draw(batch4);
-            if (4000 < getRelativeFrame() && getRelativeFrame() < 4200) {
-                timCookAscii.draw(batch4);
-                timCookAscii.setPosition(-timCookAscii.getWidth()/2f + W/2f, -timCookAscii.getHeight()/2 + H/2f);
-            } else if (4250 < getRelativeFrame()) {
-                timCook.setPosition(-timCook.getWidth()/2f + W/2f, -timCook.getHeight()/2 - H/2f);
+            if (4000 < getRelativeFrame() && getRelativeFrame() < 4300) {
+                timCook.setPosition(-timCook.getWidth() / 2f + W / 2f, -timCook.getHeight() / 2 - H / 2f);
                 timCook.draw(batch4);
             } else if (4300 < getRelativeFrame() && getRelativeFrame() < 4380)
                 batch4.draw(aplleWatch, W / 2f - aplleWatch.getWidth() / 2f, H / 3.95f);
