@@ -8,7 +8,7 @@ public class HelloSpriteSheets {
     public static void main(String[] arg) {
 
         var config = new LwjglApplicationConfiguration();
-        config.title = "Gdx World";
+        config.title = "Sprite Animation";
         config.width = 100;
         config.height = 100;
         config.fullscreen = false;

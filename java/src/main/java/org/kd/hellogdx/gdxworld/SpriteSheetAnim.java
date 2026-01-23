@@ -24,7 +24,7 @@ public class SpriteSheetAnim extends ApplicationAdapter {
         // Assuming sprite sheet has 4 frames horizontally
         int FRAME_COLS = 2;
         int FRAME_ROWS = 1;
-        int FRAME_WIDTH = 49;
+        int FRAME_WIDTH = 98/2;
         int FRAME_HEIGHT = 44;
 
         TextureRegion[][] tmpRegions = TextureRegion.split(spriteSheet, FRAME_WIDTH, FRAME_HEIGHT);

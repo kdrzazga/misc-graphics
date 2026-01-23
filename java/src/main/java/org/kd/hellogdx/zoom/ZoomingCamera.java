@@ -1,4 +1,4 @@
-package org.kd.hellogdx.rotation;
+package org.kd.hellogdx.zoom;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
@@ -7,17 +7,16 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class ZoomingCamera extends ApplicationAdapter {
     SpriteBatch batch;
     private OrthographicCamera camera;
     Sprite monster;
 
-    private float zoomSpeed = 0.5f; // Speed of zooming
-    private float minZoom = 0.5f;   // Minimum zoom (zoomed in)
-    private float maxZoom = 2.0f;   // Maximum zoom (zoomed out)
-    private boolean zoomingIn = true; // Direction of zoom
+    private float zoomSpeed = 0.5f;
+    private float minZoom = 0.5f;
+    private float maxZoom = 2.0f;
+    private boolean zoomingIn = true;
 
     @Override
     public void create() {
@@ -51,7 +50,7 @@ public class ZoomingCamera extends ApplicationAdapter {
             camera.zoom += zoomSpeed * Gdx.graphics.getDeltaTime();
             if (camera.zoom >= maxZoom) {
                 camera.zoom = maxZoom;
-                zoomingIn = true; // Switch direction
+                zoomingIn = true;
             }
         }
 
