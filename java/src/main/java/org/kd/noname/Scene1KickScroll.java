@@ -1,17 +1,16 @@
 package org.kd.noname;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import org.kd.common.Scene;
-import org.kd.common.tricks.AlphabetScroll;
 
 import java.util.Arrays;
 
-public class Scene1KickScroll extends Scene {
+public class Scene1KickScroll implements Screen {
 
     private Music fok, whatchaLookinAt;
     private Texture tuffGuy, boot;
@@ -20,12 +19,11 @@ public class Scene1KickScroll extends Scene {
     private int W, H;
     private BootAlphabetScroll scroll;
 
-    public Scene1KickScroll() {
-        super("scene1-kick-scroll");
+    public Scene1KickScroll(NoNameDemo demo) {
     }
 
     @Override
-    public void create() {
+    public void show() {
         W = Gdx.graphics.getWidth();
         H = Gdx.graphics.getHeight();
 
@@ -46,7 +44,7 @@ public class Scene1KickScroll extends Scene {
 
         bigBoot = new Sprite(new Texture("noname/leftboot.png"));
         bigBoot.setScale(1.3f);
-        bigBoot.setPosition(W / 2 - bigBoot.getWidth() / 2, H);
+        bigBoot.setPosition(W / 2f - bigBoot.getWidth() / 2f, H);
 
         String scrollText = "Welcome to this ass kicking demo     " +
                 "In the beginning I would like to send greetings to Pan Areczek " +
@@ -57,8 +55,7 @@ public class Scene1KickScroll extends Scene {
         scroll = new BootAlphabetScroll(scrollText.toLowerCase(), 0 + 480);
     }
 
-    @Override
-    public void update(float delta) {
+    public void update() {
         var frame = Gdx.graphics.getFrameId();
         if (frame == 200)
             whatchaLookinAt.play();
@@ -81,8 +78,9 @@ public class Scene1KickScroll extends Scene {
     }
 
     @Override
-    public void render() {
+    public void render(float v) {
 
+        update();
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         Gdx.gl.glClearColor(0, 0, 0, 1);
 
@@ -107,6 +105,26 @@ public class Scene1KickScroll extends Scene {
             }
         }
         batch.end();
+    }
+
+    @Override
+    public void resize(int i, int i1) {
+
+    }
+
+    @Override
+    public void pause() {
+
+    }
+
+    @Override
+    public void resume() {
+
+    }
+
+    @Override
+    public void hide() {
+
     }
 
     @Override
