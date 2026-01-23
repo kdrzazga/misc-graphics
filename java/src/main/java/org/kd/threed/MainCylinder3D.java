@@ -2,14 +2,14 @@ package org.kd.threed;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import org.kd.threed.adapters.CubeAnimation;
+import org.kd.threed.adapters.Cylinder3DExample;
 
-public class MainCube {
+public class MainCylinder3D {
     public static void main(String[] args) {
         var config = new LwjglApplicationConfiguration();
-        config.title = "3D Rotating Cube";
+        config.title = "Textured";
         config.width = 800;
         config.height = 600;
-        new LwjglApplication(new CubeAnimation(), config);
+        new LwjglApplication(new Cylinder3DExample(), config);
     }
 }

@@ -1,0 +1,91 @@
+2022: (5 y.a.)
+1. Elon Musk completed his acquisition of Twitter in October 2022
+
+2.Bad year for cryptocurrencies:
+
+    Bitcoin drops from its peak in in November 2021 ( $69,000 ALL TIME HIGH) to below $20,000 by mid-2022.
+
+    LUNA and TerraUSD Collapse (May 2022): One of the most notable events was the collapse of the Terra ecosystem, including the stablecoin TerraUSD (UST) and its sister token LUNA. UST lost its peg to the US dollar, leading to a domino effect that wiped out billions of dollars in value.
+    Celsius Network Bankruptcy (July 2022): The crypto lending platform Celsius froze withdrawals and filed for bankruptcy in July, citing liquidity issues amid the market downturn.
+    3AC Liquidation (June 2022): The hedge fund Three Arrows Capital faced insolvency, contributing to broader contagion in the crypto ecosystem.
+
+
+2017: (10 y.a.)
+
+3.Good time for crypto-currencies
+    December:   Bitcoin peaks near $20,000 (ALL TIME HIGH so far)
+    The Ethereum blockchain popularized smart contracts, which are the basis of DeFi, in 2017
+    Bitcoin Cash (BCH) was forked from Bitcoin in 2017.
+
+4.Google becomes Alphabet
+5. Apple releases iOS 11, supporting only machines with AArch64 processors. It has a 64-bit kernel that only supports 64-bit applications. 32-bit applications are no longer compatible
+
+
+2012: (15 y.a.)
+6.Facebook Goes Public: In May 2012, Facebook launched its initial public offering (IPO), raising $16 billion and becoming one of the largest tech IPOs in histor
+7.Apple Releases the iPhone 5: In September 2012
+8.Microsoft released Windows 8 in October 2012, Microsoft releases Windows 8 which supports UEFI Class 3 (UEFI without CSM) and Secure Boot.
+9.Apple releases OS X Mountain Lion, which makes the 64-bit kernel the default on some older previously unsupported machines and removes the 32-bit kernel.
+
+2007:  (20 y.a.)
+10.Apple launched the first iPhone in June 2007
+11.Microsoft released Windows Vista in 2007
+12.Amazon introduced the Kindle e-reader in November 2007
+13.Amazon Dynamo was one of first NoSQL databases (based on key-value pairs instead SQL).
+
+2002: (25 y.a) - 14. died Edsger W. Dijkstra
+    Developed Dijkstra's Algorithm for shortest path in graphs.
+    Introduced concepts like structured programming.
+    Created the theory of programming languages and formal methods.
+    Awarded the Turing Award in 1972 for fundamental contributions to algorithms and programming.
+
+1997: (30 y.a.)
+15.Windows 98 released
+16.Yahoo Mail - second free email service October 8, 1997
+17.Jan 29th 1997 - PostgreSQL released - one of the best relational DB systems.
+
+1992: (35 y.a.)
+18. January 1 - GRACE HOPPER died (one of creators of COBOL programming language)
+19. IBM PC 486 DX2
+20. The AVI (Audio Video Interleave) video file format was developed by Microsoft and introduced in November 1992 as part of its Video for Windows technology.
+21. DEC Alpha (AXP) was the second 64-bit processor.
+22. SuSE company founded in Germany. Later responsible for distribution of SUSE Linux
+
+1987: (40 y.a.)
+23. April/May - Amiga 500 released
+
+1982: (45 y.a.)
+24.Sun Microsystems was established: February 24, 1982 (45 years from 2027)
+25. C64 was released in August 1982
+26.Compact Disc (CD) Released in    Japan: October 1982
+
+1977 - (50 y.a.)
+27.Apple II computer was released
+28. ORACLE corporation was founded
+
+1972: (55 y.a.)
+29. Pichai Sundararajan (born June 10, 1972), better known as Sundar Pichai  - CEO of Google/Alphabet
+
+1967 (60 y.a.)
+nothing?  starting developing 'ALGOL 68' language to be released in 1968
+
+1962: (65 y.a.)
+programming languages SIMULA and FORTRAN IV
+Tape cassette/Magnetophone cassette Philips EL 3300 was demonstrated in 1962.
+
+1957 (70 y.a.)
+- FORTRAN programming language
+
+died John von Neuman:
+
+    Developing the von Neumann architecture, the foundational design for most modern computers.
+    Contributing to game theory, which studies strategic decision-making.
+    Playing a major role in nuclear physics and the Manhattan Project during World War II.
+    Advancing mathematics, including set theory, functional analysis, and quantum mechanics.
+    Contributing to computing and automata theory.
+
+
+1952: (75 y.a.)
+
+Ada Lovelace, who wrote FIRST COMPUTER PROGRAM died on	27 November 1852 (aged 36) in Marylebone, London, England
+

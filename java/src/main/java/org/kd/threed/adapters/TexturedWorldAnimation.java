@@ -1,4 +1,4 @@
-package org.kd.threed;
+package org.kd.threed.adapters;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
@@ -22,7 +22,6 @@ public class TexturedWorldAnimation extends ApplicationAdapter {
     private PerspectiveCamera cam;
     private CameraInputController camController;
     private Environment environment;
-    private Model modelGround;
     private Array<ModelInstance> instances;
     private ModelBatch modelBatch;
 
@@ -52,7 +51,7 @@ public class TexturedWorldAnimation extends ApplicationAdapter {
 
         var modelBuilder = new ModelBuilder();
 
-        modelGround = modelBuilder.createBox(100f, 1f, 100f,
+        Model modelGround = modelBuilder.createBox(100f, 1f, 100f,
                 new Material(TextureAttribute.createDiffuse(textureGroundRegion)),
                 VertexAttributes.Usage.Position | VertexAttributes.Usage.Normal | VertexAttributes.Usage.TextureCoordinates);
 

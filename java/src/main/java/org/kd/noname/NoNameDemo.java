@@ -9,7 +9,7 @@ public class NoNameDemo extends org.kd.common.Demo {
         var config = org.kd.common.Demo.createConfig("NoName Demo");
         config.width = 1700;
         config.height = 990;
-        config.fullscreen = false;
+        //config.fullscreen = false;
         new LwjglApplication(new AnimationMgr(), config);
     }
 }

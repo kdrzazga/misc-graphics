@@ -1,4 +1,4 @@
-package org.kd.threed;
+package org.kd.threed.adapters;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
@@ -19,7 +19,6 @@ public class CubeAnimation extends ApplicationAdapter {
     private Model model;
     private ModelInstance instance;
 
-    private Model contourModel;
     private ModelInstance contourInstance;
 
     private Environment environment;
@@ -47,7 +46,7 @@ public class CubeAnimation extends ApplicationAdapter {
         instance = new ModelInstance(model);
 
         var contourMaterial = new Material(ColorAttribute.createDiffuse(1f, 0.5f, 0f, 1f));
-        contourModel = modelBuilder.createBox(111f, 111f, 111f, contourMaterial,
+        Model contourModel = modelBuilder.createBox(111f, 111f, 111f, contourMaterial,
                 Position | Normal);
         contourInstance = new ModelInstance(contourModel);
 

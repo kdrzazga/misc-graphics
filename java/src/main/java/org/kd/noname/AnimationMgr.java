@@ -40,7 +40,7 @@ public class AnimationMgr extends AnimationManager {
 
         long frame = Gdx.graphics.getFrameId();
 
-        if (frame > 400/* && frame < 433 + 7 * 50*/) {
+        if (frame > 350/* && frame < 433 + 7 * 50*/) {
             tune.play();
         }
 

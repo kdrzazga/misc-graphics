@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.kd</groupId>
-    <artifactId>misc-graphics<!--anniversaries--></artifactId>
+    <artifactId>misc-graphics</artifactId>
     <version>1.0</version>
 
     <properties>
@@ -36,6 +36,11 @@
         <dependency>
             <groupId>com.badlogicgames.gdx</groupId>
             <artifactId>gdx-platform</artifactId>
+            <version>1.10.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.badlogicgames.gdx</groupId>
+            <artifactId>gdx-box2d</artifactId>
             <version>1.10.0</version>
         </dependency>
         <dependency>
@@ -72,6 +77,7 @@
                                     <!--<mainClass>org.kd.win311.Win311Demo</mainClass>-->
                                     <!--<mainClass>org.kd.winter25.WinterDemo</mainClass>-->
                                     <mainClass>org.kd.goodjob.GoodJobMrJobs</mainClass>
+                                    <!--<mainClass>org.kd.noname.NoNameDemo</mainClass>-->
                                 </transformer>
                             </transformers>
                         </configuration>
@@ -84,14 +90,15 @@
                 <!--<directory>C:\Users\jerzy\IdeaProjects\misc-graphics\java\src\main\resources</directory>-->
                 <directory>d:/code/misc-graphics/java/src/main/resources</directory>
                 <excludes>
-                    <!-- Remember to use mvn clean before mvn package to get rid of unwanted files-
+                    <!-- Remember to use mvn clean before mvn package to get rid of unwanted files
                     <exclude>dream210/**</exclude>
                     <exclude>win311/**</exclude>
                     <exclude>fake-demo/**</exclude>
                     <exclude>hellogdx/**</exclude>
                     <exclude>anniversaries/**</exclude>
                     <exclude>winter/**</exclude>
-                    <!-<exclude>good-job/**</exclude>-->
+                    <exclude>noname/**</exclude>
+                    <-<exclude>good-job/**</exclude>-->
 
                 </excludes>
             </resource>
