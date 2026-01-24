@@ -1,26 +1,24 @@
-package org.kd.noname;
+package org.kd.kickass;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import org.kd.kickass.lib.BootAlphabetScroll;
 
 import java.util.Arrays;
 
 public class Scene1KickScroll implements Screen {
 
-    private Music fok, whatchaLookinAt;
-    private Texture tuffGuy, boot;
-    private Sprite kick, bigBoot;
+    private Sound fok, whatchaLookinAt;
+    private Texture tuffGuy;
+    private Sprite kick, boot, bigBoot;
     private SpriteBatch batch;
     private int W, H;
     private BootAlphabetScroll scroll;
-
-    public Scene1KickScroll(NoNameDemo demo) {
-    }
 
     @Override
     public void show() {
@@ -29,29 +27,29 @@ public class Scene1KickScroll implements Screen {
 
         batch = new SpriteBatch();
 
-        fok = Gdx.audio.newMusic(Gdx.files.internal("noname/audio/fok.mp3"));
-        whatchaLookinAt = Gdx.audio.newMusic(Gdx.files.internal("noname/audio/WhatAreYouLookingAt.mp3"));
+        fok = Gdx.audio.newSound(Gdx.files.internal("kickass/audio/fok.mp3"));
+        whatchaLookinAt = Gdx.audio.newSound(Gdx.files.internal("kickass/audio/WhatAreYouLookingAt.mp3"));
 
-        Arrays.asList(fok, whatchaLookinAt).forEach(music -> {
-            music.setLooping(false);
-            music.setVolume(1f);
+        Arrays.asList(fok, whatchaLookinAt).forEach(sound -> {
+            sound.setLooping(1, false);
+            sound.setVolume(1L, 1f);
         });
 
-        tuffGuy = new Texture("noname/wb.png");
-        boot = new Texture("noname/boot.png");
-        kick = new Sprite(new Texture("noname/kick.png"));
+        tuffGuy = new Texture("kickass/wb.png");
+        boot = new Sprite(new Texture("kickass/boot.png"));
+        kick = new Sprite(new Texture("kickass/kick.png"));
         kick.setPosition(W * 0.5f - kick.getWidth() / 2f, 0.1f * H);
+        boot.setPosition(kick.getX(), kick.getY());
 
-        bigBoot = new Sprite(new Texture("noname/leftboot.png"));
+        bigBoot = new Sprite(new Texture("kickass/leftboot.png"));
         bigBoot.setScale(1.3f);
-        bigBoot.setPosition(W / 2f - bigBoot.getWidth() / 2f, H);
+        bigBoot.setPosition(W / 2f - bigBoot.getWidth() / 2f, 1.2f*H);
 
         String scrollText = "Welcome to this ass kicking demo     " +
                 "In the beginning I would like to send greetings to Pan Areczek " +
                 "of Komoda and Amiga PLUS                   " +
-                "multiple industries   He continued to innovate until his death  leaving a lasting legacy " +
-                " Tim Cook took over apple and continued Jobs vision creating " +
-                "AppleWatch AppleTV and iCloud";
+                "Respect for publishing a great magazine and releasing games " +
+                "    Hope to see you soon ";
         scroll = new BootAlphabetScroll(scrollText.toLowerCase(), 0 + 480);
     }
 
@@ -66,13 +64,18 @@ public class Scene1KickScroll implements Screen {
             scroll.update();
         }
 
-        if (frame > 1200 && bigBoot.getY() > 85) {
+        if (frame > 3200-150 && bigBoot.getY() > 85) {
             var y = bigBoot.getY() - 4;
-            if (frame > 1210) {
+            if (frame > 3210-150) {
                 y -= 2;
             }
-            if (frame > 1270)
+            if (frame > 3270-150) {
                 y -= 5;
+                var newScale = kick.getScaleY()* 0.985f;
+                kick.setScale(1f, newScale);
+                kick.setY(kick.getY() - 3f);
+                boot.setY(boot.getY() - 6.6f);
+            }
             bigBoot.setY(y);
         }
     }
@@ -84,7 +87,7 @@ public class Scene1KickScroll implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         Gdx.gl.glClearColor(0, 0, 0, 1);
 
-        var frame = Gdx.graphics.getFrameId();
+        var frame = v;
 
         batch.begin();
         if (200 < frame && frame < 420)
@@ -98,7 +101,7 @@ public class Scene1KickScroll implements Screen {
                 kick.setAlpha(a);
             }
 
-            batch.draw(boot, kick.getX(), kick.getY());
+            boot.draw(batch);
 
             if (frame > 1200) {
                 bigBoot.draw(batch);
@@ -109,26 +112,21 @@ public class Scene1KickScroll implements Screen {
 
     @Override
     public void resize(int i, int i1) {
-
     }
 
     @Override
     public void pause() {
-
     }
 
     @Override
     public void resume() {
-
     }
 
     @Override
     public void hide() {
-
     }
 
     @Override
     public void dispose() {
-
     }
 }

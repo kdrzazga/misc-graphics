@@ -1,4 +1,4 @@
-package org.kd.noname;
+package org.kd.kickass.lib;
 
 import com.badlogic.gdx.Gdx;
 import org.kd.common.tricks.AlphabetScroll;
@@ -31,10 +31,8 @@ public class BootAlphabetScroll extends AlphabetScroll {
                         x += 1;
                     }
                     s.setPosition(x, y);
-
                 }
             }
         }
     }
-
 }

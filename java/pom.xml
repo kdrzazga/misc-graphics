@@ -77,7 +77,7 @@
                                     <!--<mainClass>org.kd.win311.Win311Demo</mainClass>-->
                                     <!--<mainClass>org.kd.winter25.WinterDemo</mainClass>-->
                                     <mainClass>org.kd.goodjob.GoodJobMrJobs</mainClass>
-                                    <!--<mainClass>org.kd.noname.NoNameDemo</mainClass>-->
+                                    <!--<mainClass>org.kd.kickass.KickassDemo</mainClass>-->
                                 </transformer>
                             </transformers>
                         </configuration>
