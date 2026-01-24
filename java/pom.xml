@@ -11,6 +11,7 @@
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+        <gdx.version>1.10.0</gdx.version>
     </properties>
 
     <dependencies>
@@ -18,30 +19,30 @@
         <dependency>
             <groupId>com.badlogicgames.gdx</groupId>
             <artifactId>gdx</artifactId>
-            <version>1.10.0</version>
+            <version>${gdx.version}</version>
         </dependency>
         <!-- Platform-specific backend for desktop -->
         <dependency>
             <groupId>com.badlogicgames.gdx</groupId>
             <artifactId>gdx-backend-lwjgl</artifactId>
-            <version>1.10.0</version>
+            <version>${gdx.version}</version>
         </dependency>
         <dependency>
-        <groupId>com.badlogicgames.gdx</groupId>
-        <artifactId>gdx-freetype</artifactId>
-        <version>1.10.0</version>
+            <groupId>com.badlogicgames.gdx</groupId>
+            <artifactId>gdx-freetype</artifactId>
+            <version>${gdx.version}</version>
             <!--<classifier>natives-windows64</classifier>-->
-    </dependency>
+        </dependency>
         <!-- Optional: Platform-specific extensions like gdx-platform -->
         <dependency>
             <groupId>com.badlogicgames.gdx</groupId>
             <artifactId>gdx-platform</artifactId>
-            <version>1.10.0</version>
+            <version>${gdx.version}</version>
         </dependency>
         <dependency>
             <groupId>com.badlogicgames.gdx</groupId>
             <artifactId>gdx-box2d</artifactId>
-            <version>1.10.0</version>
+            <version>${gdx.version}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -71,7 +72,8 @@
                         </goals>
                         <configuration>
                             <transformers>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <!--<mainClass>org.kd.xmas25.CommodoreXmas</mainClass>-->
                                     <!--<mainClass>org.kd.anniversaries.AnniversariesDemo</mainClass>-->
                                     <!--<mainClass>org.kd.win311.Win311Demo</mainClass>-->

@@ -6,14 +6,17 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import org.kd.common.AnimatedSprite;
 import org.kd.common.C64Helper;
 import org.kd.common.ConsoleLogger;
 import org.kd.common.Scene;
 import org.kd.common.tricks.Effects;
 import org.kd.goodjob.appendix.BannerApple;
+import org.lwjgl.util.Point;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public final class Scene5Exit extends Scene {
 
@@ -24,9 +27,22 @@ public final class Scene5Exit extends Scene {
     private BitmapFont font, fontSmall;
     private final List<Message> messages;
     private Music endSpeech;
+    private List<AnimatedSprite> flameSprites;
 
     public Scene5Exit() {
         super("exit");
+        var coords = List.of(new Point(33, 550), new Point(165, 530), new Point(233, 510)
+                , new Point(355, 560), new Point(934, 500));
+        var spriteCount = coords.size();
+        this.flameSprites = new ArrayList<>(spriteCount);
+
+        IntStream.range(0, spriteCount).forEach(i -> {
+            var x = coords.get(i).getX();
+            var y = coords.get(i).getY();
+            var flame = new AnimatedSprite("good-job/flames/flame.png", 4, 0.05f + 0.008f * i, x, y);
+            flame.scale(1f - 0.05f * i);
+            this.flameSprites.add(flame);
+        });
 
         messages = new ArrayList<>();
         messages.add(new Message("This demo is not intended as an advertisement of Apple company", 121));
@@ -57,6 +73,7 @@ public final class Scene5Exit extends Scene {
 
         batch5.begin();
         batch5.draw(cake, 0, 0);
+        this.flameSprites.forEach(flame -> flame.draw(batch5));
         if (getRelativeFrame() == 122) endSpeech.play();
 
         if (getRelativeFrame() > 122) {
