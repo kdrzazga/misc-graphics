@@ -27,12 +27,12 @@ public final class Scene5Exit extends Scene {
     private BitmapFont font, fontSmall;
     private final List<Message> messages;
     private Music endSpeech;
-    private List<AnimatedSprite> flameSprites;
+    private final List<AnimatedSprite> flameSprites;
 
     public Scene5Exit() {
         super("exit");
-        var coords = List.of(new Point(33, 550), new Point(165, 530), new Point(233, 510)
-                , new Point(355, 560), new Point(934, 500));
+        var coords = List.of(new Point(36, 550), new Point(182, 528), new Point(370, 560)
+                , new Point(648, 523), new Point(939, 500));
         var spriteCount = coords.size();
         this.flameSprites = new ArrayList<>(spriteCount);
 
@@ -41,6 +41,7 @@ public final class Scene5Exit extends Scene {
             var y = coords.get(i).getY();
             var flame = new AnimatedSprite("good-job/flames/flame.png", 4, 0.05f + 0.008f * i, x, y);
             flame.scale(1f - 0.05f * i);
+            if (List.of(0,1, 2).contains(i)) flame.scale(0.54f);
             this.flameSprites.add(flame);
         });
 
