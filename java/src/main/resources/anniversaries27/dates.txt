@@ -73,6 +73,10 @@ nothing?  starting developing 'ALGOL 68' language to be released in 1968
 programming languages SIMULA and FORTRAN IV
 Tape cassette/Magnetophone cassette Philips EL 3300 was demonstrated in 1962.
 
+Ural-4 – 1962 based on vacuum tubes (valves), with the hardware being able to perform 12,000 floating-point calculations per second. One word consisted of 40 bits and was able to contain either one numeric value or two instructions. Ferrite core was used as operative memory beginning with the Ural-2.[4] A new series (Ural-11, Ural-14, produced between 1965 and 1971) was based on semiconductors.
+The MINSK-2 was a transistor-based digital computer that went into production in 1962,
+
+
 1957 (70 y.a.)
 - FORTRAN programming language
 
@@ -86,6 +90,9 @@ died John von Neuman:
 
 
 1952: (75 y.a.)
+ May 21, 1952 IBM releases the IBM 701, IBM's first commercial scientific computer.
 
+
+1852
 Ada Lovelace, who wrote FIRST COMPUTER PROGRAM died on	27 November 1852 (aged 36) in Marylebone, London, England
 
