@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 public class Roll {
 
-    private int diceCount = 5;
+    private int diceCount;
     private final List<Dice> diceList;
     private List<Integer> keptDiceList;
 
@@ -19,7 +19,7 @@ public class Roll {
         this.firstRoll();
     }
 
-    public void firstRoll() {
+    private void firstRoll() {
         for (int i = 0; i < diceCount; i++) {
             this.diceList.add(Dice.getRandom());
         }
