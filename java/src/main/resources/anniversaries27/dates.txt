@@ -31,7 +31,7 @@ FOrtnite game released
 TypeScript language
 
 2007:  (20 y.a.)
-10.Apple launched the first iPhone in June 2007
+10.Apple launched the first iPhone in June 2007 (including first iOS)
 11.Microsoft released Windows Vista in 2007
 12.Amazon introduced the Kindle e-reader in November 2007
 13.Amazon Dynamo was one of first NoSQL databases (based on key-value pairs instead SQL).

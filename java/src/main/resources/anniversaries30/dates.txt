@@ -26,6 +26,7 @@ Languages: Ruby, PHP, JavaScript,
 DirectX     Initial Release: 1995    Developed By: Microsoft, response for OpenGL
 
 Heroes of MIght and Magic
+Internet Explorer browser is released.
 
 1990:
 AMOS programming language (a dialect of BASIC)
