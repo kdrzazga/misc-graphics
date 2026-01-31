@@ -23,9 +23,9 @@
 FOrtnite game released
 
 2012: (15 y.a.)
-6.Facebook Goes Public: In May 2012, Facebook launched its initial public offering (IPO), raising $16 billion and becoming one of the largest tech IPOs in histor
-7.Apple Releases the iPhone 5: In September 2012
+6.Facebook Goes Public: In May 2012, Facebook launched its initial public offering (IPO), raising $16 billion and becoming one of the largest tech IPOs in history
 8.Microsoft released Windows 8 in October 2012, Microsoft releases Windows 8 which supports UEFI Class 3 (UEFI without CSM) and Secure Boot.
+7.Apple Releases the iPhone 5: In September 2012
 9.Apple releases OS X Mountain Lion, which makes the 64-bit kernel the default on some older previously unsupported machines and removes the 32-bit kernel.
 
 TypeScript language
