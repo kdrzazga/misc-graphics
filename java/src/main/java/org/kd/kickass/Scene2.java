@@ -5,6 +5,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import org.kd.common.AnimatedSprite;
 import org.kd.common.tricks.TravellingLogo;
 
 public class Scene2 implements Screen {
@@ -12,12 +13,14 @@ public class Scene2 implements Screen {
     final static long START_FRAME = 3300;
     private TravellingLogo logo;
     private SpriteBatch batch;
+    private AnimatedSprite karateka;
 
     @Override
     public void show() {
         var texture = new Texture("kickass/ka.png");
         logo = new TravellingLogo(texture, 1700, 200, 721, 50);
         batch = new SpriteBatch();
+        karateka = new AnimatedSprite("kickass/karateka2.png", 53, 20, 10, 10);
     }
 
     @Override
@@ -29,6 +32,8 @@ public class Scene2 implements Screen {
         batch.begin();
         logo.draw(batch, 2 * 1700, 990);
         logo.spriteSpeed = 700f;
+
+        karateka.draw(batch);
         batch.end();
     }
 
