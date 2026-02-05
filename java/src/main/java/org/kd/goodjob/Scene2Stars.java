@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import org.kd.common.C64Helper;
 import org.kd.common.ConsoleLogger;
+import org.kd.common.Demo;
 import org.kd.common.Scene;
 import org.kd.goodjob.appendix.BannerApple;
 import org.kd.tricks.StarsArray;
@@ -147,7 +148,7 @@ public final class Scene2Stars extends Scene {
         this.starsArray.draw(shapeRenderer, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         shapeRenderer.end();
 
-        ConsoleLogger.logBannerWithElapsedTime(BannerApple.lines);
+        if (Demo.logging) ConsoleLogger.logBannerWithElapsedTime(BannerApple.lines);
     }
 
     private void conditionallyDrawAppleI() {

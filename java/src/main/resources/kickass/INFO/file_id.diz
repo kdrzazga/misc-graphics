@@ -1,0 +1,17 @@
+Ass Kicking Demo
+
+Author:   Code + Graphics: KD, Music: Ramos
+Category: PC Demo
+System:   PC Windows
+Language: Java 11+
+
+Instructions:
+
+Make sure you have Java 11 or higher installed
+Simply double-click the JAR file
+or run from command line:
+java -jar kickass.jar
+
+Description:
+
+Kick Some Ass

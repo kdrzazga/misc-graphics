@@ -19,7 +19,7 @@ public class KickassDemo extends Game {
         tune.setVolume(1f);
 
         screen1 = new Scene1KickScroll();
-        screen2 = new Scene2();
+        screen2 = new Scene2Karateka();
         currentScreen = screen1;
         setScreen(currentScreen);
     }
@@ -33,7 +33,7 @@ public class KickassDemo extends Game {
             tune.play();
         }
 
-        if (frame == Scene2.START_FRAME){
+        if (frame == Scene2Karateka.START_FRAME){
             currentScreen = screen2;
             setScreen(currentScreen);
         }

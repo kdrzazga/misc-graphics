@@ -20,7 +20,7 @@ public class Scissors extends ApplicationAdapter {
         batch = new SpriteBatch();
         backgroundTexture = new Texture("c64.png");
         choinkaTxtr = new Texture("winter/choinka.png");
-        Texture logoTxtr = new Texture(Gdx.files.internal("anniversaries/logo.png"));
+        var logoTxtr = new Texture(Gdx.files.internal("anniversaries/logo.png"));
         logo = new TravellingLogo(logoTxtr, SCREEN_WIDTH, 200, 1000, 50);
     }
 
