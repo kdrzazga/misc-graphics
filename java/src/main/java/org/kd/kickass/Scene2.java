@@ -20,13 +20,14 @@ public class Scene2 implements Screen {
         var texture = new Texture("kickass/ka.png");
         logo = new TravellingLogo(texture, 1700, 200, 721, 50);
         batch = new SpriteBatch();
-        karateka = new AnimatedSprite("kickass/karateka2.png", 53, 20, 10, 10);
+        karateka = new AnimatedSprite("kickass/karateka2.png", 53, 0.2f, 10, 290);
+        //karateka = new AnimatedSprite("spritesheets/owls.png", 2, 0.2f, 25, 125);
     }
 
     @Override
     public void render(float v) {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        Gdx.gl.glClearColor(0, 0, 0, 1);
+        Gdx.gl.glClearColor(0, 0, 1, 1);
         update();
 
         batch.begin();
