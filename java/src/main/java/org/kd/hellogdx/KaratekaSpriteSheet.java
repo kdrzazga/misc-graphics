@@ -9,8 +9,8 @@ public class KaratekaSpriteSheet {
 
         var config = new LwjglApplicationConfiguration();
         config.title = "Sprite Animation";
-        config.width = 1700;
-        config.height = 480;
+        config.width = 1000;
+        config.height = 480*2;
         config.fullscreen = false;
 
         new LwjglApplication(new KaratekaAnim(), config);

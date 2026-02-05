@@ -15,6 +15,7 @@ public class KaratekaAnim extends ApplicationAdapter {
         batch = new SpriteBatch();
 
         sprite = new AnimatedSpriteV("kickass/karateka4.png", 53, 0.1f, 25, 25);
+        sprite.scale(3f);
     }
 
     @Override
