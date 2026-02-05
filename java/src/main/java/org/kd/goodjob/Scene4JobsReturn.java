@@ -133,6 +133,7 @@ public final class Scene4JobsReturn extends Scene {
             timCookAscii.setPosition(-timCookAscii.getWidth() / 2f + W / 2f, -timCookAscii.getHeight() / 2 + H / 2f);
         }
         else if (getRelativeFrame() < 3950) {
+            timCook.setScale(2f);
             timCook.draw(batch4);
             timCook.setPosition(-timCook.getWidth() / 2f + W / 2f, -timCook.getHeight() / 2 + H / 2f);
         }
