@@ -5,29 +5,31 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import org.kd.common.AnimatedSprite;
+import org.kd.common.AnimatedSpriteV;
 import org.kd.common.tricks.TravellingLogo;
 
-public class Scene2 implements Screen {
+public class Scene2Karateka implements Screen {
 
     final static long START_FRAME = 3300;
     private TravellingLogo logo;
     private SpriteBatch batch;
-    private AnimatedSprite karateka;
+    private AnimatedSpriteV karateka;
 
     @Override
     public void show() {
+        float X = Gdx.graphics.getWidth()/2f;// - 250f/2f;
+        float Y = Gdx.graphics.getHeight() - 60;
         var texture = new Texture("kickass/ka.png");
-        logo = new TravellingLogo(texture, 1700, 200, 721, 50);
+        logo = new TravellingLogo(texture, 1700, Y, 721, 50);
         batch = new SpriteBatch();
-        karateka = new AnimatedSprite("kickass/karateka2.png", 53, 0.2f, 10, 290);
-        //karateka = new AnimatedSprite("spritesheets/owls.png", 2, 0.2f, 25, 125);
+        karateka = new AnimatedSpriteV("kickass/karateka4.png", 53, 0.05f, Math.round(X), 1);
+        karateka.scale(3.5f);
     }
 
     @Override
     public void render(float v) {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        Gdx.gl.glClearColor(0, 0, 1, 1);
+        Gdx.gl.glClearColor(0, 0, 0, 1);
         update();
 
         batch.begin();

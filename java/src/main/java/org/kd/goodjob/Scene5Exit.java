@@ -6,10 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import org.kd.common.AnimatedSprite;
-import org.kd.common.C64Helper;
-import org.kd.common.ConsoleLogger;
-import org.kd.common.Scene;
+import org.kd.common.*;
 import org.kd.common.tricks.Effects;
 import org.kd.goodjob.appendix.BannerApple;
 import org.lwjgl.util.Point;
@@ -64,7 +61,7 @@ public final class Scene5Exit extends Scene {
 
     @Override
     public void update(float delta) {
-        ConsoleLogger.logBannerWithElapsedTime(BannerApple.lines);
+        if (Demo.logging) ConsoleLogger.logBannerWithElapsedTime(BannerApple.lines);
     }
 
     @Override

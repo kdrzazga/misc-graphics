@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import org.kd.common.Demo;
 import org.kd.goodjob.appendix.BannerTombstone;
 import org.kd.common.tricks.AlphabetScroll;
 import org.kd.common.ConsoleLogger;
@@ -90,7 +91,7 @@ public final class Scene4JobsReturn extends Scene {
                 scroll.update();
 
             if (3300 < getRelativeFrame() && getRelativeFrame() < 3800) {
-                ConsoleLogger.logBannerWithElapsedTime(BannerTombstone.lines);
+                if (Demo.logging) ConsoleLogger.logBannerWithElapsedTime(BannerTombstone.lines);
             }
         }
         //System.out.println("4.Job's return " + getRelativeFrame());
@@ -128,22 +129,22 @@ public final class Scene4JobsReturn extends Scene {
     }
 
     private void drawWatchTvCloud(int W, int H) {
-        if (getRelativeFrame() < 3875) {
+        if (getRelativeFrame() < 4000) {
             timCookAscii.draw(batch4);
             timCookAscii.setPosition(-timCookAscii.getWidth() / 2f + W / 2f, -timCookAscii.getHeight() / 2 + H / 2f);
         }
-        else if (getRelativeFrame() < 3950) {
-            timCook.setScale(2f);
+        else if (getRelativeFrame() < 4200) {
+            timCook.setScale(1.7f);
             timCook.draw(batch4);
             timCook.setPosition(-timCook.getWidth() / 2f + W / 2f, -timCook.getHeight() / 2 + H / 2f);
         }
 
         batch4.end();
-        if (getRelativeFrame() > 3950) this.backgroundLinesTrick.draw(6);
+        if (getRelativeFrame() > 4200) this.backgroundLinesTrick.draw(6);
         batch4.begin();
-        if (getRelativeFrame() > 3950) {
+        if (getRelativeFrame() > 4200) {
             wallpaper.draw(batch4);
-            if (4000 < getRelativeFrame() && getRelativeFrame() < 4300) {
+            if (4200 < getRelativeFrame() && getRelativeFrame() < 4300) {
                 timCook.setPosition(-timCook.getWidth() / 2f + W / 2f, -timCook.getHeight() / 2 - H / 2f);
                 timCook.draw(batch4);
             } else if (4300 < getRelativeFrame() && getRelativeFrame() < 4380)
