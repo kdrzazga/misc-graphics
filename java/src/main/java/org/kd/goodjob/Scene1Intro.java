@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import org.kd.common.C64Helper;
 import org.kd.common.Scene;
 import org.kd.common.tricks.Effects;
@@ -18,6 +19,9 @@ public final class Scene1Intro extends Scene {
     private Sprite appleLogo;
     private Texture appleTexture;
     private final int fiftyFontSize = 700;
+
+    private float progressBarWidth = 0f;
+    private ShapeRenderer shapeRenderer;
 
     public Scene1Intro() {
         super("50");
@@ -32,6 +36,8 @@ public final class Scene1Intro extends Scene {
 
         this.appleTexture = new Texture("good-job/apple-logo.png");
         this.appleLogo = new Sprite(appleTexture);
+
+        this.shapeRenderer = new ShapeRenderer();
     }
 
     @Override
@@ -44,6 +50,8 @@ public final class Scene1Intro extends Scene {
             var colorParam = 1 - (frame - 850f) / 500f;
             hugeFont.setColor(colorParam, colorParam, colorParam, colorParam);
         }
+
+        progressBarWidth += (float) (0.5 + 3.5*Math.random());
     }
 
     @Override
@@ -55,7 +63,12 @@ public final class Scene1Intro extends Scene {
 
         batch.begin();
 
-        if (720 < frame && frame < 850 + 500)
+        if (frame < 720) {
+            shapeRenderer.setColor(Color.LIGHT_GRAY);
+            shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+            shapeRenderer.rect(140f, 300, progressBarWidth, 30);
+            shapeRenderer.end();
+        } else if (frame < 850 + 500)
             hugeFont.draw(batch, "50", Gdx.graphics.getWidth() / 2f - 3 * fiftyFontSize / 4f, Gdx.graphics.getHeight() / 2f + fiftyFontSize / 2f);
 
         else if (850 + 550 < frame && frame < 850 + 550 + 630) {
