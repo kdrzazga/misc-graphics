@@ -14,10 +14,12 @@ public class Scene2Karateka implements Screen {
     private TravellingLogo logo;
     private SpriteBatch batch;
     private AnimatedSpriteV karateka;
+    private long initialFrame;
 
     @Override
     public void show() {
-        float X = Gdx.graphics.getWidth()/2f;// - 250f/2f;
+        initialFrame = Gdx.graphics.getFrameId();
+        float X = Gdx.graphics.getWidth() / 2f;// - 250f/2f;
         float Y = Gdx.graphics.getHeight() - 60;
         var texture = new Texture("kickass/ka.png");
         logo = new TravellingLogo(texture, 1700, Y, 721, 50);
@@ -43,6 +45,16 @@ public class Scene2Karateka implements Screen {
     private void update() {
         var delta = Gdx.graphics.getDeltaTime();
         logo.move(delta, 1700);
+
+        long limit = 1765;
+        if (getCurrentFrame() > limit) {
+            var newScale = 3.5f - (getCurrentFrame() - limit) * 0.0021f;
+            if (newScale > 0) karateka.scale(newScale);
+        }
+    }
+
+    private long getCurrentFrame() {
+        return Gdx.graphics.getFrameId() - initialFrame;
     }
 
     @Override
