@@ -47,17 +47,18 @@ public class Scene1KickScroll implements Screen {
 
         String scrollText = "Welcome to this ass kicking demo     " +
                 "In the beginning I would like to send greetings to Pan Areczek " +
-                "of Komoda and Amiga PLUS                   " +
+                "of Komoda and Amiga PLUS            " +
                 "Respect for publishing a great magazine and releasing games " +
-                "    Hope to see you soon ";
+                "    Hope to see you soon   ";
         scroll = new BootAlphabetScroll(scrollText.toLowerCase(), 0 + 480);
     }
 
     public void update() {
         var frame = Gdx.graphics.getFrameId();
-        if (frame == 200)
+        if (frame == 200) {
+            Gdx.input.setCursorPosition(W, H);
             whatchaLookinAt.play();
-
+        }
         else if (frame == 370)
             fok.play();
         else if (frame > 370) {

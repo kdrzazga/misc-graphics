@@ -9,7 +9,7 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 public class KickassDemo extends Game {
 
     protected Music tune;
-    private Screen currentScreen, screen1, screen2;
+    private Screen currentScreen, screen1, screen2, screen3;
 
     @Override
     public void create() {
@@ -20,6 +20,7 @@ public class KickassDemo extends Game {
 
         screen1 = new Scene1KickScroll();
         screen2 = new Scene2Karateka();
+        screen3 = new Scene3();
         currentScreen = screen1;
         setScreen(currentScreen);
     }
@@ -33,8 +34,11 @@ public class KickassDemo extends Game {
             tune.play();
         }
 
-        if (frame == Scene2Karateka.START_FRAME){
+        if (frame == Scene2Karateka.START_FRAME) {
             currentScreen = screen2;
+            setScreen(currentScreen);
+        } else if (frame == Scene3.START_FRAME) {
+            currentScreen = screen3;
             setScreen(currentScreen);
         }
     }
