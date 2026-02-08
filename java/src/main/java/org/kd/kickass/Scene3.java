@@ -4,20 +4,24 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import org.kd.common.tricks.TravellingLogo;
+import org.kd.common.AnimatedSpriteV;
+import org.kd.common.Helper;
 
 public class Scene3 implements Screen {
 
-    final static long START_FRAME = 4100;
-    private TravellingLogo karatekas;
+    final static long START_FRAME = 3950;
+    private AnimatedSpriteV circle;
     private SpriteBatch batch;
 
     @Override
     public void show() {
+        System.out.println(Helper.countElapsedTime());
         batch = new SpriteBatch();
-        float X = Gdx.graphics.getWidth() / 2f;// - 250f/2f;
-        float Y = Gdx.graphics.getHeight() - 60;
+        float X = Gdx.graphics.getWidth() / 2f - 250f;
+        float Y = Gdx.graphics.getHeight() /2f - 250f;
 
+        circle = new AnimatedSpriteV("kickass/blueFireCircle.png", 13, 0.05f, Math.round(X)
+                , Math.round(Y));
     }
 
     @Override
@@ -25,6 +29,9 @@ public class Scene3 implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         Gdx.gl.glClearColor(0, 0, 0, 1);
         update();
+        batch.begin();
+        circle.draw(batch);
+        batch.end();
     }
 
     private void update() {

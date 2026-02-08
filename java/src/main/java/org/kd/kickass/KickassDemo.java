@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
+import org.kd.common.Globals;
 
 public class KickassDemo extends Game {
 
@@ -13,6 +14,7 @@ public class KickassDemo extends Game {
 
     @Override
     public void create() {
+        System.out.println(Globals.startTime);
 
         tune = Gdx.audio.newMusic(Gdx.files.internal("kickass/audio/PieceSzit2.mp3"));
         tune.setLooping(true);

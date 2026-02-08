@@ -11,7 +11,7 @@ import org.kd.common.tricks.TravellingLogo;
 public class Scene2Karateka implements Screen {
 
     final static long START_FRAME = 3300;
-    private TravellingLogo logo, karatekas;
+    private TravellingLogo logo, wallpaper;
     private SpriteBatch batch;
     private AnimatedSpriteV karateka;
     @Override
@@ -25,8 +25,8 @@ public class Scene2Karateka implements Screen {
         karateka.scale(3.0f);
 
         var texture2 = new Texture("kickass/karateksa.jpg");
-        karatekas = new TravellingLogo(texture2, 1, 0, 3500, 990);
-        karatekas.spriteSpeed = 2f;
+        wallpaper = new TravellingLogo(texture2, 1, 0, 3500, 990);
+        wallpaper.spriteSpeed = 2f;
     }
 
     @Override
@@ -39,8 +39,8 @@ public class Scene2Karateka implements Screen {
         logo.draw(batch, 2 * 1700, 990);
         logo.spriteSpeed = 700f;
 
-        karatekas.draw(batch, 2 * 1700, 990);
-        karatekas.spriteSpeed = 700f;
+        wallpaper.draw(batch, 2 * 1700, 990);
+        wallpaper.spriteSpeed = 700f;
 
         karateka.draw(batch);
         batch.end();
@@ -49,7 +49,7 @@ public class Scene2Karateka implements Screen {
     private void update() {
         var delta = Gdx.graphics.getDeltaTime();
         logo.move(delta, 1700);
-        karatekas.move(delta/5f, 1700);
+        wallpaper.move(delta/5f, 1700);
 
         long limit = 565;
         if (getCurrentFrame() > limit) {
