@@ -18,9 +18,9 @@ public class Scene3 implements Screen {
         System.out.println(Helper.countElapsedTime());
         batch = new SpriteBatch();
         float X = Gdx.graphics.getWidth() / 2f - 250f;
-        float Y = Gdx.graphics.getHeight() /2f - 250f;
+        float Y = Gdx.graphics.getHeight() / 2f - 250f;
 
-        circle = new AnimatedSpriteV("kickass/blueFireCircle.png", 13, 0.05f, Math.round(X)
+        circle = new AnimatedSpriteV("kickass/blueFireCircle.png", 13, 0.03f, Math.round(X)
                 , Math.round(Y));
     }
 
@@ -35,7 +35,12 @@ public class Scene3 implements Screen {
     }
 
     private void update() {
-        var delta = Gdx.graphics.getDeltaTime();
+        var fr = Gdx.graphics.getFrameId() - START_FRAME;
+        float scale = (float) (1.1f + Math.sin(fr / 100f));
+        circle.scale(scale);
+        int X = Math.round(Gdx.graphics.getWidth() / 2f - circle.getWidth() / 2f);
+        int Y = Math.round(Gdx.graphics.getHeight() / 2f - circle.getHeight() / 2f);
+        circle.setPosition(X, Y);
     }
 
     @Override

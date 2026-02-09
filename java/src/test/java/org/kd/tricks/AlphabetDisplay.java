@@ -2,6 +2,8 @@ package org.kd.tricks;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
+import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -44,5 +46,17 @@ public class AlphabetDisplay extends ApplicationAdapter {
         batch.begin();
         scroll.render(batch);
         batch.end();
+    }
+
+
+    public static void main(String[] args) {
+        var config = new LwjglApplicationConfiguration();
+        config.title = "Alphabet Scroll";
+        config.width = 1000;
+        config.height = 480;
+        config.fullscreen = false;
+
+        var display = new AlphabetDisplay();
+        new LwjglApplication(display, config);
     }
 }
