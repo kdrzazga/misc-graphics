@@ -3,10 +3,13 @@ package org.kd.kickass;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import org.kd.common.tricks.Rosette;
 import org.kd.kickass.lib.BootAlphabetScroll;
 
 import java.util.Arrays;
@@ -19,6 +22,8 @@ public class Scene1KickScroll implements Screen {
     private SpriteBatch batch;
     private int W, H;
     private BootAlphabetScroll scroll;
+    private Rosette rosette;
+    private ShapeRenderer shapeRenderer;
 
     @Override
     public void show() {
@@ -47,17 +52,21 @@ public class Scene1KickScroll implements Screen {
 
         String scrollText = "Welcome to this ass kicking demo     " +
                 "In the beginning I would like to send greetings to Pan Areczek " +
-                "of Komoda and Amiga PLUS                   " +
+                "of Komoda and Amiga PLUS            " +
                 "Respect for publishing a great magazine and releasing games " +
-                "    Hope to see you soon ";
+                "    Hope to see you soon   ";
         scroll = new BootAlphabetScroll(scrollText.toLowerCase(), 0 + 480);
+
+        shapeRenderer = new ShapeRenderer();
+        rosette = new Rosette(3300, Color.BLACK);
     }
 
     public void update() {
         var frame = Gdx.graphics.getFrameId();
-        if (frame == 200)
+        if (frame == 200) {
+            Gdx.input.setCursorPosition(W, H);
             whatchaLookinAt.play();
-
+        }
         else if (frame == 370)
             fok.play();
         else if (frame > 370) {
@@ -108,6 +117,8 @@ public class Scene1KickScroll implements Screen {
             }
         }
         batch.end();
+
+        if (frame > rosette.getStartFrame()) rosette.render(shapeRenderer);
     }
 
     @Override

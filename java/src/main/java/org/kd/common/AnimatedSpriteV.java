@@ -38,11 +38,26 @@ public class AnimatedSpriteV {
     public void draw(SpriteBatch batch) {
         stateTime += Gdx.graphics.getDeltaTime();
         TextureRegion currentFrame = this.animation.getKeyFrame(stateTime, true);
-        batch.draw(currentFrame, x, y, currentFrame.getRegionWidth() * scale, currentFrame.getRegionHeight() * scale);
+        batch.draw(currentFrame, x, y, getWidth(), getHeight());
     }
 
     public void scale(float scaleValue) {
         this.scale = scaleValue;
+    }
+
+    public float getWidth() {
+        TextureRegion currentFrame = this.animation.getKeyFrame(stateTime, true);
+        return currentFrame.getRegionWidth() * scale;
+    }
+
+    public float getHeight() {
+        TextureRegion currentFrame = this.animation.getKeyFrame(stateTime, true);
+        return currentFrame.getRegionHeight() * scale;
+    }
+
+    public void setPosition(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
 
     public void dispose() {
