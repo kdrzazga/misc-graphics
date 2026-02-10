@@ -55,4 +55,8 @@ public class Rosette {
 
         shapeRen.end();
     }
+
+    public long getStartFrame() {
+        return startFrame;
+    }
 }

@@ -2,18 +2,24 @@ package org.kd.kickass;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import org.kd.common.AnimatedSpriteV;
+import org.kd.common.tricks.Rosette;
 import org.kd.common.tricks.TravellingLogo;
 
 public class Scene2Karateka implements Screen {
 
-    final static long START_FRAME = 3300;
+    final static long START_FRAME = 3550;
     private TravellingLogo logo, wallpaper;
     private SpriteBatch batch;
     private AnimatedSpriteV karateka;
+    private Rosette rosette;
+    private ShapeRenderer shapeRenderer;
+
     @Override
     public void show() {
         float X = Gdx.graphics.getWidth() / 2f;// - 250f/2f;
@@ -27,6 +33,8 @@ public class Scene2Karateka implements Screen {
         var texture2 = new Texture("kickass/karateksa.jpg");
         wallpaper = new TravellingLogo(texture2, 1, 0, 3500, 990);
         wallpaper.spriteSpeed = 2f;
+        shapeRenderer = new ShapeRenderer();
+        rosette = new Rosette(Scene3.START_FRAME - 250, Color.BLACK);
     }
 
     @Override
@@ -44,6 +52,9 @@ public class Scene2Karateka implements Screen {
 
         karateka.draw(batch);
         batch.end();
+
+        var frame = Gdx.graphics.getFrameId();
+        if (frame > rosette.getStartFrame()) rosette.render(shapeRenderer);
     }
 
     private void update() {
