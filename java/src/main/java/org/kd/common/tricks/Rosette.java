@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 public class Rosette {
 
     private final long startFrame;
+    private final long relEndFrame = 250;
     private final Color color;
     float coeff = 1;
 
@@ -16,10 +17,13 @@ public class Rosette {
     }
 
     public void render(ShapeRenderer shapeRen) {
+        int fr = Long.valueOf(Gdx.graphics.getFrameId() - this.startFrame).intValue();
+        if (fr > relEndFrame) {
+            System.out.println(Rosette.class.getSimpleName() + " effect done");
+            return;
+        }
         float maxX = Gdx.graphics.getWidth();
         float maxY = Gdx.graphics.getHeight();
-
-        int fr = Long.valueOf(Gdx.graphics.getFrameId() - this.startFrame).intValue();
         shapeRen.setColor(this.color);
 
         shapeRen.begin(ShapeRenderer.ShapeType.Filled);

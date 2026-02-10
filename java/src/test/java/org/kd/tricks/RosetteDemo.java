@@ -9,7 +9,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import org.kd.common.tricks.Rosette;
 
-public class ClosingTrianglesDemo  extends ApplicationAdapter {
+public class RosetteDemo extends ApplicationAdapter {
 
     Rosette closingTriangles;
     ShapeRenderer shapeRenderer;
@@ -38,7 +38,7 @@ public class ClosingTrianglesDemo  extends ApplicationAdapter {
         config.height = 1080;
         config.fullscreen = false;
 
-        var display = new ClosingTrianglesDemo();
+        var display = new RosetteDemo();
         new LwjglApplication(display, config);
     }
 }

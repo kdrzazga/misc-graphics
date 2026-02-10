@@ -6,7 +6,7 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
-public class GradientLinesDisplay extends ApplicationAdapter {
+public class GradientLinesDemo extends ApplicationAdapter {
     GradientLines gradientLines;
 
     @Override
@@ -28,7 +28,7 @@ public class GradientLinesDisplay extends ApplicationAdapter {
         config.height = 480;
         config.fullscreen = false;
 
-        var display = new GradientLinesDisplay();
+        var display = new GradientLinesDemo();
         new LwjglApplication(display, config);
     }
 }

@@ -9,7 +9,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import org.kd.common.tricks.AlphabetScroll;
 
-public class AlphabetDisplay extends ApplicationAdapter {
+public class AlphabetDemo extends ApplicationAdapter {
     AlphabetScroll scroll;
     private SpriteBatch batch;
 
@@ -56,7 +56,7 @@ public class AlphabetDisplay extends ApplicationAdapter {
         config.height = 480;
         config.fullscreen = false;
 
-        var display = new AlphabetDisplay();
+        var display = new AlphabetDemo();
         new LwjglApplication(display, config);
     }
 }
