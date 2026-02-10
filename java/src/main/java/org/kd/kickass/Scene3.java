@@ -9,7 +9,7 @@ import org.kd.common.Helper;
 
 public class Scene3 implements Screen {
 
-    final static long START_FRAME = 4480;
+    final static long START_FRAME = 4330;
     private AnimatedSpriteV circle;
     private SpriteBatch batch;
 

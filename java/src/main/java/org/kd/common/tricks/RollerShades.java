@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 public class RollerShades {
 
     private final long startFrame;
-    private final long relEndFrame = 850;
+    private final long relEndFrame = 750;
     private final int linesCount;
     private final Color color;
 
@@ -31,10 +31,10 @@ public class RollerShades {
         int step = Math.round(maxY / linesCount);
 
         for (int y = 0; y < maxY; y += 2 * step) {
-            shapeRen.rect(0, y, 4*fr,   step + 1);
+            shapeRen.rect(0, y, 5 * fr, step + 1);
         }
         for (int y = step; y < maxY; y += 2 * step) {
-            shapeRen.rect(maxX - 4*fr,  y, 4*fr,   step + 1);
+            shapeRen.rect(maxX - 5 * fr, y, 5 * fr, step + 1);
         }
 
         shapeRen.end();
