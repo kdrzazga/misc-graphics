@@ -9,7 +9,7 @@ public class BootAlphabetScroll extends AlphabetScroll {
         this.speed = -10;
         this.textSprites.forEach(s -> {
             s.setScale(0.8f);
-            s.setY(-90f);
+            s.setY(-93f);
         });
     }
 

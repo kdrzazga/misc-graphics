@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import org.kd.common.AnimatedSpriteV;
-import org.kd.common.tricks.Rosette;
+import org.kd.common.tricks.RollerShades;
 import org.kd.common.tricks.TravellingLogo;
 
 public class Scene2Karateka implements Screen {
@@ -17,7 +17,7 @@ public class Scene2Karateka implements Screen {
     private TravellingLogo logo, wallpaper;
     private SpriteBatch batch;
     private AnimatedSpriteV karateka;
-    private Rosette rosette;
+    private RollerShades shades;
     private ShapeRenderer shapeRenderer;
 
     @Override
@@ -27,14 +27,15 @@ public class Scene2Karateka implements Screen {
         var texture = new Texture("kickass/ka.png");
         logo = new TravellingLogo(texture, 1700, Y, 721, 50);
         batch = new SpriteBatch();
-        karateka = new AnimatedSpriteV("kickass/karateka4.png", 53, 0.05f, Math.round(X), 1);
+        karateka = new AnimatedSpriteV("kickass/karateka4.png", 53, 0.05f
+                , Math.round(X - 200), 1);
         karateka.scale(3.0f);
 
         var texture2 = new Texture("kickass/karateksa.jpg");
         wallpaper = new TravellingLogo(texture2, 1, 0, 3500, 990);
         wallpaper.spriteSpeed = 2f;
         shapeRenderer = new ShapeRenderer();
-        rosette = new Rosette(Scene3.START_FRAME - 250, Color.BLACK);
+        shades = new RollerShades(Scene3.START_FRAME - 750, Color.BLACK, 11);
     }
 
     @Override
@@ -54,7 +55,7 @@ public class Scene2Karateka implements Screen {
         batch.end();
 
         var frame = Gdx.graphics.getFrameId();
-        if (frame > rosette.getStartFrame()) rosette.render(shapeRenderer);
+        if (frame > shades.getStartFrame()) shades.render(shapeRenderer);
     }
 
     private void update() {
