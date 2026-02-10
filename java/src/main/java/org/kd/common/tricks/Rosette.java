@@ -36,12 +36,19 @@ public class Rosette {
 
         shapeRen.triangle(
                 maxX / 2 + 1, maxY / 2 + 1,
-                0, coeff*fr,
+                0, coeff * fr,
                 1, 0
         );
 
         coeff += 0.1f;
-        if (coeff * fr > 6 * maxX) coeff += 300;
+        if (coeff * fr > 1.5 * maxX) {
+            coeff += 1;
+            shapeRen.rect(0, 0, 2*fr + 3*coeff, maxY);
+        }
+        if (coeff * fr > 3 * maxX) coeff += 1;
+        if (coeff * fr > 4.5 * maxX) coeff += 1;
+        if (coeff * fr > 5 * maxX) coeff += 10;
+
         shapeRen.end();
     }
 }
