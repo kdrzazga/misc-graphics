@@ -12,22 +12,27 @@ public class Scene3 implements Screen {
     final static long START_FRAME = 4330;
     private AnimatedSpriteV circle;
     private SpriteBatch batch;
+    private float blueValue, circleSize;
+    private int circleX;
 
     @Override
     public void show() {
         System.out.println(Helper.countElapsedTime());
+        blueValue = 0f;
         batch = new SpriteBatch();
         float X = Gdx.graphics.getWidth() / 2f - 250f;
         float Y = Gdx.graphics.getHeight() / 2f - 250f;
 
         circle = new AnimatedSpriteV("kickass/blueFireCircle.png", 13, 0.03f, Math.round(X)
                 , Math.round(Y));
+        circleX = Math.round(Gdx.graphics.getWidth() / 2 - circle.getWidth() / 2);
+        circleSize = 1f;
     }
 
     @Override
     public void render(float v) {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        Gdx.gl.glClearColor(0, 0, 0, 1);
+        Gdx.gl.glClearColor(0, 0, blueValue, 1);
         update();
         batch.begin();
         circle.draw(batch);
@@ -36,11 +41,24 @@ public class Scene3 implements Screen {
 
     private void update() {
         var fr = Gdx.graphics.getFrameId() - START_FRAME;
-        float scale = (float) (1.1f + Math.sin(fr / 100f));
+        float scale = (float) (circleSize + 0.1f + Math.sin(fr / 100f));
+        if (fr>400){
+            var value = fr - 400;
+            if (scale - 0.01f*value >=0) scale -= 0.01f*value;
+        }
         circle.scale(scale);
-        int X = Math.round(Gdx.graphics.getWidth() / 2f - circle.getWidth() / 2f);
-        int Y = Math.round(Gdx.graphics.getHeight() / 2f - circle.getHeight() / 2f);
-        circle.setPosition(X, Y);
+
+        Float Y = Gdx.graphics.getHeight() / 2 - circle.getHeight() / 2;
+
+        if (fr > 300) {
+            blueValue += 0.00073f;
+            if (fr % 3 == 0 && circleX > 200) circleX--;
+        }
+        if (fr > 350) {
+            circleSize *= 0.995f;
+        }
+
+        circle.setPosition(Math.round(circleX), Math.round(Y));
     }
 
     @Override

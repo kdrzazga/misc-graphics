@@ -6,7 +6,7 @@ import org.kd.common.AnimationManager;
 
 import java.util.Arrays;
 
-public final class Win311Manager extends AnimationManager {
+public class Win311Manager extends AnimationManager {
 
     @Override
     public void create() {
