@@ -12,6 +12,6 @@ public final class Win311Demo extends Demo {
         config.height = 768;
         //config.fullscreen = false;
 
-        new LwjglApplication(new Win311Manager(), config);
+        new LwjglApplication(new Win311Manager("win311/EscapeRamos.mp3"), config);
     }
 }
