@@ -1,4 +1,4 @@
 package org.kd.game.duel;
 
-public class FearMarker extends Marker{
+public final class FearMarker extends Marker{
 }

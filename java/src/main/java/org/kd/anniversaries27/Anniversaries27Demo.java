@@ -1,17 +1,17 @@
-package org.kd.win311;
+package org.kd.anniversaries27;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import org.kd.common.Demo;
 
-public final class Win311Demo extends Demo {
+public class Anniversaries27Demo extends Demo {
 
     public static void main(String[] args) {
-        Win311Demo.analyzeArguments(args);
+        Anniversaries27Demo.analyzeArguments(args);
         var config = Demo.createConfig("Windows 3.11");
         config.width = 1024;
         config.height = 768;
-        //config.fullscreen = false;
+        config.fullscreen = false;
 
-        new LwjglApplication(new Win311Manager("win311/EscapeRamos.mp3"), config);
+        new LwjglApplication(new Win311IntroManager(), config);
     }
 }

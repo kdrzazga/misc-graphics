@@ -1,4 +1,4 @@
 package org.kd.game.duel;
 
-public class FameMarker extends Marker{
+public final class FameMarker extends Marker{
 }

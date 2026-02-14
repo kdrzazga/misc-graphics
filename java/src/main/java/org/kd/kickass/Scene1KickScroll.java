@@ -63,13 +63,16 @@ public class Scene1KickScroll implements Screen {
 
     public void update() {
         var frame = Gdx.graphics.getFrameId();
-        if (frame == 200) {
-            Gdx.input.setCursorPosition(W, H);
-            whatchaLookinAt.play();
+
+        switch (Long.valueOf(frame).shortValue()) {
+            case 200 -> {
+                Gdx.input.setCursorPosition(W, H);
+                whatchaLookinAt.play();
+            }
+            case 370 -> fok.play();
         }
-        else if (frame == 370)
-            fok.play();
-        else if (frame > 370) {
+
+        if (frame > 370) {
             scroll.update();
         }
 

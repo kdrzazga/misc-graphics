@@ -1,6 +1,6 @@
 package org.kd.game.duel;
 
-public class Monster {
+public sealed class Monster permits Godzilla, TRex {
 
     protected int hp;
     final protected int maxHp;
