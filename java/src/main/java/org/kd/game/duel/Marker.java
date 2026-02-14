@@ -1,6 +1,6 @@
 package org.kd.game.duel;
 
-public abstract class Marker {
+public sealed abstract class Marker permits FameMarker, FearMarker {
 
     public int position = 0;
 
