@@ -9,7 +9,7 @@ import org.kd.common.Scene;
 
 public final class Scene2WinLoad extends Scene {
 
-    public final static int START_FRAME = 150;
+    public final static int START_FRAME = 250;
     public final static String ID = "win-load";
 
     private Sprite logo;
@@ -35,7 +35,7 @@ public final class Scene2WinLoad extends Scene {
     @Override
     public void render() {
         batch.begin();
-        batch.draw(this.logo, 1024 / 2 - this.logo.getWidth() / 2, 786 / 2 - this.logo.getHeight() / 2);
+        batch.draw(this.logo, 1024 / 2f - this.logo.getWidth() / 2, 786 / 2f - this.logo.getHeight() / 2);
         batch.end();
     }
 

@@ -36,6 +36,8 @@ public final class Scene1Bios extends Scene {
     public void render() {
         var H = Gdx.graphics.getHeight();
         var W = Gdx.graphics.getWidth();
+        var frame = Gdx.graphics.getFrameId();
+
         batch.begin();
         font.draw(batch, "Award Modular BIOS v0.00PG. An Energy Star Ally.", 60, H - 30);
         font.draw(batch, "Copyright (C) 1984-99. Award Software, Inc.", 60, H - 30 - 20);
@@ -48,7 +50,14 @@ public final class Scene1Bios extends Scene {
         font.draw(batch, "Award Plug & Play BIOS Extension v1.0A", 5, H - 30 - 20 - 30 - 30 - 177);
         font.draw(batch, "Copyright (C) 1981, Award Sotfware, Inc.", 5, H - 30 - 20 - 30 - 30 - 207);
 
-        font2.draw(batch, "Trend ChipAwayVirus(R) On Guard Ver 1.81", 5, H - 30 - 20 - 30 - 30 - 267);
+
+        if (frame > 100){
+            font.draw(batch, "HIMEM: DOS XMS Driver, Version 100.2 - 02/15/26", 5, 250);
+            font.draw(batch, "Extended Memory Specification (XMS) Version 3.0", 5, 220);
+            font.draw(batch, "Copyleft 1988-2026 Microsoft Corp.", 5, 190);
+            font2.draw(batch, "Trend ChipAwayVirus(R) On Guard Ver 1.81", 5, 50);
+
+        }
 
         batch.end();
     }
