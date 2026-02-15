@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import org.lwjgl.util.Point;
 
 public class AnimatedSpriteV {
     Texture spriteSheet;
@@ -58,6 +59,10 @@ public class AnimatedSpriteV {
     public void setPosition(int x, int y) {
         this.x = x;
         this.y = y;
+    }
+
+    public Point getPosition() {
+        return new Point(x, y);
     }
 
     public void dispose() {
