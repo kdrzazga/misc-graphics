@@ -6,12 +6,18 @@ import org.kd.common.AnimationManager;
 
 import java.util.Arrays;
 
-public final class Win311Manager extends AnimationManager {
+public class Win311Manager extends AnimationManager {
+
+    private final String musicPath;
+
+    public Win311Manager(String musicPath) {
+        this.musicPath = musicPath;
+    }
 
     @Override
     public void create() {
         super.create();
-        this.createMusic("win311/EscapeRamos.mp3"); //TODO
+        this.createMusic(musicPath);
 
         var scene1 = new Scene1Bios();
         var scene2 = new Scene2WinLoad();

@@ -1,116 +1,130 @@
 2022: (5 y.a.)
-1. Elon Musk completed his acquisition of Twitter in October 2022
+1. On 22nd of October 2022, Elon Musk finally completed his acquisition of Twitter.
 
-2.Bad year for cryptocurrencies:
+2.2022 was also a really BAD year for cryptocurrencies:
 
-    Bitcoin drops from its peak in in November 2021 ( $69,000 ALL TIME HIGH) to below $20,000 by mid-2022.
+    Bitcoin dropped from its peak in in November 2021, which was  $69,000 and ALL TIME HIGH to below $20,000 by mid-2022.
 
-    LUNA and TerraUSD Collapse (May 2022): One of the most notable events was the collapse of the Terra ecosystem, including the stablecoin TerraUSD (UST) and its sister token LUNA. UST lost its peg to the US dollar, leading to a domino effect that wiped out billions of dollars in value.
-    Celsius Network Bankruptcy (July 2022): The crypto lending platform Celsius froze withdrawals and filed for bankruptcy in July, citing liquidity issues amid the market downturn.
-    3AC Liquidation (June 2022): The hedge fund Three Arrows Capital faced insolvency, contributing to broader contagion in the crypto ecosystem.
+    Some spectacular defaults occurred:
+    In May 2022, Cryptocurrencies LUNA and TerraUSD Collapsed, because the latter lost its peg to  dollar. This  led to a domino effect that wiped out billions of dollars in value.
+    In June, 3AC company was  Liquidated.  The hedge fund Three Arrows Capital faced insolvency, contributing to broader contagion in the crypto ecosystem.
+    Just a month later, another company Celsius Network went Bankrupt. It was a crypto lending platform. Celsius froze withdrawals and filed for bankruptcy.
+    
 
 
 2017: (10 y.a.)
 
-3.Good time for crypto-currencies
-    December:   Bitcoin peaks near $20,000 (ALL TIME HIGH so far)
-    The Ethereum blockchain popularized smart contracts, which are the basis of DeFi, in 2017
-    Bitcoin Cash (BCH) was forked from Bitcoin in 2017.
+3.Year 2017 was, reversely, a good period for crypto-currencies
+    In December:   Bitcoin peaked near $20,000, which was ALL TIME HIGH value so far
+    The Ethereum blockchain popularized smart contracts, which are the basis of Decentralized finance or De-Fi.
+    Bitcoin Cash was forked from Bitcoin in 2017.
 
-4.Google becomes Alphabet
-5. Apple releases iOS 11, supporting only machines with AArch64 processors. It has a 64-bit kernel that only supports 64-bit applications. 32-bit applications are no longer compatible
+4. Also in 2017 Google became Alphabet
 
-FOrtnite game released
+5. Apple company released iOS 11, supporting only machines with 64-bit processors. Since then 32-bit applications have no longer been compatible
+
+6. In the world of gaming: the  Fortnite game was released
 
 2012: (15 y.a.)
-6.Facebook Goes Public: In May 2012, Facebook launched its initial public offering (IPO), raising $16 billion and becoming one of the largest tech IPOs in history
-8.Microsoft released Windows 8 in October 2012, Microsoft releases Windows 8 which supports UEFI Class 3 (UEFI without CSM) and Secure Boot.
-7.Apple Releases the iPhone 5: In September 2012
-9.Apple releases OS X Mountain Lion, which makes the 64-bit kernel the default on some older previously unsupported machines and removes the 32-bit kernel.
+Facebook went  Public.
+ In May 2012, Facebook launched its initial public offering (IPO), raising $16 billion and becoming one of the largest tech IPOs in history
 
-TypeScript language
+Apple Released the iPhone 5: In September 2012
+And also  released OS X Mountain Lion, which made the 64-bit kernel the default on some older previously unsupported machines and removed the 32-bit kernel.
+
+Microsoft released Windows 8 in October 2012. The new system supports UEFI Class 3 (UEFI without CSM) and Secure Boot.
+Microsoft created TypeScript language
 
 2007:  (20 y.a.)
-10.Apple launched the first iPhone in June 2007 (including first iOS)
-11.Microsoft released Windows Vista in 2007
-12.Amazon introduced the Kindle e-reader in November 2007
-13.Amazon Dynamo was one of first NoSQL databases (based on key-value pairs instead SQL).
-IBM Cloud 	2007 (as BlueMix), rebranded in 2017
+Apple launched the first iPhone in June 2007 (including first iOS)
+Microsoft released Windows Vista 
+Amazon introduced the Kindle e-reader in November ...
+and aslo  of first NoSQL databases (based on key-value pairs instead SQL) named Amazon Dynamo.
+IBM Cloud was released (as BlueMix), and rebranded in 2017
 
 THe WItcher: OCotober 2007
+------------
+In 2002 Edsger  Dijkstra died. He was a renown Dutch scientist and a pioneer of computer science.
+    Among his achievements there are: development of Dijkstra's Algorithm for shortest path in graphs.
+    Introduction of structured programming concept.
+    Creation the theory of programming languages and formal methods.
+    Dijkstra was awarded the Turing Award in 1972 for fundamental contributions to algorithms and programming.
 
-2002: (25 y.a) - 14. died Edsger W. Dijkstra
-    Developed Dijkstra's Algorithm for shortest path in graphs.
-    Introduced concepts like structured programming.
-    Created the theory of programming languages and formal methods.
-    Awarded the Turing Award in 1972 for fundamental contributions to algorithms and programming.
-launch of eMule - P2P file sharing tool
+Also in 2002 eMule software was launched, which was a peer to peer file sharing tool
 
-Battlefiled game - : September 10, 2002
+IN the world of gaming - on September 10th, the first game of famous Battlefield series was released by Electronic Arts.
 
 1997: (30 y.a.)
-15.Windows 98 released
-16.Yahoo Mail - second free email service October 8, 1997
-17.Jan 29th 1997 - PostgreSQL released - one of the best relational DB systems.
+Windows 98 was released.
+Yahoo Mail, THE second free email service was released on October 8, 1997,
+And on Jan 29th 1997  - PostgreSQL one of the best relational database systems.
 
-Kaspersky Lab: Cybersecurity (founded 1997) in Moscow
-    Eugene Kaspersky, Natalya Kaspersky
-    Alexey De-Monderik,  Vadim Bogdanov
+In Moscow the company Kaspersky Lab: Cybersecurity was founded by     Eugene Kaspersky, Natalya Kaspersky, Alexey De-Monderik, and  Vadim Bogdanov.
 
-Tibia game initial release January 7, 1997
-
-First GTA  (28 November)
+massively multiplayer online role-playing game Tibia WAS initially released on January 7th,
+AND THE First game of Grand Theft Auto series on 28th November.
 
 1992: (35 y.a.)
-18. January 1 - GRACE HOPPER died (one of creators of COBOL programming language)
-19. IBM PC 486 DX2
-20. The AVI (Audio Video Interleave) video file format was developed by Microsoft and introduced in November 1992 as part of its Video for Windows technology.
-21. DEC Alpha (AXP) was the second 64-bit processor.
-22. SuSE company founded in Germany. Later responsible for distribution of SUSE Linux
+On January 1 - GRACE HOPPER died. She was one of creators of COBOL programming language
 
-OPenGL Open Graphics Library) is a cross-platform API for rendering 2D and 3D vector graphics. It is widely used in CAD, virtual reality, scientific visualization, and gaming. Developed By: Silicon Graphics (SGI)
+IBM company released PC 486 DX2 - quite advanced computer for that time.
 
-Amiga 600
-AMiga 4000
-Amiga 1200
+ The AVI (or Audio Video Interleave) video file format was developed by Microsoft and introduced in November 1992 as part of its Video for Windows technology.
 
-Mortal Kombat: Arcade release in October 1992
+ DEC company released DEC Alpha processor (a. k.a. AXP). It  was the second 64-bit processor in history. Date 1991 on processor case is year of production. It became available to buy a year later.
+
+S.u.S.E. company founded in Germany. Later it was responsible for distribution of S.U.S.E. Linux
+
+Silicon Graphics or SGI company released OPenGL, that stands for Open Graphics Library. It is a cross-platform API for rendering 2D and 3D vector graphics. It has been widely used in CAD, virtual reality, scientific visualization, and gaming. 
+
+Also the year of 1992 was very fruitful for Commodore company, which released as many as three new models of Amiga. They were: Amiga 600, Amiga 1200, and the most advanced ever  AMiga 4000.
+
+In the world of gaming : the first part of famous Mortal Kombat series was released in October 1992 for Arcade machines.
 
 1987: (40 y.a.)
-23. April/May - Amiga 500 released
-Amiga 2000 and Amiga 2000 A
-21 February 1987: TSMC (Taiwan Semiconductor Manufacturing Company) (1987): Founded by Morris Chang, leading global semiconductor foundry.
+On 21 February 1987: TSMC (which stands for Taiwan Semiconductor Manufacturing Company) was Founded by Morris Chang and quickly became a leading global semiconductor foundry.
+
+On end of April, beginnig of May - Amiga 500 was released, followed by Amiga 2000 and Amiga 2000 A
+
 Perl programming lang Developed by Larry Wall, initially as a Unix scripting language, known for text processing and system administration.
-First part of DIZZY game
+
+First part of DIZZY game was released.
 
 1982: (45 y.a.)
-24.Sun Microsystems was established: February 24, 1982 (45 years from 2027)
-25. C64 was released in August 1982
-26.Compact Disc (CD) Released in    Japan: October 1982
-Electronic Arts (EA)
-Rainbow Arts
+Sun Microsystems was established on February 24, 1982. It was a major player in the development of computer workstations, servers, and software technologies, but its most notable  contributions is the creation of the Java programming language.
+By the way - this demo is written in Java.
+
+Commodore 64 was released in August 1982. C64 has probably been the most popular computer ever. Estimated number of 17 million computers were sold in 80s and early 90s.
+
+Compact Disc (or CD) was Released in    Japan in October 1982
+
+Also in 1982 gaming development companies Electronic Arts and  Rainbow Arts were founded.
 
 1977 - (50 y.a.)
-27.Apple II computer was released
+27 .Apple 2 computer was released
 28. ORACLE corporation was founded
-29. Nintendo's first video game console, Color TV-Game, launched in 1977
+29. Nintendo's first video game console, Color TV-Game was launched in Japan.
 
 1972: (55 y.a.)
-30. Pichai Sundararajan (born June 10, 1972), better known as Sundar Pichai  - CEO of Google/Alphabet
-Prolog programming language
-Pong game November 29, 1972
+30. Pichai Sundararajan, better known as Sundar Pichai was born on June 10th, 1972. He is the current CEO of Google/Alphabet
+Prolog programming language was created at the University of Marseille in France
+Crucial year for gaming: Atari company releases Pong game on November 29, 1972. It was the fisrt commercial video game.
 
 1967 (60 y.a.)
 nothing?  starting developing 'ALGOL 68' language to be released in 1968
 Satya Nadella (Microsoft CEO) was born on August 19, 1967.
 
 1962: (65 y.a.)
-programming languages SIMULA and FORTRAN IV
-Tape cassette/Magnetophone cassette Philips EL 3300 was demonstrated in 1962.
-Arvind Krishna CEO of IBM (born November 23, 1962)
+Arvind Krishna, who is the current CEO of IBM company was born on November 23, 1962.
 
-Ural-4 – 1962 based on vacuum tubes (valves), with the hardware being able to perform 12,000 floating-point calculations per second. One word consisted of 40 bits and was able to contain either one numeric value or two instructions. Ferrite core was used as operative memory beginning with the Ural-2.[4] A new series (Ural-11, Ural-14, produced between 1965 and 1971) was based on semiconductors.
-The MINSK-2 was a transistor-based digital computer that went into production in 1962,
+programming language SIMULA was developed at the Norwegian Computing Center in Olso
+FORTRAN IV language was developed by IBM.
+
+In Soviet Russia,  mainframe computers Ural-4 and MINSK-2  were  developed. 
+
+Ural-4 was based on vacuum tubes (valves), with the hardware being able to perform 12,000 floating-point calculations per second. Memory was not based on 8-bit bytes, but on 40- bit words. One word was able to contain either one numeric value or two instructions. Ferrite core was used as operative memory.
+
+The MINSK-2 was much more modern. It was a transistor-based digital computer.
 
 
 1957 (70 y.a.)
@@ -126,8 +140,9 @@ died John von Neuman:
 
 
 1952: (75 y.a.)
- May 21, 1952 IBM releases the IBM 701, IBM's first commercial scientific computer.
-BESM (БЭСМ) is the series of Soviet mainframe computers built in 1950–60s. BESM-1, originally referred to as simply the BESM or BESM AN ("BESM Akademii Nauk", BESM of the Academy of Sciences), was completed in 1952.[3][4] Only one BESM-1 machine was built. The machine used approximately 5,000 vacuum tubes. At the time of completion, it was the fastest computer in Europe.
+On May 21, 1952 IBM company released the IBM 701,which was first commercial, scientific computer in history.
+
+BESM (БЭСМ) was the series of Soviet mainframe computers built in 1950–60s. BESM-1, originally referred to as simply the BESM or BESM AN ("BESM Akademii Nauk", BESM of the Academy of Sciences), was completed in 1952. Only one such  machine was built. The machine used approximately 5,000 vacuum tubes. At the time of completion, it was the fastest computer in Europe.
 
 1852
 Ada Lovelace, who wrote FIRST COMPUTER PROGRAM died on	27 November 1852 (aged 36) in Marylebone, London, England

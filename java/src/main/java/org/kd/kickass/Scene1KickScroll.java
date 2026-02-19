@@ -48,7 +48,7 @@ public class Scene1KickScroll implements Screen {
 
         bigBoot = new Sprite(new Texture("kickass/leftboot.png"));
         bigBoot.setScale(1.3f);
-        bigBoot.setPosition(W / 2f - bigBoot.getWidth() / 2f, 1.2f*H);
+        bigBoot.setPosition(W / 2f - bigBoot.getWidth() / 2f, 1.2f * H);
 
         String scrollText = "Welcome to this ass kicking demo     " +
                 "In the beginning I would like to send greetings to Pan Areczek " +
@@ -63,24 +63,27 @@ public class Scene1KickScroll implements Screen {
 
     public void update() {
         var frame = Gdx.graphics.getFrameId();
-        if (frame == 200) {
-            Gdx.input.setCursorPosition(W, H);
-            whatchaLookinAt.play();
+
+        switch (Long.valueOf(frame).shortValue()) {
+            case 200 -> {
+                Gdx.input.setCursorPosition(W, H);
+                whatchaLookinAt.play();
+            }
+            case 370 -> fok.play();
         }
-        else if (frame == 370)
-            fok.play();
-        else if (frame > 370) {
+
+        if (frame > 370) {
             scroll.update();
         }
 
-        if (frame > 3200-150 && bigBoot.getY() > 85) {
+        if (frame > 3200 - 150 && bigBoot.getY() > 85) {
             var y = bigBoot.getY() - 4;
-            if (frame > 3210-150) {
+            if (frame > 3210 - 150) {
                 y -= 2;
             }
-            if (frame > 3270-150) {
+            if (frame > 3270 - 150) {
                 y -= 5;
-                var newScale = kick.getScaleY()* 0.985f;
+                var newScale = kick.getScaleY() * 0.985f;
                 kick.setScale(1f, newScale);
                 kick.setY(kick.getY() - 3f);
                 boot.setY(boot.getY() - 6.6f);
