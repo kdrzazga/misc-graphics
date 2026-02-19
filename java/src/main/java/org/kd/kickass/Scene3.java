@@ -3,8 +3,10 @@ package org.kd.kickass;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import org.kd.common.AnimatedSpriteV;
+import org.kd.common.C64Helper;
 import org.kd.common.Helper;
 
 public class Scene3 implements Screen {
@@ -14,9 +16,12 @@ public class Scene3 implements Screen {
     private SpriteBatch batch;
     private float blueValue, circleSize;
     private int circleX;
+    private BitmapFont font;
 
     @Override
     public void show() {
+        font = C64Helper.createFont(30, "Big Daddy LED TFB.ttf");
+
         System.out.println(Helper.countElapsedTime());
         blueValue = 0f;
         batch = new SpriteBatch();
@@ -42,21 +47,13 @@ public class Scene3 implements Screen {
     private void update() {
         var fr = Gdx.graphics.getFrameId() - START_FRAME;
         float scale = (float) (circleSize + 0.1f + Math.sin(fr / 100f));
-        if (fr>400){
+        if (fr > 400) {
             var value = fr - 400;
-            if (scale - 0.01f*value >=0) scale -= 0.01f*value;
+            if (scale - 0.01f * value >= 0) scale -= 0.01f * value;
         }
         circle.scale(scale);
 
         Float Y = Gdx.graphics.getHeight() / 2 - circle.getHeight() / 2;
-
-        if (fr > 300) {
-            blueValue += 0.00073f;
-            if (fr % 3 == 0 && circleX > 200) circleX--;
-        }
-        if (fr > 350) {
-            circleSize *= 0.995f;
-        }
 
         circle.setPosition(Math.round(circleX), Math.round(Y));
     }
