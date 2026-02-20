@@ -14,7 +14,7 @@ public class Year1971 extends Year {
 
     public void draw(long frame, Scene1c64 screen) {
         screen.backgroundTexture = this.xeroxLaserPrinter;
-        zxSpectrumFont.draw(screen.batch2, "1971", 300, 570);
+        font1.draw(screen.batch2, "1971", 300, 570);
         this.writeMessage(screen.batch2, "Xerox PARC was the prototype for laser printers", 20, 530);
 
     }

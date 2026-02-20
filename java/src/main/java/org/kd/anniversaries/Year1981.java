@@ -14,18 +14,18 @@ public class Year1981 extends Year {
     }
 
     public void draw(long frame, Scene1c64 screen) {
-        zxSpectrumFont.draw(screen.batch2, "1981", 300, 570);
+        font1.draw(screen.batch2, "1981", 300, 570);
         if (frame < this.startingFrame + 0.35 * Year.DEFAULT_DURATION) {
-            c64Font.draw(screen.batch2, "  Commodore company released VIC 20", 123, 535);
+            font2.draw(screen.batch2, "  Commodore company released VIC 20", 123, 535);
             screen.backgroundTexture = this.vic20;
         } else if (frame < this.endFrame) {
-            c64Font.draw(screen.batch2, "MICROSOFT", 236, 500);
-            c64Font.draw(screen.batch2, "wrote PC-DOS", 220, 480);
-            c64Font.draw(screen.batch2, "for IBM.", 205, 460);
-            c64Font.draw(screen.batch2, "MS-DOS is", 205, 440);
-            c64Font.draw(screen.batch2, "related, but", 202, 420);
-            c64Font.draw(screen.batch2, "much younger", 198, 400);
-            c64Font.draw(screen.batch2, "product.", 202, 380);
+            font2.draw(screen.batch2, "MICROSOFT", 236, 500);
+            font2.draw(screen.batch2, "wrote PC-DOS", 220, 480);
+            font2.draw(screen.batch2, "for IBM.", 205, 460);
+            font2.draw(screen.batch2, "MS-DOS is", 205, 440);
+            font2.draw(screen.batch2, "related, but", 202, 420);
+            font2.draw(screen.batch2, "much younger", 198, 400);
+            font2.draw(screen.batch2, "product.", 202, 380);
             screen.backgroundTexture = this.gates;
         }
     }

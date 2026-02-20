@@ -13,7 +13,7 @@ public class Year1976 extends Year{
 
     public void draw(long frame, Scene1c64 screen) {
 
-        zxSpectrumFont.draw(screen.batch2, "1976", 300, 570);
+        font1.draw(screen.batch2, "1976", 300, 570);
         if (frame < this.endFrame) {
             screen.backgroundTexture = this.jobsWozniak;
         }

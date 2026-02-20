@@ -23,7 +23,7 @@ public class Year2011 extends Year {
     }
 
     public void draw(long frame, Scene1c64 screen) {
-        zxSpectrumFont.draw(screen.batch2, "2011", 300, 570);
+        font1.draw(screen.batch2, "2011", 300, 570);
         if (frame < this.endFrame) {
 
             long interval = (this.endFrame - this.startingFrame) / 6;
@@ -37,7 +37,7 @@ public class Year2011 extends Year {
             screen.backgroundTexture = this.motorolas.get(index);
 
             if (frame > this.startingFrame + interval) {
-                c64Font.draw(screen.batch2, "January 4, 2011 - Motorola ceased to exist", 87, 535);
+                font2.draw(screen.batch2, "January 4, 2011 - Motorola ceased to exist", 87, 535);
             }
         }
     }
