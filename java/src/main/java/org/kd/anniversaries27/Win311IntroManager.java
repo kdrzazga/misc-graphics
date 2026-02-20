@@ -15,7 +15,7 @@ public class Win311IntroManager extends Win311Manager {
 
         var sceneMain = new MainScene();
         sceneMain.create();
-        sceneManager.addScene(sceneMain.id, sceneMain);
+        sceneManager.addScene(sceneMain.ID, sceneMain);
         System.out.println("Main Scene for Anniversaries 27 created");
     }
 
@@ -23,9 +23,13 @@ public class Win311IntroManager extends Win311Manager {
     public void render() {
         super.render();
 
+
         //Paintbrush loaded
         long frame = Gdx.graphics.getFrameId();
-        if (frame == MainScene.START_FRAME)
+
+        if (frame == MainScene.START_FRAME) {
             sceneManager.switchScene(MainScene.ID);
+            this.tune.setVolume(0.3f);
+        }
     }
 }

@@ -8,7 +8,7 @@ import java.util.Arrays;
 
 public class Win311Manager extends AnimationManager {
 
-    private final String musicPath;
+    protected final String musicPath;
 
     public Win311Manager(String musicPath) {
         this.musicPath = musicPath;

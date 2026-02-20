@@ -22,6 +22,10 @@ public class Scene4Paintbrush extends Scene {
         super(ID);
     }
 
+    public Scene4Paintbrush(String newId) {
+        super(newId);
+    }
+
     @Override
     public void create() {
         batch = new SpriteBatch();
@@ -62,7 +66,8 @@ public class Scene4Paintbrush extends Scene {
         batch.end();
 
         if (this.getRelFrame() > START_WAVE_FRAME + 10) {
-            this.wavedEdgeTrick.render();
+            if (this.wavedEdgeTrick != null)
+                this.wavedEdgeTrick.render();
         }
     }
 
