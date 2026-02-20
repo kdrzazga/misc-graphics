@@ -1,6 +1,7 @@
 package org.kd.anniversaries;
 
 import com.badlogic.gdx.graphics.Texture;
+import org.kd.common.Scene;
 
 public class Year2001 extends Year {
 
@@ -11,7 +12,8 @@ public class Year2001 extends Year {
         this.winXP = new Texture("anniversaries/os/winXP.png");
     }
 
-    public void draw(long frame, Scene1c64 screen) {
+    public void draw(long frame, Scene scene) {
+        var screen = (Scene1c64) scene;
 
         font1.draw(screen.batch2, "2001", 300, 570);
         if (frame < this.endFrame) {

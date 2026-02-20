@@ -1,6 +1,7 @@
 package org.kd.anniversaries;
 
 import com.badlogic.gdx.graphics.Texture;
+import org.kd.common.Scene;
 
 public class Year1981 extends Year {
 
@@ -13,7 +14,8 @@ public class Year1981 extends Year {
         this.vic20 = new Texture("anniversaries/HW/vic20.png");
     }
 
-    public void draw(long frame, Scene1c64 screen) {
+    public void draw(long frame, Scene scene) {
+        var screen = (Scene1c64) scene;
         font1.draw(screen.batch2, "1981", 300, 570);
         if (frame < this.startingFrame + 0.35 * Year.DEFAULT_DURATION) {
             font2.draw(screen.batch2, "  Commodore company released VIC 20", 123, 535);

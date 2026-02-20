@@ -1,6 +1,7 @@
 package org.kd.anniversaries;
 
 import com.badlogic.gdx.graphics.Texture;
+import org.kd.common.Scene;
 
 public class Year1991 extends Year {
 
@@ -22,7 +23,8 @@ public class Year1991 extends Year {
         this.www = new Texture("anniversaries/apps/www.png");
     }
 
-    public void draw(long frame, Scene1c64 screen) {
+    public void draw(long frame, Scene scene) {
+        var screen = (Scene1c64) scene;
         font1.draw(screen.batch2, "1991", 300, 570);
         if (frame < this.startingFrame + 0.7 * Year.DEFAULT_DURATION) {
             font2.draw(screen.batch2, "Linus Thorvalds", 100, 495);

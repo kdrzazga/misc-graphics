@@ -1,6 +1,7 @@
 package org.kd.anniversaries;
 
 import com.badlogic.gdx.graphics.Texture;
+import org.kd.common.Scene;
 
 public class Year2006 extends Year {
 
@@ -17,7 +18,8 @@ public class Year2006 extends Year {
         this.googleNoYT = new Texture("anniversaries/apps/googlenoYT.png");
     }
 
-    public void draw(long frame, Scene1c64 screen) {
+    public void draw(long frame, Scene scene) {
+        var screen = (Scene1c64) scene;
         font1.draw(screen.batch2, "2006", 300, 570);
         if (frame < this.startingFrame + 0.4 * Year.DEFAULT_DURATION) {
             font2.draw(screen.batch2, "Google acquired YouTube for $1.65 billion", 93, 535);

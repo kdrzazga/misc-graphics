@@ -5,6 +5,7 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import org.kd.common.C64Helper;
+import org.kd.common.Scene;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,11 +41,11 @@ public abstract class Year {
         }
     }
 
-    public void writeMessage(SpriteBatch batch, String message, float x, float y){
+    public void writeMessage(SpriteBatch batch, String message, float x, float y) {
         font2.draw(batch, message, x, y);
     }
 
-    public abstract void draw(long frame, Scene1c64 screen);
+    public abstract void draw(long frame, Scene scene);
 
     public long getStartingFrame() {
         return startingFrame;

@@ -1,6 +1,7 @@
 package org.kd.anniversaries;
 
 import com.badlogic.gdx.graphics.Texture;
+import org.kd.common.Scene;
 
 import java.util.Arrays;
 import java.util.List;
@@ -22,7 +23,8 @@ public class Year2011 extends Year {
         );
     }
 
-    public void draw(long frame, Scene1c64 screen) {
+    public void draw(long frame, Scene scene) {
+        var screen = (Scene1c64) scene;
         font1.draw(screen.batch2, "2011", 300, 570);
         if (frame < this.endFrame) {
 
