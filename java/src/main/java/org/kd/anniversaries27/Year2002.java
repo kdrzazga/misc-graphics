@@ -6,7 +6,7 @@ public class Year2002 extends Year {
 
     protected Year2002(long startingFrame) {
         super("anniversaries27/2002.mp3", startingFrame);
-        this.endFrame = 17300;
+        this.endFrame = 14800;
     }
 
     @Override

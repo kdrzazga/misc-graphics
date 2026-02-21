@@ -23,7 +23,6 @@ public class Win311IntroManager extends Win311Manager {
     public void render() {
         super.render();
 
-
         //Paintbrush loaded
         long frame = Gdx.graphics.getFrameId();
 

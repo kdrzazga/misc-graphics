@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import org.kd.win311.Scene4Paintbrush;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class MainScene extends Scene4Paintbrush {
 
@@ -55,15 +56,19 @@ public class MainScene extends Scene4Paintbrush {
         super.render();
 
         var frame = Gdx.graphics.getFrameId();
+        //System.out.println(MainScene.class.getSi\mpleName() + " frame = " + frame + " relative frame = ");
 
-        System.out.println(MainScene.class.getSimpleName() + " frame = " + frame + " relative frame = ");
+        for (Year year : getAllYears()) {
+            if (frame == year.getStartingFrame()) {
+                year.draw(frame, this);
+                break;
+            }
+        }
+    }
 
-        var allYears = Arrays.asList(this.year2022, this.year2017, this.year2012, this.year2007, this.year2002,
+    public List<Year> getAllYears(){
+        return Arrays.asList(this.year2022, this.year2017, this.year2012, this.year2007, this.year2002,
                 year1997, year1992, year1987, year1982, year1977, year1972, year1967, year1962, year1957
                 , year1952);
-
-        allYears.forEach(year -> {
-            if (frame == year.getStartingFrame()) year.draw(frame, this);
-        });
     }
 }

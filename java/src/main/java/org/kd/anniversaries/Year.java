@@ -5,6 +5,7 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import org.kd.common.C64Helper;
+import org.kd.common.Helper;
 import org.kd.common.Scene;
 
 import java.util.ArrayList;
@@ -36,6 +37,8 @@ public abstract class Year {
 
     public void sayItOnce() {
         if (!alreadySaid) {
+            var fr = Gdx.graphics.getFrameId();
+            System.out.println(Helper.countElapsedTime() + " [frame " + fr + "] Statement for year " + this.getClass().getSimpleName());
             this.statement.play();
             this.alreadySaid = true;
         }
