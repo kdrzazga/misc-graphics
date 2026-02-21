@@ -2,7 +2,7 @@ package org.kd.anniversaries27;
 
 import org.kd.common.Scene;
 
-public class Year1957 extends Year {
+public final class Year1957 extends Year {
 
     protected Year1957(long startingFrame) {
         super("anniversaries27/1957.mp3", startingFrame);
