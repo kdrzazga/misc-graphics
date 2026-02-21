@@ -11,21 +11,21 @@ public class MainScene extends Scene4Paintbrush {
     public final static int START_FRAME = Scene4Paintbrush.START_FRAME + 1000;
     public final static String ID = "anniversaries27";
 
-    private Year2022 year2022;
-    private Year2017 year2017;
-    private Year2012 year2012;
-    private Year2007 year2007;
-    private Year2002 year2002;
-    private Year1997 year1997;
-    private Year1992 year1992;
-    private Year1987 year1987;
-    private Year1982 year1982;
-    private Year1977 year1977;
-    private Year1972 year1972;
-    private Year1967 year1967;
-    private Year1962 year1962;
-    private Year1957 year1957;
-    private Year1952 year1952;
+    private final Year2022 year2022;
+    private final Year2017 year2017;
+    private final Year2012 year2012;
+    private final Year2007 year2007;
+    private final Year2002 year2002;
+    private final Year1997 year1997;
+    private final Year1992 year1992;
+    private final Year1987 year1987;
+    private final Year1982 year1982;
+    private final Year1977 year1977;
+    private final Year1972 year1972;
+    private final Year1967 year1967;
+    private final Year1962 year1962;
+    private final Year1957 year1957;
+    private final Year1952 year1952;
 
     public MainScene() {
         super(ID);
@@ -56,7 +56,7 @@ public class MainScene extends Scene4Paintbrush {
         super.render();
 
         var frame = Gdx.graphics.getFrameId();
-        //System.out.println(MainScene.class.getSi\mpleName() + " frame = " + frame + " relative frame = ");
+        // System.out.println(MainScene.class.getSimpleName() + " frame = " + frame);
 
         for (Year year : getAllYears()) {
             if (frame == year.getStartingFrame()) {
