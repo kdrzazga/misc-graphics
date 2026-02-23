@@ -4,7 +4,7 @@ import org.kd.common.Scene;
 
 public final class Year1987 extends Year {
 
-    protected Year1987(long startingFrame) {
+    Year1987(long startingFrame) {
         super("anniversaries27/1987.mp3", startingFrame);
         this.endFrame = 24700;
     }

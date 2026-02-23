@@ -9,9 +9,9 @@ import org.kd.common.AnimatedSpriteV;
 import org.kd.common.C64Helper;
 import org.kd.common.Helper;
 
-public class Scene3 implements Screen {
+public class Scene3Counting implements Screen {
 
-    final static long START_FRAME = 4330;
+    final static long START_FRAME = Scene2Karateka.START_FRAME + 780;
     private AnimatedSpriteV circle;
     private SpriteBatch batch;
     private float blueValue, circleSize;
@@ -46,16 +46,18 @@ public class Scene3 implements Screen {
 
     private void update() {
         var fr = Gdx.graphics.getFrameId() - START_FRAME;
-        float scale = (float) (circleSize + 0.1f + Math.sin(fr / 100f));
-        if (fr > 400) {
+        float scale = (float) (circleSize + 0.1f + Math.sin(fr / 20f));
+        /*if (fr > 400) {
             var value = fr - 400;
             if (scale - 0.01f * value >= 0) scale -= 0.01f * value;
-        }
+        }*/
         circle.scale(scale);
 
         Float Y = Gdx.graphics.getHeight() / 2 - circle.getHeight() / 2;
 
         circle.setPosition(Math.round(circleX), Math.round(Y));
+
+        System.out.print(fr + " ");
     }
 
     @Override

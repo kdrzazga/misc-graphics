@@ -35,7 +35,7 @@ public class Scene2Karateka implements Screen {
         wallpaper = new TravellingLogo(texture2, 1, 0, 3500, 990);
         wallpaper.spriteSpeed = 2f;
         shapeRenderer = new ShapeRenderer();
-        shades = new RollerShades(Scene3.START_FRAME - 350, Color.BLACK, 11);
+        shades = new RollerShades(Scene3Counting.START_FRAME - 350, Color.BLACK, 11);
     }
 
     @Override
@@ -65,7 +65,7 @@ public class Scene2Karateka implements Screen {
 
         long limit = 565;
         if (getCurrentFrame() > limit) {
-            var newScale = 3f + (getCurrentFrame() - limit) * 0.0021f;
+            var newScale = 3f + (getCurrentFrame() - limit) * 0.999999f;
             if (newScale > 0) karateka.scale(newScale);
         }
     }
