@@ -1,6 +1,7 @@
 package org.kd.anniversaries;
 
 import com.badlogic.gdx.graphics.Texture;
+import org.kd.common.Scene;
 
 public class Year1971 extends Year {
 
@@ -12,9 +13,11 @@ public class Year1971 extends Year {
         this.xeroxLaserPrinter = new Texture("anniversaries/HW/xerox-parc-printer.png");
     }
 
-    public void draw(long frame, Scene1c64 screen) {
+    @Override
+    public void draw(long frame, Scene scene) {
+        var screen = (Scene1c64) scene;
         screen.backgroundTexture = this.xeroxLaserPrinter;
-        zxSpectrumFont.draw(screen.batch2, "1971", 300, 570);
+        font1.draw(screen.batch2, "1971", 300, 570);
         this.writeMessage(screen.batch2, "Xerox PARC was the prototype for laser printers", 20, 530);
 
     }

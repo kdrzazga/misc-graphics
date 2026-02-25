@@ -1,17 +1,17 @@
 package org.kd.kickass;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import org.kd.common.AnimatedSpriteV;
+import org.kd.common.BaseScene2;
 import org.kd.common.C64Helper;
 import org.kd.common.Helper;
 
-public class Scene3 implements Screen {
+public class Scene3Counting  extends BaseScene2 {
 
-    final static long START_FRAME = 4330;
+    final static long START_FRAME = Scene2Karateka.START_FRAME + 780;
     private AnimatedSpriteV circle;
     private SpriteBatch batch;
     private float blueValue, circleSize;
@@ -30,56 +30,35 @@ public class Scene3 implements Screen {
 
         circle = new AnimatedSpriteV("kickass/blueFireCircle.png", 13, 0.03f, Math.round(X)
                 , Math.round(Y));
-        circleX = Math.round(Gdx.graphics.getWidth() / 2 - circle.getWidth() / 2);
+        circleX = Math.round(Gdx.graphics.getWidth() / 2f - circle.getWidth() / 2f);
         circleSize = 1f;
     }
 
     @Override
     public void render(float v) {
+        var fr = Gdx.graphics.getFrameId() - START_FRAME;
+
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         Gdx.gl.glClearColor(0, 0, blueValue, 1);
         update();
         batch.begin();
-        circle.draw(batch);
+        if (fr < 300) circle.draw(batch);
         batch.end();
     }
 
     private void update() {
         var fr = Gdx.graphics.getFrameId() - START_FRAME;
-        float scale = (float) (circleSize + 0.1f + Math.sin(fr / 100f));
-        if (fr > 400) {
-            var value = fr - 400;
-            if (scale - 0.01f * value >= 0) scale -= 0.01f * value;
+        float scale = (float) (circleSize + 0.1f + Math.sin(fr / 20f));
+        if (fr > 299) {
+            blueValue += 0.03f;
         }
         circle.scale(scale);
 
         Float Y = Gdx.graphics.getHeight() / 2 - circle.getHeight() / 2;
 
-        circle.setPosition(Math.round(circleX), Math.round(Y));
+        circle.setPosition(circleX, Math.round(Y));
+
+        System.out.print(fr + " ");
     }
 
-    @Override
-    public void resize(int i, int i1) {
-
-    }
-
-    @Override
-    public void pause() {
-
-    }
-
-    @Override
-    public void resume() {
-
-    }
-
-    @Override
-    public void hide() {
-
-    }
-
-    @Override
-    public void dispose() {
-
-    }
 }

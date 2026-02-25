@@ -1,7 +1,6 @@
 package org.kd.kickass;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
@@ -9,12 +8,13 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import org.kd.common.BaseScene2;
 import org.kd.common.tricks.Rosette;
 import org.kd.kickass.lib.BootAlphabetScroll;
 
 import java.util.Arrays;
 
-public class Scene1KickScroll implements Screen {
+public class Scene1KickScroll extends BaseScene2 {
 
     private Sound fok, whatchaLookinAt;
     private Texture tuffGuy;
@@ -124,23 +124,4 @@ public class Scene1KickScroll implements Screen {
         if (frame > rosette.getStartFrame()) rosette.render(shapeRenderer);
     }
 
-    @Override
-    public void resize(int i, int i1) {
-    }
-
-    @Override
-    public void pause() {
-    }
-
-    @Override
-    public void resume() {
-    }
-
-    @Override
-    public void hide() {
-    }
-
-    @Override
-    public void dispose() {
-    }
 }

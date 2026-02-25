@@ -10,7 +10,7 @@ import org.kd.common.Globals;
 public class KickassDemo extends Game {
 
     protected Music tune;
-    private Screen currentScreen, screen1, screen2, screen3;
+    private Screen currentScreen, screen1, screen2, screen3, screen4;
 
     @Override
     public void create() {
@@ -22,7 +22,8 @@ public class KickassDemo extends Game {
 
         screen1 = new Scene1KickScroll();
         screen2 = new Scene2Karateka();
-        screen3 = new Scene3();
+        screen3 = new Scene3Counting();
+        screen4 = new Scene4ComicStrips();
         currentScreen = screen1;
         setScreen(currentScreen);
     }
@@ -39,8 +40,11 @@ public class KickassDemo extends Game {
         if (frame == Scene2Karateka.START_FRAME) {
             currentScreen = screen2;
             setScreen(currentScreen);
-        } else if (frame == Scene3.START_FRAME) {
+        } else if (frame == Scene3Counting.START_FRAME) {
             currentScreen = screen3;
+            setScreen(currentScreen);
+        } else if (frame == Scene4ComicStrips.START_FRAME) {
+            currentScreen = screen4;
             setScreen(currentScreen);
         }
     }

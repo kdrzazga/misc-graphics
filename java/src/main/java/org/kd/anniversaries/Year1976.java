@@ -1,6 +1,7 @@
 package org.kd.anniversaries;
 
 import com.badlogic.gdx.graphics.Texture;
+import org.kd.common.Scene;
 
 public class Year1976 extends Year{
 
@@ -11,9 +12,10 @@ public class Year1976 extends Year{
         this.jobsWozniak = new Texture("anniversaries/os/JobsWayneWozniak.png");
     }
 
-    public void draw(long frame, Scene1c64 screen) {
+    public void draw(long frame, Scene scene) {
+        var screen = (Scene1c64) scene;
 
-        zxSpectrumFont.draw(screen.batch2, "1976", 300, 570);
+        font1.draw(screen.batch2, "1976", 300, 570);
         if (frame < this.endFrame) {
             screen.backgroundTexture = this.jobsWozniak;
         }
