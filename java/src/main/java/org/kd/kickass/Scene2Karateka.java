@@ -1,17 +1,17 @@
 package org.kd.kickass;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import org.kd.common.AnimatedSpriteV;
+import org.kd.common.BaseScene2;
 import org.kd.common.tricks.RollerShades;
 import org.kd.common.tricks.TravellingLogo;
 
-public class Scene2Karateka implements Screen {
+public class Scene2Karateka  extends BaseScene2 {
 
     final static long START_FRAME = 3550;
     private TravellingLogo logo, wallpaper;
@@ -74,28 +74,4 @@ public class Scene2Karateka implements Screen {
         return Gdx.graphics.getFrameId() - START_FRAME;
     }
 
-    @Override
-    public void resize(int i, int i1) {
-
-    }
-
-    @Override
-    public void pause() {
-
-    }
-
-    @Override
-    public void resume() {
-
-    }
-
-    @Override
-    public void hide() {
-
-    }
-
-    @Override
-    public void dispose() {
-
-    }
 }
