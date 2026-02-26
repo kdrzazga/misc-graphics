@@ -11,11 +11,11 @@ public class Win311IntroManager extends Win311Manager {
 
     @Override
     public void create() {
-        super.create();
+        super.create(new Scene4Paint27());
 
         var sceneMain = new MainScene();
         sceneMain.create();
-        sceneManager.addScene(sceneMain.ID, sceneMain);
+        sceneManager.addScene(MainScene.ID, sceneMain);
         System.out.println("Main Scene for Anniversaries 27 created");
     }
 

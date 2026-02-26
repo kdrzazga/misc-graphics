@@ -29,15 +29,18 @@ public class WavedEdgeTrick extends GradientRectangleTrick {
     }
 
     public void render() {
+        drawGradientRectangle();
+        drawEdgeWaves();
+    }
+
+    public void drawGradientRectangle() {
         int width = this.x2 - x1;
         int height = this.y2 - this.y1;
 
         drawGradientRectangle(x1, y1, width, height);
-        drawEdgeWaves();
-
     }
 
-    private void drawEdgeWaves() {
+    public void drawEdgeWaves() {
         shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
 
         for (float yy = y1; yy < this.y2; yy++) {

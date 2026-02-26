@@ -24,7 +24,6 @@ public abstract class Year {
     private boolean alreadySaid = false;
     private final Music statement;
 
-
     public Year(String statementPath, long startingFrame) {
         this.startingFrame = startingFrame;
         this.endFrame = this.startingFrame + Year.DEFAULT_DURATION; //can be overriden
