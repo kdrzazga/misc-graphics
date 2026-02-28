@@ -11,7 +11,7 @@ public class WavedEdgeTrick extends GradientRectangleTrick {
     private float sineWidth = 20f;
     private float xExit = 0f;
 
-    private static final long TRICK1_GRADUAL_EXIT = 1000;
+    private static final long TRICK1_GRADUAL_EXIT = 550;
 
     public WavedEdgeTrick(int x1, int y1, int x2, int y2, SpriteBatch batch2, ShapeRenderer shapeRenderer, float sineWidth, float xExit) {
         super(x1, y1, x2, y2, batch2, shapeRenderer);
