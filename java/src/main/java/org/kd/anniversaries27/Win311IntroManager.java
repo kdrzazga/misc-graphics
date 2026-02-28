@@ -11,12 +11,12 @@ public class Win311IntroManager extends Win311Manager {
 
     @Override
     public void create() {
-        super.create();
+        super.create(new Scene4Paint27());
 
-        var sceneMain = new MainScene();
-        sceneMain.create();
-        sceneManager.addScene(sceneMain.ID, sceneMain);
-        System.out.println("Main Scene for Anniversaries 27 created");
+        var scene5 = new Scene5YearBrowser();
+        scene5.create();
+        sceneManager.addScene(Scene5YearBrowser.ID, scene5);
+        System.out.println("Scene5 for Anniversaries 27 created");
     }
 
     @Override
@@ -26,8 +26,8 @@ public class Win311IntroManager extends Win311Manager {
         //Paintbrush loaded
         long frame = Gdx.graphics.getFrameId();
 
-        if (frame == MainScene.START_FRAME) {
-            sceneManager.switchScene(MainScene.ID);
+        if (frame == Scene5YearBrowser.START_FRAME) {
+            sceneManager.switchScene(Scene5YearBrowser.ID);
             this.tune.setVolume(0.3f);
         }
     }

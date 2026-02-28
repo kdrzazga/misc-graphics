@@ -14,15 +14,13 @@ public class Win311Manager extends AnimationManager {
         this.musicPath = musicPath;
     }
 
-    @Override
-    public void create() {
+    public void create(Scene4Paintbrush scene4) {
         super.create();
         this.createMusic(musicPath);
 
         var scene1 = new Scene1Bios();
         var scene2 = new Scene2WinLoad();
         var scene3 = new Scene3ProgramMgr();
-        var scene4 = new Scene4Paintbrush();
 
         Arrays.asList(scene1, scene2, scene3, scene4).forEach(s -> {
             s.create();
@@ -30,6 +28,12 @@ public class Win311Manager extends AnimationManager {
         });
         sceneManager.switchScene("BIOS");
         tune.setLooping(true);
+    }
+
+    @Override
+    public void create() {
+        var scene4 = new Scene4Paintbrush();
+        this.create(scene4);
     }
 
     @Override

@@ -31,7 +31,7 @@ public class GradientRectangleTrick {
     public void update(boolean r, boolean g, boolean b) {
         var frame = Gdx.graphics.getFrameId() - initialFrame;
 
-        System.out.print(" fr=" + frame + " ");
+        //System.out.print(" fr=" + frame + " ");
         double x = (frame + 400) / frequency * 3.14;
         if (r) topColor.r = (float) Math.abs(Math.sin(x));
         if (g) topColor.g = (float) Math.abs(Math.sin(x));
