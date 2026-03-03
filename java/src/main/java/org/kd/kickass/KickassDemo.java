@@ -6,6 +6,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import org.kd.common.Globals;
+import org.kd.common.Helper;
 
 public class KickassDemo extends Game {
 
@@ -38,12 +39,15 @@ public class KickassDemo extends Game {
         }
 
         if (frame == Scene2Karateka.START_FRAME) {
+            System.out.println(Scene2Karateka.class.getSimpleName() + " started at " + Helper.countElapsedTime());
             currentScreen = screen2;
             setScreen(currentScreen);
         } else if (frame == Scene3Counting.START_FRAME) {
+            System.out.println(Scene3Counting.class.getSimpleName() + " started at " + Helper.countElapsedTime());
             currentScreen = screen3;
             setScreen(currentScreen);
         } else if (frame == Scene4ComicStrips.START_FRAME) {
+            System.out.println(Scene4ComicStrips.class.getSimpleName() + " started at " + Helper.countElapsedTime());
             currentScreen = screen4;
             setScreen(currentScreen);
         }
