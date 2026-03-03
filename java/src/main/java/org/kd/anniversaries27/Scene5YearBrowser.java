@@ -56,17 +56,17 @@ public class Scene5YearBrowser extends Scene4Paintbrush {
         super.render();
 
         var frame = Gdx.graphics.getFrameId();
-        System.out.println(Scene5YearBrowser.class.getSimpleName() + " frame = " + frame);
+        //System.out.println(Scene5YearBrowser.class.getSimpleName() + " frame = " + frame);
 
         for (Year year : getAllYears()) {
-            if (frame == year.getStartingFrame()) {
-                year.draw(frame, this);
+            if (year.getStartingFrame() <= frame && frame < year.getEndFrame()) {
+                year.draw(frame, batch);
                 break;
             }
         }
     }
 
-    public List<Year> getAllYears(){
+    public List<Year> getAllYears() {
         return Arrays.asList(this.year2022, this.year2017, this.year2012, this.year2007, this.year2002,
                 year1997, year1992, year1987, year1982, year1977, year1972, year1967, year1962, year1957
                 , year1952);
