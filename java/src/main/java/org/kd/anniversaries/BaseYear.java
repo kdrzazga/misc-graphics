@@ -6,7 +6,6 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import org.kd.common.C64Helper;
 import org.kd.common.Helper;
-import org.kd.common.Scene;
 
 import java.util.ArrayList;
 import java.util.List;

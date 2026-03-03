@@ -12,6 +12,8 @@ public final class Year2002 extends Year {
     @Override
     public void draw(long frame, SpriteBatch batch) {
         sayItOnce();
+
+        writeYear(batch);
     }
 
 }

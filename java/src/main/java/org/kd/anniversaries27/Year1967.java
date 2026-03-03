@@ -1,7 +1,6 @@
 package org.kd.anniversaries27;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import org.kd.common.Scene;
 
 public final class Year1967 extends Year {
 
@@ -13,6 +12,8 @@ public final class Year1967 extends Year {
     @Override
     public void draw(long frame, SpriteBatch batch) {
         sayItOnce();
+
+        writeYear(batch);
     }
 
 }

@@ -16,10 +16,14 @@ public final class Year2022 extends Year {
 
     @Override
     public void draw(long frame, SpriteBatch batch) {
+
+        int topY = 680;
+
         sayItOnce();
         batch.begin();
         batch.draw(elon, 104, 111);
         batch.end();
-    }
 
+        writeYear(batch);
+    }
 }

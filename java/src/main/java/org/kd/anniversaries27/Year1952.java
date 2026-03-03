@@ -18,12 +18,15 @@ public final class Year1952 extends Year {
     @Override
     public void draw(long frame, SpriteBatch batch) {
         System.out.println(frame + " " + (frame - startingFrame));
-        var halfWay = (endFrame - startingFrame) / 2;
-        var pic = (startingFrame < frame && frame < halfWay) ? besm : ibm701;
+        var change = startingFrame + 500;
+        var pic = (startingFrame < frame && frame < change) ? besm : ibm701;
 
         batch.begin();
         batch.draw(pic, 104, 109);
+        font1.draw(batch, getYear(), 104, 500);
         batch.end();
         sayItOnce();
+
+        writeYear(batch);
     }
 }
