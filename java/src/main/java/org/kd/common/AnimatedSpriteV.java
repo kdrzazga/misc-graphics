@@ -37,9 +37,14 @@ public class AnimatedSpriteV {
     }
 
     public void draw(SpriteBatch batch) {
+        TextureRegion currentFrame = getTextureRegion();
+        batch.draw(currentFrame, x, y, getWidth(), getHeight());
+    }
+
+    public TextureRegion getTextureRegion() {
         stateTime += Gdx.graphics.getDeltaTime();
         TextureRegion currentFrame = this.animation.getKeyFrame(stateTime, true);
-        batch.draw(currentFrame, x, y, getWidth(), getHeight());
+        return currentFrame;
     }
 
     public void scale(float scaleValue) {

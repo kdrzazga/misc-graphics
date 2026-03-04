@@ -1,7 +1,10 @@
 package org.kd.common;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Pixmap;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
@@ -35,5 +38,19 @@ public class C64Helper {
         font.setColor(color.getR(), color.getG(), color.getB(), 1f);
         generator.dispose();
         return font;
+    }
+
+    public static Texture createTextureFromRegion(TextureRegion region) {
+        Texture texture = region.getTexture();
+        int x = region.getRegionX();
+        int y = region.getRegionY();
+        int width = region.getRegionWidth();
+        int height = region.getRegionHeight();
+        Pixmap pixmap = texture.getTextureData().consumePixmap();
+        Pixmap regionPixmap = new Pixmap(width, height, pixmap.getFormat());
+        regionPixmap.drawPixmap(pixmap, 0, 0, x, y, width, height);
+        Texture newTexture = new Texture(regionPixmap);
+        regionPixmap.dispose();
+        return newTexture;
     }
 }
