@@ -45,7 +45,7 @@ public final class Scene2Stars extends Scene {
         threeAmigos = new Texture("good-job/3amigos/jobsWayneWoz.jpg");
         apple1 = new Texture("good-job/apple1/Apple1.jpg");
 
-        apple2 = new Texture("good-job/apple2/apple2.jpg");
+        apple2 = new Texture("apple2.jpg");
         asciiWhite = new Texture("good-job/apple2/asciiWHT.png");
         asciiBlack = new Sprite(new Texture("good-job/apple2/asciiBLK.png"));
         asciiColor = new Sprite(new Texture("good-job/apple2/asciiCOL.png"));
