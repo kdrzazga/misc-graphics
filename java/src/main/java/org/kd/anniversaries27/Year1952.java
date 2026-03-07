@@ -28,8 +28,6 @@ public final class Year1952 extends Year {
 
         batch.begin();
         pic.draw(batch);
-
-        font1.draw(batch, getYear(), 104, 500);
         batch.end();
         sayItOnce();
 

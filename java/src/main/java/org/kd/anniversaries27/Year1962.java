@@ -36,8 +36,8 @@ public final class Year1962 extends Year {
         var Y = new AtomicInteger(300);
         if (fr < 500) {
             simulaCode.forEach(line -> {
-                font1.draw(batch, line, 400, Y.floatValue());
-                Y.addAndGet(Math.round(font1.getCapHeight()));
+                font1.draw(batch, line, 150, Y.floatValue());
+                Y.addAndGet(Math.round(font1.getCapHeight()) + 5);
             });
         }
         else arvindKrishna.draw(batch);

@@ -1,6 +1,7 @@
 package org.kd.anniversaries27;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import org.kd.win311.Scene4Paintbrush;
 
 import java.util.Arrays;
@@ -60,6 +61,7 @@ public class Scene5YearBrowser extends Scene4Paintbrush {
 
         for (Year year : getAllYears()) {
             if (year.getStartingFrame() <= frame && frame < year.getEndFrame()) {
+                this.fillBackground(Color.BLACK);
                 year.draw(frame, batch);
                 break;
             }

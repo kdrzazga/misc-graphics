@@ -1,6 +1,7 @@
 package org.kd.win311;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -70,6 +71,13 @@ public class Scene4Paintbrush extends Scene {
             if (this.wavedEdgeTrick != null)
                 this.wavedEdgeTrick.render();
         }
+    }
+
+    public void fillBackground(Color color){
+        shapeRenderer.setColor(color);
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+        shapeRenderer.rect(104, 112, 797 ,543);
+        shapeRenderer.end();
     }
 
     protected void drawBackground() {

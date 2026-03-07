@@ -20,7 +20,8 @@ public final class Year1957 extends Year {
 
         var punchCardTexture = new Texture("anniversaries27/pics/1957/punch-card.jpg");
         punchCard = new Sprite(punchCardTexture);
-        punchCard.setPosition(100, 600);
+        punchCard.setPosition(100, 300);
+        punchCard.setScale(0.3f, 0.3f);
 
         var vonNeumanTexture = new Texture("anniversaries27/pics/1957/john-von-neuman.png");
         vonNeuman = new Sprite(vonNeumanTexture);
@@ -33,10 +34,10 @@ public final class Year1957 extends Year {
         sayItOnce();
 
         batch.begin();
-        var Y = new AtomicInteger(700);
+        var Y = new AtomicInteger(500);
         if (fr < 500) {
             fortranCode.forEach(line -> {
-                font1.draw(batch, line, 400, Y.floatValue());
+                font1.draw(batch, line, 150, Y.floatValue());
                 Y.addAndGet(Math.round(font1.getCapHeight()));
             });
 

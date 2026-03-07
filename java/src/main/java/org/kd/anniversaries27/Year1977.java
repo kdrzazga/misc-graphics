@@ -14,7 +14,7 @@ public final class Year1977 extends Year {
 
         var appleTexture = new Texture("apple2.jpg");
         apple = new Sprite(appleTexture);
-        apple.setPosition(300, 200);
+        apple.setPosition(346, 175);
     }
 
     @Override
