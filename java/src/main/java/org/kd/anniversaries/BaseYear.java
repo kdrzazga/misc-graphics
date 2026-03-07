@@ -14,7 +14,7 @@ public class BaseYear {
     public static final long DEFAULT_DURATION = 600;
 
     protected final List<String> messages;
-    protected final BitmapFont font1;
+    protected BitmapFont font1;
     protected final BitmapFont font2;
     protected final String statementPath;
     protected final long startingFrame;

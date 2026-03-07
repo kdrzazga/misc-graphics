@@ -1,16 +1,20 @@
 package org.kd.anniversaries27;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public final class Year1992 extends Year {
 
-    private final Texture suse;
+    private final Sprite suse;
 
     Year1992(long startingFrame) {
         super("anniversaries27/1992.mp3", startingFrame);
         this.endFrame = 22300;
-        suse = new Texture("anniversaries27/pics/suse.png");
+        var suseTexture = new Texture("anniversaries27/pics/suse.png");
+        suse = new Sprite(suseTexture);
+        suse.setPosition(204, 201);
+        suse.setScale(1.3f, 1.4f);
     }
 
     @Override
@@ -19,8 +23,8 @@ public final class Year1992 extends Year {
 
         batch.begin();
 
-        if (getStartingFrame() + 500 < frame && frame < getStartingFrame() + 700) {
-            batch.draw(suse, 104, 111);
+        if (getStartingFrame() + 2000 < frame && frame < getStartingFrame() + 2300) {
+            suse.draw(batch);
         }
 
         batch.end();
