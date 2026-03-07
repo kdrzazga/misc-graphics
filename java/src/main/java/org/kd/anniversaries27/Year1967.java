@@ -14,12 +14,17 @@ public final class Year1967 extends Year {
 
         var satyaNadellaTexture = new Texture("anniversaries27/pics/1967/satyaNadella.jpg");
         satyaNadella = new Sprite(satyaNadellaTexture);
+        satyaNadella.setPosition(104, 315);
     }
 
     @Override
     public void draw(long frame, SpriteBatch batch) {
         sayItOnce();
+
+        batch.begin();
         satyaNadella.draw(batch);
+        batch.end();
+
         writeYear(batch);
     }
 

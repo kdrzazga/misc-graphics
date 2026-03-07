@@ -22,8 +22,9 @@ public final class Year1962 extends Year {
         super("anniversaries27/1962.mp3", startingFrame);
         this.endFrame = 29900 + 420 + 2580;//33900;
 
-        var arvindKrishnaTexture = new Texture("anniversaries27/pics/1967/");
+        var arvindKrishnaTexture = new Texture("anniversaries27/pics/1962/ArvindKrishna.jpg");
         arvindKrishna = new Sprite(arvindKrishnaTexture);
+        arvindKrishna.setPosition(104,315);
     }
 
     @Override
@@ -31,13 +32,17 @@ public final class Year1962 extends Year {
         var fr = getEndFrame() - frame;
         sayItOnce();
 
-        var Y = new AtomicInteger(700);
+        batch.begin();
+        var Y = new AtomicInteger(300);
         if (fr < 500) {
             simulaCode.forEach(line -> {
                 font1.draw(batch, line, 400, Y.floatValue());
                 Y.addAndGet(Math.round(font1.getCapHeight()));
             });
         }
+        else arvindKrishna.draw(batch);
+        batch.end();
+
         writeYear(batch);
     }
 }
