@@ -38,10 +38,9 @@ public final class Year2022 extends Year {
             gradient.draw(batch);
 
         batch.end();
-
         writeYear(batch);
 
-        System.out.println(frame + " " + relFrame);
+        //System.out.println(frame + " " + relFrame);
     }
 
     private void drawTwix(SpriteBatch batch) {

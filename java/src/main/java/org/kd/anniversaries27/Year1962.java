@@ -24,7 +24,8 @@ public final class Year1962 extends Year {
 
         var arvindKrishnaTexture = new Texture("anniversaries27/pics/1962/ArvindKrishna.jpg");
         arvindKrishna = new Sprite(arvindKrishnaTexture);
-        arvindKrishna.setPosition(104,315);
+        arvindKrishna.setPosition(0, 55);
+        arvindKrishna.setScale(0.75f, .75f);
     }
 
     @Override
@@ -39,8 +40,7 @@ public final class Year1962 extends Year {
                 font1.draw(batch, line, 150, Y.floatValue());
                 Y.addAndGet(Math.round(font1.getCapHeight()) + 5);
             });
-        }
-        else arvindKrishna.draw(batch);
+        } else arvindKrishna.draw(batch);
         batch.end();
 
         writeYear(batch);

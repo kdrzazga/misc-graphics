@@ -38,7 +38,7 @@ public final class Year1957 extends Year {
         if (fr < 500) {
             fortranCode.forEach(line -> {
                 font1.draw(batch, line, 150, Y.floatValue());
-                Y.addAndGet(Math.round(font1.getCapHeight()));
+                Y.addAndGet(Math.round(font1.getCapHeight()) + 5);
             });
 
             punchCard.draw(batch);

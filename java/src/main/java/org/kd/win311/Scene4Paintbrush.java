@@ -19,10 +19,10 @@ public class Scene4Paintbrush extends Scene {
     protected BitmapFont font;
     protected SpriteBatch batch;
     protected WavedEdgeTrick wavedEdgeTrick;
+    protected ShapeRenderer shapeRenderer;
 
     private Texture mediaPlayerW;
     private Texture paintbrushW;
-    private ShapeRenderer shapeRenderer;
 
     public Scene4Paintbrush() {
         super(ID);

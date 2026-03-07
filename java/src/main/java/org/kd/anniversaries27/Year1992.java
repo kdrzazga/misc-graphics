@@ -13,7 +13,7 @@ public final class Year1992 extends Year {
         this.endFrame = 22300;
         var suseTexture = new Texture("anniversaries27/pics/suse.png");
         suse = new Sprite(suseTexture);
-        suse.setPosition(254, 201);
+        suse.setPosition(204, 201);
         suse.setScale(1.3f, 1.4f);
     }
 
@@ -23,7 +23,7 @@ public final class Year1992 extends Year {
 
         batch.begin();
 
-        if (getStartingFrame() + 1200 < frame && frame < getStartingFrame() + 1400) {
+        if (getStartingFrame() + 2000 < frame && frame < getStartingFrame() + 2300) {
             suse.draw(batch);
         }
 
