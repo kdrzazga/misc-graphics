@@ -25,6 +25,17 @@ public final class Year1977 extends Year {
         apple.draw(batch);
         batch.end();
 
+        long relFrame = frame - this.startingFrame;
+        //System.out.println(relFrame);
+
+        if (relFrame == 10) {
+            System.out.print("Apple2 ");
+        } else if (relFrame == 200) {
+            System.out.print("Oracle ");
+        } else if (relFrame == 380) {
+            System.out.println("Nintendo ");
+        }
+
         writeYear(batch);
     }
 

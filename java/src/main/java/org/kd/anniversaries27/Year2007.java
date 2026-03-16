@@ -13,6 +13,22 @@ public final class Year2007 extends Year {
     public void draw(long frame, SpriteBatch batch) {
         sayItOnce();
 
+        long relFrame = frame - this.startingFrame;
+        //System.out.println(relFrame);
+
+        if (relFrame == 10) {
+            System.out.print("IPhone ");
+        } else if (relFrame == 300) {
+            System.out.print("WinVista ");
+        } else if (relFrame == 620) {
+            System.out.print("Kindle ");
+        } else if (relFrame == 870) {
+            System.out.print("Amazon Dynamo ");
+        } else if (relFrame == 1250) {
+            System.out.print("IBM Cloud ");
+        } else if (relFrame == 1620)
+            System.out.println("Witcher");
+
         writeYear(batch);
     }
 

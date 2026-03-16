@@ -13,6 +13,17 @@ public final class Year2002 extends Year {
     public void draw(long frame, SpriteBatch batch) {
         sayItOnce();
 
+        long relFrame = frame - this.startingFrame;
+        //System.out.println(relFrame);
+
+        if (relFrame == 10) {
+            System.out.print("Dijkstra ");
+        } else if (relFrame == 1500) {
+            System.out.print("eMule ");
+        } else if (relFrame == 1890) {
+            System.out.println("Battlefield ");
+        }
+
         writeYear(batch);
     }
 

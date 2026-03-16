@@ -19,15 +19,19 @@ public final class Year1992 extends Year {
 
     @Override
     public void draw(long frame, SpriteBatch batch) {
+        long relFrame = frame - this.startingFrame;
         sayItOnce();
 
         batch.begin();
 
         if (getStartingFrame() + 2000 < frame && frame < getStartingFrame() + 2300) {
             suse.draw(batch);
+            System.out.print("SuSe");
         }
 
         batch.end();
+
+        if (relFrame == 10) {System.out.println();}
 
         writeYear(batch);
     }

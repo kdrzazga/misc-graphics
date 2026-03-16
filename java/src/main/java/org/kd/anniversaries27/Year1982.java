@@ -13,6 +13,19 @@ public final class Year1982 extends Year {
     public void draw(long frame, SpriteBatch batch) {
         sayItOnce();
 
+        long relFrame = frame - this.startingFrame;
+        //System.out.println(relFrame);
+
+        if (relFrame == 10) {
+            System.out.print("Sun ");
+        } else if (relFrame == 1020) {
+            System.out.print("C64 ");
+        } else if (relFrame == 1780) {
+            System.out.print("CD ");
+        } else if (relFrame == 2099) {
+            System.out.println("EA,RA ");
+        }
+
         writeYear(batch);
     }
 

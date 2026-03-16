@@ -38,7 +38,7 @@ public final class Year1962 extends Year {
         if (fr < 500) {
             simulaCode.forEach(line -> {
                 font1.draw(batch, line, 150, Y.floatValue());
-                Y.addAndGet(Math.round(font1.getCapHeight()) + 5);
+                Y.addAndGet(Math.round(-font1.getCapHeight()) - 5);
             });
         } else arvindKrishna.draw(batch);
         batch.end();
