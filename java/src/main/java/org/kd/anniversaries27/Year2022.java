@@ -28,6 +28,17 @@ public final class Year2022 extends Year {
         batch.begin();
         long relFrame = frame - getStartingFrame();
 
+        if (relFrame == 30) {
+            System.out.print("TwiX ");
+        } else if (relFrame == 560) {
+            System.out.print("BTC drop ");
+        } else if (relFrame == 1100) {
+            System.out.print("Luna ");
+        } else if (relFrame == 1950) {
+            System.out.print("3AC ");
+        } else if (relFrame == 2500)
+            System.out.println("Celsius");
+
         if (relFrame < 350) drawTwix(batch);
         else if (relFrame < 2900)
             drawBitcoin(batch);

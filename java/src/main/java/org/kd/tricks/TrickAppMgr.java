@@ -12,9 +12,11 @@ public class TrickAppMgr extends AnimationManager {
 
         var scene1 = new TrickScene1(50, 50, Gdx.graphics.getWidth() - 50, Gdx.graphics.getHeight() - 50);
         var scene2 = new TrickScene2(50, 50, Gdx.graphics.getWidth() - 50, Gdx.graphics.getHeight() - 50);
+        var scene3 = new StripeLettersScene();
 
         sceneManager.addScene(scene1.id, scene1);
         sceneManager.addScene(scene2.id, scene2);
+        sceneManager.addScene(scene3.id, scene3);
         sceneManager.switchScene("trick-scene1");
     }
 
@@ -30,6 +32,10 @@ public class TrickAppMgr extends AnimationManager {
         var frame = Gdx.graphics.getFrameId();
         if (frame == Global.TRICK2_FRAME) {
             sceneManager.switchScene("trick-scene2");
+            System.out.println("Scene 2 - stars");
+        }else if (frame == Global.TRICK3_FRAME) {
+            sceneManager.switchScene("stripe-letters");
+            System.out.println("Scene 3 - stripe letters");
         }
     }
 }

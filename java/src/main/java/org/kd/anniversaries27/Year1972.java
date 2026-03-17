@@ -13,6 +13,17 @@ public final class Year1972 extends Year {
     public void draw(long frame, SpriteBatch batch) {
         sayItOnce();
 
+        long relFrame = frame - this.startingFrame;
+        //System.out.println(relFrame);
+
+        if (relFrame == 10) {
+            System.out.print("Pichai ");
+        } else if (relFrame == 330) {
+            System.out.print("Prolog ");
+        } else if (relFrame == 650) {
+            System.out.println("Pong ");
+        }
+
         writeYear(batch);
     }
 
