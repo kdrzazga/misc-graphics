@@ -24,16 +24,23 @@ public final class Year1992 extends Year {
 
         batch.begin();
 
-        if (getStartingFrame() + 2000 < frame && frame < getStartingFrame() + 2300) {
+        if (2060 < relFrame && relFrame < 2400) {
             suse.draw(batch);
-            System.out.print("SuSe");
         }
 
         batch.end();
 
-        if (relFrame == 10) {System.out.println();}
+        log(relFrame);
 
         writeYear(batch);
+    }
+
+    private void log(long relFrame) {
+        if (relFrame == 10) {
+            System.out.println();
+        } else if (relFrame == 2060) {
+            System.out.print("SuSe");
+        }
     }
 
 }

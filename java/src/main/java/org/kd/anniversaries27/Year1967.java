@@ -20,13 +20,22 @@ public final class Year1967 extends Year {
 
     @Override
     public void draw(long frame, SpriteBatch batch) {
+        var relFrame = frame - getStartingFrame();
         sayItOnce();
 
         batch.begin();
         satyaNadella.draw(batch);
         batch.end();
 
+        log(relFrame);
         writeYear(batch);
     }
 
+    private void log(long relFrame) {
+        //System.out.println(relFrame);
+
+        if (relFrame == 10) {
+            System.out.println("SatyaNadella ");
+        }
+    }
 }

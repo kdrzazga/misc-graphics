@@ -14,6 +14,12 @@ public final class Year1982 extends Year {
         sayItOnce();
 
         long relFrame = frame - this.startingFrame;
+        log(relFrame);
+
+        writeYear(batch);
+    }
+
+    private static void log(long relFrame) {
         //System.out.println(relFrame);
 
         if (relFrame == 10) {
@@ -25,8 +31,6 @@ public final class Year1982 extends Year {
         } else if (relFrame == 2099) {
             System.out.println("EA,RA ");
         }
-
-        writeYear(batch);
     }
 
 }

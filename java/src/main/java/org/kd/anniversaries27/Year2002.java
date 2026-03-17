@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public final class Year2002 extends Year {
 
-    protected Year2002(long startingFrame) {
+     Year2002(long startingFrame) {
         super("anniversaries27/2002.mp3", startingFrame);
         this.endFrame = 14800;
     }
@@ -14,6 +14,12 @@ public final class Year2002 extends Year {
         sayItOnce();
 
         long relFrame = frame - this.startingFrame;
+        log(relFrame);
+
+        writeYear(batch);
+    }
+
+    private static void log(long relFrame) {
         //System.out.println(relFrame);
 
         if (relFrame == 10) {
@@ -23,8 +29,6 @@ public final class Year2002 extends Year {
         } else if (relFrame == 1890) {
             System.out.println("Battlefield ");
         }
-
-        writeYear(batch);
     }
 
 }

@@ -1,6 +1,5 @@
 package org.kd.anniversaries27;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -9,13 +8,13 @@ public final class Year2017 extends Year {
 
     private final Sprite fortnite;
 
-    protected Year2017(long startingFrame) {
+    Year2017(long startingFrame) {
         super("anniversaries27/2017.mp3", startingFrame);
         this.endFrame = 8300;
 
         var fortniteTexture = new Texture("anniversaries27/pics/2017/Fortnite.jpg");
         fortnite = new Sprite(fortniteTexture);
-        fortnite.setScale(0.8f, 0.75f);
+        fortnite.setScale(0.75f, 0.75f);
     }
 
     @Override
@@ -23,11 +22,19 @@ public final class Year2017 extends Year {
         sayItOnce();
 
         batch.begin();
-        fortnite.setPosition(0, 0);
+        fortnite.setPosition(0, 10);
 
+        log(frame, batch);
+
+        batch.end();
+
+        writeYear(batch);
+    }
+
+    private void log(long frame, SpriteBatch batch) {
         if (frame == 5700) {
             System.out.print("BTC peak ");
-        }else if (frame == 6200) {
+        } else if (frame == 6200) {
             System.out.print("ETH ");
         } else if (frame == 6670) {
             System.out.print("BCH ");
@@ -39,10 +46,6 @@ public final class Year2017 extends Year {
             System.out.println("Fortnite");
         if (frame > this.endFrame - 360)
             fortnite.draw(batch);
-
-        batch.end();
-
-        writeYear(batch);
     }
 
 }

@@ -34,11 +34,11 @@ public final class Year1957 extends Year {
         sayItOnce();
 
         batch.begin();
-        var Y = new AtomicInteger(500);
+        var Y = new AtomicInteger(150);
         if (fr < 500) {
             fortranCode.forEach(line -> {
                 font1.draw(batch, line, 150, Y.floatValue());
-                Y.addAndGet(Math.round(font1.getCapHeight()) + 5);
+                Y.addAndGet(Math.round(-font1.getCapHeight()) - 5);
             });
 
             punchCard.draw(batch);
@@ -49,7 +49,17 @@ public final class Year1957 extends Year {
         }
         batch.end();
 
+        log(fr);
         writeYear(batch);
     }
 
+    private void log(long relFrame) {
+        //System.out.println(relFrame);
+
+        if (relFrame == 1) {
+            System.out.print("von Neuman ");
+        } else if (relFrame == 510) {
+            System.out.println("Fortran");
+        }
+    }
 }

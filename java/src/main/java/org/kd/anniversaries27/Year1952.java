@@ -22,7 +22,7 @@ public final class Year1952 extends Year {
 
     @Override
     public void draw(long frame, SpriteBatch batch) {
-        //System.out.println(frame + " " + (frame - startingFrame));
+        var relFrame = frame - startingFrame;
         var change = startingFrame + 500;
         var pic = (startingFrame < frame && frame < change) ? ibm701 : besm;
         pic.setPosition(104, 109);
@@ -32,6 +32,17 @@ public final class Year1952 extends Year {
         batch.end();
         sayItOnce();
 
+        log(relFrame);
         writeYear(batch);
+    }
+
+    private void log(long relFrame) {
+        //System.out.println(relFrame);
+
+        if (relFrame == 1) {
+            System.out.print("IBM-701 ");
+        } else if (relFrame == 510) {
+            System.out.println("BESM");
+        }
     }
 }
