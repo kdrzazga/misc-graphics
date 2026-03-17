@@ -34,8 +34,8 @@ public final class Year1957 extends Year {
         sayItOnce();
 
         batch.begin();
-        var Y = new AtomicInteger(150);
-        if (fr < 500) {
+        var Y = new AtomicInteger(500);
+        if (fr < 510) {
             fortranCode.forEach(line -> {
                 font1.draw(batch, line, 150, Y.floatValue());
                 Y.addAndGet(Math.round(-font1.getCapHeight()) - 5);

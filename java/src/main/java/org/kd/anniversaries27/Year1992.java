@@ -36,10 +36,25 @@ public final class Year1992 extends Year {
     }
 
     private void log(long relFrame) {
-        if (relFrame == 10) {
-            System.out.println();
-        } else if (relFrame == 2060) {
-            System.out.print("SuSe");
+        //System.out.println(relFrame);
+
+        if (relFrame == 1) {
+            System.out.print("Grace Hopper ");
+        } else if (relFrame == 360) {
+            System.out.print("PC486DX2 ");
+        } else if (relFrame == 710) {
+            System.out.print("AVI ");
+        } else if (relFrame == 1310) {
+            System.out.print("DEC ");
+        } else if (relFrame == 2100) {
+            System.out.print("SuSe ");
+        } else if (relFrame == 2500) {
+            System.out.print("OpenGL ");
+        } else if (relFrame == 3700) {
+            System.out.print("Amigas ");
+        } else if (relFrame == 4400) {
+            System.out.println("MortalKombat");
+
         }
     }
 

@@ -22,16 +22,17 @@ public final class Year2017 extends Year {
         sayItOnce();
 
         batch.begin();
-        fortnite.setPosition(0, 10);
+        fortnite.setPosition(-10, 20);
 
-        log(frame, batch);
+        if (frame > this.endFrame - 360)
+            fortnite.draw(batch);
 
         batch.end();
-
+        log(frame);
         writeYear(batch);
     }
 
-    private void log(long frame, SpriteBatch batch) {
+    private void log(long frame) {
         if (frame == 5700) {
             System.out.print("BTC peak ");
         } else if (frame == 6200) {
@@ -44,8 +45,6 @@ public final class Year2017 extends Year {
             System.out.print("Apple iOS ");
         } else if (frame == this.endFrame - 360)
             System.out.println("Fortnite");
-        if (frame > this.endFrame - 360)
-            fortnite.draw(batch);
     }
 
 }

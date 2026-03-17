@@ -26,9 +26,9 @@ public final class Year2007 extends Year {
             System.out.print("IPhone ");
         } else if (relFrame == 300) {
             System.out.print("WinVista ");
-        } else if (relFrame == 600) {
+        } else if (relFrame == 550) {
             System.out.print("Kindle ");
-        } else if (relFrame == 850) {
+        } else if (relFrame == 800) {
             System.out.print("Amazon Dynamo ");
         } else if (relFrame == 1250) {
             System.out.print("IBM Cloud ");
