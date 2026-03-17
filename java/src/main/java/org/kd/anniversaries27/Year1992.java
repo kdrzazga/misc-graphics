@@ -6,15 +6,18 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public final class Year1992 extends Year {
 
-    private final Sprite suse;
+    private final Sprite suse, dec;
 
     Year1992(long startingFrame) {
         super("anniversaries27/1992.mp3", startingFrame);
         this.endFrame = 22300;
-        var suseTexture = new Texture("anniversaries27/pics/suse.png");
+        var suseTexture = new Texture("anniversaries27/pics/1992/suse.png");
         suse = new Sprite(suseTexture);
         suse.setPosition(204, 201);
         suse.setScale(1.3f, 1.4f);
+
+        var decTexture = new Texture("anniversaries27/pics/1992/DEC.jpg");
+        dec = new Sprite(decTexture);
     }
 
     @Override
@@ -26,6 +29,8 @@ public final class Year1992 extends Year {
 
         if (2060 < relFrame && relFrame < 2400) {
             suse.draw(batch);
+        } else if (1310 < relFrame && relFrame < 2100) {
+            dec.draw(batch);
         }
 
         batch.end();

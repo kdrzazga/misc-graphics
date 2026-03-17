@@ -22,7 +22,7 @@ public final class Year2017 extends Year {
         sayItOnce();
 
         batch.begin();
-        fortnite.setPosition(-10, 20);
+        fortnite.setPosition(-10, 25);
 
         if (frame > this.endFrame - 360)
             fortnite.draw(batch);
