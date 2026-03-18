@@ -1,12 +1,9 @@
-package org.kd.win311;
+package org.kd.common;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import org.kd.common.C64Colors;
-import org.kd.common.C64Helper;
-import org.kd.common.Scene;
 
 public final class Scene1Bios extends Scene {
 
@@ -20,11 +17,11 @@ public final class Scene1Bios extends Scene {
 
     @Override
     public void create() {
-        font = C64Helper.createFont(26, C64Colors.LIGHT_GRAY, "win311/Ac437_Acer710_Mono.ttf");
-        font2 = C64Helper.createFont(26, "win311/Ac437_Acer710_Mono.ttf");
+        font = C64Helper.createFont(26, C64Colors.LIGHT_GRAY, "bios/Ac437_Acer710_Mono.ttf");
+        font2 = C64Helper.createFont(26, "bios/Ac437_Acer710_Mono.ttf");
         batch = new SpriteBatch();
-        awardLogo = new Texture("win311/Energy-Star-logo.png");
-        ludzik = new Texture("win311/ludzik.png");
+        awardLogo = new Texture("bios/Energy-Star-logo.png");
+        ludzik = new Texture("bios/ludzik.png");
     }
 
     @Override

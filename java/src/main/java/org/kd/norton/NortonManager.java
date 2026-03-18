@@ -1,4 +1,4 @@
-package org.kd.win311;
+package org.kd.norton;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
@@ -10,27 +10,26 @@ import org.kd.common.Scene1Bios;
 
 import java.util.Arrays;
 
-public class Win311Manager extends AnimationManager {
+public class NortonManager extends AnimationManager {
 
     protected OrthographicCamera camera;
     protected Viewport viewport;
     protected final String musicPath;
 
-    public Win311Manager(String musicPath) {
+    public NortonManager(String musicPath) {
         this.musicPath = musicPath;
         camera = new OrthographicCamera();
         this.viewport = new FitViewport(1027, 768);
     }
 
-    public void create(Scene4Paintbrush scene4) {
+    public void create() {
         super.create();
         this.createMusic(musicPath);
 
         var scene1 = new Scene1Bios();
-        var scene2 = new Scene2WinLoad();
-        var scene3 = new Scene3ProgramMgr();
+        var scene2 = new Scene2Norton();
 
-        Arrays.asList(scene1, scene2, scene3, scene4).forEach(s -> {
+        Arrays.asList(scene1, scene2).forEach(s -> {
             s.create();
             sceneManager.addScene(s.id, s);
         });
@@ -38,11 +37,6 @@ public class Win311Manager extends AnimationManager {
         tune.setLooping(true);
     }
 
-    @Override
-    public void create() {
-        var scene4 = new Scene4Paintbrush();
-        this.create(scene4);
-    }
 
     @Override
     public void render() {
@@ -55,26 +49,7 @@ public class Win311Manager extends AnimationManager {
         sceneManager.update(delta);
         sceneManager.render();
 
-        if (frame == Scene2WinLoad.START_FRAME)
-            sceneManager.switchScene(Scene2WinLoad.ID);
-        if (frame == Scene3ProgramMgr.START_FRAME)
-            sceneManager.switchScene(Scene3ProgramMgr.ID);
-        if (frame == Scene3ProgramMgr.PLAY_MUSIC_FRAME)
-            tune.play();
-        if (frame == Scene4Paintbrush.START_FRAME)
-            sceneManager.switchScene(Scene4Paintbrush.ID);
-    }
-
-    @Override
-    public void dispose() {
-        batch.dispose();
-        tune.dispose();
-        sceneManager.disposeScenes();
-    }
-
-    @Override
-    public void resize(int width, int height) {
-        super.resize(width, height);
-        viewport.update(width, height, true);
+        if (frame == Scene2Norton.START_FRAME)
+            sceneManager.switchScene(Scene2Norton.ID);
     }
 }
