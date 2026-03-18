@@ -56,10 +56,10 @@ public final class Year1957 extends Year {
     private void log(long relFrame) {
         //System.out.println(relFrame);
 
-        if (relFrame == 1) {
-            System.out.print("von Neuman ");
+        if (relFrame == 1) {// wrong values
+            System.out.println("von Neuman");
         } else if (relFrame == 510) {
-            System.out.println("Fortran");
+            System.out.print("Fortran ");// wrong values
         }
     }
 }

@@ -108,7 +108,7 @@
                     <exclude>winter/**</exclude>
                     <exclude>stickfighters/**</exclude>
                     <exclude>spritesheets/**</exclude>
-                    <!-<exclude>good-job/**</exclude>-->
+                    <exclude>good-job/**</exclude>-->
 
                 </excludes>
             </resource>

@@ -24,7 +24,7 @@ public final class Year1962 extends Year {
 
         var arvindKrishnaTexture = new Texture("anniversaries27/pics/1962/ArvindKrishna.jpg");
         arvindKrishna = new Sprite(arvindKrishnaTexture);
-        arvindKrishna.setPosition(-10, 55);
+        arvindKrishna.setPosition(0, 0);
         arvindKrishna.setScale(0.65f, .65f);
     }
 
@@ -51,13 +51,13 @@ public final class Year1962 extends Year {
         //System.out.println(relFrame);
 
         if (relFrame == 1) {
-            System.out.print("ArvindKrishna ");
+            System.out.println("ArvindKrishna ");
         } else if (relFrame == 2170) {
             System.out.print("Simula ");
         } else if (relFrame == 1870) {
             System.out.print("Fortran4 ");
         } else if (relFrame == 1650) {
-            System.out.println("Ural+Minsk ");
+            System.out.print("Ural+Minsk ");
         }
     }
 }
