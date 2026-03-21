@@ -6,15 +6,19 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public final class Year1992 extends Year {
 
-    private final Sprite suse;
+    private final Sprite suse, dec;
 
     Year1992(long startingFrame) {
         super("anniversaries27/1992.mp3", startingFrame);
         this.endFrame = 22300;
-        var suseTexture = new Texture("anniversaries27/pics/suse.png");
+        var suseTexture = new Texture("anniversaries27/pics/1992/suse.png");
         suse = new Sprite(suseTexture);
         suse.setPosition(204, 201);
-        suse.setScale(1.3f, 1.4f);
+        suse.setScale(1.3f, 1.3f);
+
+        var decTexture = new Texture("anniversaries27/pics/1992/DEC.jpg");
+        dec = new Sprite(decTexture);
+        dec.setPosition(204, 201);
     }
 
     @Override
@@ -24,16 +28,40 @@ public final class Year1992 extends Year {
 
         batch.begin();
 
-        if (getStartingFrame() + 2000 < frame && frame < getStartingFrame() + 2300) {
+        if (2060 < relFrame && relFrame < 2400) {
             suse.draw(batch);
-            System.out.print("SuSe");
+        } else if (1310 < relFrame && relFrame < 2100) {
+            dec.draw(batch);
         }
 
         batch.end();
 
-        if (relFrame == 10) {System.out.println();}
+        log(relFrame);
 
         writeYear(batch);
+    }
+
+    private void log(long relFrame) {
+        //System.out.println(relFrame);
+
+        if (relFrame == 1) {
+            System.out.print("Grace Hopper ");
+        } else if (relFrame == 360) {
+            System.out.print("PC486DX2 ");
+        } else if (relFrame == 710) {
+            System.out.print("AVI ");
+        } else if (relFrame == 1310) {
+            System.out.print("DEC ");
+        } else if (relFrame == 2100) {
+            System.out.print("SuSe ");
+        } else if (relFrame == 2500) {
+            System.out.print("OpenGL ");
+        } else if (relFrame == 3700) {
+            System.out.print("Amigas ");
+        } else if (relFrame == 4400) {
+            System.out.println("MortalKombat");
+
+        }
     }
 
 }

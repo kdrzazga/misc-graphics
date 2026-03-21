@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import org.kd.common.AnimationManager;
+import org.kd.common.Scene1Bios;
 
 import java.util.Arrays;
 

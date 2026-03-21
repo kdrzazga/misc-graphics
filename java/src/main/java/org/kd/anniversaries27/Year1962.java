@@ -24,8 +24,8 @@ public final class Year1962 extends Year {
 
         var arvindKrishnaTexture = new Texture("anniversaries27/pics/1962/ArvindKrishna.jpg");
         arvindKrishna = new Sprite(arvindKrishnaTexture);
-        arvindKrishna.setPosition(0, 55);
-        arvindKrishna.setScale(0.75f, .75f);
+        arvindKrishna.setPosition(0, 0);
+        arvindKrishna.setScale(0.65f, .65f);
     }
 
     @Override
@@ -34,7 +34,7 @@ public final class Year1962 extends Year {
         sayItOnce();
 
         batch.begin();
-        var Y = new AtomicInteger(300);
+        var Y = new AtomicInteger(600);
         if (fr < 500) {
             simulaCode.forEach(line -> {
                 font1.draw(batch, line, 150, Y.floatValue());
@@ -43,6 +43,21 @@ public final class Year1962 extends Year {
         } else arvindKrishna.draw(batch);
         batch.end();
 
+        log(fr);
         writeYear(batch);
+    }
+
+    private void log(long relFrame) {
+        //System.out.println(relFrame);
+
+        if (relFrame == 1) {
+            System.out.println("ArvindKrishna ");
+        } else if (relFrame == 2170) {
+            System.out.print("Simula ");
+        } else if (relFrame == 1870) {
+            System.out.print("Fortran4 ");
+        } else if (relFrame == 1650) {
+            System.out.print("Ural+Minsk ");
+        }
     }
 }

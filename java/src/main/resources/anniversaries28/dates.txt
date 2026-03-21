@@ -34,6 +34,7 @@ Besta (Беста) is a Soviet Unix-based graphics workstation. Starting in 1988
 Agat (1983), a Soviet clone of the Apple II.
 DVK (Russian: ДВК, Диалоговый вычислительный комплекс, Interactive Computing Complex) is a Soviet PDP-11-compatible personal computer. It was designed by the Research Institute of Precision Technology in Zelenograd.
 Capcom
+January 19, 1983 - Apple LISA
 
 1973:
 Sergey Brin born August 21, 1973

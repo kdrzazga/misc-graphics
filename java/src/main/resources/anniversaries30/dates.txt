@@ -25,6 +25,8 @@ Altavista search engine is launched
 Languages: Ruby, PHP, JavaScript,
 DirectX     Initial Release: 1995    Developed By: Microsoft, response for OpenGL
 
+eBay company founded on 	September 3, 1995
+
 Heroes of MIght and Magic
 Internet Explorer browser is released.
 
