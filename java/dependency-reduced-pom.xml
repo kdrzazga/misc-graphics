@@ -23,6 +23,7 @@
           <exclude>winter/**</exclude>
           <exclude>stickfighters/**</exclude>
           <exclude>spritesheets/**</exclude>
+          <exclude>good-job/**</exclude>
         </excludes>
       </resource>
     </resources>
@@ -43,7 +44,7 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>org.kd.goodjob.GoodJobMrJobs</mainClass>
+                  <mainClass>org.kd.talkingheads.Demo</mainClass>
                 </transformer>
               </transformers>
             </configuration>
@@ -67,8 +68,8 @@
     </dependency>
   </dependencies>
   <properties>
-    <maven.compiler.target>11</maven.compiler.target>
-    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>24</maven.compiler.target>
+    <maven.compiler.source>24</maven.compiler.source>
     <gdx.version>1.10.0</gdx.version>
   </properties>
 </project>

@@ -32,15 +32,14 @@ public class SceneTramielLaugh extends BasicC64Screen {
         // Initialize the VideoPlayer
         videoPlayer = VideoPlayerCreator.createVideoPlayer();
 
-        videoPlayer.setOnCompletionListener(new VideoPlayer.CompletionListener() {
-            @Override
-            public void onCompletionListener(FileHandle fileHandle) {
-                System.out.println("Video ended.");
-            }
-        });
+        videoPlayer.setOnCompletionListener(_ -> System.out.println("Video ended."));
 
         try {
-            videoPlayer.play(Gdx.files.local("talkingheads/TramielHaHa.mp4"));
+            String path = System.getProperty("user.dir") + "\\java\\src\\main\\resources\\talkingheads\\";
+            System.out.println(path);
+            var fh = new FileHandle(path +"TramielHaHa.mp4");
+            //System.out.println(fh.exists());
+            videoPlayer.play(fh);
         } catch (FileNotFoundException e) {
             Gdx.app.error("gdx-video","No Tramiel video");
         }
