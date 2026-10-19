@@ -44,6 +44,12 @@
             <artifactId>gdx-box2d</artifactId>
             <version>${gdx.version}</version>
         </dependency>
+        <!-- Pure-Java MP4/H.264 decoder, works from inside the shaded JAR -->
+        <dependency>
+            <groupId>org.jcodec</groupId>
+            <artifactId>jcodec</artifactId>
+            <version>0.2.5</version>
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

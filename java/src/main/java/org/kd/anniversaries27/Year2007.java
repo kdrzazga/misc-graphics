@@ -6,7 +6,7 @@ public final class Year2007 extends Year {
 
      Year2007(long startingFrame) {
         super("anniversaries27/2007.mp3", startingFrame);
-        this.endFrame = 12500;
+        this.endFrame = startingFrame + 1982; // 2007.mp3 lasts 33.024 s at 60 fps
     }
 
     @Override

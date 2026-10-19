@@ -16,7 +16,7 @@ public final class Year1957 extends Year {
 
     Year1957(long startingFrame) {
         super("anniversaries27/1957.mp3", startingFrame);
-        this.endFrame = 29900 + 420 + 2580 + 28 * 60;//37300;
+        this.endFrame = startingFrame + 1692; // 1957.mp3 lasts 28.200 s at 60 fps
 
         var punchCardTexture = new Texture("anniversaries27/pics/1957/punch-card.jpg");
         punchCard = new Sprite(punchCardTexture);
@@ -29,13 +29,13 @@ public final class Year1957 extends Year {
 
     @Override
     public void draw(long frame, SpriteBatch batch) {
-        var fr = getEndFrame() - frame;
+        var relFrame = frame - startingFrame;
 
         sayItOnce();
 
         batch.begin();
         var Y = new AtomicInteger(500);
-        if (fr < 510) {
+        if (relFrame > 1170) {
             fortranCode.forEach(line -> {
                 font1.draw(batch, line, 150, Y.floatValue());
                 Y.addAndGet(Math.round(-font1.getCapHeight()) - 5);
@@ -49,16 +49,16 @@ public final class Year1957 extends Year {
         }
         batch.end();
 
-        log(fr);
+        log(relFrame);
         writeYear(batch);
     }
 
     private void log(long relFrame) {
         //System.out.println(relFrame);
 
-        if (relFrame == 1) {// wrong values
+        if (relFrame == 1679) {
             System.out.println("von Neuman");
-        } else if (relFrame == 510) {
+        } else if (relFrame == 1170) {
             System.out.print("Fortran ");// wrong values
         }
     }

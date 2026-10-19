@@ -7,10 +7,11 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public final class Year2017 extends Year {
 
     private final Sprite fortnite;
+    private final long fortniteRelFrame = 2440; // "Fortnite" part of the speech
 
     Year2017(long startingFrame) {
         super("anniversaries27/2017.mp3", startingFrame);
-        this.endFrame = 8300;
+        this.endFrame = startingFrame + 2637; // 2017.mp3 lasts 43.944 s at 60 fps
 
         var fortniteTexture = new Texture("anniversaries27/pics/2017/Fortnite.jpg");
         fortnite = new Sprite(fortniteTexture);
@@ -24,26 +25,27 @@ public final class Year2017 extends Year {
         batch.begin();
         fortnite.setPosition(-10, 27);
 
-        if (frame > this.endFrame - 360)
+        long relFrame = frame - this.startingFrame;
+        if (relFrame > fortniteRelFrame)
             fortnite.draw(batch);
 
         batch.end();
-        log(frame);
+        log(relFrame);
         writeYear(batch);
     }
 
-    private void log(long frame) {
-        if (frame == 5700) {
+    private void log(long relFrame) {
+        if (relFrame == 200) {
             System.out.print("BTC peak ");
-        } else if (frame == 6200) {
+        } else if (relFrame == 700) {
             System.out.print("ETH ");
-        } else if (frame == 6670) {
+        } else if (relFrame == 1170) {
             System.out.print("BCH ");
-        } else if (frame == 6800) {
+        } else if (relFrame == 1300) {
             System.out.print("Alphabet ");
-        } else if (frame == 7200) {
+        } else if (relFrame == 1700) {
             System.out.print("Apple iOS ");
-        } else if (frame == this.endFrame - 360)
+        } else if (relFrame == fortniteRelFrame)
             System.out.println("Fortnite");
     }
 

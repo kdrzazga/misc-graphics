@@ -10,7 +10,7 @@ public final class Year1977 extends Year {
 
     Year1977(long startingFrame) {
         super("anniversaries27/1977.mp3", startingFrame);
-        this.endFrame = 28500;
+        this.endFrame = startingFrame + 754; // 1977.mp3 lasts 12.552 s at 60 fps
 
         var appleTexture = new Texture("apple2.jpg");
         apple = new Sprite(appleTexture);

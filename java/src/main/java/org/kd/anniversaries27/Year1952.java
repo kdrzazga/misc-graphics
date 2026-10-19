@@ -10,7 +10,7 @@ public final class Year1952 extends Year {
 
     Year1952(long startingFrame) {
         super("anniversaries27/1952.mp3", startingFrame);
-        this.endFrame = 29900 + 420 + 2580 + 28 * 60 + 35 * 60;//39700;
+        this.endFrame = startingFrame + 2135; // 1952.mp3 lasts 35.568 s at 60 fps
 
         var besmTexture = new Texture("anniversaries27/pics/1952/BESM-1-computer-on-the-ground-floor-of-IPMCE-building-in-Moscow-251888155.jpg");
         besm = new Sprite(besmTexture);

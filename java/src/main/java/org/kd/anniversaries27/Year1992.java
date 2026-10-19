@@ -10,7 +10,7 @@ public final class Year1992 extends Year {
 
     Year1992(long startingFrame) {
         super("anniversaries27/1992.mp3", startingFrame);
-        this.endFrame = 22300;
+        this.endFrame = startingFrame + 4888; // 1992.mp3 lasts 81.456 s at 60 fps
         var suseTexture = new Texture("anniversaries27/pics/1992/suse.png");
         suse = new Sprite(suseTexture);
         suse.setPosition(204, 201);
