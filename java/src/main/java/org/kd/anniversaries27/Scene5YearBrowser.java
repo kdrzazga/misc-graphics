@@ -68,6 +68,10 @@ public class Scene5YearBrowser extends Scene4Paintbrush {
         }
     }
 
+    public long getEndFrame() {
+        return year1952.getEndFrame();
+    }
+
     public List<Year> getAllYears() {
         return Arrays.asList(this.year2022, this.year2017, this.year2012, this.year2007, this.year2002,
                 year1997, year1992, year1987, year1982, year1977, year1972, year1967, year1962, year1957

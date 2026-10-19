@@ -10,11 +10,8 @@
         <directory>d:/code/misc-graphics/java/src/main/resources</directory>
         <excludes>
           <exclude>dream210/**</exclude>
-          <exclude>win311/**</exclude>
           <exclude>fake-demo/**</exclude>
           <exclude>hellogdx/**</exclude>
-          <exclude>anniversaries/**</exclude>
-          <exclude>anniversaries27/**</exclude>
           <exclude>anniversaries28/**</exclude>
           <exclude>anniversaries29/**</exclude>
           <exclude>anniversaries30/**</exclude>
@@ -23,6 +20,7 @@
           <exclude>winter/**</exclude>
           <exclude>stickfighters/**</exclude>
           <exclude>spritesheets/**</exclude>
+          <exclude>good-job/**</exclude>
         </excludes>
       </resource>
     </resources>
@@ -43,7 +41,7 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>org.kd.goodjob.GoodJobMrJobs</mainClass>
+                  <mainClass>org.kd.anniversaries27.Anniversaries27Demo</mainClass>
                 </transformer>
               </transformers>
             </configuration>
@@ -67,8 +65,8 @@
     </dependency>
   </dependencies>
   <properties>
-    <maven.compiler.target>11</maven.compiler.target>
-    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>24</maven.compiler.target>
+    <maven.compiler.source>24</maven.compiler.source>
     <gdx.version>1.10.0</gdx.version>
   </properties>
 </project>
