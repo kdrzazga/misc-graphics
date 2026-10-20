@@ -58,6 +58,14 @@ public class VideoClip {
             batch.draw(texture, x, y, drawWidth, drawHeight);
     }
 
+    /** Shows the first frame as a still, without starting playback; draw() then plays from that frame. */
+    public void drawFirstFrame(SpriteBatch batch) {
+        if (texture == null && !finished)
+            decodeNextFrame();
+        if (texture != null)
+            batch.draw(texture, x, y, drawWidth, drawHeight);
+    }
+
     public boolean isFinished() {
         return finished;
     }
