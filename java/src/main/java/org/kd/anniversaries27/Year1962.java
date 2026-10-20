@@ -1,15 +1,15 @@
 package org.kd.anniversaries27;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import org.kd.common.VideoClip;
 
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public final class Year1962 extends Year {
 
-    private final Sprite arvindKrishna;
+    private final VideoClip krishnaInterview;
+    private final long simulaFrame = 360; // right after the 6 s video, at the "Simula" part of the speech
 
     private final List<String> simulaCode = List.of("BEGIN",
             "INTEGER year;",
@@ -22,10 +22,8 @@ public final class Year1962 extends Year {
         super("anniversaries27/1962.mp3", startingFrame);
         this.endFrame = startingFrame + 2623; // 1962.mp3 lasts 43.704 s at 60 fps
 
-        var arvindKrishnaTexture = new Texture("anniversaries27/pics/1962/ArvindKrishna.jpg");
-        arvindKrishna = new Sprite(arvindKrishnaTexture);
-        arvindKrishna.setPosition(0, 0);
-        arvindKrishna.setScale(0.65f, .65f);
+        // 640x360 video fitted to the canvas width: 797x448, centred vertically
+        krishnaInterview = new VideoClip("anniversaries27/video/krishna.mp4", 30, 104, 160, 797, 448, false);
     }
 
     @Override
@@ -34,13 +32,15 @@ public final class Year1962 extends Year {
         sayItOnce();
 
         batch.begin();
-        var Y = new AtomicInteger(600);
-        if (relFrame > 2080) {
+        if (relFrame < simulaFrame) {
+            krishnaInterview.draw(batch);
+        } else {
+            var Y = new AtomicInteger(600);
             simulaCode.forEach(line -> {
                 font1.draw(batch, line, 150, Y.floatValue());
                 Y.addAndGet(Math.round(-font1.getCapHeight()) - 5);
             });
-        } else arvindKrishna.draw(batch);
+        }
         batch.end();
 
         log(relFrame);
@@ -50,14 +50,14 @@ public final class Year1962 extends Year {
     private void log(long relFrame) {
         //System.out.println(relFrame);
 
-        if (relFrame == 2579) {
-            System.out.println("ArvindKrishna ");
+        if (relFrame == 1) {
+            System.out.print("ArvindKrishna ");
         } else if (relFrame == 410) {
             System.out.print("Simula ");
         } else if (relFrame == 710) {
             System.out.print("Fortran4 ");
         } else if (relFrame == 930) {
-            System.out.print("Ural+Minsk ");
+            System.out.println("Ural+Minsk ");
         }
     }
 }
