@@ -18,7 +18,6 @@ import org.kd.win311.Win311Manager;
 
 public class Win311IntroManager extends Win311Manager {
 
-    private final long outroDurationFrames = 1320; // outro used to end at frame 38000, 1320 frames after 1952
     private final int demoWidth, demoHeight;
 
     private Scene5YearBrowser yearBrowser;
@@ -73,7 +72,7 @@ public class Win311IntroManager extends Win311Manager {
             runScene(yearBrowser, 0.3f);
         } else if (yearBrowser != null && frame == yearBrowser.getEndFrame()) {
             System.out.println(Helper.countElapsedTime() + " OUTRO scene started [frame " + frame + "]");
-            var scene6 = new Scene6Outro(outroDurationFrames);
+            var scene6 = new Scene6Outro();
             runScene(scene6, 1f);
         }
     }

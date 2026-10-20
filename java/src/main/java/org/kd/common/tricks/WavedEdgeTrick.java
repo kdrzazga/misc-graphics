@@ -58,6 +58,12 @@ public class WavedEdgeTrick extends GradientRectangleTrick {
         shapeRenderer.end();
     }
 
+    /** True once the waves from both sides meet everywhere; the narrowest wave in drawEdgeWaves() is 100 - 50 - 20 = 30 px. */
+    public boolean coversArea() {
+        float narrowestWave = 30;
+        return 2 * (narrowestWave + xExit) >= x2 - x1;
+    }
+
     private boolean conditionalExit() {
 
         if (this.xExit > (float) Gdx.graphics.getWidth() / 2)
