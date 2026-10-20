@@ -1,16 +1,36 @@
 package org.kd.anniversaries27;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Rectangle;
 import org.kd.common.AnimatedSpriteV;
 import org.kd.common.VideoClip;
 
 public final class Year2022 extends Year {
 
+    private final Rectangle canvas = new Rectangle(104, 112, 797, 543);
+
+    private final long bitcoinFrame = 350;
+    private final long lunaFrame = 1100;
+    private final long threeArrowsFrame = 1950;
+
+    // The articles appear when the animation under them has looped once
+    private final long bitcoinCrashLoopFrames = 485; // 194 video frames at 24 fps
+    private final int lunaFrameCount = 50;
+    private final float lunaFrameDuration = 0.21f;
+    private final long lunaLoopFrames = Math.round(lunaFrameCount * lunaFrameDuration * 60);
+    private final long bitcoinFirstArticleFrame = bitcoinFrame + bitcoinCrashLoopFrames / 2; // 2nd half of the 1st loop
+    private final long bitcoinArticleFrame = bitcoinFrame + bitcoinCrashLoopFrames;
+    private final long lunaArticleFrame = lunaFrame + lunaLoopFrames;
+    private final float articleOpacity = 0.8f; // 20% transparent
+    private final long articleFadeInFrames = 15;
+
     private final AnimatedSpriteV twiX, luna;
     private final VideoClip bitcoinCrash;
     private final Sprite gradient;
+    private final FittedPicture bitcoinFirstArticle, bitcoinArticle, lunaArticle;
 
     Year2022(long startingFrame) {
         super("anniversaries27/2022.mp3", startingFrame);
@@ -19,7 +39,10 @@ public final class Year2022 extends Year {
         // 432x304 video scaled to the canvas height (543), centred horizontally in the 797 px wide canvas.
         // The file plays forward then backward (baked in with ffmpeg reverse), so looping it gives a ping-pong.
         bitcoinCrash = new VideoClip("anniversaries27/video/BitcoinCrash.mp4", 24, 117, 112, 771, 543, true);
-        luna = new AnimatedSpriteV("anniversaries27/pics/luna.png", 50, 0.21f, 0, 0);
+        luna = new AnimatedSpriteV("anniversaries27/pics/luna.png", lunaFrameCount, lunaFrameDuration, 0, 0);
+        bitcoinFirstArticle = new FittedPicture("anniversaries27/pics/BTCdropArticle2.png", canvas, Color.BLACK);
+        bitcoinArticle = new FittedPicture("anniversaries27/pics/BTCdropArticle.png", canvas, Color.BLACK);
+        lunaArticle = new FittedPicture("anniversaries27/pics/LunaCrashArticle.png", canvas, Color.BLACK);
         var gradientTexture = new Texture("gradient-black.png");
         gradient = new Sprite(gradientTexture);
         gradient.setPosition(104, 212 + 125 - 13);
@@ -34,12 +57,15 @@ public final class Year2022 extends Year {
 
         log(relFrame);
 
-        if (relFrame < 350) drawTwix(batch);
-        else if (relFrame < 1100)
+        if (relFrame < bitcoinFrame) drawTwix(batch);
+        else if (relFrame < lunaFrame) {
             bitcoinCrash.draw(batch);
-        else if (relFrame < 1950)
+            drawArticle(batch, bitcoinFirstArticle, relFrame, bitcoinFirstArticleFrame, bitcoinArticleFrame);
+            drawArticle(batch, bitcoinArticle, relFrame, bitcoinArticleFrame, lunaFrame);
+        } else if (relFrame < threeArrowsFrame) {
             drawLuna(batch);
-        else
+            drawArticle(batch, lunaArticle, relFrame, lunaArticleFrame, threeArrowsFrame);
+        } else
             gradient.draw(batch);
 
         batch.end();
@@ -59,6 +85,14 @@ public final class Year2022 extends Year {
             System.out.print("3AC ");
         } else if (relFrame == 2500)
             System.out.println("Celsius");
+    }
+
+    /** News article over the looping animation, from appearFrame until disappearFrame, partly transparent. */
+    private void drawArticle(SpriteBatch batch, FittedPicture article, long relFrame, long appearFrame, long disappearFrame) {
+        if (relFrame < appearFrame || relFrame >= disappearFrame)
+            return;
+        float fadeIn = Math.min(1f, (relFrame - appearFrame) / (float) articleFadeInFrames);
+        article.drawWhole(batch, articleOpacity * fadeIn);
     }
 
     private void drawTwix(SpriteBatch batch) {

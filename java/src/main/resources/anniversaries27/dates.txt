@@ -42,7 +42,7 @@ Amazon introduced the Kindle e-reader in November ...
 and aslo  of first NoSQL databases (based on key-value pairs instead SQL) named Amazon Dynamo.
 IBM Cloud was released (as BlueMix), and rebranded in 2017
 
-THe WItcher: OCotober 2007
+THe WItcher: October 2007
 ------------
 In 2002 Edsger  Dijkstra died. He was a renown Dutch scientist and a pioneer of computer science.
     Among his achievements there are: development of Dijkstra's Algorithm for shortest path in graphs.

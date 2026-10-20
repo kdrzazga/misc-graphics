@@ -53,6 +53,12 @@ final class FittedPicture {
         shapeRenderer.end();
     }
 
+    /** Where a part of the picture lands on screen (origin bottom-left). */
+    Rectangle screenRectangleOf(Part part) {
+        return new Rectangle(left + part.x() * scale, top - (part.y() + part.height()) * scale,
+                part.width() * scale, part.height() * scale);
+    }
+
     void drawWhole(SpriteBatch batch, float alpha) {
         drawPart(batch, 0, 0, texture.getWidth(), texture.getHeight(), alpha);
     }

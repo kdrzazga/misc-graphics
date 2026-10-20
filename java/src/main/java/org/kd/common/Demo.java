@@ -13,7 +13,8 @@ public abstract class Demo {
 
     protected static void analyzeArguments(String[] args) {
         Set<String> argsSet = new HashSet<>(List.of(args));
-        fullscreen = !(argsSet.contains("window") || argsSet.contains("--window") || argsSet.contains("nofullscreen"));
+        fullscreen = !(argsSet.contains("w") || argsSet.contains("window") || argsSet.contains("windowed")
+                || argsSet.contains("--window") || argsSet.contains("nofullscreen"));
         logging = !(argsSet.contains("no-logging") || argsSet.contains("nologging") || argsSet.contains("no-log"));
     }
 
