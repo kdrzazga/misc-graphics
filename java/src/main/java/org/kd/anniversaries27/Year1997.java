@@ -6,6 +6,9 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import org.kd.common.VideoClip;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public final class Year1997 extends Year {
 
     private final Rectangle canvas = new Rectangle(104, 112, 797, 543);
@@ -17,6 +20,7 @@ public final class Year1997 extends Year {
     private final long yahooFrame = seconds(4);           // right after the 3.97 s Windows 98 video
     private final long postgresqlFrame = seconds(10);
     private final long kasperskyFrame = seconds(17);
+    private final List<Long> founderFrames = List.of(seconds(22), seconds(24), seconds(26));
     private final long tibiaFrame = seconds(30);
     private final long tibiaPlayFrame = seconds(30.65);   // 3.7 s video centred in its 5 s slot
     private final long gtaFrame = seconds(35);
@@ -25,8 +29,15 @@ public final class Year1997 extends Year {
     private final long fadeInFrames = 15;
     private final long gradualFadeInFrames = seconds(2);
 
+    // Kaspersky founders in a row under the logo, left to right
+    private final List<String> founderPictures = List.of("YevhenKaspersky.jpg", "NatalyaKaspersky.jpg", "De-Monderik.jpg");
+    private final float founderSize = 250;
+    private final float founderGap = 15;
+    private final float foundersBottom = 170;
+
     private final VideoClip windows98, tibia, gta;
     private final FittedPicture yahooMail, postgresql, kaspersky;
+    private final List<FittedPicture> founders = new ArrayList<>();
 
     protected Year1997(long startingFrame) {
         super("anniversaries27/1997.mp3", startingFrame);
@@ -40,6 +51,13 @@ public final class Year1997 extends Year {
         yahooMail = new FittedPicture(picturesPath + "yahoo-mail.png", canvas, Color.WHITE);
         postgresql = new FittedPicture(picturesPath + "postgresql.png", canvas, Color.WHITE);
         kaspersky = new FittedPicture(picturesPath + "kaspersky.png", kasperskyArea, Color.WHITE);
+
+        float rowWidth = founderPictures.size() * founderSize + (founderPictures.size() - 1) * founderGap;
+        float rowLeft = canvas.x + (canvas.width - rowWidth) / 2;
+        for (int i = 0; i < founderPictures.size(); i++) {
+            var area = new Rectangle(rowLeft + i * (founderSize + founderGap), foundersBottom, founderSize, founderSize);
+            founders.add(new FittedPicture(picturesPath + founderPictures.get(i), area, Color.WHITE));
+        }
     }
 
     @Override
@@ -55,6 +73,7 @@ public final class Year1997 extends Year {
             drawOnWhite(batch, postgresql, fadeIn(relFrame, postgresqlFrame, gradualFadeInFrames));
         } else if (relFrame < tibiaFrame) {
             drawOnWhite(batch, kaspersky, fadeIn(relFrame, kasperskyFrame, fadeInFrames));
+            drawFounders(batch, relFrame);
         } else if (relFrame < gtaFrame) {
             drawVideo(batch, tibia, relFrame, tibiaPlayFrame);
         } else {
@@ -72,6 +91,17 @@ public final class Year1997 extends Year {
             video.drawFirstFrame(batch);
         else
             video.draw(batch);
+        batch.end();
+    }
+
+    /** Each founder joins the row at its own time. */
+    private void drawFounders(SpriteBatch batch, long relFrame) {
+        batch.begin();
+        for (int i = 0; i < founders.size(); i++) {
+            long appearFrame = founderFrames.get(i);
+            if (relFrame >= appearFrame)
+                founders.get(i).drawWhole(batch, fadeIn(relFrame, appearFrame, fadeInFrames));
+        }
         batch.end();
     }
 

@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.HdpiUtils;
 import com.badlogic.gdx.math.Rectangle;
+import org.kd.common.VideoClip;
 
 public final class Year1987 extends Year {
 
@@ -24,19 +25,33 @@ public final class Year1987 extends Year {
     private final float chineseNameStartWidth = 30;
     private final float chineseNameEndWidth = 3000;
 
+    // Perl source typed letter by letter, then Dizzy for the last 4 s of the year
+    private final long yearFrames = 2320;
+    private final long perlFrame = seconds(24);
+    private final long perlTypingFrames = seconds(8.5);
+    private final long dizzyFrame = yearFrames - seconds(4);
+    private final float codeMargin = 20;
+    private final Color terminalGreen = new Color(0.35f, 1f, 0.35f, 1);
+
     private final TsmcLogoAnimation tsmc;
     private final FittedPicture morrisChang;
     private final Texture chineseName;
+    private final TypedCode perlCode;
+    private final VideoClip dizzy;
 
     Year1987(long startingFrame) {
         super("anniversaries27/1987.mp3", startingFrame);
-        this.endFrame = startingFrame + 2320; // 1987.mp3 lasts 38.664 s at 60 fps
+        this.endFrame = startingFrame + yearFrames; // 1987.mp3 lasts 38.664 s at 60 fps
 
         tsmc = new TsmcLogoAnimation(canvas);
         morrisChang = new FittedPicture("anniversaries27/pics/1987/chang.jpg", canvas, Color.BLACK, true);
         // white image rendered once from Microsoft JhengHei Bold
         chineseName = new Texture("anniversaries27/pics/1987/glyphs/zhang-zhongmou.png");
         chineseName.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        // larry.pl is runnable and prints the sentence about Perl and Larry Wall
+        perlCode = new TypedCode("anniversaries27/code/larry.pl", 15, 22, terminalGreen, perlTypingFrames);
+        // 4 s, 640x360 video fitted to the canvas width: 797x448, centred vertically
+        dizzy = new VideoClip("anniversaries27/video/Dizzy1.mp4", 30, 104, 160, 797, 448, false);
     }
 
     @Override
@@ -50,6 +65,10 @@ public final class Year1987 extends Year {
             drawMorrisChang(batch, relFrame);
         if (chineseNameFrame <= relFrame && relFrame < chineseNameEndFrame)
             drawChineseName(batch, relFrame);
+        if (perlFrame <= relFrame && relFrame < dizzyFrame)
+            perlCode.draw(batch, canvas.x + codeMargin, canvas.y + canvas.height - codeMargin, relFrame - perlFrame);
+        if (relFrame >= dizzyFrame)
+            drawDizzy(batch);
 
         log(relFrame);
 
@@ -61,6 +80,12 @@ public final class Year1987 extends Year {
         float alpha = Math.min(1f, (relFrame - morrisChangFrame) / (float) crossFadeFrames);
         batch.begin();
         morrisChang.drawWhole(batch, alpha);
+        batch.end();
+    }
+
+    private void drawDizzy(SpriteBatch batch) {
+        batch.begin();
+        dizzy.draw(batch);
         batch.end();
     }
 
