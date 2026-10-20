@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.FrameBuffer;
+import org.kd.common.DrawnMousePointer;
 import org.kd.common.Helper;
 import org.kd.common.Letterbox;
 import org.kd.common.Scene;
@@ -24,6 +25,7 @@ public class Win311IntroManager extends Win311Manager {
     private Graphics screenGraphics;
     private FrameBuffer demoFrame;
     private SpriteBatch screenBatch;
+    private DrawnMousePointer drawnPointer; // full screen only
 
     /** The demo is drawn at demoWidth x demoHeight and scaled to the screen, keeping its proportions. */
     public Win311IntroManager(int demoWidth, int demoHeight) {
@@ -41,6 +43,8 @@ public class Win311IntroManager extends Win311Manager {
         demoFrame = new FrameBuffer(Pixmap.Format.RGB888, demoWidth, demoHeight, false);
         demoFrame.getColorBufferTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         screenBatch = new SpriteBatch();
+        if (screenGraphics.isFullscreen())
+            drawnPointer = new DrawnMousePointer();
 
         super.create(new Scene4Paint27());
     }
@@ -49,6 +53,7 @@ public class Win311IntroManager extends Win311Manager {
     public void render() {
         demoFrame.begin();
         renderDemoFrame();
+        drawPointer();
         demoFrame.end(0, 0, screenGraphics.getBackBufferWidth(), screenGraphics.getBackBufferHeight());
 
         drawDemoFrameOnScreen();
@@ -71,6 +76,15 @@ public class Win311IntroManager extends Win311Manager {
             var scene6 = new Scene6Outro(outroDurationFrames);
             runScene(scene6, 1f);
         }
+    }
+
+    /** In full screen the pointer is part of the demo frame, so it is scaled together with the picture. */
+    private void drawPointer() {
+        if (drawnPointer == null)
+            return;
+        screenBatch.begin();
+        drawnPointer.draw(screenBatch, Gdx.input.getX(), Gdx.input.getY(), demoHeight);
+        screenBatch.end();
     }
 
     /** Scales the demo frame to the largest centred rectangle with the demo's proportions; the rest stays black. */
@@ -101,5 +115,7 @@ public class Win311IntroManager extends Win311Manager {
         super.dispose();
         demoFrame.dispose();
         screenBatch.dispose();
+        if (drawnPointer != null)
+            drawnPointer.dispose();
     }
 }
