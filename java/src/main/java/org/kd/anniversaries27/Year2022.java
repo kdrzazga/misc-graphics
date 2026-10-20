@@ -21,6 +21,7 @@ public final class Year2022 extends Year {
     private final int lunaFrameCount = 50;
     private final float lunaFrameDuration = 0.21f;
     private final long lunaLoopFrames = Math.round(lunaFrameCount * lunaFrameDuration * 60);
+    private final long bitcoinFirstArticleFrame = bitcoinFrame + bitcoinCrashLoopFrames / 2; // 2nd half of the 1st loop
     private final long bitcoinArticleFrame = bitcoinFrame + bitcoinCrashLoopFrames;
     private final long lunaArticleFrame = lunaFrame + lunaLoopFrames;
     private final float articleOpacity = 0.8f; // 20% transparent
@@ -29,7 +30,7 @@ public final class Year2022 extends Year {
     private final AnimatedSpriteV twiX, luna;
     private final VideoClip bitcoinCrash;
     private final Sprite gradient;
-    private final FittedPicture bitcoinArticle, lunaArticle;
+    private final FittedPicture bitcoinFirstArticle, bitcoinArticle, lunaArticle;
 
     Year2022(long startingFrame) {
         super("anniversaries27/2022.mp3", startingFrame);
@@ -39,6 +40,7 @@ public final class Year2022 extends Year {
         // The file plays forward then backward (baked in with ffmpeg reverse), so looping it gives a ping-pong.
         bitcoinCrash = new VideoClip("anniversaries27/video/BitcoinCrash.mp4", 24, 117, 112, 771, 543, true);
         luna = new AnimatedSpriteV("anniversaries27/pics/luna.png", lunaFrameCount, lunaFrameDuration, 0, 0);
+        bitcoinFirstArticle = new FittedPicture("anniversaries27/pics/BTCdropArticle2.png", canvas, Color.BLACK);
         bitcoinArticle = new FittedPicture("anniversaries27/pics/BTCdropArticle.png", canvas, Color.BLACK);
         lunaArticle = new FittedPicture("anniversaries27/pics/LunaCrashArticle.png", canvas, Color.BLACK);
         var gradientTexture = new Texture("gradient-black.png");
@@ -58,10 +60,11 @@ public final class Year2022 extends Year {
         if (relFrame < bitcoinFrame) drawTwix(batch);
         else if (relFrame < lunaFrame) {
             bitcoinCrash.draw(batch);
-            drawArticle(batch, bitcoinArticle, relFrame, bitcoinArticleFrame);
+            drawArticle(batch, bitcoinFirstArticle, relFrame, bitcoinFirstArticleFrame, bitcoinArticleFrame);
+            drawArticle(batch, bitcoinArticle, relFrame, bitcoinArticleFrame, lunaFrame);
         } else if (relFrame < threeArrowsFrame) {
             drawLuna(batch);
-            drawArticle(batch, lunaArticle, relFrame, lunaArticleFrame);
+            drawArticle(batch, lunaArticle, relFrame, lunaArticleFrame, threeArrowsFrame);
         } else
             gradient.draw(batch);
 
@@ -84,9 +87,9 @@ public final class Year2022 extends Year {
             System.out.println("Celsius");
     }
 
-    /** News article over the looping animation, from appearFrame on, partly transparent. */
-    private void drawArticle(SpriteBatch batch, FittedPicture article, long relFrame, long appearFrame) {
-        if (relFrame < appearFrame)
+    /** News article over the looping animation, from appearFrame until disappearFrame, partly transparent. */
+    private void drawArticle(SpriteBatch batch, FittedPicture article, long relFrame, long appearFrame, long disappearFrame) {
+        if (relFrame < appearFrame || relFrame >= disappearFrame)
             return;
         float fadeIn = Math.min(1f, (relFrame - appearFrame) / (float) articleFadeInFrames);
         article.drawWhole(batch, articleOpacity * fadeIn);
