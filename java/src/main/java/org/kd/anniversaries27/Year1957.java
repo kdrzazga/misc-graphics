@@ -13,8 +13,8 @@ public final class Year1957 extends Year {
 
     // Stage start frames, relative to the start of the year. Each matches a pause in 1957.mp3.
     private final long architectureFrame = seconds(6);
-    private final long architectureEndFrame = seconds(15);
-    private final long neumannPortraitFrame = seconds(15.6); // right after the 15.6 s video
+    private final long architectureEndFrame = seconds(14.25);
+    private final long neumannPortraitFrame = seconds(14.85); // right after the video, which starts 0.75 s into the interview
     private final long automataFrame = seconds(20.7);
     private final long punchCardFrame = seconds(24);
 

@@ -1,0 +1,20 @@
++LANGUAGE(PROLOG);
++CREATED(PROLOG, MARSEILLE);
++IN(MARSEILLE, FRANCE);
+
++TELL(*L)
+    -LANGUAGE(*L)
+    -CREATED(*L, *U)
+    -IN(*U, *C)
+    -SORM(*L)
+    -SORM(" LANGUAGE WAS CREATED AT")
+    -LIGNE
+    -SORM("THE UNIVERSITY OF ")
+    -SORM(*U)
+    -SORM(" IN ")
+    -SORM(*C)
+    -SORM(".")
+    -LIGNE;
+
+-TELL(PROLOG);
+AMEN

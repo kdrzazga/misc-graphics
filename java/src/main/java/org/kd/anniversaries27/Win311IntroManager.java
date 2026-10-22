@@ -45,6 +45,11 @@ public class Win311IntroManager extends Win311Manager {
         if (screenGraphics.isFullscreen())
             drawnPointer = new DrawnMousePointer();
 
+        // Loading all the years takes about a second, so it is done before the demo starts, not when they are due
+        long loadingStart = System.currentTimeMillis();
+        yearBrowser = new Scene5YearBrowser();
+        System.out.println("Scene5YearBrowser built in " + (System.currentTimeMillis() - loadingStart) + " ms");
+
         super.create(new Scene4Paint27());
     }
 
@@ -68,9 +73,8 @@ public class Win311IntroManager extends Win311Manager {
         long frame = Gdx.graphics.getFrameId();
 
         if (frame == Scene5YearBrowser.START_FRAME) {
-            yearBrowser = new Scene5YearBrowser();
             runScene(yearBrowser, 0.3f);
-        } else if (yearBrowser != null && frame == yearBrowser.getEndFrame()) {
+        } else if (frame == yearBrowser.getEndFrame()) {
             System.out.println(Helper.countElapsedTime() + " OUTRO scene started [frame " + frame + "]");
             var scene6 = new Scene6Outro();
             runScene(scene6, 1f);

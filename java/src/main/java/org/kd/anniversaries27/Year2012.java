@@ -44,7 +44,7 @@ public final class Year2012 extends Year {
         iphone5 = new FittedPicture(picturesPath + "inphone5.png", canvasLeft, white);
         mountainLion = new FittedPicture(picturesPath + "osx-ml.png", canvasRight, white);
         windows8 = new FittedPicture(picturesPath + "win8.png", canvas, Color.BLACK, true);
-        windows8Menu = new FittedPicture(picturesPath + "win8menu.png", canvas, Color.BLACK, true);
+        windows8Menu = new FittedPicture(picturesPath + "win8menu.png", canvas, Color.BLACK);
         typeScript = new FittedPicture(picturesPath + "ts.png", canvas, new Color(0.19f, 0.47f, 0.78f, 1));
     }
 

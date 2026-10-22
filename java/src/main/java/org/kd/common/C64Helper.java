@@ -31,9 +31,15 @@ public class C64Helper {
     }
 
     public static BitmapFont createFont(int size, C64Colors color, String ttfFile) {
+        return createFont(size, color, ttfFile, FreeTypeFontGenerator.DEFAULT_CHARS);
+    }
+
+    /** For text outside {@link FreeTypeFontGenerator#DEFAULT_CHARS}, e.g. Cyrillic: pass every character it uses. */
+    public static BitmapFont createFont(int size, C64Colors color, String ttfFile, String characters) {
         var generator = new FreeTypeFontGenerator(Gdx.files.internal(ttfFile));
         var parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
         parameter.size = size; // font size
+        parameter.characters = characters;
         BitmapFont font = generator.generateFont(parameter);
         font.setColor(color.getR(), color.getG(), color.getB(), 1f);
         generator.dispose();
