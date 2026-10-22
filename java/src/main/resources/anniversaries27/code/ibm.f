@@ -1,0 +1,7 @@
+C     FORTRAN IV, IBM 1962
+C     FORMATTED OUTPUT WITH HOLLERITH CONSTANTS
+      WRITE (6, 100)
+  100 FORMAT (1X, 11HFORTRAN IV ,
+     1        30Hlanguage was developed by IBM.)
+      STOP
+      END

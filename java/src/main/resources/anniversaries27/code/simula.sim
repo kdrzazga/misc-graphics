@@ -1,0 +1,26 @@
+! SIMULA 67, the first OO language ;
+BEGIN
+   CLASS Institute(Name, City);
+      TEXT Name, City;;
+
+   CLASS Language(Name, Origin);
+      TEXT Name; REF(Institute) Origin;
+   BEGIN
+      PROCEDURE Describe;
+      BEGIN
+         OutText("Programming language ");
+         OutText(Name);
+         OutText(" was developed at the ");
+         OutText(Origin.Name);
+         OutText(" in ");
+         OutText(Origin.City);
+         OutImage
+      END
+   END;
+
+   REF(Language) Simula;
+   Simula :- NEW Language("SIMULA",
+      NEW Institute("Norwegian Computing Center",
+                    "Oslo"));
+   Simula.Describe
+END
