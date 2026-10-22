@@ -36,7 +36,8 @@ public final class Year1962 extends Year {
         krishnaInterview = new VideoClip("anniversaries27/video/krishna.mp4", 30, 104, 160, 797, 448, false);
         norskRegnesentral = new FittedPicture("anniversaries27/pics/1962/Norsk_regnesentral.png", canvas,
                 Color.BLACK, true);
-        // simula.sim is runnable and prints the sentence about SIMULA and the Norwegian Computing Center
+        // simula.sim is SIMULA I: its process waits until 1962, then prints the sentence about SIMULA and
+        // the Norwegian Computing Center. No SIMULA I compiler survives, so unlike ibm.f it cannot be run.
         simulaCode = new TypedCode("anniversaries27/code/simula.sim", 15, 20, terminalGreen,
                 fortranFrame - simulaFrame);
         // ibm.f is runnable and prints the sentence about FORTRAN IV and IBM
