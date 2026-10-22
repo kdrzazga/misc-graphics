@@ -2,11 +2,10 @@ package org.kd.anniversaries27;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import org.kd.common.VideoClip;
 
@@ -32,7 +31,7 @@ public final class Year1982 extends Year {
             new FittedPicture.Part(6, 88, 187, 74),  // purple sun microsystems
             new FittedPicture.Part(7, 164, 184, 78)); // blue Sun microsystems
     private final float sunLogoWidth = 480;
-    private final float sunLogoPadding = 16;
+    private final float plateWhiteThreshold = 0.92f; // around the plate, pixels this white become transparent
 
     private final FittedPicture sunCampus;
     private final List<TextureRegion> sunLogos;
@@ -44,7 +43,7 @@ public final class Year1982 extends Year {
         this.endFrame = startingFrame + yearFrames; // 1982.mp3 lasts 40.752 s at 60 fps
 
         sunCampus = new FittedPicture(picturesPath + "sun-hq.png", canvas, Color.BLACK, true);
-        var sunLogosTexture = new Texture(picturesPath + "sun-logos.png");
+        var sunLogosTexture = withoutWhiteBackground(picturesPath + "sun-logos.png");
         sunLogosTexture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         sunLogos = sunLogoParts.stream()
                 .map(part -> new TextureRegion(sunLogosTexture, part.x(), part.y(), part.width(), part.height()))
@@ -81,7 +80,47 @@ public final class Year1982 extends Year {
         writeYear(batch);
     }
 
-    /** Sun campus with the three Sun logos appearing one after another on a white plate in its centre. */
+    /**
+     * The picture with its white background made transparent. The coloured logos lose white the way GIMP's
+     * "colour to alpha" does, so their anti-aliased edges stay soft; the silver WORKSTATION plate would turn
+     * see-through that way, so around it only the near-white pixels are cleared.
+     */
+    private Texture withoutWhiteBackground(String path) {
+        var original = new Pixmap(Gdx.files.internal(path));
+        var pixmap = new Pixmap(original.getWidth(), original.getHeight(), Pixmap.Format.RGBA8888);
+        pixmap.setBlending(Pixmap.Blending.None);
+        pixmap.drawPixmap(original, 0, 0);
+        original.dispose();
+
+        var plate = sunLogoParts.getFirst();
+        for (int y = 0; y < pixmap.getHeight(); y++)
+            for (int x = 0; x < pixmap.getWidth(); x++) {
+                int rgba = pixmap.getPixel(x, y);
+                int red = rgba >>> 24, green = (rgba >>> 16) & 0xff, blue = (rgba >>> 8) & 0xff;
+                float originalAlpha = (rgba & 0xff) / 255f;
+                boolean onPlate = plate.x() <= x && x < plate.x() + plate.width()
+                        && plate.y() <= y && y < plate.y() + plate.height();
+                float whiteness = Math.min(red, Math.min(green, blue)) / 255f;
+                float alpha = onPlate ? (whiteness >= plateWhiteThreshold ? 0 : 1) : 1 - whiteness;
+                if (alpha <= 0) {
+                    pixmap.drawPixel(x, y, 0);
+                    continue;
+                }
+                // what is left of each channel once the white mixed into it is taken out
+                pixmap.drawPixel(x, y, Color.rgba8888(withoutWhite(red, alpha), withoutWhite(green, alpha),
+                        withoutWhite(blue, alpha), alpha * originalAlpha));
+            }
+
+        var texture = new Texture(pixmap);
+        pixmap.dispose();
+        return texture;
+    }
+
+    private float withoutWhite(int channel, float alpha) {
+        return 1 - (1 - channel / 255f) / alpha;
+    }
+
+    /** Sun campus with the three Sun logos appearing one after another in its centre. */
     private void drawSun(SpriteBatch batch, long relFrame) {
         batch.begin();
         sunCampus.drawWhole(batch, fadeIn(relFrame, sunFrame));
@@ -96,14 +135,6 @@ public final class Year1982 extends Year {
         float height = sunLogoWidth * logo.getRegionHeight() / logo.getRegionWidth();
         float left = canvas.x + (canvas.width - sunLogoWidth) / 2;
         float bottom = canvas.y + (canvas.height - height) / 2;
-
-        Gdx.gl.glEnable(GL20.GL_BLEND);
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        shapeRenderer.setColor(1, 1, 1, alpha);
-        shapeRenderer.rect(left - sunLogoPadding, bottom - sunLogoPadding,
-                sunLogoWidth + 2 * sunLogoPadding, height + 2 * sunLogoPadding);
-        shapeRenderer.end();
-        Gdx.gl.glDisable(GL20.GL_BLEND);
 
         batch.begin();
         batch.setColor(1, 1, 1, alpha);

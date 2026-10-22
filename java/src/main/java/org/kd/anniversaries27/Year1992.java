@@ -1,11 +1,14 @@
 package org.kd.anniversaries27;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
+import org.kd.common.C64Helper;
 import org.kd.common.VideoClip;
 
 import java.util.List;
@@ -34,9 +37,18 @@ public final class Year1992 extends Year {
     private final long fadeInFrames = 15;
     private final long amigaFadeInFrames = 30;
 
+    // What S.u.S.E. stood for, typed over the darkened headquarters in the last 2 seconds before the logo
+    private final long suseNameFrame = suseLogoFrame - seconds(2);
+    private final long suseNameTypingFrames = seconds(1);
+    private final int suseNameFontSize = 96;
+    private final float suseNameLineSpacing = 118;
+    private final float suseNameMargin = 40;
+    private final float suseNameDimming = 0.6f;
+
     private final VideoClip graceHopper, mortalKombat;
     private final FittedPicture pc486, suseLogo, openGl, amiga600, amiga1200, amiga4000;
     private final AcronymAnimation avi;
+    private final TypedCode suseName;
     private final Sprite suse, dec;
 
     Year1992(long startingFrame) {
@@ -59,6 +71,9 @@ public final class Year1992 extends Year {
         suse.setPosition(204, 201);
         suse.setScale(1.3f, 1.3f);
         suseLogo = new FittedPicture(picturesPath + "suse-logo.png", canvas, Color.BLACK, true);
+        suseName = new TypedCode(List.of("Software-", "und", "System-", "Entwicklung"),
+                C64Helper.createFont(suseNameFontSize, "Helvetica Regular.otf"), suseNameLineSpacing, Color.WHITE,
+                suseNameTypingFrames);
 
         openGl = new FittedPicture(picturesPath + "opengl.png", openGlArea, Color.WHITE);
         amiga600 = new FittedPicture(picturesPath + "a600.jpg", amiga600Area, Color.BLACK);
@@ -79,9 +94,11 @@ public final class Year1992 extends Year {
             avi.draw(batch, relFrame - aviFrame);
         else if (relFrame < suseFrame)
             drawSprite(batch, dec);
-        else if (relFrame < suseLogoFrame)
+        else if (relFrame < suseLogoFrame) {
             drawSprite(batch, suse);
-        else if (relFrame < openGlFrame)
+            if (relFrame >= suseNameFrame)
+                drawSuseName(batch, relFrame);
+        } else if (relFrame < openGlFrame)
             drawWhole(batch, suseLogo, relFrame, suseLogoFrame);
         else if (relFrame < amiga600Frame)
             drawOpenGl(batch, relFrame);
@@ -128,6 +145,19 @@ public final class Year1992 extends Year {
         if (relFrame >= amiga4000Frame)
             amiga4000.drawWhole(batch, fadeIn(relFrame, amiga4000Frame, amigaFadeInFrames));
         batch.end();
+    }
+
+    /** Software- / und / System- / Entwicklung, left aligned and centred vertically on the dimmed headquarters. */
+    private void drawSuseName(SpriteBatch batch, long relFrame) {
+        Gdx.gl.glEnable(GL20.GL_BLEND);
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+        shapeRenderer.setColor(0, 0, 0, suseNameDimming * fadeIn(relFrame, suseNameFrame, fadeInFrames));
+        shapeRenderer.rect(canvas.x, canvas.y, canvas.width, canvas.height);
+        shapeRenderer.end();
+        Gdx.gl.glDisable(GL20.GL_BLEND);
+
+        float top = canvas.y + canvas.height / 2 + (3 * suseNameLineSpacing + suseNameFontSize) / 2;
+        suseName.draw(batch, canvas.x + suseNameMargin, top, relFrame - suseNameFrame);
     }
 
     private void drawWhole(SpriteBatch batch, FittedPicture picture, long relFrame, long appearFrame) {

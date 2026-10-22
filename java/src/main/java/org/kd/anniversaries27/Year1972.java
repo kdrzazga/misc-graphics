@@ -11,7 +11,7 @@ public final class Year1972 extends Year {
 
     // Stage start frames, relative to the start of the year
     private final long yearFrames = 1032;
-    private final long prologFrame = seconds(4);           // right after the 4 s Pichai video
+    private final long prologFrame = seconds(5);           // the 4 s Pichai video holds its last frame for 1 s
     private final long prologTypedFrame = seconds(10);
     private final long pongFrame = yearFrames - seconds(6); // the 6 s Pong video ends the year
 
