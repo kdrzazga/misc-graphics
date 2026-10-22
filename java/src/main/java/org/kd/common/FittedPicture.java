@@ -1,4 +1,4 @@
-package org.kd.anniversaries27;
+package org.kd.common;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
@@ -11,9 +11,9 @@ import com.badlogic.gdx.math.Rectangle;
  * It either fits inside the area, or covers the whole area with the overflowing edges cropped.
  * Parts are given in picture pixels with the origin in the top-left corner, as in an image editor.
  */
-final class FittedPicture {
+public final class FittedPicture {
 
-    record Part(int x, int y, int width, int height) {
+    public record Part(int x, int y, int width, int height) {
     }
 
     private final Texture texture;
@@ -24,12 +24,12 @@ final class FittedPicture {
     private final float visibleLeft, visibleRight, visibleTop, visibleBottom;
 
     /** Fits the picture inside the area. */
-    FittedPicture(String path, Rectangle area, Color background) {
+    public FittedPicture(String path, Rectangle area, Color background) {
         this(path, area, background, false);
     }
 
     /** With coverArea the picture fills the whole area and its overflowing edges are cropped. */
-    FittedPicture(String path, Rectangle area, Color background, boolean coverArea) {
+    public FittedPicture(String path, Rectangle area, Color background, boolean coverArea) {
         this.texture = new Texture(path);
         this.texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         this.area = area;
@@ -46,7 +46,7 @@ final class FittedPicture {
     }
 
     /** Fills the whole area with the picture's own background colour, so the picture has no visible edges. */
-    void fillArea(ShapeRenderer shapeRenderer) {
+    public void fillArea(ShapeRenderer shapeRenderer) {
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         shapeRenderer.setColor(background);
         shapeRenderer.rect(area.x, area.y, area.width, area.height);
@@ -54,20 +54,20 @@ final class FittedPicture {
     }
 
     /** Where a part of the picture lands on screen (origin bottom-left). */
-    Rectangle screenRectangleOf(Part part) {
+    public Rectangle screenRectangleOf(Part part) {
         return new Rectangle(left + part.x() * scale, top - (part.y() + part.height()) * scale,
                 part.width() * scale, part.height() * scale);
     }
 
-    void drawWhole(SpriteBatch batch, float alpha) {
+    public void drawWhole(SpriteBatch batch, float alpha) {
         drawPart(batch, 0, 0, texture.getWidth(), texture.getHeight(), alpha);
     }
 
-    void drawPart(SpriteBatch batch, Part part, float alpha) {
+    public void drawPart(SpriteBatch batch, Part part, float alpha) {
         drawPart(batch, part.x(), part.y(), part.width(), part.height(), alpha);
     }
 
-    void drawPart(SpriteBatch batch, float x, float y, float width, float height, float alpha) {
+    public void drawPart(SpriteBatch batch, float x, float y, float width, float height, float alpha) {
         float partLeft = Math.max(x, visibleLeft);
         float partRight = Math.min(x + width, visibleRight);
         float partTop = Math.max(y, visibleTop);

@@ -3,6 +3,8 @@ package org.kd.anniversaries27;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
+import org.kd.common.FittedPicture;
+import org.kd.common.TypedCode;
 import org.kd.common.VideoClip;
 
 public final class Year1962 extends Year {

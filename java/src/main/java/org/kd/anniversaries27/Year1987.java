@@ -7,6 +7,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.HdpiUtils;
 import com.badlogic.gdx.math.Rectangle;
+import org.kd.common.FittedPicture;
+import org.kd.common.TypedCode;
 import org.kd.common.VideoClip;
 
 public final class Year1987 extends Year {

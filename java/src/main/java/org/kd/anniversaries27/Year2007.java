@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Align;
 import org.kd.common.C64Helper;
+import org.kd.common.FittedPicture;
 import org.kd.common.VideoClip;
 
 import java.util.List;

@@ -184,14 +184,14 @@ public class Scene1c64 extends BasicC64Screen {
                 , this.year1981, this.year1976, this.year1971);
 
         for (int i = 0; i < allYears.size() - 1; i++) {
-            if (frame > allYears.get(i).startingFrame && frame < allYears.get(i + 1).startingFrame) {
+            if (frame > allYears.get(i).getStartingFrame() && frame < allYears.get(i + 1).getStartingFrame()) {
                 this.borderColor = C64Colors.DARK_GRAY;
                 allYears.get(i).sayItOnce();
                 allYears.get(i).draw(frame, this);
                 System.out.println(Helper.countElapsedTime() + " [" + frame + "]");
             }
         }
-        if (frame > this.year1971.startingFrame && frame <= this.year1971.getEndFrame()) {
+        if (frame > this.year1971.getStartingFrame() && frame <= this.year1971.getEndFrame()) {
             this.year1971.sayItOnce();
             this.year1971.draw(frame, this);
         }
