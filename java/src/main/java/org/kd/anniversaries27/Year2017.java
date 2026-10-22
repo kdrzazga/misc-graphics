@@ -7,8 +7,9 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Align;
-import org.kd.anniversaries27.FittedPicture.Part;
 import org.kd.common.C64Helper;
+import org.kd.common.FittedPicture;
+import org.kd.common.FittedPicture.Part;
 
 import java.util.List;
 

@@ -1,11 +1,9 @@
-package org.kd.anniversaries;
+package org.kd.common;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import org.kd.common.C64Helper;
-import org.kd.common.Helper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +22,7 @@ public class BaseYear {
 
     public BaseYear(String statementPath, long startingFrame) {
         this.startingFrame = startingFrame;
-        this.endFrame = this.startingFrame + Year.DEFAULT_DURATION; //can be overriden
+        this.endFrame = this.startingFrame + DEFAULT_DURATION; //can be overriden
         this.statementPath = statementPath;
         this.statement = Gdx.audio.newMusic(Gdx.files.internal(statementPath));
         font1 = C64Helper.createFont(32, "zx-spectrum.ttf");

@@ -1,5 +1,6 @@
 package org.kd.anniversaries;
 
+import org.kd.common.BaseYear;
 import org.kd.common.Scene;
 
 public abstract class Year extends BaseYear {
