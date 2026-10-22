@@ -84,7 +84,9 @@ public final class Year1952 extends Year {
         shapeRenderer.end();
         Gdx.gl.glDisable(GL20.GL_BLEND);
 
-        facts.draw(batch, photo.getX() + factsMargin, photo.getY() + bandHeight - factsMargin, typingFrame);
+        // shifted right past the year label in the bottom-left corner
+        float left = photo.getX() + factsMargin + 1.2f * yearLabelWidth;
+        facts.draw(batch, left, photo.getY() + bandHeight - factsMargin, typingFrame);
     }
 
     /** Scales the sprite to fit inside the canvas, keeping proportions, and centres it. */
