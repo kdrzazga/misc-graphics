@@ -101,7 +101,7 @@ public class Scene6Outro extends Scene4Paintbrush {
     }
 
 
-    class Credits{
+    static class Credits{
         final static List<String> lines = Arrays.asList(
                 "CODE: KD of K&A+",
                 "MUSIC: RAMOS of K&A+",
