@@ -3,7 +3,7 @@ package org.kd.anniversaries27;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import org.kd.anniversaries.BaseYear;
+import org.kd.common.BaseYear;
 import org.kd.common.C64Helper;
 
 public abstract class Year extends BaseYear {

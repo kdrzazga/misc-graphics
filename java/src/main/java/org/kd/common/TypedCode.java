@@ -1,4 +1,4 @@
-package org.kd.anniversaries27;
+package org.kd.common;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -13,7 +13,7 @@ import java.util.List;
  * Lines of text (e.g. source code read from a resource file) typed letter by letter, with a cursor
  * that blinks once the typing is done. Times are frames since the typing started.
  */
-final class TypedCode {
+public final class TypedCode {
 
     private final List<String> lines;
     private final int totalCharacters;
@@ -25,12 +25,12 @@ final class TypedCode {
     private final GlyphLayout layout = new GlyphLayout();
 
     /** Text resource typed in the monospaced C64 font. */
-    TypedCode(String internalPath, int fontSize, float lineSpacing, Color color, long typingFrames) {
+    public TypedCode(String internalPath, int fontSize, float lineSpacing, Color color, long typingFrames) {
         this(Gdx.files.internal(internalPath).readString("UTF-8").replace("\r", "").lines().toList(),
                 C64Helper.createFont(fontSize, "C64_Pro_Mono-STYLE.ttf"), lineSpacing, color, typingFrames);
     }
 
-    TypedCode(List<String> lines, BitmapFont font, float lineSpacing, Color color, long typingFrames) {
+    public TypedCode(List<String> lines, BitmapFont font, float lineSpacing, Color color, long typingFrames) {
         this.lines = lines;
         this.totalCharacters = lines.stream().mapToInt(line -> line.length() + 1).sum(); // + 1 for each line break
         this.font = font;
@@ -40,7 +40,7 @@ final class TypedCode {
     }
 
     /** x, top: where the first line starts. */
-    void draw(SpriteBatch batch, float x, float top, long typingFrame) {
+    public void draw(SpriteBatch batch, float x, float top, long typingFrame) {
         long charactersLeft = Math.min(totalCharacters, totalCharacters * Math.max(0, typingFrame) / typingFrames);
         boolean typingDone = charactersLeft >= totalCharacters;
         boolean cursorShown = !typingDone || (typingFrame / cursorBlinkFrames) % 2 == 0;

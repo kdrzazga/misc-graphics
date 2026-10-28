@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import org.kd.common.C64Helper;
 import org.kd.common.Helper;
+import org.kd.common.TypedCode;
 import org.kd.common.tricks.WavedEdgeTrick;
 import org.kd.win311.Scene4Paintbrush;
 

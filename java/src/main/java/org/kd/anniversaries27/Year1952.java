@@ -14,6 +14,7 @@ import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.Rectangle;
 import org.kd.common.C64Colors;
 import org.kd.common.C64Helper;
+import org.kd.common.TypedCode;
 
 import java.util.ArrayList;
 import java.util.List;
