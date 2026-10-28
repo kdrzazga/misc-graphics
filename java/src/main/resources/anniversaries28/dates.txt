@@ -1,23 +1,113 @@
 2018
 AmongUs game released
 
+--------------------------
 2013:
-GTA V
+Important technology introduced
+Docker (March): made Linux containers easy to use and transformed how software is deployed.
+React (May): Facebook open-sourced the UI library that came to dominate web front-end development.
+iPhone 5s (September): brought Touch ID and the first 64-bit smartphone chip (A7). iOS 7 the same month introduced flat design.
+PlayStation 4 and Xbox One (November): the start of the eighth console generation.
+Chromecast (July), Google Glass Explorer Edition, and the Oculus Rift developer kit (March), an early step toward modern VR.
+Intel Haswell processors (June), Windows 8.1 (October), and OS X Mavericks (October), the first free major macOS upgrade.
+Ethereum whitepaper (late 2013): Vitalik Buterin’s proposal for programmable blockchains.
+Bitcoin passed $1,000 for the first time (November).
+Companies and services created
+Telegram (August), Vine (January), and Robinhood.
+Slack: the internal tool went into preview in August, with public launch in 2014.
+Failures, endings and big business moves
+The Snowden revelations (June) exposed mass NSA surveillance, including PRISM. They triggered a global shift toward encryption and privacy.
+Google Reader was shut down (July). Lavabit, Snowden’s email provider, closed rather than hand over its keys (August).
+Silk Road was shut down by the FBI (October).
+BlackBerry 10 launched, but the company kept collapsing and reported a roughly $1 billion quarterly loss.
+Healthcare.gov’s launch failure (October) became a textbook case of a failed government IT project.
+Data breaches at Adobe (October) and Target (December, about 40 million cards). Yahoo’s massive breach also happened in 2013, though it wasn’t disclosed until 2016.
+THQ was liquidated (January), and LucasArts was closed by Disney (April).
+Big deals:
+Microsoft agreed to buy Nokia’s phone business.
+Dell went private.
+Yahoo bought Tumblr.
+Twitter went public.
+Snapchat turned down a $3 billion offer from Facebook.
+Steve Ballmer announced his retirement as Microsoft CEO.
+Notable deaths
+Aaron Swartz (January): co-author of RSS 1.0 and an early Reddit co-owner, he also worked on Creative Commons. He died at 26 while facing federal prosecution over downloading academic articles.
+Douglas Engelbart (July): inventor of the computer mouse. His 1968 “Mother of All Demos” showed hypertext, windows, and video conferencing decades early.
+Hiroshi Yamauchi (September): the president who turned Nintendo into a video game company.
+Barnaby Jack (July): a security researcher famous for “jackpotting” ATMs on stage.
+Ray Dolby (September): an audio-technology pioneer, slightly outside core IT.
+Games released in 2013
+Grand Theft Auto V (September): one of the best-selling and highest-grossing entertainment products of all time. GTA Online followed shortly after.
+The Last of Us (June): Naughty Dog’s story-driven survival game, widely ranked among the greatest games ever made.
+
+-------------------------------------
 
 2008:
 Android 1.0 released on	September 2008
 
 Google Chrome browser is released on December 11, 2008;
 
+Companies and services created
+GitHub (launched April): it went on to become the center of open-source development.
+Dropbox (public launch September).
+Spotify (launched October in Europe).
+Stack Overflow (launched in late summer).
+Airbnb (founded as AirBed & Breakfast).
+Groupon (November).
+Hulu (public launch March).
+
+HD DVD lost the format war: Toshiba abandoned it in February, and Blu-ray won.
+Netscape Navigator was officially discontinued by AOL in March.
+Circuit City, a major US electronics retailer, filed for bankruptcy in November. Polaroid filed in December.
+Microsoft’s attempted takeover of Yahoo (about $44.6 billion) was made in February and withdrawn in May.
+Bill Gates stepped down from his day-to-day role at Microsoft in June.
+Sun Microsystems bought MySQL for about $1 billion, and Nokia bought Symbian to open-source it.
+Security events: Dan Kaminsky disclosed a major DNS cache-poisoning flaw, and the Conficker worm appeared in November.
+
+Notable deaths
+Joseph Weizenbaum (March): MIT computer scientist who created ELIZA, one of the first chatbots. He later became a prominent critic of over-trusting computers.
+Arthur C. Clarke (March): a science fiction writer rather than a computer scientist, but he proposed geostationary communication satellites and created HAL 9000.
+
+----------------------------------
+
 2003:
  Launch of Yandex, Russia’s leading search engine, often compared to Google.
  Call of Duty
+ Important technology introduced
+ AMD Opteron (April) and Athlon 64 (September): the first x86-64 processors. They brought 64-bit computing to ordinary PCs, and Intel later adopted AMD’s design.
+ Intel Centrino / Pentium M (March): bundled Wi-Fi into laptops and made wireless mainstream.
+ iTunes Music Store (April): the first big legal digital music store, at 99¢ per song.
+ Safari (January): Apple’s browser, built on WebKit, which later powered Chrome as well.
+ Skype (August): popularized internet voice calls (VoIP).
+ Linux kernel 2.6 (December), Fedora Core 1 (November), and Windows Server 2003 (April).
+ Power Mac G5 (June) and Mac OS X Panther (October).
+ Steam (September): Valve’s platform that eventually reshaped PC game distribution.
+ Human Genome Project completed (April): a huge computational achievement.
 
+ Companies and services created
+ Android Inc. (October): founded by Andy Rubin and others, and bought by Google in 2005.
+ LinkedIn (May), MySpace (August), and WordPress (May).
+ Second Life (June), 4chan (October), and The Pirate Bay (September).
+ Mozilla Foundation (July): created as AOL wound down Netscape. Its project became Firefox the next year.
+ Facemash (October): Mark Zuckerberg’s Harvard project and the precursor to Facebook.
+ Tesla was also founded that summer, though it’s more automotive than IT.
+ Failures, endings and big business moves
+ Netscape effectively ended when AOL laid off its browser team in July.
+ Internet Explorer for Mac was discontinued in June.
+ Palm split into PalmSource (software) and palmOne (hardware), and absorbed Handspring.
+ SCO sued IBM (March), claiming Linux contained stolen Unix code. This started years of legal fights over Linux.
+ Major worms: SQL Slammer (January), Blaster and Sobig.F (August).
+ The Northeast blackout (August) affected about 50 million people. A software race condition in an alarm system was a contributing factor.
+ Notable deaths
+ Adam Osborne (March): he created the Osborne 1 (1981), the first commercially successful portable computer. His company’s collapse inspired the term “the Osborne effect”: announcing a future product too early kills sales of the current one.
+
+-------------------------------------------------------------------
 1998:
 Rockstar Games
 
 StarCraft (1998) released
 
+-------------------------------------------------------------------
 1993:
 R language
 Brainfuck language (created by Urban Miller to challenge and entertain programmers with a minimalistic language)
@@ -27,38 +117,66 @@ Virtua Fighter: Arcade release in 1993
 
 FIFA International Soccer (1993): The first game in the FIFA series, popularized football simulation games.
 
+-------------------------------------------------------------------
 1988:
 Besta (Беста) is a Soviet Unix-based graphics workstation. Starting in 1988, more than 1,000 were produced.
 
+-------------------------------------------------------------------
 1983:
 Agat (1983), a Soviet clone of the Apple II.
 DVK (Russian: ДВК, Диалоговый вычислительный комплекс, Interactive Computing Complex) is a Soviet PDP-11-compatible personal computer. It was designed by the Research Institute of Precision Technology in Zelenograd.
 Capcom
 January 19, 1983 - Apple LISA
 
+-------------------------------------------------------------------
 1973:
 Sergey Brin born August 21, 1973
 Alexis Ohanian: April 24, 1983
 
+-------------------------------------------------------------------
 1958:
 LG
 Founded in 1958: LG was originally established as Lak-Hui (Lucky) Chemical Industrial Corporation, later rebranded as LG in 1995.
 
 LISP programming lang
 
+
+-------------------------------------------------------------------
 1953:
 Strela computer (Russian: ЭВМ Стрела, lit.'Arrow') was the first mainframe vacuum-tube computer manufactured serially in the Soviet Union, beginning in 1953.[1]
 This first-generation computer had 6200 vacuum tubes and 60,000 semiconductor diodes.
 
+-------------------------------------------------------------------
 1948
 The Manchester Mark I (UK) is developed at the University of Manchester, one of the earliest stored-program computers.
 
-1943:
 
+-------------------------------------------------------------------
+1943:
+Important technology and ideas
+Colossus was designed by Tommy Flowers in 1943 to break German Lorenz ciphers at Bletchley Park. The first one was working by the end of the year and used from early 1944, making it the first programmable electronic digital computer.
+Heath Robinson (mid-1943): Colossus’s predecessor at Bletchley Park. It was an electromechanical and electronic codebreaking machine that proved the approach worked, but its paper tapes kept slipping.
+ENIAC was commissioned when the US Army signed a contract with the University of Pennsylvania in June 1943. Mauchly and Eckert began building it, and it was completed in 1945.
+Harvard Mark I (IBM ASCC) was largely built at IBM during 1943 and became operational at Harvard in 1944.
+McCulloch and Pitts published the first mathematical model of an artificial neuron. It is the theoretical root of today’s neural networks and AI.
+Wiener, Rosenblueth and Bigelow published “Behavior, Purpose and Teleology,” a founding text of what became cybernetics.
+Alan Turing met Claude Shannon at Bell Labs in early 1943, during Turing’s visit to the US. The two founders of computer science and information theory reportedly discussed machine intelligence.
+Losses
+Konrad Zuse’s Z3, the world’s first working programmable computer (1941), was destroyed in an Allied bombing raid on Berlin in December 1943.
+Companies
+
+No major computer companies were founded or lost. The industry didn’t really exist yet, and IBM, the dominant player in punched-card machines, was busy with war production.
+
+Notable deaths
+Nikola Tesla (January): a pioneer of alternating current and much of the electrical engineering that computing later depended on.
+David Hilbert (February): the mathematician whose “decision problem” (Entscheidungsproblem) led Turing to define the Turing machine in 1936. In a sense, he posed the question that invented computer science.
+-------------------------------------------------------------------
 1938:
 Samsung founded 1 March 1938 in Taikyu, Korea, Empire of Japan
 
+-------------------------------------------------------------------
 1933:
 
+-------------------------------------------------------------------
 1928:
 Jack Tramiel was born on December 13, 1928
