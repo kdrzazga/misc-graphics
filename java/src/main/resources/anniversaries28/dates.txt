@@ -43,9 +43,9 @@ The Last of Us (June): Naughty Dog’s story-driven survival game, widely ranked
 -------------------------------------
 
 2008:
-Android 1.0 released on	September 2008
+Android 1.0 released on September 23, 2008 (the first Android phone, the T-Mobile G1, shipped October 22, 2008)
 
-Google Chrome browser is released on December 11, 2008;
+Google Chrome browser is released as a public beta on September 2, 2008; first stable release on December 11, 2008
 
 Companies and services created
 GitHub (launched April): it went on to become the center of open-source development.
@@ -71,7 +71,6 @@ Arthur C. Clarke (March): a science fiction writer rather than a computer scient
 ----------------------------------
 
 2003:
- Launch of Yandex, Russia’s leading search engine, often compared to Google.
  Call of Duty
  Important technology introduced
  AMD Opteron (April) and Athlon 64 (September): the first x86-64 processors. They brought 64-bit computing to ordinary PCs, and Intel later adopted AMD’s design.
@@ -110,7 +109,7 @@ StarCraft (1998) released
 -------------------------------------------------------------------
 1993:
 R language
-Brainfuck language (created by Urban Miller to challenge and entertain programmers with a minimalistic language)
+Brainfuck language (created by Urban Müller to challenge and entertain programmers with a minimalistic language)
 Amiga CD32
 
 Virtua Fighter: Arcade release in 1993
@@ -123,32 +122,32 @@ Besta (Беста) is a Soviet Unix-based graphics workstation. Starting in 1988
 
 -------------------------------------------------------------------
 1983:
-Agat (1983), a Soviet clone of the Apple II.
+Agat (1983), a Soviet computer based on the Apple II (only partially compatible). Developed 1981–1983; serial production began in 1984.
 DVK (Russian: ДВК, Диалоговый вычислительный комплекс, Interactive Computing Complex) is a Soviet PDP-11-compatible personal computer. It was designed by the Research Institute of Precision Technology in Zelenograd.
-Capcom
+Capcom (Capcom Co., Ltd. established June 1983; its predecessor I.R.M. Corporation was founded in 1979)
 January 19, 1983 - Apple LISA
+Alexis Ohanian: April 24, 1983
 
 -------------------------------------------------------------------
 1973:
 Sergey Brin born August 21, 1973
-Alexis Ohanian: April 24, 1983
 
 -------------------------------------------------------------------
 1958:
-LG
-Founded in 1958: LG was originally established as Lak-Hui (Lucky) Chemical Industrial Corporation, later rebranded as LG in 1995.
+GoldStar (now LG Electronics)
+Founded in 1958: GoldStar was set up as the electronics company of the Lak-Hui (Lucky) group (Lak-Hui Chemical Industrial Corporation was founded in 1947). The group was rebranded as LG in 1995.
 
 LISP programming lang
 
 
 -------------------------------------------------------------------
 1953:
-Strela computer (Russian: ЭВМ Стрела, lit.'Arrow') was the first mainframe vacuum-tube computer manufactured serially in the Soviet Union, beginning in 1953.[1]
+Strela computer (Russian: ЭВМ Стрела, lit.'Arrow') was the first mainframe vacuum-tube computer manufactured serially in the Soviet Union, beginning in 1953.
 This first-generation computer had 6200 vacuum tubes and 60,000 semiconductor diodes.
 
 -------------------------------------------------------------------
 1948
-The Manchester Mark I (UK) is developed at the University of Manchester, one of the earliest stored-program computers.
+The Manchester Baby (SSEM) at the University of Manchester (UK) ran the world’s first stored program on June 21, 1948. The Manchester Mark 1, one of the earliest stored-program computers, was developed from it in 1948–49.
 
 
 -------------------------------------------------------------------
